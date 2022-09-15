@@ -46405,7 +46405,7 @@ LABEL_8:
 // AE418: using guessed type int dword_AE418;
 
 //----- (00040830) --------------------------------------------------------
-int sub_main(int argc, const char **argv, const char **envp)
+int sub_main(int argc, const char **argv, const char **envp)//211830
 {
   int v3; // ecx
   __int16 v4; // si
@@ -63873,7 +63873,7 @@ __int16 sub_5A8C0()
 // AE43C: using guessed type int dword_AE43C;
 
 //----- (0005A8D0) --------------------------------------------------------
-int sub_5A8D0(__int16 a1)
+int sub_5A8D0(__int16 a1)//22b8d0
 {
   int result; // eax
   int v2; // edx
@@ -65600,7 +65600,7 @@ unsigned __int8 sub_5D164()
 }
 
 //----- (0005D180) --------------------------------------------------------
-char sub_5D180(unsigned __int8 *a1, unsigned __int8 a2, unsigned __int8 a3, unsigned __int8 a4)
+char sub_5D180(unsigned __int8 *a1, unsigned __int8 a2, unsigned __int8 a3, unsigned __int8 a4)//22e180
 {
   unsigned __int8 v4; // al
   __int16 v5; // cx
