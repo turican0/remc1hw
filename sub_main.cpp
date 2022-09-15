@@ -1000,7 +1000,7 @@ int sub_5A8D0(__int16 a1);
 int sub_5A969(int a1, __int16 a2);
 int sub_5A9FA();
 int sub_5AA70();
-int sub_5B1B0();
+int sub_5ACA0_5B1B0();
 int sub_5B220(int a1);
 int sub_5B240();
 int sub_5B2C0(int a1, _DWORD *a2, _BYTE *a3);
@@ -37498,7 +37498,7 @@ int sub_34F00()
   unsigned __int8 v8; // [esp+14h] [ebp-18h]
   unsigned __int8 v9; // [esp+18h] [ebp-14h]
 
-  sub_5B1B0();
+  sub_5ACA0_5B1B0();
   sub_5B220((int)aLoadAllDataFil);
   sub_34EC0();
   sub_5B220((int)aInitialiseColo);
@@ -37545,7 +37545,7 @@ int sub_35020(int a1, int a2)
   sub_59410(a1, a2);
   sub_44B80();
   sub_61B20((int)aSearchd);
-  return sub_5B1B0();
+  return sub_5ACA0_5B1B0();
 }
 
 //----- (00035040) --------------------------------------------------------
@@ -64118,7 +64118,7 @@ int sub_5AA70()
 // 131498: using guessed type int dword_131498;
 
 //----- (0005B1B0) --------------------------------------------------------
-int sub_5B1B0()
+int sub_5ACA0_5B1B0()
 {
   printf("Copyright (c) 1995 Bullfrog Productions Ltd.\n");
   printf("All rights reserved.\n");
