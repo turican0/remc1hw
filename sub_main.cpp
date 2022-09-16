@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <defs.h>
-//#include <cwchar>
 #include "sub_main.h"
 
 //fix
@@ -641,7 +638,7 @@ char sub_3EC00(__int16 a1);
 char sub_3ECC0(__int16 a1);
 void sub_3ED10(_BYTE *a1);
 _BYTE *sub_3EF90();
-int sub_3EFC0(int a1);
+int sub_3EC80_3EFC0(int a1);
 char sub_3EC90_3EFD0(unsigned __int8 a1, const char *a2, char *a3);
 int sub_3F1E0(const char *a1, char *a2);
 int sub_3F260();
@@ -660,7 +657,7 @@ char sub_3F820_sub_3FB60(__int16 a1, __int16 a2, int a3, int a4, int a5, char a6
 unsigned __int8 sub_3FE70(__int16 a1, __int16 a2, int a3);
 char sub_3FCA0_3FFE0(int a1, __int16 a2, __int16 a3, __int16 a4, char a5, __int16 a6, __int16 a7, __int16 a8, __int16 a9, __int16 a10, __int16 a11);
 __int16 sub_40780(int a1);
-int main(int argc, const char **argv, const char **envp);
+int sub_main(int argc, const char **argv, const char **envp);
 int sub_40890();
 int sub_40AE0();
 int sub_40C10();
@@ -9573,7 +9570,7 @@ char aLc_0[4] = "lC:"; // weak
 char aLevelsDdlevels[20] = "levels/ddlevels.dat"; // weak
 char aLevelsDdlevels_0[20] = "levels/ddlevels.tab"; // weak
 char aMovie_0[6] = "movie"; // weak
-char aSave_0[5] = "save"; // weak
+//char aSave_0[5] = "save"; // weak
 char aD_1[4] = " d/"; // weak
 char aTmaps10[9] = "tmaps1-0"; // weak
 char aData_0[5] = "data"; // weak
@@ -9581,10 +9578,10 @@ char aCreatingSetupD[29] = "Creating Setup Directories.."; // weak
 char aAp[5] = "ap%\n"; // weak
 char aSetupLevels[15] = "Setup levels.."; // weak
 char aDdlevels[9] = "ddlevels"; // weak
-char aSave[5] = "save"; // weak
-char aCarpetCd[11] = "\\carpet.cd"; // weak
-char aData[5] = "data"; // weak
-char aLevels[7] = "levels"; // weak
+//char aSave[5] = "save"; // weak
+//char aCarpetCd[11] = "\\carpet.cd"; // weak
+//char aData[5] = "data"; // weak
+//char aLevels[7] = "levels"; // weak
 char aLoadLevel[11] = "Load Level"; // weak
 char aGenerateMap[13] = "Generate map"; // weak
 char aGenerateFeatur[18] = "Generate features"; // weak
@@ -12192,7 +12189,7 @@ _DWORD close(_DWORD a) { return 0; };// weak
 _DWORD creat(_DWORD a, _DWORD b) { return 0; };// weak
 _DWORD setmode(_DWORD a, _DWORD b) { return 0; };// weak
 _DWORD sopen(_DWORD a, _DWORD b, char c) { return 0; };
-_DWORD lseek(_DWORD a, _DWORD b, char c) { return 0; };// weak
+//_DWORD lseek(_DWORD a, _DWORD b, char c) { return 0; };// weak
 _DWORD open(_DWORD a, _DWORD b) { return 0; };
 int __inbyte(int a) { return 0; };
 _DWORD write(_DWORD a, _DWORD b, _DWORD c) { return 0; };// weak
@@ -12201,7 +12198,7 @@ _DWORD tolower(_DWORD a) { return 0; };// weak
 void __outword(int a, int b) {};
 int __inword(int a) { return 0; };
 
-int filelength(int a) { return 0; };
+//int filelength(int a) { return 0; };
 int MK_FP(void* a, void* b) { return 0; };
 //---------------- fixproc
 
@@ -37052,7 +37049,7 @@ char sub_34200(unsigned __int16 a1, __int16 a2)
 // 12C1D0: using guessed type __int16 word_12C1D0;
 
 //----- (00034470) --------------------------------------------------------
-int sub_340B0_34470(int a1, __int16 a2, __int16 a3, unsigned __int16 a4, int a5)
+int sub_340B0_34470(__int16 a2, __int16 a3, unsigned __int16 a4, int a5)
 {
   int v5; // edx
   int *v7; // eax
@@ -37061,6 +37058,8 @@ int sub_340B0_34470(int a1, __int16 a2, __int16 a3, unsigned __int16 a4, int a5)
   int v10; // ebx
   int v11; // ebx
   int v12; // eax
+
+  int a1;
 
   v5 = a5;
   if ( sub_34DD0_sub_35190(a3, a4, a5) == -1 )
@@ -44838,7 +44837,7 @@ char sub_3E9D0(__int16 a1)
   result = sub_3EAE0(a1);
   if ( result )
   {
-    sprintf(v5, "c:/CARPET.CD/%s/gam%05d.dat", aSave_0, a1);
+    sprintf(v5, "c:/CARPET.CD/%s/gam%05d.dat", "save", a1);
     v2 = *(_DWORD *)dword_AE3F0;
     v12 = *(_DWORD *)(dword_AE3F0 + 8597);
     v13 = *(_DWORD *)(dword_AE3F0 + 8601);
@@ -44877,7 +44876,7 @@ _BOOL1 sub_3EA90(__int16 a1)
 {
   char v2[64]; // [esp+0h] [ebp-40h] BYREF
 
-  sprintf(v2, "c:/CARPET.CD/%s/gam%05d.dat", aSave_0, a1);
+  sprintf(v2, "c:/CARPET.CD/%s/gam%05d.dat", "save", a1);
   return sub_63370((int)v2, dword_AE3F0, (int)byte_38D09) == (_DWORD)byte_38D09;
 }
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
@@ -44889,7 +44888,7 @@ char sub_3EAE0(__int16 a1)
   int v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
-  sprintf(v3, "c:/CARPET.CD/%s/gam%05d.dat", aSave_0, a1);
+  sprintf(v3, "c:/CARPET.CD/%s/gam%05d.dat", "save", a1);
   v1 = sub_5D2F0((int)v3, 512);
   if ( v1 == -1 )
     return 0;
@@ -44908,7 +44907,7 @@ char sub_3EB30(__int16 a1)
   result = sub_3ECC0(a1);
   if ( result )
   {
-    sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", aSave_0, a1);
+    sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
     v2 = sub_5D2F0((int)v3, 512);
     sub_5D0E0(v2, (int)byte_CC1D0, (int)sub_10000);
     sub_5D0E0(v2, (int)byte_DC1D0, (int)sub_10000);
@@ -44931,7 +44930,7 @@ char sub_3EC00(__int16 a1)
   int v1; // ebx
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
-  sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", aSave_0, a1);
+  sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
   v1 = sub_5D2F0((int)v3, 546);
   sub_633E0(v1, (int)byte_CC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_DC1D0, (int)sub_10000);
@@ -44952,7 +44951,7 @@ char sub_3ECC0(__int16 a1)
   int v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
-  sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", aSave_0, a1);
+  sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
   v1 = sub_5D2F0((int)v3, 512);
   if ( v1 == -1 )
     return 0;
@@ -45080,7 +45079,7 @@ _BYTE *sub_3EF90()
 // AE3F8: using guessed type int dword_AE3F8;
 
 //----- (0003EFC0) --------------------------------------------------------
-int sub_3EFC0(int a1)
+int sub_3EC80_3EFC0(int a1)
 {
   return access(a1, 0);
 }
@@ -45120,7 +45119,7 @@ char sub_3EC90_3EFD0(unsigned __int8 a1, const char *a2, char *a3)
   if ( dos_getdiskfree(a1 - 64, (uint32)v30) )
     return 1;
   sprintf(v28, "%c:%s", a1, a2);
-  if ( (__int16)sub_3EFC0((int)v28) <= -1 )
+  if ( (__int16)sub_3EC80_3EFC0((int)v28) <= -1 )
   {
     if ( mkdir((uint32)v28) )
       return 2;
@@ -45166,7 +45165,7 @@ char sub_3EC90_3EFD0(unsigned __int8 a1, const char *a2, char *a3)
       v25 += 2;
     }
     while ( v27 );
-    if ( (sub_3EFC0((int)v29) & 0x8000u) != 0 && mkdir((uint32)v29) )
+    if ( (sub_3EC80_3EFC0((int)v29) & 0x8000u) != 0 && mkdir((uint32)v29) )
       return 2;
   }
   else
@@ -45213,7 +45212,7 @@ char sub_3EC90_3EFD0(unsigned __int8 a1, const char *a2, char *a3)
       v13 += 2;
     }
     while ( v15 );
-    if ( (sub_3EFC0((int)v29) & 0x8000u) != 0 && mkdir((uint32)v29) )
+    if ( (sub_3EC80_3EFC0((int)v29) & 0x8000u) != 0 && mkdir((uint32)v29) )
       return 2;
   }
   return 3;
@@ -46407,20 +46406,18 @@ LABEL_8:
 //----- (00040830) --------------------------------------------------------
 int sub_main(int argc, const char **argv, const char **envp)//211830
 {
-  int v3; // ecx
   __int16 v4; // si
   __int16 v5; // fps
 
   //fix
-  v3 = 0;
   v4 = 0;
   v5 = 0;
   //fix
 
-  sub_3EC90_3EFD0(0x43u, aCarpetCd, aSave);
-  sub_3EC90_3EFD0(0x43u, aCarpetCd, aData);
-  sub_3EC90_3EFD0(0x43u, aCarpetCd, aLevels);
-  sub_340B0_34470(v3, v4, v5, argc, (int)argv);
+  sub_3EC90_3EFD0('C', "\\carpet.cd", (char*)"save");
+  sub_3EC90_3EFD0('C', "\\carpet.cd", (char*)"data");
+  sub_3EC90_3EFD0('C', "\\carpet.cd", (char*)"levels");
+  sub_340B0_34470(v4, v5, argc, (int)argv);
   return 0;
 }
 // 40879: variable 'v3' is possibly undefined

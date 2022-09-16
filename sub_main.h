@@ -1,4 +1,10 @@
 #pragma once
+
+#include "portability/port_filesystem.h"
+
+#include <stdio.h>
+#include <defs.h>
+
 #define _BYTE  uint8
 #define _WORD  uint16
 #define _DWORD uint32
