@@ -656,7 +656,7 @@ void sub_3F4CE_3F80E();
 // void sub_3F8C7(__int16 a1, __int16 a2, __int16 a3, __int16 a4);
 unsigned __int8 sub_3F76D_sub_3FAAD(int a1);
 void InitDigijoy_3F7D0_3FB10(char* textBuffer);
-void sub_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6);
+void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6);
 void sub_3FB30_3FE70(__int16 a1, __int16 a2, char* a3);
 char sub_3FCA0_3FFE0(char a5, __int16 a6, __int16 a7, __int16 a8, __int16 a9, __int16 a10, __int16 a11);
 __int16 sub_40440_40780(char* textBuffer);
@@ -37780,7 +37780,7 @@ int ProcessCommandLine_34DD0_35190(int argc, char** argv)//205DD0_
         }
         if (varAnojoy)
         {
-            sub_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
+            InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
             if (byte_B7700_B76F0)
             {
                 byte_B7700_B76F0 = 1;
@@ -37789,7 +37789,7 @@ int ProcessCommandLine_34DD0_35190(int argc, char** argv)//205DD0_
         }
         if (neverRun)
         {
-            sub_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
+            InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
             if (byte_B7700_B76F0)
             {
                 byte_B7700_B76F0 = 1;
@@ -45496,7 +45496,7 @@ void InitDigijoy_3F7D0_3FB10(char* textBuffer)
 }
 
 //----- (0003FB60) --------------------------------------------------------
-void sub_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
+void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
 {
   char result; // al
   __int16 v8; // bx
@@ -57610,7 +57610,7 @@ void sub_52130(char a1)
   {
     if ( (a1 & 1) == 0 && (a1 & 0x20) == 0 )
       goto LABEL_8;
-    sub_3F820_sub_3FB60(v1, dword_12CAE8 + 60, dword_12CAE8 + 30, dword_12CAE8 + 36, a1);
+    InitAnojoy_3F820_sub_3FB60(v1, dword_12CAE8 + 60, dword_12CAE8 + 30, dword_12CAE8 + 36, a1);
     if ( !dword_9AD98 )
       goto LABEL_8;
   }
