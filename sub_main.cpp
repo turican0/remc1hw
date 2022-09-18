@@ -705,8 +705,8 @@ int sub_42750(_WORD *a1, _WORD *a2);
 int sub_42830(int a1, unsigned __int8 a2);
 int sub_42850(int a1);
 char sub_42530_42870(char a1);
-int sub_42540_42880(int a1);
-int sub_425C0_42900(int a1);
+void* sub_42540_42880(size_t size);
+void* malloc_425C0_42900(size_t size);
 char sub_42990(int a1, int a2);
 void sub_426E0_42A20(int a1);
 int sub_42A70(int a1, int a2);
@@ -716,7 +716,7 @@ void sub_428B0_42BF0();
 int sub_42C70(_BYTE *a1, char *a2, unsigned __int8 a3);
 int sub_42D40(__int16 a1);
 int sub_42FB0(__int16 a1);
-int sub_43030(int a1, __int16 a2);
+int sub_42CF0_43030(int a1, __int16 a2);
 int sub_43080(_BYTE *a1, char *a2);
 int sub_43120(_BYTE *a1);
 int sub_43150(__int16 a1);
@@ -728,7 +728,7 @@ int sub_43430(unsigned int a1, char *a2, unsigned int a3);
 int sub_43490();
 int sub_434B0(__int16 a1);
 int sub_434E0(unsigned int a1);
-int sub_43270_435B0(int a1, __int16 a2);
+void sub_43270_435B0(int a1, __int16 a2);
 void sub_433C0_43700();
 int sub_43430_43770(char *a1, __int16 a2);
 int sub_43AA0(__int16 a1);
@@ -11641,7 +11641,7 @@ int dword_AE3E0; // weak
 int dword_AE3E4; // weak
 int dword_AE3EC; // weak
 //int dword_AE400_AE3F0(); // weak
-int dword_AE404_AE3F4; // weak
+void* dword_AE404_AE3F4; // weak
 //int dword_AE408_AE3F8(); // weak
 int dword_AE400; // weak
 int dword_AE408; // weak
@@ -13050,9 +13050,9 @@ int sub_10CB0(unsigned __int16 a1)
 
   v1 = a1;
   sub_42530_42870(9);
-  v2 = sub_42540_42880(6);
+  v2 = (int)sub_42540_42880(6);
   v3 = v2;
-  if ( v2 && (v4 = sub_42540_42880(28 * a1), (*(_DWORD *)(v2 + 2) = v4) != 0) )
+  if ( v2 && (v4 = (int)sub_42540_42880(28 * a1), (*(_DWORD *)(v2 + 2) = v4) != 0) )
   {
     *(_WORD *)v2 = a1;
     while ( --v1 != 0xFFFF )
@@ -33909,7 +33909,7 @@ void sub_30B70()
     v13 = (int)(unsigned __int16)dword_93AD8 >> 2;
     v15 = dword_93ACC;
     v0 = (unsigned __int16)dword_93ADC / 2;
-    v1 = dword_AE404_AE3F4;
+    v1 = (int)dword_AE404_AE3F4;
     for ( i = v0; i; --i )
     {
       v2 = v13;
@@ -34199,7 +34199,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
       if ( *(_BYTE *)(dword_AE400_AE3F0() + 8604) && dword_AE404_AE3F4 )
       {
         v73 = dword_93ACC;
-        sub_799A5(dword_AE404_AE3F4, 0, 0, 0, 0);
+        sub_799A5((int)dword_AE404_AE3F4, 0, 0, 0, 0);
         sub_2A740(a7, v77, v78, v20, a5, a6, a7, a8);
         sub_799A5(v73, 0, 0, 0, 0);
         v70 = (int)(unsigned __int16)dword_93AD8 >> 2;
@@ -34333,7 +34333,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
       LOWORD(v46) = v46 >> 14;
       sub_2A740(v47, v46 + v77, v47 + v78, v20, a5, a6, a7, a8);
       v71 = dword_93ACC;
-      sub_799A5(dword_AE404_AE3F4, 0, 0, 0, 0);
+      sub_799A5((int)dword_AE404_AE3F4, 0, 0, 0, 0);
       //fix dword_902B0 = -(dword_93AD4 / 0x28u);
       LOBYTE(v24) = sub_2A740(v47, v77 - v46, v78 - v47, v20, a5, a6, a7, a8);
       sub_799A5(v71, 0, 0, 0, 0);
@@ -34343,7 +34343,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
   else
   {
     v25 = dword_93ACC;
-    sub_799A5(dword_AE404_AE3F4, 0, 0, 0, 0);
+    sub_799A5((int)dword_AE404_AE3F4, 0, 0, 0, 0);
     sub_2A740(v77, v77, v78, v20, a5, a6, a7, a8);
     sub_799A5(v25, 0, 0, 0, 0);
     v26 = (unsigned __int16)dword_93ADC;
@@ -34371,7 +34371,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
     v31 = (unsigned __int16)dword_93AD8 / 2;
     v32 = (unsigned __int16)dword_93ADC;
     v33 = v31 + dword_93ACC;
-    v34 = (unsigned __int8 *)(v31 + dword_AE404_AE3F4);
+    v34 = (unsigned __int8 *)(v31 + (int)dword_AE404_AE3F4);
     if ( (_WORD)dword_93ADC )
     {
       do
@@ -34393,7 +34393,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
     v24 = (unsigned __int16)dword_93AD8 / 2;
     v38 = (unsigned __int16)dword_93ADC;
     v39 = (_BYTE *)(v24 + dword_93ACC);
-    v40 = (unsigned __int8 *)(v24 + dword_AE404_AE3F4);
+    v40 = (unsigned __int8 *)(v24 + (int)dword_AE404_AE3F4);
     for ( j = (unsigned __int16)dword_93ADC == 0; !j; j = v38 == 0 )
     {
       v76 = *v40;
@@ -37548,7 +37548,7 @@ int sub_34C80_35040()
 
   sub_61CC0_621D0(0, 0x10u, 0);
   sub_31600();
-  sub_426E0_42A20(dword_AE404_AE3F4);
+  sub_426E0_42A20((int)dword_AE404_AE3F4);
   dword_AE404_AE3F4 = 0;
   sub_3F6B0();
   sub_59560_59A70((unsigned int **)&off_99974);
@@ -37557,16 +37557,16 @@ int sub_34C80_35040()
     sub_61610_61B20((char*)aWscreen);
     word_12F02E_12F01E = 8;
     sub_40440_40780((char*)aWscreen_0);
-    v0 = sub_42540_42880((int)&loc_4AFFB + 5);
+    v0 = (int)sub_42540_42880((int)&loc_4AFFB + 5);
   }
   else
   {
     sub_61610_61B20((char*)aWscreen_0);
     word_12F02E_12F01E = 1;
     sub_40440_40780((char*)aWscreen);
-    v0 = sub_42540_42880(64000);
+    v0 = (int)sub_42540_42880(64000);
   }
-  dword_AE404_AE3F4 = v0;
+  dword_AE404_AE3F4 = (void*)v0;
   sub_59500_59A10((unsigned int **)&off_99974);
   if ( (word_12F02E_12F01E & 1) != 0 )
     v1 = sub_620A0((unsigned __int8 *)dword_12EFE4);
@@ -37790,7 +37790,7 @@ int ProcessCommandLine_34DD0_35190(int argc, char** argv)//205DD0_
                 byte_90B23 |= 0x20u;
             }
         }
-        dword_12F080_12F070 = sub_425C0_42900(256);
+        dword_12F080_12F070 = (int)malloc_425C0_42900(256);
         str_AE400_AE3F0 = (Type_str_AE400_AE3F0*)sub_42540_42880(232713);
         str_AE408_AE3F8 = (Type_str_AE408_AE3F8*)sub_42540_42880(36478);
         str_AE400_AE3F0->var_u8_8621 = 1;
@@ -38831,12 +38831,12 @@ int sub_36AC0(int a1, unsigned __int16 a2, int a3)
   }
   else
   {
-    v8 = sub_42540_42880(26);
+    v8 = (int)sub_42540_42880(26);
     v6 = v8;
     if ( !v8
-      || (v9 = sub_42540_42880(a1), (*(_DWORD *)(v8 + 16) = v9) == 0)
-      || (v10 = sub_42540_42880(14 * a2), (*(_DWORD *)(v8 + 8) = v10) == 0)
-      || (v11 = sub_42540_42880(4 * a2), (*(_DWORD *)(v8 + 12) = v11) == 0) )
+      || (v9 = (int)sub_42540_42880(a1), (*(_DWORD *)(v8 + 16) = v9) == 0)
+      || (v10 = (int)sub_42540_42880(14 * a2), (*(_DWORD *)(v8 + 8) = v10) == 0)
+      || (v11 = (int)sub_42540_42880(4 * a2), (*(_DWORD *)(v8 + 12) = v11) == 0) )
     {
       if ( v8 )
       {
@@ -46600,7 +46600,7 @@ void sub_41230_41570()
   result = (int *)dword_AE408_AE3F8();
   if ( !*(_DWORD *)(dword_AE408_AE3F8() + 168) )
   {
-    v8 = sub_42540_42880(60000);
+    v8 = (int)sub_42540_42880(60000);
     v1 = dword_AE400_AE3F0();
     v2 = dword_13149C;
     byte_968F0 = 1;
@@ -46677,7 +46677,7 @@ void sub_41230_41570()
       byte_939EC = 1;
       *(_DWORD *)(dword_AE408_AE3F8() + 172) = 0x400000;
     }
-    v5 = sub_42540_42880(*(_DWORD *)(dword_AE408_AE3F8() + 172));
+    v5 = (int)sub_42540_42880(*(_DWORD *)(dword_AE408_AE3F8() + 172));
     v6 = *(_DWORD *)(dword_AE408_AE3F8() + 172);
     *(_DWORD *)(dword_AE408_AE3F8() + 168) = v5;
     if ( v6 <= (unsigned int)&unk_96000 )
@@ -47447,8 +47447,14 @@ char sub_42530_42870(char a1)
 }
 // 93954: using guessed type char byte_93954;
 
+void* sub_42540_42880(size_t size) {
+    void* result = malloc(size);
+    memset(result, 0, size);
+    return result;
+}
+
 //----- (00042880) --------------------------------------------------------
-int sub_42540_42880(int a1)
+void* sub_42540_42880_orig(size_t size)
 {
   unsigned int v1; // edi
   int result; // eax
@@ -47457,10 +47463,10 @@ int sub_42540_42880(int a1)
   int *i; // esi
   unsigned int v6; // ecx
 
-  v1 = a1 + 3;
-  LOWORD(v1) = (a1 + 3) & 0xFFFC;
+  v1 = size + 3;
+  LOWORD(v1) = (size + 3) & 0xFFFC;
   sub_63010_63520();
-  result = sub_425C0_42900(v1);
+  result = (int)malloc_425C0_42900(v1);
   if ( !result )
   {
     v3 = &dword_130290;
@@ -47478,25 +47484,25 @@ int sub_42540_42880(int a1)
     {
       sub_63338_63848();
       memset((void*)*i, 0, v1);
-      return *i;
+      return (void*)*i;
     }
     else
     {
       return 0;
     }
   }
-  return result;
+  return (void*)result;
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 130290: using guessed type int dword_130290;
 
 //----- (00042900) --------------------------------------------------------
-int sub_425C0_42900(int a1)
+void* malloc_425C0_42900(size_t size)
 {
-    return (int)malloc((size_t)a1);
+    return malloc(size);
 }
 
-int sub_425C0_42900_orig(int a1)
+int malloc_425C0_42900_orig(int a1)
 {
   int *v1; // edx
   unsigned int v2; // ebx
@@ -47948,7 +47954,7 @@ int sub_42FB0(__int16 a1)
 // 93990: using guessed type int dword_93990[7];
 
 //----- (00043030) --------------------------------------------------------
-int sub_43030(int a1, __int16 a2)
+int sub_42CF0_43030(int a1, __int16 a2)
 {
   int result; // eax
   unsigned int v3; // [esp-4h] [ebp-4h]
@@ -48263,8 +48269,7 @@ int sub_434E0(unsigned int a1)
 // 63BCC: using guessed type _DWORD segread(_DWORD);
 // 63BF6: using guessed type _DWORD int386x(_DWORD, _DWORD, _DWORD, _DWORD);
 
-//----- (000435B0) --------------------------------------------------------
-int sub_43270_435B0(int a1, __int16 a2)
+void sub_43270_435B0(int a1, __int16 a2)
 {
   int v2; // esi
   int v3; // eax
@@ -48278,23 +48283,23 @@ int sub_43270_435B0(int a1, __int16 a2)
   if ( !byte_93958 && !dword_9398C )
   {
     system(aNetbios);
-    v3 = sub_425C0_42900(66);
+    v3 = (int)malloc_425C0_42900(66);
     dword_9398C = v3;
     if ( !v3 )
       goto LABEL_14;
-    result = sub_43030(v3, a2);
+    result = sub_42CF0_43030(v3, a2);
     if ( result == -1 )
-      return result;
-    dword_93960 = sub_425C0_42900(2048);
-    if ( dword_93960 && (dword_93964 = sub_425C0_42900(2048)) != 0 )
+      return;
+    dword_93960 = (int)malloc_425C0_42900(2048);
+    if ( dword_93960 && (dword_93964 = (int)malloc_425C0_42900(2048)) != 0 )
     {
       for ( i = 0; i != 8; ++i )
       {
-        v6 = sub_425C0_42900(2048);
+        v6 = (int)malloc_425C0_42900(2048);
         dword_93968[i] = v6;
         if ( !v6 )
           v2 = -1;
-        v7 = sub_425C0_42900(66);
+        v7 = (int)malloc_425C0_42900(66);
         dword_93990[i] = v7;
         if ( !v7 )
           v2 = -1;
@@ -48323,15 +48328,7 @@ LABEL_14:
         sub_426E0_42A20(dword_93968[j]);
     }
   }
-  return v2;
 }
-// 63C19: using guessed type _DWORD system(_DWORD);
-// 93958: using guessed type char byte_93958;
-// 93960: using guessed type int dword_93960;
-// 93964: using guessed type int dword_93964;
-// 93968: using guessed type int dword_93968[];
-// 9398C: using guessed type int dword_9398C;
-// 93990: using guessed type int dword_93990[7];
 
 //----- (00043700) --------------------------------------------------------
 void sub_433C0_43700()
@@ -64763,11 +64760,11 @@ int sub_5C724()
   int386x(51, (uint32)v2, (uint32)v1, (uint32)v5);
   sub_5C978();
   if ( !dword_12EFB8 )
-    dword_12EFB8 = sub_42540_42880(4096);
+    dword_12EFB8 = (int)sub_42540_42880(4096);
   if ( !dword_12EF88 )
-    dword_12EF88 = sub_42540_42880(4096);
+    dword_12EF88 = (int)sub_42540_42880(4096);
   if ( !dword_12EF78 )
-    dword_12EF78 = sub_42540_42880(4096);
+    dword_12EF78 = (int)sub_42540_42880(4096);
   if ( !dword_12EFB8 || !dword_12EF88 || !dword_12EF78 )
     return 0;
   word_12EFB4 = 0;
@@ -67354,7 +67351,7 @@ unsigned __int64 sub_610EC(int a1)
     v7 = sub_5D2F0(a1, 514);
     if ( v7 != -1 )
     {
-      v5 = sub_42540_42880(v6);
+      v5 = (int)sub_42540_42880(v6);
       if ( v5 )
       {
         if ( sub_5D0E0(v7, v5, v6) != v6 )
@@ -69430,17 +69427,19 @@ int sub_639F0(char* a1)
   int *v2; // edx
   int v3; // eax
   int *v4; // edx
-  int (*v6)(int); // [esp+0h] [ebp-8h]
+  //int (*v6)(int); // [esp+0h] [ebp-8h]
+
+  void* (*v6)(size_t);
 
   sub_63010_63520();
   if ( (*(_BYTE *)(a1 + 40) & 1) != 0 )
-    v6 = sub_425C0_42900;
+    v6 = malloc_425C0_42900;
   else
     v6 = sub_42540_42880;
   sub_639B0((char*)a1);
   if ( *(_BYTE *)a1 == 42 )
   {
-    v1 = v6(*(_DWORD *)(a1 + 36));
+    v1 = (int)v6(*(_DWORD *)(a1 + 36));
     v2 = *(int **)(a1 + 28);
     *v2 = v1;
     if ( !*v2 )
@@ -69451,7 +69450,7 @@ int sub_639F0(char* a1)
     *(_DWORD *)(a1 + 36) = sub_63E20((int)a1);
     if ( *(int *)(a1 + 36) <= 0 )
       return 0;
-    v3 = v6(*(_DWORD *)(a1 + 36));
+    v3 = (int)v6(*(_DWORD *)(a1 + 36));
     v4 = *(int **)(a1 + 28);
     *v4 = v3;
     if ( !*v4 )
