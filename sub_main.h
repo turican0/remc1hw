@@ -76,6 +76,26 @@ typedef struct {
 	uint8 var_u8_29;
 } Type_str_AE408_AE3F8;
 
+typedef union {
+	uint8_t* p;
+	uint32_t align;
+} p64align;
+
+typedef struct {//lenght 66(changed to 70)
+	uint8_t ncb_command_0;
+	uint8_t ncb_retcode_1;
+	uint8_t ncb_lsn_2;
+	uint8_t ncb_num_3;
+	p64align ncb_buffer_4;
+	uint16_t ncb_bufferLength_8;
+	char ncb_callName_10[16];
+	char ncb_name_26[16];
+	uint8_t ncb_rto_42;
+	uint8_t ncb_sto_43;
+	uint8_t ncb_cmd_cplt_49;//lock for end command
+}
+myNCB;
+
 extern Type_str_AE408_AE3F8* str_AE408_AE3F8;
 
 int dword_AE400_AE3F0();
