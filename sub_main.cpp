@@ -652,7 +652,7 @@ int sub_3F6B0();
 void sub_3F398_3F6D8();
 void sub_3F753(unsigned __int8 a1);
 void sub_3F4CE_3F80E();
-// void sub_3F88D(__int16 a1, __int16 a2, __int16 a3, __int16 a4);
+// void sub_3F54D_3F88D(__int16 a1, __int16 a2, __int16 a3, __int16 a4);
 // void sub_3F8C7(__int16 a1, __int16 a2, __int16 a3, __int16 a4);
 unsigned __int8 sub_3F76D_sub_3FAAD(int a1);
 void InitDigijoy_3F7D0_3FB10(char* textBuffer);
@@ -11734,16 +11734,16 @@ _UNKNOWN unk_B7320; // weak
 int dword_B76E0; // weak
 char byte_B7700_B76F0; // weak
 char byte_B76F1; // weak
-__int16 word_B76F2; // weak
-__int16 word_B76F4; // weak
-__int16 word_B76F6; // weak
-__int16 word_B76F8; // weak
-__int16 word_B76FA; // weak
-__int16 word_B76FC; // weak
-__int16 word_B76FE; // weak
-__int16 word_B7700; // weak
-__int16 word_B7702; // weak
-__int16 word_B7704; // weak
+__int16 word_B7702_B76F2; // weak
+__int16 word_B7704_B76F4; // weak
+__int16 word_B7706_B76F6; // weak
+__int16 word_B7708_B76F8; // weak
+__int16 word_B770A_B76FA; // weak
+__int16 word_B770C_B76FC; // weak
+__int16 word_B770E_B76FE; // weak
+__int16 word_B7710_B7700; // weak
+__int16 word_B7712_B7702; // weak
+__int16 word_B7714_B7704; // weak
 __int16 word_B7706; // weak
 __int16 word_B7708; // weak
 __int16 word_B770A; // weak
@@ -45172,16 +45172,16 @@ void sub_3F398_3F6D8()
   }
   _enable();
   byte_B7700_B76F0 = 2;
-  word_B76FA = v1 >> 1;
-  word_B76F6 = v1 + (v1 >> 1);
-  word_B76FC = v2 >> 1;
-  word_B76F8 = v2 + (v2 >> 1);
+  word_B770A_B76FA = v1 >> 1;
+  word_B7706_B76F6 = v1 + (v1 >> 1);
+  word_B770C_B76FC = v2 >> 1;
+  word_B7708_B76F8 = v2 + (v2 >> 1);
 }
 // B76F0: using guessed type char byte_B7700_B76F0;
-// B76F6: using guessed type __int16 word_B76F6;
-// B76F8: using guessed type __int16 word_B76F8;
-// B76FA: using guessed type __int16 word_B76FA;
-// B76FC: using guessed type __int16 word_B76FC;
+// B76F6: using guessed type __int16 word_B7706_B76F6;
+// B76F8: using guessed type __int16 word_B7708_B76F8;
+// B76FA: using guessed type __int16 word_B770A_B76FA;
+// B76FC: using guessed type __int16 word_B770C_B76FC;
 
 //----- (0003F753) --------------------------------------------------------
 void sub_3F753(unsigned __int8 a1)
@@ -45219,43 +45219,43 @@ void sub_3F753(unsigned __int8 a1)
     _enable();
     byte_B771A = v4;
     v5 = 0;
-    if ( v1 >= word_B76FA )
+    if ( v1 >= word_B770A_B76FA )
     {
-      if ( v1 > word_B76F6 )
+      if ( v1 > word_B7706_B76F6 )
         v5 = 1;
     }
     else
     {
       v5 = -1;
     }
-    word_B76F2 = v5;
+    word_B7702_B76F2 = v5;
     v6 = 0;
-    if ( v2 >= word_B76FC )
+    if ( v2 >= word_B770C_B76FC )
     {
-      if ( v2 > word_B76F8 )
+      if ( v2 > word_B7708_B76F8 )
         v6 = 1;
     }
     else
     {
       v6 = -1;
     }
-    word_B76F4 = v6;
+    word_B7704_B76F4 = v6;
   }
   else
   {
 LABEL_19:
-    word_B76F2 = 0;
-    word_B76F4 = 0;
+    word_B7702_B76F2 = 0;
+    word_B7704_B76F4 = 0;
     byte_B771A = -1;
   }
 }
 // B76F0: using guessed type char byte_B7700_B76F0;
-// B76F2: using guessed type __int16 word_B76F2;
-// B76F4: using guessed type __int16 word_B76F4;
-// B76F6: using guessed type __int16 word_B76F6;
-// B76F8: using guessed type __int16 word_B76F8;
-// B76FA: using guessed type __int16 word_B76FA;
-// B76FC: using guessed type __int16 word_B76FC;
+// B76F2: using guessed type __int16 word_B7702_B76F2;
+// B76F4: using guessed type __int16 word_B7704_B76F4;
+// B76F6: using guessed type __int16 word_B7706_B76F6;
+// B76F8: using guessed type __int16 word_B7708_B76F8;
+// B76FA: using guessed type __int16 word_B770A_B76FA;
+// B76FC: using guessed type __int16 word_B770C_B76FC;
 // B771A: using guessed type char byte_B771A;
 
 //----- (0003F80E) --------------------------------------------------------
@@ -45299,18 +45299,18 @@ void sub_3F4CE_3F80E()
 // B76F1: using guessed type char byte_B76F1;
 
 //----- (0003F88D) --------------------------------------------------------
-void sub_3F88D(__int16 a1, __int16 a2, __int16 a3, __int16 a4)
+void sub_3F54D_3F88D(__int16 a1, __int16 a2, __int16 a3, __int16 a4)
 {
   int savedregs; // [esp+8h] [ebp+0h] BYREF
 
   byte_B771A = sub_3F76D_sub_3FAAD((int)&savedregs);
-  word_B76F2 = a2;
-  word_B76F4 = a4;
+  word_B7702_B76F2 = a2;
+  word_B7704_B76F4 = a4;
   word_B7706 = a1;
   word_B7708 = a3;
 }
-// B76F2: using guessed type __int16 word_B76F2;
-// B76F4: using guessed type __int16 word_B76F4;
+// B76F2: using guessed type __int16 word_B7702_B76F2;
+// B76F4: using guessed type __int16 word_B7704_B76F4;
 // B7706: using guessed type __int16 word_B7706;
 // B7708: using guessed type __int16 word_B7708;
 // B771A: using guessed type char byte_B771A;
@@ -45330,41 +45330,41 @@ void sub_3F8C7(__int16 a1, __int16 a2, __int16 a3, __int16 a4)
     if ( byte_B7700_B76F0 )
     {
       v4 = 0;
-      if ( a2 >= word_B76FA )
+      if ( a2 >= word_B770A_B76FA )
       {
-        if ( a2 > word_B76F6 )
+        if ( a2 > word_B7706_B76F6 )
         {
-          LOWORD(v4) = a2 - word_B76F6;
-          v4 = ((unsigned __int16)word_B76FE * v4) >> 11;
+          LOWORD(v4) = a2 - word_B7706_B76F6;
+          v4 = ((unsigned __int16)word_B770E_B76FE * v4) >> 11;
           if ( (unsigned int)v4 > 0x80 )
             LOWORD(v4) = 128;
         }
       }
       else
       {
-        v4 = (word_B7702 * (__int16)(a2 - word_B76FA)) >> 11;
+        v4 = (word_B7712_B7702 * (__int16)(a2 - word_B770A_B76FA)) >> 11;
         if ( v4 < -128 )
           LOWORD(v4) = -128;
       }
-      word_B76F2 = v4;
+      word_B7702_B76F2 = v4;
       v5 = 0;
-      if ( a4 >= word_B76FC )
+      if ( a4 >= word_B770C_B76FC )
       {
-        if ( a4 > word_B76F8 )
+        if ( a4 > word_B7708_B76F8 )
         {
-          LOWORD(v5) = a4 - word_B76F8;
-          v5 = ((unsigned __int16)word_B7700 * v5) >> 11;
+          LOWORD(v5) = a4 - word_B7708_B76F8;
+          v5 = ((unsigned __int16)word_B7710_B7700 * v5) >> 11;
           if ( (unsigned int)v5 > 0x80 )
             LOWORD(v5) = 128;
         }
       }
       else
       {
-        v5 = (word_B7704 * (__int16)(a4 - word_B76FC)) >> 11;
+        v5 = (word_B7714_B7704 * (__int16)(a4 - word_B770C_B76FC)) >> 11;
         if ( v5 < -128 )
           LOWORD(v5) = -128;
       }
-      word_B76F4 = v5;
+      word_B7704_B76F4 = v5;
     }
     if ( byte_B76F1 )
     {
@@ -45408,23 +45408,23 @@ void sub_3F8C7(__int16 a1, __int16 a2, __int16 a3, __int16 a4)
   }
   else
   {
-    word_B76F2 = 0;
-    word_B76F4 = 0;
+    word_B7702_B76F2 = 0;
+    word_B7704_B76F4 = 0;
     byte_B771A = -1;
   }
 }
 // B76F0: using guessed type char byte_B7700_B76F0;
 // B76F1: using guessed type char byte_B76F1;
-// B76F2: using guessed type __int16 word_B76F2;
-// B76F4: using guessed type __int16 word_B76F4;
-// B76F6: using guessed type __int16 word_B76F6;
-// B76F8: using guessed type __int16 word_B76F8;
-// B76FA: using guessed type __int16 word_B76FA;
-// B76FC: using guessed type __int16 word_B76FC;
-// B76FE: using guessed type __int16 word_B76FE;
-// B7700: using guessed type __int16 word_B7700;
-// B7702: using guessed type __int16 word_B7702;
-// B7704: using guessed type __int16 word_B7704;
+// B76F2: using guessed type __int16 word_B7702_B76F2;
+// B76F4: using guessed type __int16 word_B7704_B76F4;
+// B76F6: using guessed type __int16 word_B7706_B76F6;
+// B76F8: using guessed type __int16 word_B7708_B76F8;
+// B76FA: using guessed type __int16 word_B770A_B76FA;
+// B76FC: using guessed type __int16 word_B770C_B76FC;
+// B76FE: using guessed type __int16 word_B770E_B76FE;
+// B7700: using guessed type __int16 word_B7710_B7700;
+// B7702: using guessed type __int16 word_B7712_B7702;
+// B7704: using guessed type __int16 word_B7714_B7704;
 // B7706: using guessed type __int16 word_B7706;
 // B7708: using guessed type __int16 word_B7708;
 // B770A: using guessed type __int16 word_B770A;
@@ -45495,7 +45495,6 @@ void InitDigijoy_3F7D0_3FB10(char* textBuffer)
     }
 }
 
-//----- (0003FB60) --------------------------------------------------------
 void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
 {
   char result; // al
@@ -45530,11 +45529,11 @@ void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
     sub_3FB30_3FE70(word_90B24, word_90B26, (char*)a3);
     do
     {
-      sub_3F88D(a2, v8, v10, v9);
-      v8 += word_B76F2;
-      a2 = word_B76F4;
+      sub_3F54D_3F88D(a2, v8, v10, v9);
+      v8 += word_B7702_B76F2;
+      a2 = word_B7704_B76F4;
       ++v10;
-      v9 += word_B76F4;
+      v9 += word_B7704_B76F4;
     }
     while ( (unsigned __int16)v10 < 0x10u );
     v24 = (int)(v8 - (__CFSHL__((unsigned __int64)v8 >> 32, 4) + 16 * ((unsigned __int64)v8 >> 32))) >> 4;
@@ -45542,13 +45541,13 @@ void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
     v11 = 0;
     v12 = 0;
     v13 = 0;
-    sub_3FB30_3FE70(word_90B2C, word_90B2E, (char*)(a4));
+    sub_3FB30_3FE70(word_90B2C, word_90B2E, (char*)a4);
     do
     {
-      sub_3F88D(a4, v12, v11, v13);
-      v12 += word_B76F2;
+      sub_3F54D_3F88D(a4, v12, v11, v13);
+      v12 += word_B7702_B76F2;
       ++v11;
-      v13 += word_B76F4;
+      v13 += word_B7704_B76F4;
     }
     while ( (unsigned __int16)v11 < 0x10u );
     v26 = (int)(v12 - (__CFSHL__((unsigned __int64)v12 >> 32, 4) + 16 * ((unsigned __int64)v12 >> 32))) >> 4;
@@ -45559,80 +45558,62 @@ void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
     sub_3FB30_3FE70(word_90B34, word_90B36, (char*)a5);
     do
     {
-      sub_3F88D(a4, v14, v15, v16);
-      v14 += word_B76F2;
+      sub_3F54D_3F88D(a4, v14, v15, v16);
+      v14 += word_B7702_B76F2;
       ++v15;
-      v16 += word_B76F4;
+      v16 += word_B7704_B76F4;
     }
     while ( (unsigned __int16)v15 < 0x10u );
     v17 = (int)(v14 - (__CFSHL__((unsigned __int64)v14 >> 32, 4) + 16 * ((unsigned __int64)v14 >> 32))) >> 4;
     v18 = (int)(v16 - (__CFSHL__((unsigned __int64)v16 >> 32, 4) + 16 * ((unsigned __int64)v16 >> 32))) >> 4;
     if ( (unsigned __int16)(v26 - v17) <= 0x1Eu )
     {
-      word_B76F6 = 10000;
+      word_B7706_B76F6 = 10000;
     }
     else
     {
-      word_B76F6 = v17 + 3 * (unsigned __int16)(v26 - v17) / 10;
+      word_B7706_B76F6 = v17 + 3 * (unsigned __int16)(v26 - v17) / 10;
       LODWORD(v19) = (uint32)&loc_40000;
       HIDWORD(v19) = (int)&loc_40000 >> 31;
-      word_B76FE = v19 / ((unsigned __int16)v26 - word_B76F6);
+      word_B770E_B76FE = v19 / ((unsigned __int16)v26 - word_B7706_B76F6);
     }
     if ( (unsigned __int16)(v23 - v18) <= 0x1Eu )
     {
-      word_B76F8 = 10000;
+      word_B7708_B76F8 = 10000;
     }
     else
     {
-      word_B76F8 = v18 + 3 * (unsigned __int16)(v23 - v18) / 10;
+      word_B7708_B76F8 = v18 + 3 * (unsigned __int16)(v23 - v18) / 10;
       LODWORD(v20) = (uint32)&loc_40000;
       HIDWORD(v20) = (int)&loc_40000 >> 31;
-      word_B7700 = v20 / ((unsigned __int16)v23 - word_B76F8);
+      word_B7710_B7700 = v20 / ((unsigned __int16)v23 - word_B7708_B76F8);
     }
     if ( (unsigned __int16)(v18 - v25) <= 0x1Eu )
     {
-      word_B76FC = 0;
+      word_B770C_B76FC = 0;
     }
     else
     {
-      word_B76FC = v18 - 3 * (unsigned __int16)(v18 - v25) / 10;
+      word_B770C_B76FC = v18 - 3 * (unsigned __int16)(v18 - v25) / 10;
       LODWORD(v21) = (uint32)&loc_40000;
       HIDWORD(v21) = (int)&loc_40000 >> 31;
-      word_B7704 = v21 / (word_B76FC - (unsigned __int16)v25);
+      word_B7714_B7704 = v21 / (word_B770C_B76FC - (unsigned __int16)v25);
     }
     if ( (unsigned __int16)(v17 - v24) <= 0x1Eu )
     {
-      word_B76FA = 0;
+      word_B770A_B76FA = 0;
     }
     else
     {
-      word_B76FA = v17 - 3 * (unsigned __int16)(v17 - v24) / 10;
+      word_B770A_B76FA = v17 - 3 * (unsigned __int16)(v17 - v24) / 10;
       LODWORD(v22) = (uint32)&loc_40000;
       HIDWORD(v22) = (int)&loc_40000 >> 31;
-      word_B7702 = v22 / (word_B76FA - (unsigned __int16)v24);
+      word_B7712_B7702 = v22 / (word_B770A_B76FA - (unsigned __int16)v24);
     }
     result = a6;
     byte_90B23 = a6;
   }
 }
-// 90B23: using guessed type char byte_90B23;
-// 90B24: using guessed type __int16 word_90B24;
-// 90B26: using guessed type __int16 word_90B26;
-// 90B2C: using guessed type __int16 word_90B2C;
-// 90B2E: using guessed type __int16 word_90B2E;
-// 90B34: using guessed type __int16 word_90B34;
-// 90B36: using guessed type __int16 word_90B36;
-// B76F0: using guessed type char byte_B7700_B76F0;
-// B76F2: using guessed type __int16 word_B76F2;
-// B76F4: using guessed type __int16 word_B76F4;
-// B76F6: using guessed type __int16 word_B76F6;
-// B76F8: using guessed type __int16 word_B76F8;
-// B76FA: using guessed type __int16 word_B76FA;
-// B76FC: using guessed type __int16 word_B76FC;
-// B76FE: using guessed type __int16 word_B76FE;
-// B7700: using guessed type __int16 word_B7700;
-// B7702: using guessed type __int16 word_B7702;
-// B7704: using guessed type __int16 word_B7704;
 
 //----- (0003FE70) --------------------------------------------------------
 void sub_3FB30_3FE70(__int16 a1, __int16 a2, char* a3)
@@ -45750,13 +45731,13 @@ char sub_3FCA0_3FFE0(
         sub_3F753(a1);
       else
         sub_3F8C7(a2, 0, a3, a4);
-      if ( word_B76F4 >= 0 )
+      if ( word_B7704_B76F4 >= 0 )
       {
-        if ( word_B76F4 <= 0 )
+        if ( word_B7704_B76F4 <= 0 )
         {
-          if ( word_B76F2 <= 0 )
+          if ( word_B7702_B76F2 <= 0 )
           {
-            if ( word_B76F2 < 0 )
+            if ( word_B7702_B76F2 < 0 )
               LOWORD(dword_9AD90) = dword_9AD90 - a10;
           }
           else
@@ -45880,18 +45861,18 @@ char sub_3FCA0_3FFE0(
             }
             else
             {
-              if ( word_B76F4 >= 0 )
+              if ( word_B7704_B76F4 >= 0 )
               {
-                if ( word_B76F4 > 0 )
+                if ( word_B7704_B76F4 > 0 )
                   byte_12EF30 = 1;
               }
               else
               {
                 byte_12EF28 = 1;
               }
-              if ( word_B76F2 <= 0 )
+              if ( word_B7702_B76F2 <= 0 )
               {
-                if ( word_B76F2 < 0 )
+                if ( word_B7702_B76F2 < 0 )
                   byte_12EF2B = 1;
               }
               else
@@ -45902,9 +45883,9 @@ char sub_3FCA0_3FFE0(
           }
           else
           {
-            word_90B1C = 2 * word_B76F2;
-            word_90B1E = 2 * word_B76F4;
-            LOWORD(dword_9AD90) = 2 * word_B76F2 + 320;
+            word_90B1C = 2 * word_B7702_B76F2;
+            word_90B1E = 2 * word_B7704_B76F4;
+            LOWORD(dword_9AD90) = 2 * word_B7702_B76F2 + 320;
             if ( (word_12F02E_12F01E & 1) != 0 )
               LOWORD(a1) = word_90B1E + 200;
             else
@@ -45966,18 +45947,18 @@ char sub_3FCA0_3FFE0(
             }
             else
             {
-              if ( word_B76F4 >= 0 )
+              if ( word_B7704_B76F4 >= 0 )
               {
-                if ( word_B76F4 > 0 )
+                if ( word_B7704_B76F4 > 0 )
                   byte_12EF30 = 1;
               }
               else
               {
                 byte_12EF28 = 1;
               }
-              if ( word_B76F2 <= 0 )
+              if ( word_B7702_B76F2 <= 0 )
               {
-                if ( word_B76F2 < 0 )
+                if ( word_B7702_B76F2 < 0 )
                   byte_12EF2B = 1;
               }
               else
@@ -45988,10 +45969,10 @@ char sub_3FCA0_3FFE0(
           }
           else
           {
-            word_90B1C = (28 * (__int16)(32 * word_B76F2 + word_90B1C)
-                        - (__CFSHL__((28 * (__int16)(32 * word_B76F2 + word_90B1C)) >> 31, 5)
-                         + 32 * ((28 * (__int16)(32 * word_B76F2 + word_90B1C)) >> 31))) >> 5;
-            v20 = 31 * (__int16)(16 * word_B76F4 + word_90B1E);
+            word_90B1C = (28 * (__int16)(32 * word_B7702_B76F2 + word_90B1C)
+                        - (__CFSHL__((28 * (__int16)(32 * word_B7702_B76F2 + word_90B1C)) >> 31, 5)
+                         + 32 * ((28 * (__int16)(32 * word_B7702_B76F2 + word_90B1C)) >> 31))) >> 5;
+            v20 = 31 * (__int16)(16 * word_B7704_B76F4 + word_90B1E);
             word_90B1E = (int)(v20 - (__CFSHL__(HIDWORD(v20), 5) + 32 * HIDWORD(v20))) >> 5;
             LOWORD(dword_9AD90) = 2 * word_90B1C + 320;
             v21 = 2 * word_90B1E;
@@ -46055,8 +46036,8 @@ char sub_3FCA0_3FFE0(
 // 9AD98: using guessed type int dword_9AD98;
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 // B76F0: using guessed type char byte_B7700_B76F0;
-// B76F2: using guessed type __int16 word_B76F2;
-// B76F4: using guessed type __int16 word_B76F4;
+// B76F2: using guessed type __int16 word_B7702_B76F2;
+// B76F4: using guessed type __int16 word_B7704_B76F4;
 // B771A: using guessed type char byte_B771A;
 // 12EE8E: using guessed type __int16 word_12EE8E;
 // 12EE90: using guessed type __int16 word_12EE90;
