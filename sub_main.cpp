@@ -705,7 +705,7 @@ int sub_42750(_WORD *a1, _WORD *a2);
 int sub_42830(int a1, unsigned __int8 a2);
 int sub_42850(int a1);
 char sub_42530_42870(char a1);
-void* sub_42540_42880(size_t size);
+void* malloc_42540_42880(size_t size);
 void* malloc_425C0_42900(size_t size);
 char sub_42990(int a1, int a2);
 void free_426E0_42A20(void* buffer);
@@ -13056,9 +13056,9 @@ int sub_10CB0(unsigned __int16 a1)
 
   v1 = a1;
   sub_42530_42870(9);
-  v2 = (int)sub_42540_42880(6);
+  v2 = (int)malloc_42540_42880(6);
   v3 = v2;
-  if ( v2 && (v4 = (int)sub_42540_42880(28 * a1), (*(_DWORD *)(v2 + 2) = v4) != 0) )
+  if ( v2 && (v4 = (int)malloc_42540_42880(28 * a1), (*(_DWORD *)(v2 + 2) = v4) != 0) )
   {
     *(_WORD *)v2 = a1;
     while ( --v1 != 0xFFFF )
@@ -18235,37 +18235,14 @@ void sub_193EE(__int16 a1)
 // 90088: using guessed type char byte_90088;
 // 90089: using guessed type char byte_90089;
 
-//----- (00019470) --------------------------------------------------------
-int sub_19470()
+void sub_19470()
 {
-  char v1; // sf
-  int result; // eax
-
-  //fix
-  v1 = 0;
-  //fix
-
-  sub_192D8();
-  if ( byte_90084 == 5 && byte_90085 == 1 )
-  {
-    result = dword_AE408_AE3F8();
-    *(_BYTE *)(dword_AE408_AE3F8() + 8) = 1;
-  }
-  else
-  {
-    result = dword_AE408_AE3F8();
-    *(_BYTE *)(dword_AE408_AE3F8() + 8) = 0;
-  }
-  return result;
+    sub_192D8();
+    if (byte_90084 == 5 && byte_90085 == 1)
+        str_AE408_AE3F8->var_u8_8 = 1;
+    else
+        str_AE408_AE3F8->var_u8_8 = 0;
 }
-// 19473: variable 'v1' is possibly undefined
-// 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
-// 90084: using guessed type char byte_90084;
-// 90085: using guessed type char byte_90085;
-// 90086: using guessed type char byte_90086;
-// 90087: using guessed type char byte_90087;
-// 90088: using guessed type char byte_90088;
-// AE3F8: using guessed type int dword_AE408_AE3F8();
 
 //----- (000194F0) --------------------------------------------------------
 int sub_194F0()
@@ -37160,7 +37137,7 @@ void TopProcedure_65DC0_662D0(int argc, const char** argv)//2050B0_
         pseudoRand = str_AE408_AE3F8->var_u16_17;
         sub_407A0_40AE0();
         if ( word_12F02E_12F01E == 1 && !dword_AE404_AE3F4 )
-          dword_AE404_AE3F4 = sub_42540_42880(64000);
+          dword_AE404_AE3F4 = malloc_42540_42880(64000);
       }
       while ( 1 )
       {
@@ -37563,14 +37540,14 @@ int sub_34C80_35040()
     sub_61610_61B20((char*)aWscreen);
     word_12F02E_12F01E = 8;
     sub_40440_40780((char*)aWscreen_0);
-    v0 = (int)sub_42540_42880((int)&loc_4AFFB + 5);
+    v0 = (int)malloc_42540_42880((int)&loc_4AFFB + 5);
   }
   else
   {
     sub_61610_61B20((char*)aWscreen_0);
     word_12F02E_12F01E = 1;
     sub_40440_40780((char*)aWscreen);
-    v0 = (int)sub_42540_42880(64000);
+    v0 = (int)malloc_42540_42880(64000);
   }
   dword_AE404_AE3F4 = (void*)v0;
   sub_59500_59A10((unsigned int **)&off_99974);
@@ -37797,8 +37774,8 @@ int ProcessCommandLine_34DD0_35190(int argc, char** argv)//205DD0_
             }
         }
         dword_12F080_12F070 = (int)malloc_425C0_42900(256);
-        str_AE400_AE3F0 = (Type_str_AE400_AE3F0*)sub_42540_42880(232713);
-        str_AE408_AE3F8 = (Type_str_AE408_AE3F8*)sub_42540_42880(36478);
+        str_AE400_AE3F0 = (Type_str_AE400_AE3F0*)malloc_42540_42880(232713);
+        str_AE408_AE3F8 = (Type_str_AE408_AE3F8*)malloc_42540_42880(36478);
         str_AE400_AE3F0->var_u8_8621 = 1;
         str_AE400_AE3F0->var_u8_8621 = 1;
         str_AE400_AE3F0->var_u8_8622 = 1;
@@ -38837,12 +38814,12 @@ int sub_36AC0(int a1, unsigned __int16 a2, int a3)
   }
   else
   {
-    v8 = (int)sub_42540_42880(26);
+    v8 = (int)malloc_42540_42880(26);
     v6 = v8;
     if ( !v8
-      || (v9 = (int)sub_42540_42880(a1), (*(_DWORD *)(v8 + 16) = v9) == 0)
-      || (v10 = (int)sub_42540_42880(14 * a2), (*(_DWORD *)(v8 + 8) = v10) == 0)
-      || (v11 = (int)sub_42540_42880(4 * a2), (*(_DWORD *)(v8 + 12) = v11) == 0) )
+      || (v9 = (int)malloc_42540_42880(a1), (*(_DWORD *)(v8 + 16) = v9) == 0)
+      || (v10 = (int)malloc_42540_42880(14 * a2), (*(_DWORD *)(v8 + 8) = v10) == 0)
+      || (v11 = (int)malloc_42540_42880(4 * a2), (*(_DWORD *)(v8 + 12) = v11) == 0) )
     {
       if ( v8 )
       {
@@ -46562,7 +46539,7 @@ void sub_41230_41570()
   result = (int *)dword_AE408_AE3F8();
   if ( !*(_DWORD *)(dword_AE408_AE3F8() + 168) )
   {
-    v8 = (int)sub_42540_42880(60000);
+    v8 = (int)malloc_42540_42880(60000);
     v1 = dword_AE400_AE3F0();
     v2 = dword_13149C;
     byte_968F0 = 1;
@@ -46639,7 +46616,7 @@ void sub_41230_41570()
       byte_939EC = 1;
       *(_DWORD *)(dword_AE408_AE3F8() + 172) = 0x400000;
     }
-    v5 = (int)sub_42540_42880(*(_DWORD *)(dword_AE408_AE3F8() + 172));
+    v5 = (int)malloc_42540_42880(*(_DWORD *)(dword_AE408_AE3F8() + 172));
     v6 = *(_DWORD *)(dword_AE408_AE3F8() + 172);
     *(_DWORD *)(dword_AE408_AE3F8() + 168) = v5;
     if ( v6 <= (unsigned int)&unk_96000 )
@@ -47409,14 +47386,14 @@ char sub_42530_42870(char a1)
 }
 // 93954: using guessed type char byte_93954;
 
-void* sub_42540_42880(size_t size) {
+void* malloc_42540_42880(size_t size) {
     void* result = malloc(size);
     memset(result, 0, size);
     return result;
 }
 
 //----- (00042880) --------------------------------------------------------
-void* sub_42540_42880_orig(size_t size)
+void* malloc_42540_42880_orig(size_t size)
 {
   unsigned int v1; // edi
   int result; // eax
@@ -48799,7 +48776,7 @@ char *sub_44190(const char *a1)
   v4 = v3;
   if ( v3 > 0 )
   {
-    v5 = (char *)sub_42540_42880(v3);
+    v5 = (char *)malloc_42540_42880(v3);
     v6 = (int)v5;
     v1 = v5;
     if ( v5 )
@@ -64659,11 +64636,11 @@ int sub_5C724()
   int386x(51, (uint32)v2, (uint32)v1, (uint32)v5);
   sub_5C978();
   if ( !dword_12EFB8 )
-    dword_12EFB8 = (int)sub_42540_42880(4096);
+    dword_12EFB8 = (int)malloc_42540_42880(4096);
   if ( !dword_12EF88 )
-    dword_12EF88 = (int)sub_42540_42880(4096);
+    dword_12EF88 = (int)malloc_42540_42880(4096);
   if ( !dword_12EF78 )
-    dword_12EF78 = (int)sub_42540_42880(4096);
+    dword_12EF78 = (int)malloc_42540_42880(4096);
   if ( !dword_12EFB8 || !dword_12EF88 || !dword_12EF78 )
     return 0;
   word_12EFB4 = 0;
@@ -67249,7 +67226,7 @@ unsigned __int64 sub_610EC(int a1)
     v7 = sub_5D2F0(a1, 514);
     if ( v7 != -1 )
     {
-      v5 = (int)sub_42540_42880(v6);
+      v5 = (int)malloc_42540_42880(v6);
       if ( v5 )
       {
         if ( sub_5D0E0(v7, v5, v6) != v6 )
@@ -69333,7 +69310,7 @@ int sub_639F0(char* a1)
   if ( (*(_BYTE *)(a1 + 40) & 1) != 0 )
     v6 = malloc_425C0_42900;
   else
-    v6 = sub_42540_42880;
+    v6 = malloc_42540_42880;
   sub_639B0((char*)a1);
   if ( *(_BYTE *)a1 == 42 )
   {
