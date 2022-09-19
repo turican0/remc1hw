@@ -45497,122 +45497,110 @@ void InitDigijoy_3F7D0_3FB10(char* textBuffer)
 
 void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6)
 {
-  char result; // al
-  __int16 v8; // bx
-  __int16 v9; // si
-  __int16 v10; // di
-  __int16 v11; // di
-  __int16 v12; // bx
-  __int16 v13; // si
-  __int16 v14; // bx
-  __int16 v15; // di
-  __int16 v16; // si
-  int v17; // edi
-  int v18; // ebx
-  __int64 v19; // rtt
-  __int64 v20; // rtt
-  __int64 v21; // rtt
-  __int64 v22; // rtt
-  int v23; // [esp+0h] [ebp-1Ch]
-  int v24; // [esp+4h] [ebp-18h]
-  int v25; // [esp+8h] [ebp-14h]
-  int v26; // [esp+Ch] [ebp-10h]
+    char result; // al
+    int v17; // edi
+    int v18; // ebx
+    __int64 v19; // rtt
+    __int64 v20; // rtt
+    __int64 v21; // rtt
+    __int64 v22; // rtt
+    int v23; // [esp+0h] [ebp-1Ch]
+    int v24; // [esp+4h] [ebp-18h]
+    int v25; // [esp+8h] [ebp-14h]
+    int v26; // [esp+Ch] [ebp-10h]
 
-  sub_3F4CE_3F80E();
-  sub_3F398_3F6D8();
-  if ( byte_B7700_B76F0 )
-  {
-    byte_B7700_B76F0 = 1;
-    v8 = 0;
-    v9 = 0;
-    v10 = 0;
-    sub_3FB30_3FE70(word_90B24, word_90B26, (char*)a3);
-    do
+    sub_3F4CE_3F80E();
+    sub_3F398_3F6D8();
+    if (byte_B7700_B76F0)
     {
-      sub_3F54D_3F88D(a2, v8, v10, v9);
-      v8 += word_B7702_B76F2;
-      a2 = word_B7704_B76F4;
-      ++v10;
-      v9 += word_B7704_B76F4;
+        byte_B7700_B76F0 = 1;
+        int index1 = 0;
+        int index2 = 0;
+        int index3 = 0;
+        sub_3FB30_3FE70(word_90B24, word_90B26, (char*)a3);
+        do
+        {
+            sub_3F54D_3F88D(a2, index1, index2, index3);
+            a2 = word_B7704_B76F4;
+            index1 += word_B7702_B76F2;
+            index2++;
+            index3 += word_B7704_B76F4;
+        } while ((unsigned __int16)index2 < 0x10u);
+        v24 = (int)(index1 - (__CFSHL__((unsigned __int64)v8 >> 32, 4) + 16 * ((unsigned __int64)index1 >> 32))) >> 4;
+        v25 = (int)(index3 - (__CFSHL__((unsigned __int64)v9 >> 32, 4) + 16 * ((unsigned __int64)index3 >> 32))) >> 4;
+        index2 = 0;
+        index1 = 0;
+        index3 = 0;
+        sub_3FB30_3FE70(word_90B2C, word_90B2E, (char*)a4);
+        do
+        {
+            sub_3F54D_3F88D(a4, index1, index2, index3);
+            index1 += word_B7702_B76F2;
+            index2++;
+            index3 += word_B7704_B76F4;
+        } while ((unsigned __int16)index2 < 0x10u);
+        v26 = (int)(index1 - (__CFSHL__((unsigned __int64)index1 >> 32, 4) + 16 * ((unsigned __int64)index1 >> 32))) >> 4;
+        v23 = (int)(index3 - (__CFSHL__((unsigned __int64)v13 >> 32, 4) + 16 * ((unsigned __int64)index3 >> 32))) >> 4;
+        index1 = 0;
+        index2 = 0;
+        index3 = 0;
+        sub_3FB30_3FE70(word_90B34, word_90B36, (char*)a5);
+        do
+        {
+            sub_3F54D_3F88D(a4, index1, index2, index3);
+            index1 += word_B7702_B76F2;
+            index2++;
+            index3 += word_B7704_B76F4;
+        } while ((unsigned __int16)index2 < 0x10u);
+        v17 = (int)(index1 - (__CFSHL__((unsigned __int64)index1 >> 32, 4) + 16 * ((unsigned __int64)index1 >> 32))) >> 4;
+        v18 = (int)(index3 - (__CFSHL__((unsigned __int64)index3 >> 32, 4) + 16 * ((unsigned __int64)index3 >> 32))) >> 4;
+        if ((unsigned __int16)(v26 - v17) <= 0x1Eu)
+        {
+            word_B7706_B76F6 = 10000;
+        }
+        else
+        {
+            word_B7706_B76F6 = v17 + 3 * (unsigned __int16)(v26 - v17) / 10;
+            LODWORD(v19) = (uint32)&loc_40000;
+            HIDWORD(v19) = (int)&loc_40000 >> 31;
+            word_B770E_B76FE = v19 / ((unsigned __int16)v26 - word_B7706_B76F6);
+        }
+        if ((unsigned __int16)(v23 - v18) <= 0x1Eu)
+        {
+            word_B7708_B76F8 = 10000;
+        }
+        else
+        {
+            word_B7708_B76F8 = v18 + 3 * (unsigned __int16)(v23 - v18) / 10;
+            LODWORD(v20) = (uint32)&loc_40000;
+            HIDWORD(v20) = (int)&loc_40000 >> 31;
+            word_B7710_B7700 = v20 / ((unsigned __int16)v23 - word_B7708_B76F8);
+        }
+        if ((unsigned __int16)(v18 - v25) <= 0x1Eu)
+        {
+            word_B770C_B76FC = 0;
+        }
+        else
+        {
+            word_B770C_B76FC = v18 - 3 * (unsigned __int16)(v18 - v25) / 10;
+            LODWORD(v21) = (uint32)&loc_40000;
+            HIDWORD(v21) = (int)&loc_40000 >> 31;
+            word_B7714_B7704 = v21 / (word_B770C_B76FC - (unsigned __int16)v25);
+        }
+        if ((unsigned __int16)(v17 - v24) <= 0x1Eu)
+        {
+            word_B770A_B76FA = 0;
+        }
+        else
+        {
+            word_B770A_B76FA = v17 - 3 * (unsigned __int16)(v17 - v24) / 10;
+            LODWORD(v22) = (uint32)&loc_40000;
+            HIDWORD(v22) = (int)&loc_40000 >> 31;
+            word_B7712_B7702 = v22 / (word_B770A_B76FA - (unsigned __int16)v24);
+        }
+        result = a6;
+        byte_90B23 = a6;
     }
-    while ( (unsigned __int16)v10 < 0x10u );
-    v24 = (int)(v8 - (__CFSHL__((unsigned __int64)v8 >> 32, 4) + 16 * ((unsigned __int64)v8 >> 32))) >> 4;
-    v25 = (int)(v9 - (__CFSHL__((unsigned __int64)v9 >> 32, 4) + 16 * ((unsigned __int64)v9 >> 32))) >> 4;
-    v11 = 0;
-    v12 = 0;
-    v13 = 0;
-    sub_3FB30_3FE70(word_90B2C, word_90B2E, (char*)a4);
-    do
-    {
-      sub_3F54D_3F88D(a4, v12, v11, v13);
-      v12 += word_B7702_B76F2;
-      ++v11;
-      v13 += word_B7704_B76F4;
-    }
-    while ( (unsigned __int16)v11 < 0x10u );
-    v26 = (int)(v12 - (__CFSHL__((unsigned __int64)v12 >> 32, 4) + 16 * ((unsigned __int64)v12 >> 32))) >> 4;
-    v23 = (int)(v13 - (__CFSHL__((unsigned __int64)v13 >> 32, 4) + 16 * ((unsigned __int64)v13 >> 32))) >> 4;
-    v14 = 0;
-    v15 = 0;
-    v16 = 0;
-    sub_3FB30_3FE70(word_90B34, word_90B36, (char*)a5);
-    do
-    {
-      sub_3F54D_3F88D(a4, v14, v15, v16);
-      v14 += word_B7702_B76F2;
-      ++v15;
-      v16 += word_B7704_B76F4;
-    }
-    while ( (unsigned __int16)v15 < 0x10u );
-    v17 = (int)(v14 - (__CFSHL__((unsigned __int64)v14 >> 32, 4) + 16 * ((unsigned __int64)v14 >> 32))) >> 4;
-    v18 = (int)(v16 - (__CFSHL__((unsigned __int64)v16 >> 32, 4) + 16 * ((unsigned __int64)v16 >> 32))) >> 4;
-    if ( (unsigned __int16)(v26 - v17) <= 0x1Eu )
-    {
-      word_B7706_B76F6 = 10000;
-    }
-    else
-    {
-      word_B7706_B76F6 = v17 + 3 * (unsigned __int16)(v26 - v17) / 10;
-      LODWORD(v19) = (uint32)&loc_40000;
-      HIDWORD(v19) = (int)&loc_40000 >> 31;
-      word_B770E_B76FE = v19 / ((unsigned __int16)v26 - word_B7706_B76F6);
-    }
-    if ( (unsigned __int16)(v23 - v18) <= 0x1Eu )
-    {
-      word_B7708_B76F8 = 10000;
-    }
-    else
-    {
-      word_B7708_B76F8 = v18 + 3 * (unsigned __int16)(v23 - v18) / 10;
-      LODWORD(v20) = (uint32)&loc_40000;
-      HIDWORD(v20) = (int)&loc_40000 >> 31;
-      word_B7710_B7700 = v20 / ((unsigned __int16)v23 - word_B7708_B76F8);
-    }
-    if ( (unsigned __int16)(v18 - v25) <= 0x1Eu )
-    {
-      word_B770C_B76FC = 0;
-    }
-    else
-    {
-      word_B770C_B76FC = v18 - 3 * (unsigned __int16)(v18 - v25) / 10;
-      LODWORD(v21) = (uint32)&loc_40000;
-      HIDWORD(v21) = (int)&loc_40000 >> 31;
-      word_B7714_B7704 = v21 / (word_B770C_B76FC - (unsigned __int16)v25);
-    }
-    if ( (unsigned __int16)(v17 - v24) <= 0x1Eu )
-    {
-      word_B770A_B76FA = 0;
-    }
-    else
-    {
-      word_B770A_B76FA = v17 - 3 * (unsigned __int16)(v17 - v24) / 10;
-      LODWORD(v22) = (uint32)&loc_40000;
-      HIDWORD(v22) = (int)&loc_40000 >> 31;
-      word_B7712_B7702 = v22 / (word_B770A_B76FA - (unsigned __int16)v24);
-    }
-    result = a6;
-    byte_90B23 = a6;
-  }
 }
 
 //----- (0003FE70) --------------------------------------------------------
