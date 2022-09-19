@@ -1043,7 +1043,7 @@ int sub_5D0E0(int a1, int a2, int a3);
 // _DWORD printf(const char *, ...); weak
 // _DWORD memset(_DWORD, _DWORD, _DWORD); weak
 void sub_5CC54_5D164();
-char sub_5CC70_5D180(unsigned __int8 *a1, unsigned __int8 a2, unsigned __int8 a3, unsigned __int8 a4);
+uint8_t sub_5CC70_5D180(uint8_t* a1, uint8_t a2, uint8_t a3, uint8_t a4);
 int sub_5D280();
 void sub_5D2B0();
 int sub_5D2F0(int a1, int a2);
@@ -65133,42 +65133,29 @@ void sub_5CC54_5D164()
   while ( (result & 8) == 0 );
 }
 
-//----- (0005D180) --------------------------------------------------------
-char sub_5CC70_5D180(unsigned __int8 *a1, unsigned __int8 a2, unsigned __int8 a3, unsigned __int8 a4)//22e180
+uint8_t sub_5CC70_5D180(uint8_t* a1, uint8_t a2, uint8_t a3, uint8_t a4)
 {
-  unsigned __int8 v4; // al
-  __int16 v5; // cx
-  unsigned __int8 v6; // al
-  __int16 v7; // bx
-  unsigned __int16 v9; // [esp+0h] [ebp-20h]
-  __int16 v11; // [esp+10h] [ebp-10h]
-  __int16 v12; // [esp+14h] [ebp-Ch]
-  char v13; // [esp+18h] [ebp-8h]
+    int colorsCount;
+    char result;
 
-  if ( (word_12F02E_12F01E & 6) != 0 )
-    v9 = 16;
-  else
-    v9 = 256;
-  v11 = 0;
-  v12 = 9999;
-  while ( v11 < (int)v9 )
-  {
-    v4 = a1[1];
-    v5 = (a2 - *a1) * (a2 - *a1) + (a3 - v4) * (a3 - v4);
-    v6 = a1[2];
-    v7 = a4 - v6;
-    if ( (__int16)(v7 * v7 + v5) < v12 )
+    if ((word_12F02E_12F01E & 6) != 0)
+        colorsCount = 16;
+    else
+        colorsCount = 256;
+    int minColors = 0;
+    int maxColors = 9999;
+    while (minColors < colorsCount)
     {
-      v12 = v7 * (a4 - v6) + v5;
-      v13 = v11;
+        if (((a4 - a1[2]) * (a4 - a1[2]) + (a2 - a1[0]) * (a2 - a1[0]) + (a3 - a1[1]) * (a3 - a1[1])) < maxColors)
+        {
+            maxColors = (a4 - a1[2]) * (a4 - a1[2]) + (a2 - a1[0]) * (a2 - a1[0]) + (a3 - a1[1]) * (a3 - a1[1]);
+            result = minColors;
+        }
+        minColors;
+        a1 += 3;
     }
-    ++v11;
-    a1 += 3;
-  }
-  return v13;
+    return result;
 }
-// 5D271: variable 'v13' is possibly undefined
-// 12F01E: using guessed type __int16 word_12F02E_12F01E;
 
 //----- (0005D280) --------------------------------------------------------
 int sub_5D280()
