@@ -382,7 +382,7 @@ int sub_348B0();
 // void sub_348F0(__int16 a1, __int16 a2, __int16 a3);
 void sub_34610_349D0(__int16 a2, __int16 a3);
 char sub_34A50();
-int sub_34B00_34EC0();
+void sub_34B00_34EC0();
 int sub_34B40_34F00();
 void sub_34C60_35020();
 int sub_34C80_35040();
@@ -659,7 +659,7 @@ void InitDigijoy_3F7D0_3FB10(char* textBuffer);
 void InitAnojoy_3F820_sub_3FB60(__int16 a2, int a3, int a4, int a5, char a6);
 void sub_3FB30_3FE70(__int16 a1, __int16 a2, char* a3);
 char sub_3FCA0_3FFE0(char a5, __int16 a6, __int16 a7, __int16 a8, __int16 a9, __int16 a10, __int16 a11);
-__int16 sub_40440_40780(char* textBuffer);
+void sub_40440_40780(char* textBuffer);
 int sub_main(int argc, const char **argv, const char **envp);
 int sub_40890();
 int sub_407A0_40AE0();
@@ -1000,9 +1000,9 @@ int sub_5A3C0_5A8D0(__int16 a1);
 int sub_5A459_5A969();
 int sub_5A9FA();
 int sub_5AA70();
-int sub_5ACA0_5B1B0();
-int sub_5AD10_5B220(int a1);
-int sub_5AD30_5B240();
+void DrawStartGameTexts_5ACA0_5B1B0();
+void sub_5AD10_5B220(char* text);
+int DrawTextLine_5AD10_5B220();
 int sub_5ADB0_5B2C0(int a1, int32_t* a2, char* a3);
 int sub_5AE30_5B340(int a1, char *a2);
 int sub_5AEB0_5B3C0(int a1, int32_t* a2, char* a3);
@@ -1156,7 +1156,7 @@ int sub_63500(int a1);
 void sub_63010_63520();
 void sub_63338_63848();
 int sub_6393C(unsigned int a1);
-_DWORD *sub_639B0(char* a1);
+_DWORD *sub_634A0_639B0(char* a1);
 int sub_639F0(char* a1);
 // _DWORD gets(_DWORD); weak
 // _DWORD segread(_DWORD); weak
@@ -9642,7 +9642,7 @@ char aTmaps10_0[9] = "tmaps1-0"; // weak
 char aData_1[5] = "data"; // weak
 char aCarpetCd_4[11] = "\\carpet.cd"; // weak
 char aProductName[13] = "Product name"; // weak
-char aMagicCarpet[13] = "Magic Carpet"; // weak
+//char aMagicCarpet[13] = "Magic Carpet"; // weak
 char aVersionNumber[15] = "Version number"; // weak
 char aBetaV80[10] = "Beta v8.0"; // weak
 char aVersionDate[13] = "Version date"; // weak
@@ -9659,7 +9659,7 @@ char aSoundNumber[13] = "Sound Number"; // weak
 char aGameTurn[10] = "Game turn"; // weak
 char aThing[6] = "Thing"; // weak
 char aMemoryUsedFree[19] = "Memory (Used/Free)"; // weak
-void *off_ABCE0_ABCDC = &unk_A7325; // weak
+//void *off_ABCE0_ABCDC = &unk_A7325; // weak
 char aVipport[8] = "VIPPORT"; // weak
 char aVfx1Cyberpuck[15] = "VFX1 CyberPuck"; // weak
 char aVesa[5] = "VESA"; // weak
@@ -37440,8 +37440,7 @@ LABEL_61:
 // AE418: using guessed type int dword_AE428_AE418;
 // B7300: using guessed type int dword_B7300;
 
-//----- (00034EC0) --------------------------------------------------------
-int sub_34B00_34EC0()
+void sub_34B00_34EC0()
 {
   sub_40440_40780((char*)"*SearchD");
   if ( word_12F02E_12F01E == 1 )
@@ -37449,10 +37448,8 @@ int sub_34B00_34EC0()
   else
     sub_40440_40780((char*)aWscreen_0);
   sub_59500_59A10((unsigned int **)&off_99974);
-  return sub_11540();
+  sub_11540();
 }
-// 99974: using guessed type int *off_99974;
-// 12F01E: using guessed type __int16 word_12F02E_12F01E;
 
 int sub_34B40_34F00()
 {
@@ -37466,10 +37463,10 @@ int sub_34B40_34F00()
   unsigned __int8 v8; // [esp+14h] [ebp-18h]
   unsigned __int8 v9; // [esp+18h] [ebp-14h]
 
-  sub_5ACA0_5B1B0();
-  sub_5AD10_5B220((int)aLoadAllDataFil);
+  DrawStartGameTexts_5ACA0_5B1B0();
+  sub_5AD10_5B220((char*)aLoadAllDataFil);
   sub_34B00_34EC0();
-  sub_5AD10_5B220((int)aInitialiseColo);
+  sub_5AD10_5B220((char*)aInitialiseColo);
   v5 = 0;
   v0 = 0;
   v8 = 3;
@@ -37511,7 +37508,7 @@ void sub_34C60_35020()
   sub_58F00_59410();
   sub_44840_44B80();
   sub_61610_61B20((char*)"*SearchD");
-  sub_5ACA0_5B1B0();
+  DrawStartGameTexts_5ACA0_5B1B0();
 }
 
 //----- (00035040) --------------------------------------------------------
@@ -37940,14 +37937,12 @@ int sub_35B60()
 //----- (00035B80) --------------------------------------------------------
 void sub_357C0_35B80()
 {
-  int v4; // eax
-
   if ( !byte_90AD4 )
   {
     byte_90AD4 = 1;
     if ( (*(_BYTE *)dword_AE408_AE3F8() & 0x48) != 0 )
     {
-      v4 = sub_5AD10_5B220((int)aSoundDisabled);
+      sub_5AD10_5B220((char*)aSoundDisabled);
       byte_939CD = 0;
       byte_939E5 = 0;
       byte_939CC = 0;
@@ -37955,9 +37950,9 @@ void sub_357C0_35B80()
     }
     else
     {
-      sub_5AD10_5B220((int)aInitialiseMusi);
+      sub_5AD10_5B220((char*)aInitialiseMusi);
       sub_3C8B0();
-      sub_5AD10_5B220((int)aInitialiseSoun);
+      sub_5AD10_5B220((char*)aInitialiseSoun);
       sub_3C800_sub_3CB40();
     }
     if ( byte_939E4 || byte_939CC )
@@ -46009,8 +46004,7 @@ char sub_3FCA0_3FFE0(
 // 12EFD4: using guessed type __int16 word_12EFD4;
 // 12F01E: using guessed type __int16 word_12F02E_12F01E;
 
-//----- (00040780) --------------------------------------------------------
-__int16 sub_40440_40780(char* textBuffer)
+void sub_40440_40780(char* textBuffer)
 {
   char* v1; // ebx
   __int16 v2; // si
@@ -46027,7 +46021,7 @@ __int16 sub_40440_40780(char* textBuffer)
   {
     do
     {
-      sub_639B0((char*)v1);
+      sub_634A0_639B0((char*)v1);
       v3 = *(_DWORD *)(v1 + 72);
       v1 += 44;
     }
@@ -46051,7 +46045,7 @@ LABEL_9:
       v6 = *(_DWORD *)(v4 + 72);
       v4 += 44;
       if ( !v6 )
-        return v2;
+        return;
     }
     sub_319E0((unsigned __int8 *)dword_AE428_AE418);
     printf("ERROR: Allocation %s.\n", v4);
@@ -46061,11 +46055,7 @@ LABEL_8:
     gets((uint32)&v8);
     goto LABEL_9;
   }
-  return v2;
 }
-// 5D113: using guessed type _DWORD printf(const char *, ...);
-// 63B1F: using guessed type _DWORD gets(_DWORD);
-// AE418: using guessed type int dword_AE428_AE418;
 
 //----- (00040830) --------------------------------------------------------
 int sub_main(int argc, const char **argv, const char **envp)//211830
@@ -46130,16 +46120,16 @@ int sub_407A0_40AE0()
   v0 = byte_939E5;
   byte_939E5 = 0;
   sub_40890();
-  sub_5AD10_5B220((int)aLoadLevel);
+  sub_5AD10_5B220((char*)aLoadLevel);
   sub_3E440(*(_WORD *)(dword_AE408_AE3F8() + 17), (void *)(dword_AE400_AE3F0() + 193795));
   if ( (*(_BYTE *)dword_AE408_AE3F8() & 0x10) == 0 )
     *(_WORD *)(dword_AE400_AE3F0() + 10) = *(_WORD *)&byte_38C95[dword_AE400_AE3F0()];
-  sub_5AD10_5B220((int)aGenerateMap);
+  sub_5AD10_5B220((char*)aGenerateMap);
   sub_31AE0(dword_AE400_AE3F0() + 193795);
   sub_37580();
-  sub_5AD10_5B220((int)aGenerateFeatur);
+  sub_5AD10_5B220((char*)aGenerateFeatur);
   sub_367F0(dword_AE400_AE3F0() + 193795);
-  sub_5AD10_5B220((int)aInitialiseMode);
+  sub_5AD10_5B220((char*)aInitialiseMode);
   memset(&word_AE444, 0, 6);
   sub_375E0();
   *(_DWORD *)(dword_AE400_AE3F0() + 4593) = -1;
@@ -63602,7 +63592,7 @@ int sub_5AA70()
     sub_5A3C0_5A8D0(1);
     sub_5A690((uint8*)aProductName, 320, 0, byte_AE058);
     v0 = sub_5A8C0();
-    sub_5A690((uint8*)aMagicCarpet, 320, v0, byte_AD167);
+    sub_5A690((uint8*)"Magic Carpet", 320, v0, byte_AD167);
     v1 = sub_5A8C0() + v0;
     sub_5A690((uint8*)aVersionNumber, 320, v1, byte_AE058);
     v2 = sub_5A8C0() + v1;
@@ -63708,31 +63698,21 @@ int sub_5AA70()
 // 131494: using guessed type int dword_131494;
 // 131498: using guessed type int dword_131498;
 
-//----- (0005B1B0) --------------------------------------------------------
-int sub_5ACA0_5B1B0()
+void DrawStartGameTexts_5ACA0_5B1B0()
 {
   printf("Copyright (c) 1995 Bullfrog Productions Ltd.\n");
   printf("All rights reserved.\n");
-  return printf("%s \n", aMagicCarpet);
+  printf("%s \n", "Magic Carpet");
 }
-// 5D113: using guessed type _DWORD printf(const char *, ...);
 
-//----- (0005B220) --------------------------------------------------------
-int sub_5AD10_5B220(int a1)
+void sub_5AD10_5B220(char* text)
 {
-  int result; // eax
-
-  result = dword_AE408_AE3F8();
-  if ( (*(_BYTE *)(dword_AE408_AE3F8() + 1) & 1) != 0 )
-    return printf((const char *)&off_ABCE0_ABCDC, a1);
-  return result;
+  if ( (str_AE408_AE3F8->var_u8_1 & 1) != 0 )
+    printf("%s\n", text);
 }
-// 5D113: using guessed type _DWORD printf(const char *, ...);
-// ABCDC: using guessed type void *off_ABCE0_ABCDC;
-// AE3F8: using guessed type int dword_AE408_AE3F8();
 
 //----- (0005B240) --------------------------------------------------------
-int sub_5AD30_5B240()
+int DrawTextLine_5AD10_5B220()
 {
   int v0; // ebx
   int v1; // esi
@@ -63886,7 +63866,7 @@ int InitVfx_5AF50_5B460()
 	{
 		dword_12EE94_12EE84 = sub_6660D_66B1D(vipEnv, &v16, 16);
 		dword_12EE24_12EE14 = dword_12EE94_12EE84 + 1;
-		dword_12EE10_12EE00 = sub_5AD30_5B240();
+		dword_12EE10_12EE00 = DrawTextLine_5AD10_5B220();
 		if (!dword_12EE10_12EE00 || sub_5ADB0_5B2C0(dword_12EE10_12EE00, &dword_12EE18_12EE08, byte_12EC10_12EC00))
 		{
 			sub_5B3B0_5B8C0();
@@ -65218,7 +65198,7 @@ int sub_5CEF0_5D400(unsigned __int16 a1)
     return 1;
   if ( sub_639F0((char*)aDataMusic00Tab) != 1 )
   {
-    sub_639B0((char*)"data/music0-0.dat");
+    sub_634A0_639B0((char*)"data/music0-0.dat");
     return 1;
   }
   sub_5D4B4();
@@ -65281,7 +65261,7 @@ int sub_5D070_5D580(unsigned __int8 a1)
     return 1;
   if ( sub_639F0((char*)aDataSnds00Tab) != 1 )
   {
-    sub_639B0((char*)"data/snds0-0.dat");
+    sub_634A0_639B0((char*)"data/snds0-0.dat");
     return 1;
   }
   sub_5D648();
@@ -68344,7 +68324,7 @@ void sub_61610_61B20(char* path)
     result = (int)path;
     if ( !*(_DWORD *)(path + 28) )
       break;
-    sub_639B0((char*)path);
+    sub_634A0_639B0((char*)path);
     path += 44;
   }
 }
@@ -69260,7 +69240,7 @@ int sub_6393C(unsigned int a1)
 // 63488: using guessed type _DWORD int386(_DWORD, _DWORD, _DWORD);
 
 //----- (000639B0) --------------------------------------------------------
-_DWORD *sub_639B0(char* a1)
+_DWORD *sub_634A0_639B0(char* a1)
 {
   _DWORD *result; // eax
 
@@ -69290,7 +69270,7 @@ int sub_639F0(char* a1)
     v6 = malloc_425C0_42900;
   else
     v6 = malloc_42540_42880;
-  sub_639B0((char*)a1);
+  sub_634A0_639B0((char*)a1);
   if ( *(_BYTE *)a1 == 42 )
   {
     v1 = (int)v6(*(_DWORD *)(a1 + 36));
