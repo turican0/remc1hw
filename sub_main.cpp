@@ -12667,7 +12667,7 @@ int sub_103F0()
   int result; // eax
 
   dword_AC1A0 = dword_90028;
-  DataFileIO::Read(dword_AC5B0, (int)&dword_AC190, 16);
+  DataFileIO::Read((FILE*)dword_AC5B0, (int)&dword_AC190, 16);
   while ( word_AC194 != -3590 )
     printf("ERROR UNKNOWN FRAME TYPE\n");
   while ( (unsigned int)dword_AC190 >= 0xFA00 )
