@@ -1,6 +1,7 @@
 #pragma once
 
 #include "portability/port_filesystem.h"
+#include "utilities/DataFileIO.h"
 
 #include <stdio.h>
 #include <defs.h>
@@ -105,6 +106,9 @@ typedef struct {//44 lenght
 	uint32_t var40_alloc_type;//28
 } Pathstruct;
 #pragma pack (16)
+
+typedef union { uint8_t bytes[4]; int32 size; }
+Type_fileSize;
 
 extern Type_str_AE408_AE3F8* str_AE408_AE3F8;
 

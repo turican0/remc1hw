@@ -19,6 +19,18 @@
     <Filter Include="Zdrojové soubory\engine">
       <UniqueIdentifier>{da2309e6-80fa-497a-9c6c-20a51400767e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hlavičkové soubory\portability">
+      <UniqueIdentifier>{08c49714-55ea-4dd9-a393-047669c0f6eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\utilities">
+      <UniqueIdentifier>{2e22b225-6985-437e-a299-e3fb2d73cc93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zdrojové soubory\utilities">
+      <UniqueIdentifier>{5868b713-76ed-47c4-92b8-18020f2f2833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hlavičkové soubory\engine">
+      <UniqueIdentifier>{2eb965ff-2eea-4af5-8b71-8408a079403c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="REMC1HW.cpp">
@@ -39,6 +51,27 @@
     <ClCompile Include="engine\CommandLineParser.cpp">
       <Filter>Zdrojové soubory\engine</Filter>
     </ClCompile>
+    <ClCompile Include="portability\dirent.c">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="portability\fcaseopen.cpp">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="portability\port_filesystem.cpp">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="portability\port_outputs.cpp">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="portability\port_sdl_vga_mouse.cpp">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="portability\port_time.cpp">
+      <Filter>Zdrojové soubory\portability</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities\DataFileIO.cpp">
+      <Filter>Zdrojové soubory\utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defs.h">
@@ -46,6 +79,36 @@
     </ClInclude>
     <ClInclude Include="sub_main.h">
       <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\CommandLineParser.h">
+      <Filter>Hlavičkové soubory\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\sub_main_mouse.h">
+      <Filter>Hlavičkové soubory\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\dirent-x.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\fcaseopen.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\mctypes.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\port_filesystem.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\port_outputs.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\port_sdl_vga_mouse.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="portability\port_time.h">
+      <Filter>Hlavičkové soubory\portability</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\DataFileIO.h">
+      <Filter>Hlavičkové soubory\utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

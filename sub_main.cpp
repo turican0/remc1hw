@@ -3,6 +3,9 @@
 bool IsHiddenWord = true;
 
 //fix
+
+std::string gameDataPath = "c:/prenos/magic1/cd2/CARPET";
+
 int unk_A9998_A99B0;
 int loc_24080;
 int unk_110003;
@@ -14,6 +17,10 @@ int __CS__;
 int __DS__;
 int __ES__;
 int _ZF;
+
+void MouseEvents(uint32_t buttons, int x, int y)
+{
+};
 //fix
 
 //-------------------------------------------------------------------------
@@ -383,7 +390,7 @@ int sub_348B0();
 void sub_34610_349D0(__int16 a2, __int16 a3);
 char sub_34A50();
 void sub_34B00_34EC0();
-int sub_34B40_34F00();
+void sub_34B40_34F00();
 void sub_34C60_35020();
 int sub_34C80_35040();
 int ProcessCommandLine_34DD0_35190(int argc, char** argv);
@@ -1001,7 +1008,7 @@ int sub_5A459_5A969();
 int sub_5A9FA();
 int sub_5AA70();
 void DrawStartGameTexts_5ACA0_5B1B0();
-void sub_5AD10_5B220(char* text);
+void DrawTextLine_5AD10_5B220(char* text);
 int DrawTextLine_5AD10_5B220();
 int sub_5ADB0_5B2C0(int a1, int32_t* a2, char* a3);
 int sub_5AE30_5B340(int a1, char *a2);
@@ -1039,15 +1046,15 @@ __int16 sub_5CE79();
 int sub_5CF50();
 char sub_5CFF7();
 void sub_5D083(int a1, __int16 a2);
-int sub_5D0E0(int a1, int a2, int a3);
+//int DataFileIO::Read(int a1, int a2, int a3);
 // _DWORD printf(const char *, ...); weak
 // _DWORD memset(_DWORD, _DWORD, _DWORD); weak
 void sub_5CC54_5D164();
 uint8_t sub_5CC70_5D180(uint8_t* a1, uint8_t a2, uint8_t a3, uint8_t a4);
 int sub_5D280();
 void sub_5D2B0();
-int sub_5D2F0(int a1, int a2);
-int sub_5D360(int a1);
+//int DataFileIO::CreateOrOpenFile(int a1, int a2);
+//int DataFileIO::Close(int a1);
 // _DWORD dos_getdrive(_DWORD); weak
 // _DWORD dos_getdiskfree(_DWORD, _DWORD); weak
 int sub_5CEF0_5D400(unsigned __int16 a1);
@@ -1138,7 +1145,7 @@ void free_62128_62638(void* buffer);
 // _DWORD fscanf(_DWORD, _DWORD, ...); weak
 // _DWORD getenv(_DWORD); weak
 // _DWORD sscanf(_DWORD, _DWORD, ...); weak
-// _DWORD filelength(_DWORD); weak
+// _DWORD DataFileIO::FileLengthBytes(_DWORD); weak
 int sub_62B30_63040(int a1, int a2, char a3);
 int sub_63070(int a1, char *a2);
 char sub_62CF4_63204(int *a1);
@@ -1156,8 +1163,8 @@ int sub_63500(int a1);
 void sub_63010_63520();
 void sub_63338_63848();
 int sub_6393C(unsigned int a1);
-void sub_634A0_639B0(char* a1);
-int sub_634E0_639F0(char* a1);
+void sub_634A0_639B0(Pathstruct* pathstruct);
+int sub_634E0_639F0(Pathstruct* pathstruct);
 // _DWORD gets(_DWORD); weak
 // _DWORD segread(_DWORD); weak
 // _DWORD int386x(_DWORD, _DWORD, _DWORD, _DWORD); weak
@@ -1169,7 +1176,7 @@ void sub_63CD0();
 int sub_63CE1(int a1, int a2, unsigned __int16 a3, int a4);
 int sub_63DF0(int a1, int a2, int a3);
 void sub_63E08();
-int sub_63910_63E20(int a1);
+int GetRNCFilesize_63910_63E20(Pathstruct* pathstruct);
 // _DWORD strcmp(_DWORD, _DWORD); weak
 void sub_63F9C();
 int sub_63A9D_63FAD(int a3, __int16 a4);
@@ -9593,8 +9600,8 @@ char aCCarpetCdSaveS[30] = "c:/carpet.cd/save/scanned.rmd"; // weak
 char aDataSmatitleDa[18] = "data/smatitle.dat"; // weak
 char aDataSmatitlePa[18] = "data/smatitle.pal"; // weak
 char aDataPal10Dat[16] = "data/pal1-0.dat"; // weak
-char aLoadAllDataFil[20] = "Load all data files"; // weak
-char aInitialiseColo[25] = "Initialise Colour Lookup"; // weak
+//char aLoadAllDataFil[20] = "Load all data files"; // weak
+//char aInitialiseColo[25] = "Initialise Colour Lookup"; // weak
 char aDigijoy[8] = "digijoy"; // weak
 char aAnojoy[7] = "anojoy"; // weak
 char aAnojoy4[8] = "anojoy4"; // weak
@@ -11726,7 +11733,7 @@ int dword_AE400; // weak
 int dword_AE408; // weak
 char* dword_AE41C_AE40C; // weak
 int dword_AE414; // weak
-int dword_AE428_AE418; // weak
+uint8_t* dword_AE428_AE418; // weak
 int dword_AE41C; // weak
 int dword_AE430; // weak
 int dword_AE43C; // weak
@@ -12119,7 +12126,7 @@ __int16 word_12F02C; // weak
 int dword_12F030; // weak
 int dword_12F064; // weak
 int dword_12F06A; // weak
-int dword_12F080_12F070; // weak
+void* dword_12F080_12F070; // weak
 __int16 word_12F074; // weak
 char byte_12F080[768]; // weak
 _UNKNOWN unk_12F380; // weak
@@ -12286,7 +12293,7 @@ _DWORD tolower(_DWORD a) { return 0; };// weak
 void __outword(int a, int b) {};
 int __inword(int a) { return 0; };
 
-//int filelength(int a) { return 0; };
+//int DataFileIO::FileLengthBytes(int a) { return 0; };
 int MK_FP(void* a, void* b) { return 0; };
 //---------------- fixproc
 
@@ -12660,12 +12667,12 @@ int sub_103F0()
   int result; // eax
 
   dword_AC1A0 = dword_90028;
-  sub_5D0E0(dword_AC5B0, (int)&dword_AC190, 16);
+  DataFileIO::Read(dword_AC5B0, (int)&dword_AC190, 16);
   while ( word_AC194 != -3590 )
     printf("ERROR UNKNOWN FRAME TYPE\n");
   while ( (unsigned int)dword_AC190 >= 0xFA00 )
     printf("PAGE SIZE IS > BSCREEN\n");
-  sub_5D0E0(dword_AC5B0, dword_AE3EC, dword_AC190 - 16);
+  DataFileIO::Read(dword_AC5B0, dword_AE3EC, dword_AC190 - 16);
   result = dword_AC190;
   dword_90028 += dword_AC190;
   return result;
@@ -12875,8 +12882,8 @@ int sub_107C0(__int16 a1, __int16 a2, int a3)
   word_AC5CA = 0;
   LOWORD(dword_AC5D0[0]) = 0;
   dword_9001C = dword_12EFE4;
-  dword_AC5B0 = sub_5D2F0((int)&unk_9ADC8, 512);
-  sub_5D0E0(dword_AC5B0, (int)&unk_AC5B8, 12);
+  dword_AC5B0 = (int)DataFileIO::CreateOrOpenFile((char*)&unk_9ADC8, 512);
+  DataFileIO::Read(dword_AC5B0, (int)&unk_AC5B8, 12);
   word_12EFCC = 0;
   word_12EFCE = 0;
   dword_90028 += 12;
@@ -12891,7 +12898,7 @@ int sub_107C0(__int16 a1, __int16 a2, int a3)
     sub_103F0();
     sub_104D0();
   }
-  return sub_5D360(dword_AC5B0);
+  return DataFileIO::Close(dword_AC5B0);
 }
 // 9001C: using guessed type int dword_9001C;
 // 90024: using guessed type __int16 word_90024;
@@ -34076,7 +34083,7 @@ int sub_30D70(__int16 a1)
 
   if ( (unsigned __int16)sub_61FC0() )
     return 0;
-  v1 = (_WORD *)(16 * *(unsigned __int16 *)(dword_12F080_12F070 + 16) + *(unsigned __int16 *)(dword_12F080_12F070 + 14));
+  v1 = (_WORD *)(16 * *(unsigned __int16 *)((int)dword_12F080_12F070 + 16) + *(unsigned __int16 *)((int)dword_12F080_12F070 + 14));
   if ( *v1 == 0xFFFF )
     return 0;
   while ( a1 != *v1 )
@@ -37151,8 +37158,8 @@ void TopProcedure_65DC0_662D0(int argc, const char** argv)//2050B0_205470
       byte_939E5 = 0;
       byte_939CC = 0;
       byte_939E4 = 0;
-      sub_40440_40780((Pathstruct*)"data/ftext.dat");
-      sub_44700_44A40(dword_AE41C_AE40C, dword_AE238_AE228, 80);
+      sub_40440_40780(&pathStrArray[PSdataftextdat]);
+      sub_44700_44A40((char*)dword_AE41C_AE40C, dword_AE238_AE228, 80);
     }
     else
     {
@@ -37185,7 +37192,7 @@ void TopProcedure_65DC0_662D0(int argc, const char** argv)//2050B0_205470
         if (!IsHiddenWord)
             sub_34070();
         sub_61CC0_621D0(0, 0x10u, 0);
-        sub_5C05C_5C56C(dword_AE450_AE440);
+        sub_5C05C_5C56C((int)dword_AE450_AE440);
         if ( !str_AE400_AE3F0->str_13347[str_AE400_AE3F0->var_u16_8].var_u8_13327 )
           sub_34460_34820();
         sub_34B00_34EC0();
@@ -37408,7 +37415,7 @@ char sub_34A50()
       case 2:
         for ( i = 3; i != 768; byte_B6FFF[i] = *(_BYTE *)(v3 + i - 1) )
         {
-          v3 = dword_AE428_AE418;
+          v3 = (int)dword_AE428_AE418;
           i += 3;
           dword_B7300 = 255;
           byte_B6FFD[i] = 63;
@@ -37424,7 +37431,7 @@ char sub_34A50()
           if ( dword_B7300 > 63 )
             dword_B7300 = 63;
           byte_B7000[j] = dword_B7300;
-          v5 = dword_AE428_AE418;
+          v5 = (int)dword_AE428_AE418;
           byte_B7001[j] = *(_BYTE *)(dword_AE428_AE418 + j + 1);
           dword_B7300 = *(unsigned __int8 *)(v5 + j + 2) + 64;
           if ( dword_B7300 < 0 )
@@ -37437,7 +37444,7 @@ char sub_34A50()
       case 4:
         for ( k = 3; k != 768; byte_B6FFF[k] = 63 )
         {
-          v7 = dword_AE428_AE418;
+          v7 = (int)dword_AE428_AE418;
           k += 3;
           dword_B7300 = 255;
           byte_B6FFD[k] = *(_BYTE *)(dword_AE428_AE418 + k - 3);
@@ -37519,7 +37526,7 @@ LABEL_61:
 // AE418: using guessed type int dword_AE428_AE418;
 // B7300: using guessed type int dword_B7300;
 
-void sub_34B00_34EC0()
+void sub_34B00_34EC0()//205b00_
 {
   sub_40440_40780(&pathStrArray[PSSearchD]);
   if ( word_12F02E_12F01E == 1 )
@@ -37530,55 +37537,36 @@ void sub_34B00_34EC0()
   sub_11540();
 }
 
-int sub_34B40_34F00()//_205F00
+void sub_34B40_34F00()//205B40_205F00
 {
-  int v0; // ebp
-  int v1; // edi
-  int v2; // ebx
-  int v3; // esi
-  int v5; // [esp+0h] [ebp-2Ch]
-  int v6; // [esp+4h] [ebp-28h]
-  unsigned __int8 v7; // [esp+8h] [ebp-24h]
-  unsigned __int8 v8; // [esp+14h] [ebp-18h]
-  unsigned __int8 v9; // [esp+18h] [ebp-14h]
-
-  DrawStartGameTexts_5ACA0_5B1B0();
-  sub_5AD10_5B220((char*)aLoadAllDataFil);
-  sub_34B00_34EC0();
-  sub_5AD10_5B220((char*)aInitialiseColo);
-  v5 = 0;
-  v0 = 0;
-  v8 = 3;
-  do
-  {
-    v6 = 0;
-    v1 = v0;
-    v7 = 3;
-    do
-    {
-      v2 = 0;
-      v3 = v1;
-      v9 = 3;
-      do
-      {
-        ++v3;
-        ++v2;
-        byte_AD167_AD157[v3] = sub_5CC70_5D180((unsigned __int8 *)dword_AE428_AE418, v8, v7, v9);
-        v9 += 4;
-      }
-      while ( v2 < 16 );
-      v1 += 16;
-      v7 += 4;
-      ++v6;
-    }
-    while ( v6 < 16 );
-    v0 += 256;
-    v8 += 4;
-    ++v5;
-  }
-  while ( v5 < 16 );
-  *(_BYTE *)(dword_AE408_AE3F8() + 23) = 1;
-  return sub_5A3C0_5A8D0(0);
+	DrawStartGameTexts_5ACA0_5B1B0();
+	DrawTextLine_5AD10_5B220((char*)"Load all data files");
+	sub_34B00_34EC0();
+	DrawTextLine_5AD10_5B220((char*)"Initialise Colour Lookup");
+    int index1 = 0;
+    uint8_t indexB1 = 3;
+	for (int i = 0; i < 16; i++)
+	{
+		int index2 = index1;
+		uint8_t indexB2 = 3;
+		for (int j = 0; j < 16; j++)
+		{
+			int index3 = index2;
+			uint8_t indexB3 = 3;
+			for (int k = 0; k < 16; k++)
+			{
+				index3++;
+				byte_AD167_AD157[index3] = sub_5CC70_5D180(dword_AE428_AE418, indexB1, indexB2, indexB3);
+				indexB3 += 4;
+			}
+			index2 += 16;
+			indexB2 += 4;
+		}
+		index1 += 256;
+		indexB1 += 4;
+	}
+	str_AE408_AE3F8->var_u8_23 = 1;
+	sub_5A3C0_5A8D0(0);
 }
 
 //----- (00035020) --------------------------------------------------------
@@ -37659,297 +37647,297 @@ int StrToInt(char* a1)//232f36_
 
 int ProcessCommandLine_34DD0_35190(int argc, char** argv)//205DD0_
 {
-    char textBuffer4[32];
-    char textBuffer1[32];
-    char textBuffer2[32];
-    char textBuffer3[32];
-    char result2 = 0;
-    char firstChar = 0;
-    char result = 0;
-    bool varHelp = false;
-    bool varCustom = false;
-    bool varNetwork = false;
-    bool neverRun2 = false;
-    int varSome = 1;
-    bool varSetsound = false;
-    int varDetail = 1;
-    int varCheat = 0;
-    int varLevel = 0;
-    int varMovie = 0;
-    int varRoll = 0;
-    bool varTime = false;
-    int varPassword = 0;
-    bool varVfx = false;
-    int varDemo = 0;
-    origDebug_AE45A_AE44A = 0;
-    int varPlayers = 2;
-    bool varDigijoy = false;
-    bool varAnojoy = false;
-    strcpy(textBuffer2, "PLAYER");
-    strcpy(textBuffer3, "CARPET");
-    bool neverRun = 0;
-    for (int i = 1; i < argc; i++)
-    {
-        firstChar = argv[i][0];
-        if (firstChar != '-' && firstChar != '/')
-        {
-            printf("ERROR : Incorrect command : %d\n", i);
-            result = -1;
-            break;
-        }
-        strcpy(textBuffer1, &argv[i][1]);
-        textBuffer4[0] = 0;
-        if (i + 1 < argc)
-        {
-            strcpy(textBuffer4, &argv[i + 1][0]);
-        }
-        if (!stricmp("digijoy", textBuffer1))
-        {
-            varDigijoy = true;
-        }
-        else if (!stricmp("anojoy", textBuffer1))
-        {
-            varAnojoy = true;
-        }
-        else if (!stricmp("anojoy4", textBuffer1))
-        {
-            varAnojoy = true;
-        }
-        else if (!stricmp("vfx", textBuffer1))
-        {
-            varVfx = true;
-        }
-        else if (!stricmp("help", textBuffer1))
-        {
-            varHelp = true;
-        }
-        else if (!stricmp("debug", textBuffer1))
-        {
-            origDebug_AE45A_AE44A = 1;
-        }
-        else if (!stricmp("network", textBuffer1))
-        {
-            varNetwork = true;
-        }
-        else if (!stricmp("custom", textBuffer1))
-        {
-            varCustom = true;
-        }
-        else if (!stricmp("setsound", textBuffer1))
-        {
-            varSetsound = true;
-        }
-        else if (!stricmp("demo", textBuffer1))
-        {
-            varDemo = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("detail", textBuffer1))
-        {
-            varDetail = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("cheat", textBuffer1))
-        {
-            varCheat = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("name", textBuffer1))
-        {
-            strcpy(textBuffer2, textBuffer4);
-            i++;
-        }
-        else if (!stricmp("level", textBuffer1))
-        {
-            varLevel = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("movie", textBuffer1))
-        {
-            varMovie = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("roll", textBuffer1))
-        {
-            varRoll = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("time", textBuffer1))
-        {
-            varTime = true;
-        }
-        else if (!stricmp("password", textBuffer1))
-        {
-            varPassword = StrToInt(textBuffer4);
-            i++;
-        }
-        else if (!stricmp("players", textBuffer1))
-        {
-            varPlayers = StrToInt(textBuffer4);
-            i++;
-        }
-        else
-        {
-            if (stricmp("session", textBuffer1))
-            {
-                printf("ERROR : Incorrect command : %d\n", i);
-                result2 = -1;
-                result = -1;
-                break;
-            }
-            strcpy(textBuffer3, textBuffer4);
-            i++;
-        }
-    }
-    if (result != -1)
-    {
-        if (varNetwork)
-        {
-            InitNetwork_43270_435B0();
-            varNetwork = false;
-        }
-        if (varVfx)
-        {
-            if (InitVfx_5AF50_5B460())
-            {
-                str_AE400_AE3F0->var_u8_8606 = 1;
-                byte_90B23 |= 8;
-                printf("VFX\n");
-            }
-        }
-        if (varDigijoy)
-        {
-            InitDigijoy_3F7D0_3FB10(textBuffer4);
-            if (byte_B7700_B76F0)
-                byte_90B23 |= 2u;
-        }
-        if (varAnojoy)
-        {
-            InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
-            if (byte_B7700_B76F0)
-            {
-                byte_B7700_B76F0 = 1;
-                byte_90B23 |= 1u;
-            }
-        }
-        if (neverRun)
-        {
-            InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
-            if (byte_B7700_B76F0)
-            {
-                byte_B7700_B76F0 = 1;
-                byte_90B23 |= 0x20u;
-            }
-        }
-        dword_12F080_12F070 = (int)malloc_425C0_42900(256);
-        str_AE400_AE3F0 = (Type_str_AE400_AE3F0*)malloc_42540_42880(232713);
-        str_AE408_AE3F8 = (Type_str_AE408_AE3F8*)malloc_42540_42880(36478);
-        str_AE400_AE3F0->var_u8_8621 = 1;
-        str_AE400_AE3F0->var_u8_8621 = 1;
-        str_AE400_AE3F0->var_u8_8622 = 1;
-        str_AE400_AE3F0->var_u8_8623 = 1;
-        str_AE400_AE3F0->var_u8_8624 = 1;
-        str_AE400_AE3F0->var_u8_8625 = 1;
-        str_AE400_AE3F0->var_u8_8626 = 1;
-        str_AE400_AE3F0->var_u8_8627 = 1;
-        str_AE400_AE3F0->var_u8_8628 = 1;
-        str_AE400_AE3F0->var_u8_8629 = 1;
-        str_AE400_AE3F0->var_u8_8630 = 1;
-        str_AE400_AE3F0->var_u8_8631 = 1;
-        sub_19470();
-        if (str_AE408_AE3F8->var_u8_8)
-        {
-            str_AE400_AE3F0->var_u8_8597 = 1;
-            str_AE400_AE3F0->var_u8_8599 = 1;
-        }
-        else
-        {
-            str_AE400_AE3F0->var_u8_8597 = 0;
-            str_AE400_AE3F0->var_u8_8599 = 0;
-        }
-        str_AE400_AE3F0->var_u8_8598 = 1;
-        str_AE400_AE3F0->var_u8_8602 = 1;
-        str_AE400_AE3F0->var_u8_8601 = 1;
-        str_AE400_AE3F0->var_u8_8600 = 40;
-        str_AE400_AE3F0->var_u16_10 = varPlayers;
-        strcpy(str_AE400_AE3F0->textBuffer_117, textBuffer3);
-        str_AE408_AE3F8->var_u8_29 = byte_A9058;
-        if (!varDetail)
-        {
-            str_AE400_AE3F0->var_u8_8597 = 0;
-            str_AE400_AE3F0->var_u8_8599 = 0;
-            str_AE400_AE3F0->var_u8_8598 = 0;
-            str_AE400_AE3F0->var_u8_8600 = 40;
-        }
-        if (varDemo)
-        {
-            switch (varDemo)
-            {
-            case 1:
-                str_AE400_AE3F0->var_u8_1 |= 2u;
-                break;
-            case 2:
-                str_AE400_AE3F0->var_u8_1 |= 4u;
-                break;
-            case 3:
-                str_AE400_AE3F0->var_u8_1 |= 8u;
-                break;
-            case 4:
-                str_AE400_AE3F0->var_u8_1 |= 0x10u;
-                break;
-            case 5:
-                str_AE400_AE3F0->var_u8_1 |= 0x20u;
-                break;
-            default:
-                break;
-            }
-            str_AE400_AE3F0->var_u8_1 |= 1u;
-        }
-        if (varTime)
-            str_AE408_AE3F8->var_u8_0 |= 0x40u;
-        if (varCustom)
-            str_AE400_AE3F0->var_u8_1 |= 1u;
-        if (varHelp)
-            result = -1;
-        if (varNetwork)
-        {
-            if (str_AE400_AE3F0->var_u16_10 > 1u)
-            {
-                str_AE400_AE3F0->var_u16_8 = sub_43430_43770(str_AE400_AE3F0->textBuffer_117, str_AE400_AE3F0->var_u16_10);
-                if (str_AE400_AE3F0->var_u16_8 >= 0)
-                    str_AE408_AE3F8->var_u8_0 |= 0x10u;
-                else
-                    str_AE400_AE3F0->var_u16_8 = 0;
-            }
-            str_AE400_AE3F0->var_u8_1 |= 1u;
-        }
-        if (neverRun2)
-        {
-            varSome = 8;
-            varSetsound = false;
-            str_AE408_AE3F8->var_u8_0 |= 8;
-        }
-        str_AE400_AE3F0->str_13347[str_AE400_AE3F0->var_u16_8].var_u32_13347 = varCheat;
-        //*(_DWORD*)(2049 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 13347) = varCheat;
-        str_AE408_AE3F8->var_u16_17 = varLevel;
-        if (varMovie)
-            str_AE408_AE3F8->var_u16_13 = varMovie;
-        if (varRoll)
-        {
-            str_AE408_AE3F8->var_u16_13 = 0;
-            str_AE408_AE3F8->var_u16_15 = varRoll;
-            str_AE408_AE3F8->var_u8_0 |= 0x120;
-        }
-        if (origDebug_AE45A_AE44A)
-        {
-            origDebug_AE45A_AE44A = 0;
-            str_AE408_AE3F8->var_u8_0 |= 0x80u;
-        }
-        str_AE408_AE3F8->var_u32_25 = varPassword;
-        if (result != -1)
-            word_12F02E_12F01E = varSome;
-    }
-    return result;
+	char textBuffer4[32];
+	char textBuffer1[32];
+	char textBuffer2[32];
+	char textBuffer3[32];
+	char result2 = 0;
+	char firstChar = 0;
+	char result = 0;
+	bool varHelp = false;
+	bool varCustom = false;
+	bool varNetwork = false;
+	bool neverRun2 = false;
+	int varSome = 1;
+	bool varSetsound = false;
+	int varDetail = 1;
+	int varCheat = 0;
+	int varLevel = 0;
+	int varMovie = 0;
+	int varRoll = 0;
+	bool varTime = false;
+	int varPassword = 0;
+	bool varVfx = false;
+	int varDemo = 0;
+	origDebug_AE45A_AE44A = 0;
+	int varPlayers = 2;
+	bool varDigijoy = false;
+	bool varAnojoy = false;
+	strcpy(textBuffer2, "PLAYER");
+	strcpy(textBuffer3, "CARPET");
+	bool neverRun = 0;
+	for (int i = 1; i < argc; i++)
+	{
+		firstChar = argv[i][0];
+		if (firstChar != '-' && firstChar != '/')
+		{
+			printf("ERROR : Incorrect command : %d\n", i);
+			result = -1;
+			break;
+		}
+		strcpy(textBuffer1, &argv[i][1]);
+		textBuffer4[0] = 0;
+		if (i + 1 < argc)
+		{
+			strcpy(textBuffer4, &argv[i + 1][0]);
+		}
+		if (!stricmp("digijoy", textBuffer1))
+		{
+			varDigijoy = true;
+		}
+		else if (!stricmp("anojoy", textBuffer1))
+		{
+			varAnojoy = true;
+		}
+		else if (!stricmp("anojoy4", textBuffer1))
+		{
+			varAnojoy = true;
+		}
+		else if (!stricmp("vfx", textBuffer1))
+		{
+			varVfx = true;
+		}
+		else if (!stricmp("help", textBuffer1))
+		{
+			varHelp = true;
+		}
+		else if (!stricmp("debug", textBuffer1))
+		{
+			origDebug_AE45A_AE44A = 1;
+		}
+		else if (!stricmp("network", textBuffer1))
+		{
+			varNetwork = true;
+		}
+		else if (!stricmp("custom", textBuffer1))
+		{
+			varCustom = true;
+		}
+		else if (!stricmp("setsound", textBuffer1))
+		{
+			varSetsound = true;
+		}
+		else if (!stricmp("demo", textBuffer1))
+		{
+			varDemo = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("detail", textBuffer1))
+		{
+			varDetail = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("cheat", textBuffer1))
+		{
+			varCheat = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("name", textBuffer1))
+		{
+			strcpy(textBuffer2, textBuffer4);
+			i++;
+		}
+		else if (!stricmp("level", textBuffer1))
+		{
+			varLevel = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("movie", textBuffer1))
+		{
+			varMovie = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("roll", textBuffer1))
+		{
+			varRoll = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("time", textBuffer1))
+		{
+			varTime = true;
+		}
+		else if (!stricmp("password", textBuffer1))
+		{
+			varPassword = StrToInt(textBuffer4);
+			i++;
+		}
+		else if (!stricmp("players", textBuffer1))
+		{
+			varPlayers = StrToInt(textBuffer4);
+			i++;
+		}
+		else
+		{
+			if (stricmp("session", textBuffer1))
+			{
+				printf("ERROR : Incorrect command : %d\n", i);
+				result2 = -1;
+				result = -1;
+				break;
+			}
+			strcpy(textBuffer3, textBuffer4);
+			i++;
+		}
+	}
+	if (result != -1)
+	{
+		if (varNetwork)
+		{
+			InitNetwork_43270_435B0();
+			varNetwork = false;
+		}
+		if (varVfx)
+		{
+			if (InitVfx_5AF50_5B460())
+			{
+				str_AE400_AE3F0->var_u8_8606 = 1;
+				byte_90B23 |= 8;
+				printf("VFX\n");
+			}
+		}
+		if (varDigijoy)
+		{
+			InitDigijoy_3F7D0_3FB10(textBuffer4);
+			if (byte_B7700_B76F0)
+				byte_90B23 |= 2u;
+		}
+		if (varAnojoy)
+		{
+			InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
+			if (byte_B7700_B76F0)
+			{
+				byte_B7700_B76F0 = 1;
+				byte_90B23 |= 1u;
+			}
+		}
+		if (neverRun)
+		{
+			InitAnojoy_3F820_sub_3FB60(firstChar, textBuffer4[0], textBuffer4[1], textBuffer4[2], textBuffer4[3]);
+			if (byte_B7700_B76F0)
+			{
+				byte_B7700_B76F0 = 1;
+				byte_90B23 |= 0x20u;
+			}
+		}
+		dword_12F080_12F070 = malloc_425C0_42900(256);
+		str_AE400_AE3F0 = (Type_str_AE400_AE3F0*)malloc_42540_42880(232713);
+		str_AE408_AE3F8 = (Type_str_AE408_AE3F8*)malloc_42540_42880(36478);
+		str_AE400_AE3F0->var_u8_8621 = 1;
+		str_AE400_AE3F0->var_u8_8621 = 1;
+		str_AE400_AE3F0->var_u8_8622 = 1;
+		str_AE400_AE3F0->var_u8_8623 = 1;
+		str_AE400_AE3F0->var_u8_8624 = 1;
+		str_AE400_AE3F0->var_u8_8625 = 1;
+		str_AE400_AE3F0->var_u8_8626 = 1;
+		str_AE400_AE3F0->var_u8_8627 = 1;
+		str_AE400_AE3F0->var_u8_8628 = 1;
+		str_AE400_AE3F0->var_u8_8629 = 1;
+		str_AE400_AE3F0->var_u8_8630 = 1;
+		str_AE400_AE3F0->var_u8_8631 = 1;
+		sub_19470();
+		if (str_AE408_AE3F8->var_u8_8)
+		{
+			str_AE400_AE3F0->var_u8_8597 = 1;
+			str_AE400_AE3F0->var_u8_8599 = 1;
+		}
+		else
+		{
+			str_AE400_AE3F0->var_u8_8597 = 0;
+			str_AE400_AE3F0->var_u8_8599 = 0;
+		}
+		str_AE400_AE3F0->var_u8_8598 = 1;
+		str_AE400_AE3F0->var_u8_8602 = 1;
+		str_AE400_AE3F0->var_u8_8601 = 1;
+		str_AE400_AE3F0->var_u8_8600 = 40;
+		str_AE400_AE3F0->var_u16_10 = varPlayers;
+		strcpy(str_AE400_AE3F0->textBuffer_117, textBuffer3);
+		str_AE408_AE3F8->var_u8_29 = byte_A9058;
+		if (!varDetail)
+		{
+			str_AE400_AE3F0->var_u8_8597 = 0;
+			str_AE400_AE3F0->var_u8_8599 = 0;
+			str_AE400_AE3F0->var_u8_8598 = 0;
+			str_AE400_AE3F0->var_u8_8600 = 40;
+		}
+		if (varDemo)
+		{
+			switch (varDemo)
+			{
+			case 1:
+				str_AE400_AE3F0->var_u8_1 |= 2u;
+				break;
+			case 2:
+				str_AE400_AE3F0->var_u8_1 |= 4u;
+				break;
+			case 3:
+				str_AE400_AE3F0->var_u8_1 |= 8u;
+				break;
+			case 4:
+				str_AE400_AE3F0->var_u8_1 |= 0x10u;
+				break;
+			case 5:
+				str_AE400_AE3F0->var_u8_1 |= 0x20u;
+				break;
+			default:
+				break;
+			}
+			str_AE400_AE3F0->var_u8_1 |= 1u;
+		}
+		if (varTime)
+			str_AE408_AE3F8->var_u8_0 |= 0x40u;
+		if (varCustom)
+			str_AE400_AE3F0->var_u8_1 |= 1u;
+		if (varHelp)
+			result = -1;
+		if (varNetwork)
+		{
+			if (str_AE400_AE3F0->var_u16_10 > 1u)
+			{
+				str_AE400_AE3F0->var_u16_8 = sub_43430_43770(str_AE400_AE3F0->textBuffer_117, str_AE400_AE3F0->var_u16_10);
+				if (str_AE400_AE3F0->var_u16_8 >= 0)
+					str_AE408_AE3F8->var_u8_0 |= 0x10u;
+				else
+					str_AE400_AE3F0->var_u16_8 = 0;
+			}
+			str_AE400_AE3F0->var_u8_1 |= 1u;
+		}
+		if (neverRun2)
+		{
+			varSome = 8;
+			varSetsound = false;
+			str_AE408_AE3F8->var_u8_0 |= 8;
+		}
+		str_AE400_AE3F0->str_13347[str_AE400_AE3F0->var_u16_8].var_u32_13347 = varCheat;
+		//*(_DWORD*)(2049 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 13347) = varCheat;
+		str_AE408_AE3F8->var_u16_17 = varLevel;
+		if (varMovie)
+			str_AE408_AE3F8->var_u16_13 = varMovie;
+		if (varRoll)
+		{
+			str_AE408_AE3F8->var_u16_13 = 0;
+			str_AE408_AE3F8->var_u16_15 = varRoll;
+			str_AE408_AE3F8->var_u8_0 |= 0x120;
+		}
+		if (origDebug_AE45A_AE44A)
+		{
+			origDebug_AE45A_AE44A = 0;
+			str_AE408_AE3F8->var_u8_0 |= 0x80u;
+		}
+		str_AE408_AE3F8->var_u32_25 = varPassword;
+		if (result != -1)
+			word_12F02E_12F01E = varSome;
+	}
+	return result;
 }
 
 //----- (00035AA0) --------------------------------------------------------
@@ -38021,7 +38009,7 @@ void sub_357C0_35B80()
     byte_90AD4 = 1;
     if ( (*(_BYTE *)dword_AE408_AE3F8() & 0x48) != 0 )
     {
-      sub_5AD10_5B220((char*)aSoundDisabled);
+      DrawTextLine_5AD10_5B220((char*)aSoundDisabled);
       byte_939CD = 0;
       byte_939E5 = 0;
       byte_939CC = 0;
@@ -38029,9 +38017,9 @@ void sub_357C0_35B80()
     }
     else
     {
-      sub_5AD10_5B220((char*)aInitialiseMusi);
+      DrawTextLine_5AD10_5B220((char*)aInitialiseMusi);
       sub_3C8B0();
-      sub_5AD10_5B220((char*)aInitialiseSoun);
+      DrawTextLine_5AD10_5B220((char*)aInitialiseSoun);
       sub_3C800_sub_3CB40();
     }
     if ( byte_939E4 || byte_939CC )
@@ -44514,33 +44502,33 @@ char sub_3E440(__int16 a1, void *a2)
   if ( a1 < 1000 )
   {
     sprintf(v9, "%s%s/%s/ddlevels.dat", &aLc_0[1], aCarpetCd_0, aLevels_0);
-    v3 = sub_5D2F0((int)v9, 512);
+    v3 = (int)DataFileIO::CreateOrOpenFile((char*)v9, 512);
     if ( v3 == -1 )
     {
-      v3 = sub_5D2F0((int)aLevelsDdlevels, 512);
+      v3 = (int)DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels, 512);
       if ( v3 == -1 )
         return 0;
     }
     sprintf(v9, "%s%s/%s/ddlevels.tab", &aLc_0[1], aCarpetCd_0, aLevels_0);
-    v5 = sub_5D2F0((int)v9, 512);
+    v5 = (int)DataFileIO::CreateOrOpenFile((char*)v9, 512);
     if ( v5 == -1 )
     {
-      v5 = sub_5D2F0((int)aLevelsDdlevels_0, 512);
+      v5 = (int)DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels_0, 512);
       if ( v5 == -1 )
       {
-        sub_5D360(v3);
+        DataFileIO::Close(v3);
         return 0;
       }
     }
-    sub_5D0E0(v5, v2, 4000);
+    DataFileIO::Read(v5, v2, 4000);
     v6 = *(_DWORD *)(v2 + 4 * a1);
     v7 = *(_DWORD *)(v2 + 4 * a1 + 4);
-    sub_5D360(v5);
+    DataFileIO::Close(v5);
     v8 = v7 - v6;
-    if ( filelength )
+    if ( DataFileIO::FileLengthBytes )
     {
       sub_62B30_63040(v3, v6, 0);
-      sub_5D0E0(v3, dword_AE3EC, v8);
+      DataFileIO::Read(v3, dword_AE3EC, v8);
       if ( sub_63070(dword_AE3EC, (char *)dword_AE3EC) < 0 )
       {
         printf("ERROR decompressing levels.dat\n");
@@ -44549,14 +44537,14 @@ char sub_3E440(__int16 a1, void *a2)
       qmemcpy(a2, (const void *)dword_AE3EC, 0x979Cu);
       memset((void*)dword_AE3EC, 0, 38812);
     }
-    sub_5D360(v3);
+    DataFileIO::Close(v3);
   }
   return 1;
 }
 // 5D113: using guessed type _DWORD printf(const char *, ...);
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
-// 62FF2: using guessed type _DWORD filelength(_DWORD);
+// 62FF2: using guessed type _DWORD DataFileIO::FileLengthBytes(_DWORD);
 // AE3EC: using guessed type int dword_AE3EC;
 
 //----- (0003E690) --------------------------------------------------------
@@ -44632,10 +44620,10 @@ char sub_3E7A0(__int16 a1)
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "%s/gam%05d.dat", aMovie_0, a1);
-  v1 = sub_5D2F0((int)v3, 512);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
   if ( v1 == -1 )
     return 0;
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 1;
 }
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
@@ -44651,14 +44639,14 @@ char sub_3E7F0(__int16 a1)
   if ( result )
   {
     sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-    v2 = sub_5D2F0((int)v3, 512);
-    sub_5D0E0(v2, (int)byte_CC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_DC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_EC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_FC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-    sub_5D0E0(v2, (int)byte_B5D30, 4802);
-    sub_5D360(v2);
+    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
+    DataFileIO::Read(v2, (int)byte_CC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_DC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_EC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_FC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
+    DataFileIO::Read(v2, (int)byte_B5D30, 4802);
+    DataFileIO::Close(v2);
     return 1;
   }
   return result;
@@ -44674,14 +44662,14 @@ char sub_3E8C0(__int16 a1)
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-  v1 = sub_5D2F0((int)v3, 546);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
   sub_633E0(v1, (int)byte_CC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_DC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_EC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_FC1D0, (int)sub_10000);
   sub_633E0(v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
   sub_633E0(v1, (int)byte_B5D30, 4802);
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 0;
 }
 // 10000: using guessed type void sub_10000();
@@ -44695,10 +44683,10 @@ char sub_3E980(__int16 a1)
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-  v1 = sub_5D2F0((int)v3, 512);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
   if ( v1 == -1 )
     return 0;
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 1;
 }
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
@@ -44776,10 +44764,10 @@ char sub_3EAE0(__int16 a1)
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/gam%05d.dat", "save", a1);
-  v1 = sub_5D2F0((int)v3, 512);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
   if ( v1 == -1 )
     return 0;
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 1;
 }
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
@@ -44795,14 +44783,14 @@ char sub_3EB30(__int16 a1)
   if ( result )
   {
     sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-    v2 = sub_5D2F0((int)v3, 512);
-    sub_5D0E0(v2, (int)byte_CC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_DC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_EC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)byte_FC1D0, (int)sub_10000);
-    sub_5D0E0(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-    sub_5D0E0(v2, (int)byte_B5D30, 4802);
-    sub_5D360(v2);
+    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
+    DataFileIO::Read(v2, (int)byte_CC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_DC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_EC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)byte_FC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
+    DataFileIO::Read(v2, (int)byte_B5D30, 4802);
+    DataFileIO::Close(v2);
     return 1;
   }
   return result;
@@ -44818,14 +44806,14 @@ char sub_3EC00(__int16 a1)
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-  v1 = sub_5D2F0((int)v3, 546);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
   sub_633E0(v1, (int)byte_CC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_DC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_EC1D0, (int)sub_10000);
   sub_633E0(v1, (int)byte_FC1D0, (int)sub_10000);
   sub_633E0(v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
   sub_633E0(v1, (int)byte_B5D30, 4802);
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 0;
 }
 // 10000: using guessed type void sub_10000();
@@ -44839,10 +44827,10 @@ char sub_3ECC0(__int16 a1)
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-  v1 = sub_5D2F0((int)v3, 512);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
   if ( v1 == -1 )
     return 0;
-  sub_5D360(v1);
+  DataFileIO::Close(v1);
   return 1;
 }
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
@@ -44866,7 +44854,7 @@ void sub_3ED10(_BYTE *a1)
     if ( !*(_DWORD *)(dword_AE408_AE3F8() + 9) && !((int)&a1[-dword_AE400_AE3F0() - 29715] / 10) )
     {
       sprintf(v10, "%s/mvi%05d.dat", aMovie_0, *(__int16 *)(dword_AE408_AE3F8() + 13));
-      v1 = sub_5D2F0((int)v10, 512);
+      v1 = (int)DataFileIO::CreateOrOpenFile((char*)v10, 512);
       v2 = dword_AE408_AE3F8();
       *(_DWORD *)(dword_AE408_AE3F8() + 9) = v1;
       if ( v1 == -1 )
@@ -44891,7 +44879,7 @@ void sub_3ED10(_BYTE *a1)
         *a1 = 0;
         return;
       }
-      if ( sub_5D0E0(v4, (int)a1, 10) != 10 )
+      if ( DataFileIO::Read(v4, (int)a1, 10) != 10 )
       {
         sub_3EF90();
         *(_WORD *)(dword_AE400_AE3F0() + 2049 * *(__int16 *)(dword_AE400_AE3F0() + 8) + 13325) = 8;
@@ -44913,7 +44901,7 @@ LABEL_25:
     if ( !*(_DWORD *)(dword_AE408_AE3F8() + 9) && !((int)&a1[-dword_AE400_AE3F0() - 29715] / 10) )
     {
       sprintf(v10, "%s/mvi%05d.dat", aMovie_0, *(__int16 *)(dword_AE408_AE3F8() + 13));
-      v5 = sub_5D2F0((int)v10, 546);
+      v5 = (int)DataFileIO::CreateOrOpenFile((char*)v10, 546);
       v6 = dword_AE408_AE3F8();
       *(_DWORD *)(dword_AE408_AE3F8() + 9) = v5;
       if ( v5 == -1 )
@@ -44955,7 +44943,7 @@ _BYTE *sub_3EF90()
   result = (_BYTE *)dword_AE408_AE3F8();
   if ( *(_DWORD *)(dword_AE408_AE3F8() + 9) )
   {
-    sub_5D360(*(_DWORD *)(dword_AE408_AE3F8() + 9));
+    DataFileIO::Close(*(_DWORD *)(dword_AE408_AE3F8() + 9));
     result = (_BYTE *)dword_AE408_AE3F8();
     v1 = *(_BYTE *)dword_AE408_AE3F8();
     *(_DWORD *)(dword_AE408_AE3F8() + 9) = 0;
@@ -45007,13 +44995,13 @@ int sub_3EEA0_3F1E0(const char *a1, char *a2)
   int v3; // ebx
   int v4; // esi
 
-  result = sub_5D2F0((int)a1, 512);
+  result = (int)DataFileIO::CreateOrOpenFile((char*)a1, 512);
   v3 = result;
   if ( result != -1 )
   {
-    v4 = filelength(result);
-    sub_5D0E0(v3, (int)a2, v4);
-    sub_5D360(v3);
+    v4 = DataFileIO::FileLengthBytes(result);
+    DataFileIO::Read(v3, (int)a2, v4);
+    DataFileIO::Close(v3);
     result = sub_63070((int)a2, a2);
     if ( result >= 0 )
     {
@@ -45029,7 +45017,7 @@ int sub_3EEA0_3F1E0(const char *a1, char *a2)
   return result;
 }
 // 5D113: using guessed type _DWORD printf(const char *, ...);
-// 62FF2: using guessed type _DWORD filelength(_DWORD);
+// 62FF2: using guessed type _DWORD DataFileIO::FileLengthBytes(_DWORD);
 
 //----- (0003F260) --------------------------------------------------------
 int sub_3F260()
@@ -45070,28 +45058,28 @@ char sub_3F290(char *a1, char *a2, const char *a3)
     return 1;
   sprintf(v15, "%s/%s.tab", a1, a3);
   sprintf(v16, "%s/%s.tab", a2, a3);
-  v3 = sub_5D2F0((int)v15, 512);
+  v3 = (int)DataFileIO::CreateOrOpenFile((char*)v15, 512);
   if ( v3 == -1 )
     return 3;
-  v4 = sub_5D2F0((int)v16, 546);
+  v4 = (int)DataFileIO::CreateOrOpenFile((char*)v16, 546);
   if ( v4 == -1 )
     return 3;
-  v6 = filelength(v3);
-  v7 = sub_5D0E0(v3, dword_12EFE4, v6);
+  v6 = DataFileIO::FileLengthBytes(v3);
+  v7 = DataFileIO::Read(v3, dword_12EFE4, v6);
   sub_633E0(v4, dword_12EFE4, v7);
-  sub_5D360(v3);
-  sub_5D360(v4);
+  DataFileIO::Close(v3);
+  DataFileIO::Close(v4);
   sprintf(v15, "%s/%s.dat", a1, a3);
   sprintf(v16, "%s/%s.dat", a2, a3);
-  v8 = sub_5D2F0((int)v15, 512);
+  v8 = (int)DataFileIO::CreateOrOpenFile((char*)v15, 512);
   v9 = v8;
   if ( v8 != -1 )
   {
-    v18 = sub_5D2F0((int)v16, 546);
+    v18 = (int)DataFileIO::CreateOrOpenFile((char*)v16, 546);
     if ( v18 != -1 )
     {
       v10 = 0;
-      v11 = filelength(v8);
+      v11 = DataFileIO::FileLengthBytes(v8);
       v19 = v11;
       while ( v11 )
       {
@@ -45099,7 +45087,7 @@ char sub_3F290(char *a1, char *a2, const char *a3)
           v12 = v11;
         else
           v12 = 64000;
-        v13 = sub_5D0E0(v9, dword_12EFE4, v12);
+        v13 = DataFileIO::Read(v9, dword_12EFE4, v12);
         v11 -= v13;
         sub_633E0(v18, dword_12EFE4, v13);
         v10 += v13;
@@ -45110,8 +45098,8 @@ char sub_3F290(char *a1, char *a2, const char *a3)
         sprintf(v17, "%d%c", (__int16)v14, 37);
         outtext((uint32)v17);
       }
-      sub_5D360(v9);
-      sub_5D360(v18);
+      DataFileIO::Close(v9);
+      DataFileIO::Close(v18);
     }
   }
   memset((void*)dword_12EFE4, 0, 64000);
@@ -45119,7 +45107,7 @@ char sub_3F290(char *a1, char *a2, const char *a3)
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
-// 62FF2: using guessed type _DWORD filelength(_DWORD);
+// 62FF2: using guessed type _DWORD DataFileIO::FileLengthBytes(_DWORD);
 // 7A1B6: using guessed type _DWORD settextposition(_DWORD, _DWORD);
 // 7A41E: using guessed type _DWORD outtext(_DWORD);
 // B76E0: using guessed type int dword_B76E0;
@@ -46083,296 +46071,40 @@ char sub_3FCA0_3FFE0(
 // 12EFD4: using guessed type __int16 word_12EFD4;
 // 12F01E: using guessed type __int16 word_12F02E_12F01E;
 
-void sub_40440_40780(Pathstruct* pathstruct)//_211780
+void sub_40440_40780(Pathstruct* pathstruct)//211440_211780
 {
-    char input[20];
-
-    sub_63010_63520();
-    if (pathstruct->colorPalette_var28)
-    {
-        for (int i = 0; pathstruct[i].colorPalette_var28; i++)
-            sub_634A0_639B0((char*)&pathstruct[i]);
-    }
-    if (pathstruct->colorPalette_var28)
-    {
-        for (int i = 0; pathstruct[i].colorPalette_var28; i++)
-        {
-            int compVar = sub_634E0_639F0((char*)&pathstruct[i]);
-            if (compVar < 0)
-            {
-                sub_319A0_319E0((unsigned __int8*)dword_AE428_AE418);
-                printf("ERROR: Allocation %s.\n", &pathstruct[i]);
-                printf("Press return to continue\n");
-                gets_s(input);
-            }
-            else if (!compVar)
-            {
-                sub_319A0_319E0((unsigned __int8*)dword_AE428_AE418);
-                printf("ERROR: File %s.\n", &pathstruct[i]);
-                printf("Press return to continue\n");
-                gets_s(input);
-            }
-        }
-    }
+	char input[20];
+	sub_63010_63520();
+	if (pathstruct->colorPalette_var28)
+	{
+		for (int i = 0; pathstruct[i].colorPalette_var28; i++)
+			sub_634A0_639B0(&pathstruct[i]);
+	}
+	if (pathstruct->colorPalette_var28)
+	{
+		for (int i = 0; pathstruct[i].colorPalette_var28; i++)
+		{
+			int compVar = sub_634E0_639F0(&pathstruct[i]);
+			if (compVar < 0)
+			{
+				sub_319A0_319E0((unsigned __int8*)dword_AE428_AE418);
+				printf("ERROR: Allocation %s.\n", &pathstruct[i]);
+				printf("Press return to continue\n");
+				gets_s(input);
+			}
+			else if (!compVar)
+			{
+				sub_319A0_319E0((unsigned __int8*)dword_AE428_AE418);
+				printf("ERROR: File %s.\n", &pathstruct[i]);
+				printf("Press return to continue\n");
+				gets_s(input);
+			}
+		}
+	}
 }
 
-char inbytes[] = {
-0x2A,0x53,0x65,0x61,0x72,0x63,0x68,0x44,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xE4,0xC3,0x26,0x00,
-0x04,0xC4,0x26,0x00,0x00,0x10,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,
-0x2F,0x62,0x75,0x69,0x6C,0x64,0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x20,0xC4,0x26,0x00,0x28,0xC4,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x62,0x75,0x69,
-0x6C,0x64,0x31,0x2D,0x30,0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x30,0xC4,0x26,0x00,0xFC,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x66,0x6F,0x6E,0x74,0x30,0x2E,0x64,
-0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x68,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x64,0x61,0x74,0x61,0x2F,0x66,0x6F,0x6E,0x74,0x30,0x2E,0x74,0x61,0x62,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xA8,0xC3,0x26,0x00,
-0x88,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,
-0x2F,0x66,0x6F,0x6E,0x74,0x31,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x6C,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x66,0x6F,0x6E,
-0x74,0x31,0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0xAC,0xC3,0x26,0x00,0x8C,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x74,0x6D,0x61,0x70,0x73,0x31,0x2D,
-0x30,0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x34,0xB7,0x2E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x2A,0x50,0x61,0x6C,0x44,0x61,0x74,0x61,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x14,0xC4,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x2A,0x50,0x61,0x6C,
-0x4D,0x65,0x6D,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x04,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x70,0x6F,0x69,
-0x6E,0x74,0x65,0x72,0x73,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x38,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x70,0x6F,0x69,0x6E,0x74,0x65,0x72,
-0x73,0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x40,0xC4,0x26,0x00,0x2C,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x64,0x61,0x74,0x61,0x2F,0x70,0x61,0x6C,0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x18,0xC4,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x65,0x74,0x65,
-0x78,0x74,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x0C,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x64,0x61,0x74,0x61,0x2F,0x66,0x74,0x65,0x78,0x74,0x2E,0x64,0x61,0x74,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x0C,0xC4,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x67,0x74,0x65,
-0x78,0x74,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x0C,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x64,0x61,0x74,0x61,0x2F,0x69,0x74,0x65,0x78,0x74,0x2E,0x64,0x61,0x74,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x0C,0xC4,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x62,0x6C,0x6B,
-0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0xE0,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x64,0x61,0x74,0x61,0x2F,0x62,0x6C,0x6B,0x31,0x2D,0x31,0x2E,0x64,0x61,0x74,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xE0,0xC3,0x26,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,
-0x2F,0x73,0x6B,0x79,0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xC8,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x2A,0x57,0x53,0x63,0x72,0x65,0x65,0x6E,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0xE4,0xCF,0x2E,0x00,0x00,0x00,0x00,0x00,0x80,0x15,0x01,0x00,0x00,0x00,0x00,0x00,
-0x2A,0x42,0x53,0x63,0x72,0x65,0x65,0x6E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xEC,0xC3,0x26,0x00,
-0x00,0x00,0x00,0x00,0x70,0x11,0x01,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,
-0x2F,0x6D,0x73,0x70,0x72,0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x34,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x6D,0x73,0x70,
-0x72,0x31,0x2D,0x30,0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x1C,0xC4,0x26,0x00,0x24,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x2A,0x57,0x53,0x63,0x72,0x65,0x65,0x6E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xE4,0xCF,0x2E,0x00,
-0x00,0x00,0x00,0x00,0x00,0xB0,0x04,0x00,0x00,0x00,0x00,0x00,0x2A,0x42,0x53,0x63,
-0x72,0x65,0x65,0x6E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xEC,0xC3,0x26,0x00,0x00,0x00,0x00,0x00,
-0x70,0x11,0x01,0x00,0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x68,0x73,0x70,
-0x72,0x31,0x2D,0x30,0x2E,0x64,0x61,0x74,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x34,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x64,0x61,0x74,0x61,0x2F,0x68,0x73,0x70,0x72,0x31,0x2D,0x30,
-0x2E,0x74,0x61,0x62,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x1C,0xC4,0x26,0x00,0x24,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x40,0xC4,0x26,0x00,
-0x2C,0xC4,0x26,0x00,0x38,0xC4,0x26,0x00,0xA8,0xC3,0x26,0x00,0x88,0xC3,0x26,0x00,
-0x68,0xC3,0x26,0x00,0xAC,0xC3,0x26,0x00,0x8C,0xC3,0x26,0x00,0x6C,0xC3,0x26,0x00,
-0x1C,0xC4,0x26,0x00,0x24,0xC4,0x26,0x00,0x34,0xC4,0x26,0x00,0x30,0xC4,0x26,0x00,
-0xFC,0xC3,0x26,0x00,0x20,0xC4,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-0x00,0x00,0x00,0x00,0xC8,0x7C,0x26,0x00,0xD4,0x7C,0x26,0x00,0xE0,0x7C,0x26,0x00,
-0xEC,0x7C,0x26,0x00,0xF8,0x7C,0x26,0x00,0x04,0x7D,0x26,0x00,0x10,0x7D,0x26,0x00,
-0x1C,0x7D,0x26,0x00,0x28,0x7D,0x26,0x00,0x34,0x7D,0x26,0x00,0x40,0x7D,0x26,0x00,
-0x4C,0x7D,0x26,0x00,0x58,0x7D,0x26,0x00,0x64,0x7D,0x26,0x00,0x74,0x7D,0x26,0x00,
-0x80,0x7D,0x26,0x00,0x8C,0x7D,0x26,0x00,0x9C,0x7D,0x26,0x00,0xAC,0x7D,0x26,0x00,
-0xBC,0x7D,0x26,0x00,0xCC,0x7D,0x26,0x00,0xD8,0x7D,0x26,0x00,0xE4,0x7D,0x26,0x00,
-0xF4,0x7D,0x26,0x00,0x00,0x7E,0x26,0x00,0x0C,0x7E,0x26,0x00,0x18,0x7E,0x26,0x00,
-0x28,0x7E,0x26,0x00,0x38,0x7E,0x26,0x00,0x48,0x7E,0x26,0x00,0x58,0x7E,0x26,0x00,
-0x64,0x7E,0x26,0x00,0x70,0x7E,0x26,0x00,0x7C,0x7E,0x26,0x00,0x88,0x7E,0x26,0x00,
-0x98,0x7E,0x26,0x00,0xA4,0x7E,0x26,0x00,0xB0,0x7E,0x26,0x00,0xBC,0x7E,0x26,0x00,
-0xCC,0x7E,0x26,0x00,0xD8,0x7E,0x26,0x00,0xE8,0x7E,0x26,0x00,0xF8,0x7E,0x26,0x00,
-0x04,0x7F,0x26,0x00,0x10,0x7F,0x26,0x00,0x1C,0x7F,0x26,0x00,0x2C,0x7F,0x26,0x00,
-0x38,0x7F,0x26,0x00,0x44,0x7F,0x26,0x00,0x54,0x7F,0x26,0x00,0x64,0x7F,0x26,0x00,
-0x6C,0x7F,0x26,0x00,0x78,0x7F,0x26,0x00,0x84,0x7F,0x26,0x00,0x90,0x7F,0x26,0x00,
-0x9C,0x7F,0x26,0x00,0xA4,0x7F,0x26,0x00,0xAC,0x7F,0x26,0x00,0xB4,0x7F,0x26,0x00,
-0xBC,0x7F,0x26,0x00,0xC4,0x7F,0x26,0x00,0xCC,0x7F,0x26,0x00,0xD4,0x7F,0x26,0x00,
-0xDC,0x7F,0x26,0x00,0xE4,0x7F,0x26,0x00,0xEC,0x7F,0x26,0x00,0xF0,0x7F,0x26,0x00,
-0xF8,0x7F,0x26,0x00,0x00,0x80,0x26,0x00,0x08,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,0x10,0x80,0x26,0x00,
-0x10,0x80,0x26,0x00,0x00,0x01,0x00,0x01,0x02,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-0xB7,0x71,0x7D,0x7A,0x9D,0x9A,0x07,0x5A,0x1D,0x1B,0xDD,0xDA,0x3C,0x39,0x10,0x0E,
-0x14,0x80,0x26,0x00,0x20,0x80,0x26,0x00,0x28,0x80,0x26,0x00,0x34,0x80,0x26,0x00,
-0x3C,0x80,0x26,0x00,0x44,0x80,0x26,0x00,0x4C,0x80,0x26,0x00,0x58,0x80,0x26,0x00,
-0x00,0x03,0x02,0x10,0x01,0x0E,0x04,0x0C,0x06,0x09,0x07,0x08,0x0F,0x12,0x11,0x13,
-0x0D,0x05,0x0B,0x0A,0x14,0x15,0x16,0x17,0x08,0x00,0x68,0x80,0x26,0x00,0x00,0x00,
-0xFA,0x00,0x00,0x01,0x00,0x00,0x0B,0x00,0x7C,0x80,0x26,0x00,0x00,0x00,0xFA,0x00,
-0x00,0x01,0x00,0x00,0x2E,0x00,0x98,0x80,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,
-0x00,0x00,0x26,0x00,0xAC,0x80,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x26,0x00,0xBC,0x80,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x26,0x00,
-0xD0,0x80,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x26,0x00,0xE4,0x80,
-0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x5E,0x00,0xF8,0x80,0x26,0x00,
-0x00,0x00,0xFA,0x00,0x00,0xFF,0x00,0x00,0x75,0x00,0x0C,0x81,0x26,0x00,0x00,0x00,
-0x96,0x00,0x00,0xFF,0x00,0x00,0x7F,0x00,0x24,0x81,0x26,0x00,0x00,0x00,0x32,0x00,
-0x02,0x01,0x00,0x00,0x7F,0x00,0x40,0x81,0x26,0x00,0x00,0x00,0x64,0x00,0x02,0x01,
-0x00,0x00,0x7F,0x00,0x5C,0x81,0x26,0x00,0x00,0x00,0x96,0x00,0x02,0x01,0x00,0x00,
-0x7F,0x00,0x78,0x81,0x26,0x00,0x00,0x00,0xC8,0x00,0x02,0x01,0x00,0x00,0x7F,0x00,
-0x94,0x81,0x26,0x00,0x00,0x00,0xFA,0x00,0x02,0x01,0x00,0x00,0x7F,0x00,0xB0,0x81,
-0x26,0x00,0x00,0x00,0x2C,0x01,0x02,0x01,0x00,0x00,0x7F,0x00,0xCC,0x81,0x26,0x00,
-0x00,0x00,0x5E,0x01,0x02,0x01,0x00,0x00,0x7F,0x00,0xE8,0x81,0x26,0x00,0x00,0x00,
-0x90,0x01,0x02,0x01,0x00,0x00,0x8B,0x00,0x04,0x82,0x26,0x00,0x00,0x00,0x96,0x00,
-0x00,0x01,0x00,0x00,0x76,0x00,0x1C,0x82,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,
-0x00,0x00,0x70,0x00,0x34,0x82,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,
-0x70,0x00,0x48,0x82,0x26,0x00,0x00,0x00,0xA5,0x00,0x00,0x01,0x00,0x00,0x70,0x00,
-0x5C,0x82,0x26,0x00,0x00,0x00,0xB9,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x70,0x82,
-0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x84,0x82,0x26,0x00,
-0x00,0x00,0xD2,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x98,0x82,0x26,0x00,0x00,0x00,
-0xD2,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0xAC,0x82,0x26,0x00,0x00,0x00,0xC8,0x00,
-0x00,0x01,0x00,0x00,0x70,0x00,0xC0,0x82,0x26,0x00,0x00,0x00,0xBE,0x00,0x00,0x01,
-0x00,0x00,0x70,0x00,0xD4,0x82,0x26,0x00,0x00,0x00,0xAA,0x00,0x00,0x01,0x00,0x00,
-0x70,0x00,0xE8,0x82,0x26,0x00,0x00,0x00,0xA0,0x00,0x00,0x01,0x00,0x00,0x70,0x00,
-0xFC,0x82,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x10,0x83,
-0x26,0x00,0x00,0x00,0x82,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x24,0x83,0x26,0x00,
-0x00,0x00,0x6E,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x38,0x83,0x26,0x00,0x00,0x00,
-0x5A,0x00,0x00,0x01,0x00,0x00,0x70,0x00,0x4C,0x83,0x26,0x00,0x00,0x00,0x46,0x00,
-0x00,0x01,0x00,0x00,0x70,0x00,0x60,0x83,0x26,0x00,0x00,0x00,0x3C,0x00,0x00,0x01,
-0x00,0x00,0x8D,0x00,0x74,0x83,0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x03,0x00,0x00,
-0x8F,0x00,0x8C,0x83,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x90,0x00,
-0xA0,0x83,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x91,0x00,0xB4,0x83,
-0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x93,0x00,0xC8,0x83,0x26,0x00,
-0x00,0x00,0x90,0x01,0x00,0x01,0x00,0x00,0x36,0x00,0xDC,0x83,0x26,0x00,0x00,0x00,
-0xC8,0x00,0x00,0x01,0x00,0x00,0x6E,0x00,0xF0,0x83,0x26,0x00,0x00,0x00,0xFA,0x00,
-0x00,0xFF,0x00,0x00,0x6F,0x00,0x04,0x84,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0xFF,
-0x00,0x00,0x97,0x00,0x18,0x84,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,
-0x00,0x00,0x30,0x84,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0xFF,0x00,0x00,0x7C,0x00,
-0x44,0x84,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,0x7D,0x00,0x58,0x84,
-0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,0x0E,0x00,0x70,0x84,0x26,0x00,
-0x00,0x00,0x2C,0x01,0x00,0x01,0x00,0x00,0x95,0x00,0x84,0x84,0x26,0x00,0x00,0x00,
-0x64,0x00,0x00,0x01,0x00,0x00,0x16,0x00,0x98,0x84,0x26,0x00,0x00,0x00,0x2C,0x01,
-0x00,0x01,0x00,0x00,0x77,0x00,0xAC,0x84,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,
-0x00,0x00,0x81,0x00,0xC4,0x84,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,
-0x73,0x00,0xE0,0x84,0x26,0x00,0x00,0x00,0x32,0x00,0x00,0xFF,0x00,0x00,0x73,0x00,
-0xE0,0x84,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,0x00,0x00,0x73,0x00,0xE0,0x84,
-0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x73,0x00,0xE0,0x84,0x26,0x00,
-0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x73,0x00,0xE0,0x84,0x26,0x00,0x00,0x00,
-0xFA,0x00,0x00,0x01,0x00,0x00,0x73,0x00,0xE0,0x84,0x26,0x00,0x00,0x00,0x2C,0x01,
-0x00,0x01,0x00,0x00,0x73,0x00,0xE0,0x84,0x26,0x00,0x00,0x00,0x5E,0x01,0x00,0x01,
-0x00,0x00,0x73,0x00,0xE0,0x84,0x26,0x00,0x00,0x00,0x90,0x01,0x00,0x01,0x00,0x00,
-0x98,0x00,0xF8,0x84,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x04,0x00,0x00,0x99,0x00,
-0x10,0x85,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x04,0x00,0x00,0x7A,0x00,0x28,0x85,
-0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x4E,0x00,0x40,0x85,0x26,0x00,
-0x00,0x00,0x64,0x00,0x00,0x01,0x00,0x00,0x7E,0x00,0x54,0x85,0x26,0x00,0x00,0x00,
-0x96,0x00,0x00,0x01,0x00,0x00,0x96,0x00,0x6C,0x85,0x26,0x00,0x00,0x00,0xC8,0x00,
-0x00,0xFF,0x00,0x00,0x94,0x00,0x7C,0x85,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,
-0x00,0x00,0x72,0x00,0x90,0x85,0x26,0x00,0x00,0x00,0x32,0x00,0x02,0xFF,0x00,0x00,
-0x72,0x00,0xA4,0x85,0x26,0x00,0x00,0x00,0x64,0x00,0x02,0x01,0x00,0x00,0x72,0x00,
-0xB8,0x85,0x26,0x00,0x00,0x00,0x96,0x00,0x02,0x01,0x00,0x00,0x72,0x00,0xCC,0x85,
-0x26,0x00,0x00,0x00,0xC8,0x00,0x02,0x01,0x00,0x00,0x72,0x00,0xE0,0x85,0x26,0x00,
-0x00,0x00,0xFA,0x00,0x02,0x01,0x00,0x00,0x72,0x00,0xF4,0x85,0x26,0x00,0x00,0x00,
-0x2C,0x01,0x02,0x01,0x00,0x00,0x72,0x00,0x08,0x86,0x26,0x00,0x00,0x00,0x5E,0x01,
-0x02,0x01,0x00,0x00,0x72,0x00,0x1C,0x86,0x26,0x00,0x00,0x00,0x90,0x01,0x02,0x01,
-0x00,0x00,0x46,0x00,0x30,0x86,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x80,0x00,0x44,0x86,0x26,0x00,0x00,0x00,0x5E,0x01,0x00,0x01,0x00,0x00,0x74,0x00,
-0x5C,0x86,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0xFF,0x00,0x00,0x71,0x00,0x74,0x86,
-0x26,0x00,0x00,0x00,0x96,0x00,0x03,0xFF,0x00,0x00,0x92,0x00,0x88,0x86,0x26,0x00,
-0x00,0x00,0x90,0x01,0x00,0xFF,0x00,0x00,0x9B,0x00,0x9C,0x86,0x26,0x00,0x00,0x00,
-0x96,0x00,0x00,0xFF,0x00,0x00,0x9A,0x00,0xB4,0x86,0x26,0x00,0x00,0x00,0x96,0x00,
-0x00,0xFF,0x00,0x00,0x7B,0x00,0xD0,0x86,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,
-0x00,0x00,0x8C,0x00,0xEC,0x86,0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x04,0x00,0x00,
-0x9C,0x00,0x00,0x87,0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x04,0x00,0x00,0x56,0x00,
-0x14,0x87,0x26,0x00,0x00,0x00,0xFA,0x00,0x00,0x01,0x00,0x00,0x1E,0x00,0x28,0x87,
-0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,0x00,0x00,0x3E,0x00,0x3C,0x87,0x26,0x00,
-0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,0x3E,0x00,0x50,0x87,0x26,0x00,0x00,0x00,
-0x96,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0x64,0x87,0x26,0x00,0x00,0x00,0x96,0x00,
-0x00,0x01,0x00,0x00,0x82,0x00,0x7C,0x87,0x26,0x00,0x00,0x00,0xA5,0x00,0x00,0x01,
-0x00,0x00,0x82,0x00,0x94,0x87,0x26,0x00,0x00,0x00,0xB9,0x00,0x00,0x01,0x00,0x00,
-0x82,0x00,0xAC,0x87,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x82,0x00,
-0xC4,0x87,0x26,0x00,0x00,0x00,0xD2,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0xDC,0x87,
-0x26,0x00,0x00,0x00,0xD2,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0xF4,0x87,0x26,0x00,
-0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0x0C,0x88,0x26,0x00,0x00,0x00,
-0xBE,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0x24,0x88,0x26,0x00,0x00,0x00,0xAA,0x00,
-0x00,0x01,0x00,0x00,0x82,0x00,0x3C,0x88,0x26,0x00,0x00,0x00,0xA0,0x00,0x00,0x01,
-0x00,0x00,0x82,0x00,0x54,0x88,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x82,0x00,0x6C,0x88,0x26,0x00,0x00,0x00,0x82,0x00,0x00,0x01,0x00,0x00,0x82,0x00,
-0x84,0x88,0x26,0x00,0x00,0x00,0x6E,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0x9C,0x88,
-0x26,0x00,0x00,0x00,0x5A,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0xB4,0x88,0x26,0x00,
-0x00,0x00,0x46,0x00,0x00,0x01,0x00,0x00,0x82,0x00,0xCC,0x88,0x26,0x00,0x00,0x00,
-0x3C,0x00,0x00,0x01,0x00,0x00,0x83,0x00,0xE4,0x88,0x26,0x00,0x00,0x00,0x32,0x00,
-0x00,0xFF,0x00,0x00,0x83,0x00,0xE4,0x88,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,
-0x00,0x00,0x83,0x00,0xE4,0x88,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x83,0x00,0xE4,0x88,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x83,0x00,
-0xE4,0x88,0x26,0x00,0x00,0x00,0xFA,0x00,0x00,0x01,0x00,0x00,0x83,0x00,0xE4,0x88,
-0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x01,0x00,0x00,0x83,0x00,0xE4,0x88,0x26,0x00,
-0x00,0x00,0x5E,0x01,0x00,0x01,0x00,0x00,0x83,0x00,0xE4,0x88,0x26,0x00,0x00,0x00,
-0x90,0x01,0x00,0x01,0x00,0x00,0x84,0x00,0xFC,0x88,0x26,0x00,0x00,0x00,0x32,0x00,
-0x00,0xFF,0x00,0x00,0x84,0x00,0xFC,0x88,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,
-0x00,0x00,0x84,0x00,0xFC,0x88,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x84,0x00,0xFC,0x88,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x84,0x00,
-0xFC,0x88,0x26,0x00,0x00,0x00,0xFA,0x00,0x00,0x01,0x00,0x00,0x84,0x00,0xFC,0x88,
-0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x01,0x00,0x00,0x84,0x00,0xFC,0x88,0x26,0x00,
-0x00,0x00,0x5E,0x01,0x00,0x01,0x00,0x00,0x84,0x00,0xFC,0x88,0x26,0x00,0x00,0x00,
-0x90,0x01,0x00,0x01,0x00,0x00,0x85,0x00,0x14,0x89,0x26,0x00,0x00,0x00,0x32,0x00,
-0x00,0xFF,0x00,0x00,0x85,0x00,0x14,0x89,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,
-0x00,0x00,0x85,0x00,0x14,0x89,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x85,0x00,0x14,0x89,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x85,0x00,
-0x14,0x89,0x26,0x00,0x00,0x00,0xFA,0x00,0x00,0x01,0x00,0x00,0x85,0x00,0x14,0x89,
-0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x01,0x00,0x00,0x85,0x00,0x14,0x89,0x26,0x00,
-0x00,0x00,0x5E,0x01,0x00,0x01,0x00,0x00,0x85,0x00,0x14,0x89,0x26,0x00,0x00,0x00,
-0x90,0x01,0x00,0x01,0x00,0x00,0x86,0x00,0x2C,0x89,0x26,0x00,0x00,0x00,0x32,0x00,
-0x00,0xFF,0x00,0x00,0x86,0x00,0x2C,0x89,0x26,0x00,0x00,0x00,0x64,0x00,0x00,0x01,
-0x00,0x00,0x86,0x00,0x2C,0x89,0x26,0x00,0x00,0x00,0x96,0x00,0x00,0x01,0x00,0x00,
-0x86,0x00,0x2C,0x89,0x26,0x00,0x00,0x00,0xC8,0x00,0x00,0x01,0x00,0x00,0x86,0x00,
-0x2C,0x89,0x26,0x00,0x00,0x00,0xFA,0x00,0x00,0x01,0x00,0x00,0x86,0x00,0x2C,0x89,
-0x26,0x00,0x00,0x00,0x2C,0x01,0x00,0x01,0x00,0x00,0x86,0x00,0x2C,0x89,0x26,0x00,
-0x00,0x00,0x5E,0x01,0x00,0x01,0x00,0x00,0x86,0x00,0x2C,0x89,0x26,0x00,0x00,0x00};
+/*
+char inbytes[] = {};
 Pathstruct outbytes[100];
 
 void convert() {
@@ -46381,12 +46113,12 @@ void convert() {
     {
         printf("{ \"%s\", %x,%x,%d,%d },\n", outbytes[i].path, outbytes[i].colorPalette_var28, outbytes[i].var32_end_buffer, outbytes[i].var36_size_buffer, outbytes[i].var40_alloc_type);
     }
-};
+};*/
 
-//----- (00040830) --------------------------------------------------------
-int sub_main(int argc, const char **argv, const char **envp)//_211830
+//----- (000404F0_00040830) --------------------------------------------------------
+int sub_main(int argc, const char **argv, const char **envp)//2114f0_211830
 {
-    convert();
+  //convert();
 
   CreateGameDir_3EC90_3EFD0('C', (char*)"\\carpet.cd", (char*)"save");
   CreateGameDir_3EC90_3EFD0('C', (char*)"\\carpet.cd", (char*)"data");
@@ -46394,8 +46126,6 @@ int sub_main(int argc, const char **argv, const char **envp)//_211830
   TopProcedure_65DC0_662D0(argc, argv);
   return 0;
 }
-// 40879: variable 'v3' is possibly undefined
-// 40879: variable 'v4' is possibly undefined
 
 //----- (00040890) --------------------------------------------------------
 int sub_40890()
@@ -46448,16 +46178,16 @@ int sub_407A0_40AE0()
   v0 = byte_939E5;
   byte_939E5 = 0;
   sub_40890();
-  sub_5AD10_5B220((char*)aLoadLevel);
+  DrawTextLine_5AD10_5B220((char*)aLoadLevel);
   sub_3E440(*(_WORD *)(dword_AE408_AE3F8() + 17), (void *)(dword_AE400_AE3F0() + 193795));
   if ( (*(_BYTE *)dword_AE408_AE3F8() & 0x10) == 0 )
     *(_WORD *)(dword_AE400_AE3F0() + 10) = *(_WORD *)&byte_38C95[dword_AE400_AE3F0()];
-  sub_5AD10_5B220((char*)aGenerateMap);
+  DrawTextLine_5AD10_5B220((char*)aGenerateMap);
   sub_31AE0(dword_AE400_AE3F0() + 193795);
   sub_37580();
-  sub_5AD10_5B220((char*)aGenerateFeatur);
+  DrawTextLine_5AD10_5B220((char*)aGenerateFeatur);
   sub_367F0(dword_AE400_AE3F0() + 193795);
-  sub_5AD10_5B220((char*)aInitialiseMode);
+  DrawTextLine_5AD10_5B220((char*)aInitialiseMode);
   memset(&word_AE444, 0, 6);
   sub_375E0();
   *(_DWORD *)(dword_AE400_AE3F0() + 4593) = -1;
@@ -49082,7 +48812,7 @@ char *sub_44190(const char *a1)
 
   v1 = 0;
   v2 = 0;
-  v3 = sub_63910_63E20((int)a1);
+  v3 = GetRNCFilesize_63910_63E20((Pathstruct*)a1);
   v4 = v3;
   if ( v3 > 0 )
   {
@@ -52877,22 +52607,22 @@ int sub_4A980_4ACC0()
   byte_12CBC3 = 0;
   sprintf((char*)(dword_AE408_AE3F8() + 117), "CARPET%d", 0);
   sprintf(v3, "%s%s\\intro.pld", aC, aCarpetCd_1);
-  v0 = sub_5D2F0((int)v3, 514);
+  v0 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 514);
   v4[0] = v0;
   if ( v0 == -1 )
   {
     byte_12CBC5 &= ~2u;
-    v1 = sub_5D2F0((int)v3, 546);
+    v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
     v4[0] = v1;
     if ( v1 != -1 )
     {
       sub_633E0(v1, (int)v4, 4);
-      sub_5D360(v4[0]);
+      DataFileIO::Close(v4[0]);
     }
   }
   else
   {
-    sub_5D360(v0);
+    DataFileIO::Close(v0);
   }
   result = dword_AE408_AE3F8();
   *(_BYTE *)(dword_AE408_AE3F8() + 151) = 0;
@@ -53177,7 +52907,7 @@ LABEL_43:
                     fclose((FILE*)v10);
                   }
                   sprintf(v13, "%s%s\\sndsetup.dat", aC, aCarpetCd_1);
-                  v11 = sub_5D2F0((int)v13, 546);
+                  v11 = (int)DataFileIO::CreateOrOpenFile((char*)v13, 546);
                   v12 = v11;
                   if ( v11 != -1 )
                   {
@@ -53193,7 +52923,7 @@ LABEL_43:
                     sub_633E0(v12, (int)word_12CAC0, 10);
                     sub_633E0(v12, (int)word_12CA98, 10);
                     sub_633E0(v12, (int)word_12CA84, 10);
-                    sub_5D360(v12);
+                    DataFileIO::Close(v12);
                   }
                   byte_12CBB9 = 7;
                 }
@@ -55896,14 +55626,14 @@ void sub_4F3F0_4F730()
 
   sprintf(v17, "%s%s\\language.inf", aC, aCarpetCd_1);
   v1 = 0;
-  v2 = sub_5D2F0((int)v17, 514);
+  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 514);
   if ( v2 != -1 )
   {
-    sub_5D360(v2);
-    v16 = sub_5D2F0((int)v17, 512);
+    DataFileIO::Close(v2);
+    v16 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 512);
     if ( v16 == -1 )
       goto LABEL_58;
-    sub_5D0E0(v16, dword_AE408_AE3F8() + 151, 1);
+    DataFileIO::Read(v16, dword_AE408_AE3F8() + 151, 1);
     goto LABEL_57;
   }
   dword_12CBA0 = 0;
@@ -56020,12 +55750,12 @@ void sub_4F3F0_4F730()
     sub_5C05C_5C56C(0);
   byte_12EEE1 = 0;
   byte_12CAD4 &= ~1u;
-  v16 = sub_5D2F0((int)v17, 546);
+  v16 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 546);
   if ( v16 != -1 )
   {
     sub_633E0(v16, dword_AE408_AE3F8() + 151, 1);
 LABEL_57:
-    sub_5D360(v16);
+    DataFileIO::Close(v16);
   }
 LABEL_58:
   switch ( *(_BYTE *)(dword_AE408_AE3F8() + 151) )
@@ -56515,7 +56245,7 @@ int sub_508E0()
 
   sprintf(v5, "%s%s\\sndsetup.inf", aC, aCarpetCd_1);
   v0 = 0;
-  v1 = sub_5D2F0((int)v5, 514);
+  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 514);
   if ( v1 == -1 )
   {
     word_12C9B0[0] = word_A99A8;
@@ -56533,26 +56263,26 @@ int sub_508E0()
   }
   else
   {
-    sub_5D360(v1);
+    DataFileIO::Close(v1);
     sprintf(v5, "%s%s\\sndsetup.dat", aC, aCarpetCd_1);
-    v2 = sub_5D2F0((int)v5, 514);
+    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 514);
     v3 = v2;
     if ( v2 != -1 )
     {
-      sub_5D0E0(v2, (int)byte_12C990, 32);
-      sub_5D0E0(v3, (int)word_12C9B0, 32);
-      sub_5D0E0(v3, (int)byte_12C9F0, 32);
-      sub_5D0E0(v3, (int)word_12C9D0, 32);
-      sub_5D0E0(v3, (int)&word_12CA8E, 10);
-      sub_5D0E0(v3, (int)word_12CA70, 10);
-      sub_5D0E0(v3, (int)&word_12CAA2, 10);
-      sub_5D0E0(v3, (int)word_12CA7A, 10);
-      sub_5D0E0(v3, (int)&word_12CAB6, 10);
-      sub_5D0E0(v3, (int)word_12CAC0, 10);
-      sub_5D0E0(v3, (int)&word_12CA98, 10);
-      sub_5D0E0(v3, (int)word_12CA84, 10);
+      DataFileIO::Read(v2, (int)byte_12C990, 32);
+      DataFileIO::Read(v3, (int)word_12C9B0, 32);
+      DataFileIO::Read(v3, (int)byte_12C9F0, 32);
+      DataFileIO::Read(v3, (int)word_12C9D0, 32);
+      DataFileIO::Read(v3, (int)&word_12CA8E, 10);
+      DataFileIO::Read(v3, (int)word_12CA70, 10);
+      DataFileIO::Read(v3, (int)&word_12CAA2, 10);
+      DataFileIO::Read(v3, (int)word_12CA7A, 10);
+      DataFileIO::Read(v3, (int)&word_12CAB6, 10);
+      DataFileIO::Read(v3, (int)word_12CAC0, 10);
+      DataFileIO::Read(v3, (int)&word_12CA98, 10);
+      DataFileIO::Read(v3, (int)word_12CA84, 10);
       v0 = 1;
-      sub_5D360(v3);
+      DataFileIO::Close(v3);
     }
   }
   dword_12CAAC = dword_A99B8;
@@ -57739,19 +57469,19 @@ int sub_51D50()
     v0 = i;
     sprintf(v4, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, i);
     v1 = v0;
-    v2 = sub_5D2F0((int)v4, 512);
+    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v4, 512);
     if ( v2 == -1 )
     {
       result = sprintf(off_96864[v1], asc_A9AE4);
     }
     else
     {
-      sub_5D0E0(v2, (int)&v5, 4);
+      DataFileIO::Read(v2, (int)&v5, 4);
       if ( v5 == 4 )
-        sub_5D0E0(v2, (int)off_96864[v1], 20);
+        DataFileIO::Read(v2, (int)off_96864[v1], 20);
       else
         sprintf(off_96864[v1], asc_A9AE4);
-      result = sub_5D360(v2);
+      result = DataFileIO::Close(v2);
     }
   }
   return result;
@@ -57772,26 +57502,26 @@ int sub_51E30(char a1)
   v5 = 4 * ((unsigned __int8)byte_12CBC1 + (unsigned __int8)byte_12CBC0 + *(unsigned __int16 *)(dword_AE408_AE3F8() + 17));
   sprintf(v4, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, (unsigned __int8)(a1 - 1));
   v1 = 0;
-  v2 = sub_5D2F0((int)v4, 512);
+  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v4, 512);
   if ( v2 != -1 )
   {
-    sub_5D0E0(v2, (int)v6, 4);
+    DataFileIO::Read(v2, (int)v6, 4);
     if ( v6[0] == 4 )
     {
-      sub_5D0E0(v2, (int)off_96864[(unsigned __int8)(a1 - 1)], 20);
-      sub_5D0E0(v2, dword_AE408_AE3F8() + 29, 32);
-      sub_5D0E0(v2, dword_AE408_AE3F8() + 61, 32);
-      sub_5D0E0(v2, dword_AE400_AE3F0() + 8597, 12);
-      sub_5D0E0(v2, (int)&v5, 4);
-      sub_5D0E0(v2, dword_AE400_AE3F0() + 15318, 24);
-      sub_5D0E0(v2, (int)&byte_12CBC0, 1);
-      sub_5D0E0(v2, (int)&byte_12CBC1, 1);
-      sub_5D0E0(v2, dword_AE400_AE3F0() + 8597, 12);
+      DataFileIO::Read(v2, (int)off_96864[(unsigned __int8)(a1 - 1)], 20);
+      DataFileIO::Read(v2, dword_AE408_AE3F8() + 29, 32);
+      DataFileIO::Read(v2, dword_AE408_AE3F8() + 61, 32);
+      DataFileIO::Read(v2, dword_AE400_AE3F0() + 8597, 12);
+      DataFileIO::Read(v2, (int)&v5, 4);
+      DataFileIO::Read(v2, dword_AE400_AE3F0() + 15318, 24);
+      DataFileIO::Read(v2, (int)&byte_12CBC0, 1);
+      DataFileIO::Read(v2, (int)&byte_12CBC1, 1);
+      DataFileIO::Read(v2, dword_AE400_AE3F0() + 8597, 12);
       byte_9687C = 0;
       v1 = 1;
       *(_WORD *)(dword_AE408_AE3F8() + 17) = v5 / v6[0] - (unsigned __int8)byte_12CBC0 - (unsigned __int8)byte_12CBC1;
     }
-    sub_5D360(v2);
+    DataFileIO::Close(v2);
   }
   return v1;
 }
@@ -57818,7 +57548,7 @@ int sub_51FD0(char a1)
   v1 = 0;
   v6 = 4 * (*(unsigned __int16 *)(dword_AE408_AE3F8() + 17) + (unsigned __int8)byte_12CBC0 + (unsigned __int8)byte_12CBC1);
   sprintf(v5, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, (unsigned __int8)(a1 - 1));
-  v2 = sub_5D2F0((int)v5, 546);
+  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 546);
   v3 = v2;
   if ( v2 != -1 )
   {
@@ -57833,7 +57563,7 @@ int sub_51FD0(char a1)
     sub_633E0(v3, (int)&byte_12CBC1, 1);
     sub_633E0(v3, dword_AE400_AE3F0() + 8597, 12);
     v1 = 1;
-    sub_5D360(v3);
+    DataFileIO::Close(v3);
   }
   return v1;
 }
@@ -62310,11 +62040,11 @@ char sub_58CF0()
   char v1[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v1, "%s%s/%s/%s.dat", "C:", aCarpetCd_4, aData_1, aTmaps10_0);
-  dword_968EC = sub_5D2F0((int)v1, 512);
+  dword_968EC = (int)DataFileIO::CreateOrOpenFile((char*)v1, 512);
   if ( dword_968EC == -1 )
   {
     sprintf(v1, "data/%s.dat", aTmaps10_0);
-    dword_968EC = sub_5D2F0((int)v1, 512);
+    dword_968EC = (int)DataFileIO::CreateOrOpenFile((char*)v1, 512);
   }
   return 1;
 }
@@ -62333,7 +62063,7 @@ int sub_58D70(unsigned __int16 a1, char *a2)
   v2 = 10 * a1;
   sub_62B30_63040(dword_968EC, *(_DWORD *)(v2 + dword_12D734 + 4), 0);
   v3 = *(_DWORD *)(10 * (a1 + 1) + dword_12D734 + 4) - *(_DWORD *)(dword_12D734 + v2 + 4);
-  sub_5D0E0(dword_968EC, (int)a2, v3);
+  DataFileIO::Read(dword_968EC, (int)a2, v3);
   result = sub_63070((int)a2, a2);
   if ( result >= 0 )
   {
@@ -62703,7 +62433,7 @@ int sub_59480()
 
   if ( dword_968EC != -1 )
   {
-    result = sub_5D360(dword_968EC);
+    result = DataFileIO::Close(dword_968EC);
     dword_968EC = -1;
   }
   return result;
@@ -64026,14 +63756,14 @@ int sub_5AA70()
 // 131494: using guessed type int dword_131494;
 // 131498: using guessed type int dword_131498;
 
-void DrawStartGameTexts_5ACA0_5B1B0()
+void DrawStartGameTexts_5ACA0_5B1B0()//22bca0_
 {
   printf("Copyright (c) 1995 Bullfrog Productions Ltd.\n");
   printf("All rights reserved.\n");
   printf("%s \n", "Magic Carpet");
 }
 
-void sub_5AD10_5B220(char* text)//_22c220
+void DrawTextLine_5AD10_5B220(char* text)//22bd10_22c220
 {
   if ( (str_AE408_AE3F8->var_u8_1 & 1) != 0 )
     printf("%s\n", text);
@@ -65424,13 +65154,6 @@ void sub_5D083(int a1, __int16 a2)
 // 9ADB4: using guessed type __int16 word_9ADB4;
 // 9ADC4: using guessed type int dword_9ADC4;
 
-//----- (0005D0E0) --------------------------------------------------------
-int sub_5D0E0(int a1, int a2, int a3)
-{
-  return read(a1, a2, a3);
-}
-// 66E3C: using guessed type _DWORD read(_DWORD, _DWORD, _DWORD);
-
 //----- (0005D164) --------------------------------------------------------
 void sub_5CC54_5D164()
 {
@@ -65491,30 +65214,6 @@ void sub_5D2B0()
 // 9AD96: using guessed type char byte_9AD96;
 // 12EFE4: using guessed type int dword_12EFE4;
 
-//----- (0005D2F0) --------------------------------------------------------
-int sub_5D2F0(int a1, int a2)
-{
-  int v3; // [esp+4h] [ebp-4h]
-
-  if ( a2 == 546 )
-  {
-    v3 = creat(a1, 448);
-    setmode(v3, 512);
-    close(v3);
-  }
-  return sopen(a1, a2, 64);
-}
-// 66E2E: using guessed type _DWORD close(_DWORD);
-// 670B3: using guessed type _DWORD creat(_DWORD, _DWORD);
-// 670CA: using guessed type _DWORD setmode(_DWORD, _DWORD);
-
-//----- (0005D360) --------------------------------------------------------
-int sub_5D360(int a1)
-{
-  return close(a1);
-}
-// 66E2E: using guessed type _DWORD close(_DWORD);
-
 //----- (0005D400) --------------------------------------------------------
 int sub_5CEF0_5D400(unsigned __int16 a1)
 {
@@ -65522,11 +65221,11 @@ int sub_5CEF0_5D400(unsigned __int16 a1)
     return 1;
   sprintf((char*)"data/music0-0.dat", "data/music%d-%d.dat", a1, (unsigned __int8)byte_CBFDE);
   sprintf(aDataMusic00Tab, "data/music%d-%d.tab", a1, (unsigned __int8)byte_CBFDE);
-  if ( sub_634E0_639F0((char*)"data/music0-0.dat") != 1 )
+  if ( sub_634E0_639F0((Pathstruct*)"data/music0-0.dat") != 1 )
     return 1;
-  if ( sub_634E0_639F0((char*)aDataMusic00Tab) != 1 )
+  if ( sub_634E0_639F0((Pathstruct*)aDataMusic00Tab) != 1 )
   {
-    sub_634A0_639B0((char*)"data/music0-0.dat");
+    sub_634A0_639B0((Pathstruct*)"data/music0-0.dat");
     return 1;
   }
   sub_5D4B4();
@@ -65585,11 +65284,11 @@ int sub_5D070_5D580(unsigned __int8 a1)
     return 1;
   sprintf((char*)"data/snds0-0.dat", (char*)"data/snds%d-%d.dat", a1, (unsigned __int8)byte_939EC);
   sprintf(aDataSnds00Tab, (char*)"data/snds%d-%d.tab", a1, (unsigned __int8)byte_939EC);
-  if ( sub_634E0_639F0((char*)"data/snds0-0.dat") != 1 )
+  if ( sub_634E0_639F0((Pathstruct*)"data/snds0-0.dat") != 1 )
     return 1;
-  if ( sub_634E0_639F0((char*)aDataSnds00Tab) != 1 )
+  if ( sub_634E0_639F0((Pathstruct*)aDataSnds00Tab) != 1 )
   {
-    sub_634A0_639B0((char*)"data/snds0-0.dat");
+    sub_634A0_639B0((Pathstruct*)"data/snds0-0.dat");
     return 1;
   }
   sub_5D648();
@@ -65632,7 +65331,7 @@ int sub_5D6B0(int a1, int a2, unsigned int a3)
   unsigned int i; // [esp+4h] [ebp-4h]
 
   if ( !dword_9AF08 )
-    return sub_5D0E0(a1, a2, a3);
+    return DataFileIO::Read(a1, a2, a3);
   for ( i = 0; i < a3 && dword_9AF14 + i < dword_9AF10; ++i )
   {
     v3 = (_BYTE *)dword_9AF0C++;
@@ -67507,20 +67206,20 @@ unsigned __int64 sub_610EC(int a1)
   v5 = 0;
   v3 = 0;
   v2 = 0;
-  v6 = sub_63910_63E20(a1);
+  v6 = GetRNCFilesize_63910_63E20((Pathstruct*)a1);
   if ( v6 > 0 )
   {
-    v7 = sub_5D2F0(a1, 514);
+    v7 = (int)DataFileIO::CreateOrOpenFile((char*)a1, 514);
     if ( v7 != -1 )
     {
       v5 = (int)malloc_42540_42880(v6);
       if ( v5 )
       {
-        if ( sub_5D0E0(v7, v5, v6) != v6 )
+        if ( DataFileIO::Read(v7, v5, v6) != v6 )
           v5 = 0;
       }
     }
-    sub_5D360(v7);
+    DataFileIO::Close(v7);
   }
   if ( v5 )
   {
@@ -68652,7 +68351,7 @@ void sub_61610_61B20(char* path)
     result = (int)path;
     if ( !*(_DWORD *)(path + 28) )
       break;
-    sub_634A0_639B0((char*)path);
+    sub_634A0_639B0((Pathstruct*)path);
     path += 44;
   }
 }
@@ -68808,8 +68507,8 @@ int sub_61DF0(__int16 a1)
   v4[5] = (int)v2;
   int386x(49, (uint32)v4, (uint32)v3, (uint32)v5);
   HIWORD(result) = HIWORD(dword_12F080_12F070);
-  LOWORD(result) = *(unsigned __int8 *)(dword_12F080_12F070 + 4);
-  word_12F074 = (unsigned __int8)result + (*(unsigned __int8 *)(dword_12F080_12F070 + 5) << 8);
+  LOWORD(result) = *(unsigned __int8 *)((int)dword_12F080_12F070 + 4);
+  word_12F074 = (unsigned __int8)result + (*(unsigned __int8 *)((int)dword_12F080_12F070 + 5) << 8);
   return result;
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
@@ -69373,11 +69072,11 @@ int sub_63370(int a1, int a2, int a3)
   int v5; // [esp+4h] [ebp-8h]
   int v6; // [esp+8h] [ebp-4h]
 
-  v5 = sub_5D2F0(a1, 546);
+  v5 = (int)DataFileIO::CreateOrOpenFile((char*)a1, 546);
   if ( v5 == -1 )
     return -1;
   v6 = sub_633E0(v5, a2, a3);
-  sub_5D360(v5);
+  DataFileIO::Close(v5);
   return v6;
 }
 
@@ -69567,66 +69266,49 @@ int sub_6393C(unsigned int a1)
 }
 // 63488: using guessed type _DWORD int386(_DWORD, _DWORD, _DWORD);
 
-//----- (000639B0) --------------------------------------------------------
-void sub_634A0_639B0(char* a1)
+void sub_634A0_639B0(Pathstruct* pathstruct)
 {
-  _DWORD *result; // eax
-
-  result = *(_DWORD **)(a1 + 28);
-  if ( *result )
-  {
-    free_426E0_42A20((void*)**(_DWORD **)(a1 + 28));
-    result = *(_DWORD **)(a1 + 28);
-    *result = 0;
-  }
+	if (*pathstruct->colorPalette_var28)
+	{
+		free_426E0_42A20((void*)*pathstruct->colorPalette_var28);
+		*pathstruct->colorPalette_var28 = 0;
+	}
 }
 
-//----- (000639F0) --------------------------------------------------------
-int sub_634E0_639F0(char* a1)
+int sub_634E0_639F0(Pathstruct* pathstruct)
 {
-  int v1; // eax
-  int *v2; // edx
-  int v3; // eax
-  int *v4; // edx
-  //int (*v6)(int); // [esp+0h] [ebp-8h]
-
-  void* (*v6)(size_t);
-
-  sub_63010_63520();
-  if ( (*(_BYTE *)(a1 + 40) & 1) != 0 )
-    v6 = malloc_425C0_42900;
-  else
-    v6 = malloc_42540_42880;
-  sub_634A0_639B0((char*)a1);
-  if ( *(_BYTE *)a1 == 42 )
-  {
-    v1 = (int)v6(*(_DWORD *)(a1 + 36));
-    v2 = *(int **)(a1 + 28);
-    *v2 = v1;
-    if ( !*v2 )
-      return 0;
-  }
-  else
-  {
-    *(_DWORD *)(a1 + 36) = sub_63910_63E20((int)a1);
-    if ( *(int *)(a1 + 36) <= 0 )
-      return 0;
-    v3 = (int)v6(*(_DWORD *)(a1 + 36));
-    v4 = *(int **)(a1 + 28);
-    *v4 = v3;
-    if ( !*v4 )
-      return -1;
-    if ( sub_3EEA0_3F1E0((const char *)a1, **(char ***)(a1 + 28)) != *(_DWORD *)(a1 + 36) )
-    {
-      **(_DWORD **)(a1 + 28) = 0;
-      **(_DWORD **)(a1 + 32) = 0;
-      *(_DWORD *)(a1 + 36) = 0;
-      return 0;
-    }
-  }
-  if ( *(_DWORD *)(a1 + 32) )
-    **(_DWORD **)(a1 + 32) = *(_DWORD *)(a1 + 36) + **(_DWORD **)(a1 + 28);
-  return 1;
+	void* (*mallocVar)(size_t);
+	sub_63010_63520();
+	if ((pathstruct->var40_alloc_type & 1) != 0)
+		mallocVar = malloc_425C0_42900;
+	else
+		mallocVar = malloc_42540_42880;
+	sub_634A0_639B0(pathstruct);
+	if (pathstruct->path[0] == '*')
+	{
+		*pathstruct->colorPalette_var28 = (uint8_t*)mallocVar(pathstruct->var36_size_buffer);
+		if (!(*pathstruct->colorPalette_var28))
+			return 0;
+	}
+	else
+	{
+		pathstruct->var36_size_buffer = GetRNCFilesize_63910_63E20(pathstruct);
+		if (pathstruct->var36_size_buffer <= 0)
+			return 0;
+		*pathstruct->colorPalette_var28 = (uint8_t*)mallocVar(pathstruct->var36_size_buffer);
+		if (!(*pathstruct->colorPalette_var28))
+			return -1;
+		if (sub_3EEA0_3F1E0(pathstruct->path, (char*)*pathstruct->colorPalette_var28) != pathstruct->var36_size_buffer)
+		{
+			*pathstruct->colorPalette_var28 = 0;
+			*pathstruct->var32_end_buffer = 0;
+			pathstruct->var36_size_buffer = 0;
+			return 0;
+		}
+	}
+	if (pathstruct->var32_end_buffer)
+		*pathstruct->var32_end_buffer = pathstruct->var36_size_buffer + *pathstruct->colorPalette_var28;
+	return 1;
 }
 
 //----- (00063C8B) --------------------------------------------------------
@@ -69678,40 +69360,32 @@ void sub_63E08()
   ;
 }
 
-//----- (00063E20) --------------------------------------------------------
-int sub_63910_63E20(int a1)
+int GetRNCFilesize_63910_63E20(Pathstruct* pathstruct)
 {
-  char v2[8]; // [esp+0h] [ebp-1Ch] BYREF
-  char v3[8]; // [esp+8h] [ebp-14h] BYREF
-  int v5; // [esp+14h] [ebp-8h]
-  int v6; // [esp+18h] [ebp-4h]
-
-  v5 = -1;
-  qmemcpy(v3, "RNC", 3);
-  v3[3] = 1;
-  v3[4] = 0;
-  v6 = sub_5D2F0(a1, 512);
-  if ( v6 <= 0 )
-    return -1;
-  sub_5D0E0(v6, (int)v2, 8);
-  if ( !strncmp(v2, v3, 4) )
-  {
-    v5 = (unsigned __int8)v2[4] << 8;
-    v5 += (unsigned __int8)v2[5];
-    v5 <<= 8;
-    v5 += (unsigned __int8)v2[6];
-    v5 <<= 8;
-    v5 += (unsigned __int8)v2[7];
-  }
-  else
-  {
-    v5 = filelength(v6);
-  }
-  sub_5D360(v6);
-  return v5;
+	uint8_t miniBuffer[8];
+	char dataPath[MAX_PATH];
+	sprintf(dataPath, "%s/%s", gameDataPath.c_str(), pathstruct->path);
+	char RNSSING[5] = "RNC\x1";
+	FILE* file = DataFileIO::CreateOrOpenFile(dataPath, 512);
+	if (file == nullptr)
+		return -1;
+	DataFileIO::Read(file, miniBuffer, 8);
+	Type_fileSize fileSize;
+	fileSize.size = -1;
+	if (!memcmp((char*)miniBuffer, RNSSING, 4))
+	{
+		fileSize.bytes[0] = miniBuffer[7];
+		fileSize.bytes[1] = miniBuffer[6];
+		fileSize.bytes[2] = miniBuffer[5];
+		fileSize.bytes[3] = miniBuffer[4];
+	}
+	else
+	{
+		fileSize.size = DataFileIO::FileLengthBytes(file);
+	}
+	DataFileIO::Close(file);
+	return fileSize.size;
 }
-// 62FF2: using guessed type _DWORD filelength(_DWORD);
-// 6637F: using guessed type _DWORD strncmp(_DWORD, _DWORD, _DWORD);
 
 //----- (00063F9C) --------------------------------------------------------
 void sub_63F9C()
