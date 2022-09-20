@@ -3227,7 +3227,7 @@ char byte_968E0 = '\x7F'; // weak
 char byte_968E1 = '\0'; // weak
 char byte_968E4 = '\0'; // weak
 char byte_968E8 = '\0'; // weak
-int dword_968EC = -1; // weak
+FILE* dword_968EC = nullptr; // weak
 char byte_968F0 = '\x01'; // weak
 int dword_96902 = 0; // weak
 int dword_96906 = 0; // weak
@@ -11050,7 +11050,7 @@ unsigned __int8 byte_AC2A8[772] =
   0u
 }; // weak
 int dword_AC5AC = 0; // weak
-int dword_AC5B0 = 0; // weak
+FILE* dword_AC5B0 = nullptr; // weak
 int (*dword_AC5B4)(_DWORD) = NULL; // weak
 _UNKNOWN unk_AC5B8; // weak
 __int16 word_AC5BE = 0; // weak
@@ -12667,12 +12667,12 @@ int sub_103F0()
   int result; // eax
 
   dword_AC1A0 = dword_90028;
-  DataFileIO::Read((FILE*)dword_AC5B0, (int)&dword_AC190, 16);
+  DataFileIO::Read((FILE*)dword_AC5B0, (uint8_t*)&dword_AC190, 16);
   while ( word_AC194 != -3590 )
     printf("ERROR UNKNOWN FRAME TYPE\n");
   while ( (unsigned int)dword_AC190 >= 0xFA00 )
     printf("PAGE SIZE IS > BSCREEN\n");
-  DataFileIO::Read(dword_AC5B0, dword_AE3EC, dword_AC190 - 16);
+  DataFileIO::Read(dword_AC5B0, (uint8_t*)dword_AE3EC, dword_AC190 - 16);
   result = dword_AC190;
   dword_90028 += dword_AC190;
   return result;
@@ -12882,8 +12882,8 @@ int sub_107C0(__int16 a1, __int16 a2, int a3)
   word_AC5CA = 0;
   LOWORD(dword_AC5D0[0]) = 0;
   dword_9001C = dword_12EFE4;
-  dword_AC5B0 = (int)DataFileIO::CreateOrOpenFile((char*)&unk_9ADC8, 512);
-  DataFileIO::Read(dword_AC5B0, (int)&unk_AC5B8, 12);
+  dword_AC5B0 = DataFileIO::CreateOrOpenFile((char*)&unk_9ADC8, 512);
+  DataFileIO::Read(dword_AC5B0, (uint8_t*)&unk_AC5B8, 12);
   word_12EFCC = 0;
   word_12EFCE = 0;
   dword_90028 += 12;
@@ -44491,8 +44491,8 @@ LABEL_28:
 char sub_3E440(__int16 a1, void *a2)
 {
   int v2; // edi
-  int v3; // ebx
-  int v5; // esi
+  FILE* v3; // ebx
+  FILE* v5; // esi
   int v6; // ebp
   int v7; // edi
   int v8; // edi
@@ -44502,33 +44502,33 @@ char sub_3E440(__int16 a1, void *a2)
   if ( a1 < 1000 )
   {
     sprintf(v9, "%s%s/%s/ddlevels.dat", &aLc_0[1], aCarpetCd_0, aLevels_0);
-    v3 = (int)DataFileIO::CreateOrOpenFile((char*)v9, 512);
-    if ( v3 == -1 )
+    v3 = DataFileIO::CreateOrOpenFile((char*)v9, 512);
+    if ( v3 == nullptr )
     {
-      v3 = (int)DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels, 512);
-      if ( v3 == -1 )
+      v3 = DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels, 512);
+      if ( v3 == nullptr )
         return 0;
     }
     sprintf(v9, "%s%s/%s/ddlevels.tab", &aLc_0[1], aCarpetCd_0, aLevels_0);
-    v5 = (int)DataFileIO::CreateOrOpenFile((char*)v9, 512);
-    if ( v5 == -1 )
+    v5 = DataFileIO::CreateOrOpenFile((char*)v9, 512);
+    if ( v5 == nullptr )
     {
-      v5 = (int)DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels_0, 512);
-      if ( v5 == -1 )
+      v5 = DataFileIO::CreateOrOpenFile((char*)aLevelsDdlevels_0, 512);
+      if ( v5 == nullptr)
       {
         DataFileIO::Close(v3);
         return 0;
       }
     }
-    DataFileIO::Read(v5, v2, 4000);
+    DataFileIO::Read(v5, (uint8_t*)v2, 4000);
     v6 = *(_DWORD *)(v2 + 4 * a1);
     v7 = *(_DWORD *)(v2 + 4 * a1 + 4);
     DataFileIO::Close(v5);
     v8 = v7 - v6;
     if ( DataFileIO::FileLengthBytes )
     {
-      sub_62B30_63040(v3, v6, 0);
-      DataFileIO::Read(v3, dword_AE3EC, v8);
+      sub_62B30_63040((int)v3, v6, 0);
+      DataFileIO::Read(v3, (uint8_t*)dword_AE3EC, v8);
       if ( sub_63070(dword_AE3EC, (char *)dword_AE3EC) < 0 )
       {
         printf("ERROR decompressing levels.dat\n");
@@ -44616,12 +44616,12 @@ _BOOL1 sub_3E750(__int16 a1)
 //----- (0003E7A0) --------------------------------------------------------
 char sub_3E7A0(__int16 a1)
 {
-  int v1; // eax
+  FILE* v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "%s/gam%05d.dat", aMovie_0, a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-  if ( v1 == -1 )
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+  if ( v1 == nullptr )
     return 0;
   DataFileIO::Close(v1);
   return 1;
@@ -44632,20 +44632,20 @@ char sub_3E7A0(__int16 a1)
 char sub_3E7F0(__int16 a1)
 {
   char result; // al
-  int v2; // ebx
+  FILE* v2; // ebx
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   result = sub_3E980(a1);
   if ( result )
   {
     sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-    DataFileIO::Read(v2, (int)byte_CC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_DC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_EC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_FC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-    DataFileIO::Read(v2, (int)byte_B5D30, 4802);
+    v2 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+    DataFileIO::Read(v2, (uint8_t*)byte_CC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_DC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_EC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_FC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)word_10C1D0, (int)&loc_1FFFE + 2);
+    DataFileIO::Read(v2, (uint8_t*)byte_B5D30, 4802);
     DataFileIO::Close(v2);
     return 1;
   }
@@ -44658,17 +44658,17 @@ char sub_3E7F0(__int16 a1)
 //----- (0003E8C0) --------------------------------------------------------
 char sub_3E8C0(__int16 a1)
 {
-  int v1; // ebx
+  FILE* v1; // ebx
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
-  sub_633E0(v1, (int)byte_CC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_DC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_EC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_FC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-  sub_633E0(v1, (int)byte_B5D30, 4802);
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 546);
+  sub_633E0((int)v1, (int)byte_CC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_DC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_EC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_FC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
+  sub_633E0((int)v1, (int)byte_B5D30, 4802);
   DataFileIO::Close(v1);
   return 0;
 }
@@ -44679,12 +44679,12 @@ char sub_3E8C0(__int16 a1)
 //----- (0003E980) --------------------------------------------------------
 char sub_3E980(__int16 a1)
 {
-  int v1; // eax
+  FILE* v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "%s/map%05d.dat", aMovie_0, a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-  if ( v1 == -1 )
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+  if ( v1 == nullptr )
     return 0;
   DataFileIO::Close(v1);
   return 1;
@@ -44760,12 +44760,12 @@ _BOOL1 sub_3EA90(__int16 a1)
 //----- (0003EAE0) --------------------------------------------------------
 char sub_3EAE0(__int16 a1)
 {
-  int v1; // eax
+  FILE* v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/gam%05d.dat", "save", a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-  if ( v1 == -1 )
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+  if ( v1 == nullptr )
     return 0;
   DataFileIO::Close(v1);
   return 1;
@@ -44776,20 +44776,20 @@ char sub_3EAE0(__int16 a1)
 char sub_3EB30(__int16 a1)
 {
   char result; // al
-  int v2; // ebx
+  FILE* v2; // ebx
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   result = sub_3ECC0(a1);
   if ( result )
   {
     sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-    DataFileIO::Read(v2, (int)byte_CC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_DC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_EC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)byte_FC1D0, (int)sub_10000);
-    DataFileIO::Read(v2, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-    DataFileIO::Read(v2, (int)byte_B5D30, 4802);
+    v2 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+    DataFileIO::Read(v2, (uint8_t*)byte_CC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_DC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_EC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)byte_FC1D0, (int)sub_10000);
+    DataFileIO::Read(v2, (uint8_t*)word_10C1D0, (int)&loc_1FFFE + 2);
+    DataFileIO::Read(v2, (uint8_t*)byte_B5D30, 4802);
     DataFileIO::Close(v2);
     return 1;
   }
@@ -44802,17 +44802,17 @@ char sub_3EB30(__int16 a1)
 //----- (0003EC00) --------------------------------------------------------
 char sub_3EC00(__int16 a1)
 {
-  int v1; // ebx
+  FILE* v1; // ebx
   char v3[68]; // [esp+0h] [ebp-44h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
-  sub_633E0(v1, (int)byte_CC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_DC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_EC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)byte_FC1D0, (int)sub_10000);
-  sub_633E0(v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
-  sub_633E0(v1, (int)byte_B5D30, 4802);
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 546);
+  sub_633E0((int)v1, (int)byte_CC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_DC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_EC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)byte_FC1D0, (int)sub_10000);
+  sub_633E0((int)v1, (int)word_10C1D0, (int)&loc_1FFFE + 2);
+  sub_633E0((int)v1, (int)byte_B5D30, 4802);
   DataFileIO::Close(v1);
   return 0;
 }
@@ -44823,12 +44823,12 @@ char sub_3EC00(__int16 a1)
 //----- (0003ECC0) --------------------------------------------------------
 char sub_3ECC0(__int16 a1)
 {
-  int v1; // eax
+  FILE* v1; // eax
   char v3[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v3, "c:/CARPET.CD/%s/map%05d.dat", "save", a1);
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 512);
-  if ( v1 == -1 )
+  v1 = DataFileIO::CreateOrOpenFile((char*)v3, 512);
+  if ( v1 == nullptr )
     return 0;
   DataFileIO::Close(v1);
   return 1;
@@ -44841,7 +44841,7 @@ void sub_3ED10(_BYTE *a1)
   int v1; // edx
   int v2; // eax
   char v3; // dl
-  int v4; // ebp
+  FILE* v4; // ebp
   int v5; // edx
   int v6; // eax
   char v7; // bl
@@ -44869,7 +44869,7 @@ void sub_3ED10(_BYTE *a1)
       sub_59930();
       sub_35AA0();
     }
-    v4 = *(_DWORD *)(dword_AE408_AE3F8() + 9);
+    v4 = (FILE*)*(_DWORD *)(dword_AE408_AE3F8() + 9);
     if ( v4 )
     {
       if ( *a1 == 2 )
@@ -44879,7 +44879,7 @@ void sub_3ED10(_BYTE *a1)
         *a1 = 0;
         return;
       }
-      if ( DataFileIO::Read(v4, (int)a1, 10) != 10 )
+      if ( DataFileIO::Read(v4, (uint8_t*)a1, 10) != 10 )
       {
         sub_3EF90();
         *(_WORD *)(dword_AE400_AE3F0() + 2049 * *(__int16 *)(dword_AE400_AE3F0() + 8) + 13325) = 8;
@@ -44943,7 +44943,7 @@ _BYTE *sub_3EF90()
   result = (_BYTE *)dword_AE408_AE3F8();
   if ( *(_DWORD *)(dword_AE408_AE3F8() + 9) )
   {
-    DataFileIO::Close(*(_DWORD *)(dword_AE408_AE3F8() + 9));
+    DataFileIO::Close((FILE*)*(_DWORD *)(dword_AE408_AE3F8() + 9));
     result = (_BYTE *)dword_AE408_AE3F8();
     v1 = *(_BYTE *)dword_AE408_AE3F8();
     *(_DWORD *)(dword_AE408_AE3F8() + 9) = 0;
@@ -44991,18 +44991,18 @@ void CreateGameDir_3EC90_3EFD0(uint8_t diskChar, char* dir1, char* dir2)
 //----- (0003F1E0) --------------------------------------------------------
 int sub_3EEA0_3F1E0(const char *a1, char *a2)
 {
-  int result; // eax
-  int v3; // ebx
+  FILE* result; // eax
+  FILE* v3; // ebx
   int v4; // esi
 
-  result = (int)DataFileIO::CreateOrOpenFile((char*)a1, 512);
+  result = DataFileIO::CreateOrOpenFile((char*)a1, 512);
   v3 = result;
-  if ( result != -1 )
+  if ( result != nullptr )
   {
     v4 = DataFileIO::FileLengthBytes(result);
-    DataFileIO::Read(v3, (int)a2, v4);
+    DataFileIO::Read(v3, (uint8_t*)a2, v4);
     DataFileIO::Close(v3);
-    result = sub_63070((int)a2, a2);
+    result = (FILE*)sub_63070((int)a2, a2);
     if ( result >= 0 )
     {
       if ( !result )
@@ -45014,7 +45014,7 @@ int sub_3EEA0_3F1E0(const char *a1, char *a2)
       return -2;
     }
   }
-  return result;
+  return (int)result;
 }
 // 5D113: using guessed type _DWORD printf(const char *, ...);
 // 62FF2: using guessed type _DWORD DataFileIO::FileLengthBytes(_DWORD);
@@ -45035,12 +45035,12 @@ bool sub_3F270(char* a1)
 //----- (0003F290) --------------------------------------------------------
 char sub_3F290(char *a1, char *a2, const char *a3)
 {
-  int v3; // ebx
-  int v4; // esi
+  FILE* v3; // ebx
+  FILE* v4; // esi
   int v6; // eax
   int v7; // eax
-  int v8; // ebx
-  int v9; // ebp
+  FILE* v8; // ebx
+  FILE* v9; // ebp
   int v10; // edi
   int v11; // ebx
   int v12; // eax
@@ -45049,7 +45049,7 @@ char sub_3F290(char *a1, char *a2, const char *a3)
   char v15[144]; // [esp+0h] [ebp-19Ch] BYREF
   char v16[144]; // [esp+90h] [ebp-10Ch] BYREF
   char v17[100]; // [esp+120h] [ebp-7Ch] BYREF
-  int v18; // [esp+184h] [ebp-18h]
+  FILE* v18; // [esp+184h] [ebp-18h]
   int v19; // [esp+188h] [ebp-14h]
 
   if ( !sub_3F270(a1) )
@@ -45058,25 +45058,25 @@ char sub_3F290(char *a1, char *a2, const char *a3)
     return 1;
   sprintf(v15, "%s/%s.tab", a1, a3);
   sprintf(v16, "%s/%s.tab", a2, a3);
-  v3 = (int)DataFileIO::CreateOrOpenFile((char*)v15, 512);
-  if ( v3 == -1 )
+  v3 = DataFileIO::CreateOrOpenFile((char*)v15, 512);
+  if ( v3 == nullptr )
     return 3;
-  v4 = (int)DataFileIO::CreateOrOpenFile((char*)v16, 546);
-  if ( v4 == -1 )
+  v4 = DataFileIO::CreateOrOpenFile((char*)v16, 546);
+  if ( v4 == nullptr )
     return 3;
   v6 = DataFileIO::FileLengthBytes(v3);
-  v7 = DataFileIO::Read(v3, dword_12EFE4, v6);
-  sub_633E0(v4, dword_12EFE4, v7);
+  v7 = DataFileIO::Read(v3, (uint8_t*)dword_12EFE4, v6);
+  sub_633E0((int)v4, dword_12EFE4, v7);
   DataFileIO::Close(v3);
   DataFileIO::Close(v4);
   sprintf(v15, "%s/%s.dat", a1, a3);
   sprintf(v16, "%s/%s.dat", a2, a3);
-  v8 = (int)DataFileIO::CreateOrOpenFile((char*)v15, 512);
+  v8 = DataFileIO::CreateOrOpenFile((char*)v15, 512);
   v9 = v8;
-  if ( v8 != -1 )
+  if ( v8 != nullptr )
   {
-    v18 = (int)DataFileIO::CreateOrOpenFile((char*)v16, 546);
-    if ( v18 != -1 )
+    v18 = DataFileIO::CreateOrOpenFile((char*)v16, 546);
+    if ( v18 != nullptr)
     {
       v10 = 0;
       v11 = DataFileIO::FileLengthBytes(v8);
@@ -45087,9 +45087,9 @@ char sub_3F290(char *a1, char *a2, const char *a3)
           v12 = v11;
         else
           v12 = 64000;
-        v13 = DataFileIO::Read(v9, dword_12EFE4, v12);
+        v13 = DataFileIO::Read(v9, (uint8_t*)dword_12EFE4, v12);
         v11 -= v13;
-        sub_633E0(v18, dword_12EFE4, v13);
+        sub_633E0((int)v18, dword_12EFE4, v13);
         v10 += v13;
         settextposition((__int16)dword_B76E0, SHIWORD(dword_B76E0));
         v14 = 100 * v10 / v19;
@@ -52577,11 +52577,11 @@ int sub_49E90(int a1)
 //----- (0004ACC0) --------------------------------------------------------
 int sub_4A980_4ACC0()
 {
-  int v0; // eax
-  int v1; // eax
+  FILE* v0; // eax
+  FILE* v1; // eax
   int result; // eax
   char v3[40]; // [esp+0h] [ebp-34h] BYREF
-  int v4[3]; // [esp+28h] [ebp-Ch] BYREF
+  FILE* v4[3]; // [esp+28h] [ebp-Ch] BYREF
 
   if ( sub_508E0() )
     byte_12CBB9 = 7;
@@ -52607,16 +52607,16 @@ int sub_4A980_4ACC0()
   byte_12CBC3 = 0;
   sprintf((char*)(dword_AE408_AE3F8() + 117), "CARPET%d", 0);
   sprintf(v3, "%s%s\\intro.pld", aC, aCarpetCd_1);
-  v0 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 514);
+  v0 = DataFileIO::CreateOrOpenFile((char*)v3, 514);
   v4[0] = v0;
-  if ( v0 == -1 )
+  if ( v0 == nullptr )
   {
     byte_12CBC5 &= ~2u;
-    v1 = (int)DataFileIO::CreateOrOpenFile((char*)v3, 546);
+    v1 = DataFileIO::CreateOrOpenFile((char*)v3, 546);
     v4[0] = v1;
-    if ( v1 != -1 )
+    if ( v1 != nullptr )
     {
-      sub_633E0(v1, (int)v4, 4);
+      sub_633E0((int)v1, (int)v4, 4);
       DataFileIO::Close(v4[0]);
     }
   }
@@ -52739,8 +52739,8 @@ void sub_4AC70_4AFB0()
   int v8; // eax
   int v9; // eax
   int v10; // ebx
-  int v11; // eax
-  int v12; // ebx
+  FILE* v11; // eax
+  FILE* v12; // ebx
   char v13[40]; // [esp+0h] [ebp-3Ch] BYREF
   char v14; // [esp+28h] [ebp-14h]
 
@@ -52907,22 +52907,22 @@ LABEL_43:
                     fclose((FILE*)v10);
                   }
                   sprintf(v13, "%s%s\\sndsetup.dat", aC, aCarpetCd_1);
-                  v11 = (int)DataFileIO::CreateOrOpenFile((char*)v13, 546);
+                  v11 = DataFileIO::CreateOrOpenFile((char*)v13, 546);
                   v12 = v11;
-                  if ( v11 != -1 )
+                  if ( v11 != nullptr )
                   {
-                    sub_633E0(v11, (int)byte_12C990, 32);
-                    sub_633E0(v12, (int)word_12C9B0, 32);
-                    sub_633E0(v12, (int)byte_12C9F0, 32);
-                    sub_633E0(v12, (int)word_12C9D0, 32);
-                    sub_633E0(v12, (int)word_12CA8E, 10);
-                    sub_633E0(v12, (int)word_12CA70, 10);
-                    sub_633E0(v12, (int)word_12CAA2, 10);
-                    sub_633E0(v12, (int)word_12CA7A, 10);
-                    sub_633E0(v12, (int)&word_12CAB6, 10);
-                    sub_633E0(v12, (int)word_12CAC0, 10);
-                    sub_633E0(v12, (int)word_12CA98, 10);
-                    sub_633E0(v12, (int)word_12CA84, 10);
+                    sub_633E0((int)v11, (int)byte_12C990, 32);
+                    sub_633E0((int)v12, (int)word_12C9B0, 32);
+                    sub_633E0((int)v12, (int)byte_12C9F0, 32);
+                    sub_633E0((int)v12, (int)word_12C9D0, 32);
+                    sub_633E0((int)v12, (int)word_12CA8E, 10);
+                    sub_633E0((int)v12, (int)word_12CA70, 10);
+                    sub_633E0((int)v12, (int)word_12CAA2, 10);
+                    sub_633E0((int)v12, (int)word_12CA7A, 10);
+                    sub_633E0((int)v12, (int)&word_12CAB6, 10);
+                    sub_633E0((int)v12, (int)word_12CAC0, 10);
+                    sub_633E0((int)v12, (int)word_12CA98, 10);
+                    sub_633E0((int)v12, (int)word_12CA84, 10);
                     DataFileIO::Close(v12);
                   }
                   byte_12CBB9 = 7;
@@ -55607,7 +55607,7 @@ int sub_4F520()
 void sub_4F3F0_4F730()
 {
   int v1; // ebx
-  int v2; // eax
+  FILE* v2; // eax
   __int16 v3; // si
   __int16 v4; // cx
   __int16 v5; // ax
@@ -55621,19 +55621,19 @@ void sub_4F3F0_4F730()
   int v13; // eax
   int v14; // eax
   int v15; // eax
-  int v16; // ebx
+  FILE* v16; // ebx
   char v17[56]; // [esp+0h] [ebp-38h] BYREF
 
   sprintf(v17, "%s%s\\language.inf", aC, aCarpetCd_1);
   v1 = 0;
-  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 514);
-  if ( v2 != -1 )
+  v2 = DataFileIO::CreateOrOpenFile((char*)v17, 514);
+  if ( v2 != nullptr )
   {
     DataFileIO::Close(v2);
-    v16 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 512);
-    if ( v16 == -1 )
+    v16 = DataFileIO::CreateOrOpenFile((char*)v17, 512);
+    if ( v16 == nullptr )
       goto LABEL_58;
-    DataFileIO::Read(v16, dword_AE408_AE3F8() + 151, 1);
+    DataFileIO::Read(v16, (uint8_t*)dword_AE408_AE3F8() + 151, 1);
     goto LABEL_57;
   }
   dword_12CBA0 = 0;
@@ -55750,10 +55750,10 @@ void sub_4F3F0_4F730()
     sub_5C05C_5C56C(0);
   byte_12EEE1 = 0;
   byte_12CAD4 &= ~1u;
-  v16 = (int)DataFileIO::CreateOrOpenFile((char*)v17, 546);
-  if ( v16 != -1 )
+  v16 = DataFileIO::CreateOrOpenFile((char*)v17, 546);
+  if ( v16 != nullptr )
   {
-    sub_633E0(v16, dword_AE408_AE3F8() + 151, 1);
+    sub_633E0((int)v16, dword_AE408_AE3F8() + 151, 1);
 LABEL_57:
     DataFileIO::Close(v16);
   }
@@ -56238,15 +56238,15 @@ int sub_507E0()
 int sub_508E0()
 {
   int v0; // ebp
-  int v1; // eax
-  int v2; // eax
-  int v3; // ebx
+  FILE* v1; // eax
+  FILE* v2; // eax
+  FILE* v3; // ebx
   char v5[48]; // [esp+0h] [ebp-30h] BYREF
 
   sprintf(v5, "%s%s\\sndsetup.inf", aC, aCarpetCd_1);
   v0 = 0;
-  v1 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 514);
-  if ( v1 == -1 )
+  v1 = DataFileIO::CreateOrOpenFile((char*)v5, 514);
+  if ( v1 == nullptr )
   {
     word_12C9B0[0] = word_A99A8;
     word_12C9D0[0] = word_A99A8;
@@ -56265,22 +56265,22 @@ int sub_508E0()
   {
     DataFileIO::Close(v1);
     sprintf(v5, "%s%s\\sndsetup.dat", aC, aCarpetCd_1);
-    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 514);
+    v2 = DataFileIO::CreateOrOpenFile((char*)v5, 514);
     v3 = v2;
-    if ( v2 != -1 )
+    if ( v2 != nullptr )
     {
-      DataFileIO::Read(v2, (int)byte_12C990, 32);
-      DataFileIO::Read(v3, (int)word_12C9B0, 32);
-      DataFileIO::Read(v3, (int)byte_12C9F0, 32);
-      DataFileIO::Read(v3, (int)word_12C9D0, 32);
-      DataFileIO::Read(v3, (int)&word_12CA8E, 10);
-      DataFileIO::Read(v3, (int)word_12CA70, 10);
-      DataFileIO::Read(v3, (int)&word_12CAA2, 10);
-      DataFileIO::Read(v3, (int)word_12CA7A, 10);
-      DataFileIO::Read(v3, (int)&word_12CAB6, 10);
-      DataFileIO::Read(v3, (int)word_12CAC0, 10);
-      DataFileIO::Read(v3, (int)&word_12CA98, 10);
-      DataFileIO::Read(v3, (int)word_12CA84, 10);
+      DataFileIO::Read(v2, (uint8_t*)byte_12C990, 32);
+      DataFileIO::Read(v3, (uint8_t*)word_12C9B0, 32);
+      DataFileIO::Read(v3, (uint8_t*)byte_12C9F0, 32);
+      DataFileIO::Read(v3, (uint8_t*)word_12C9D0, 32);
+      DataFileIO::Read(v3, (uint8_t*)&word_12CA8E, 10);
+      DataFileIO::Read(v3, (uint8_t*)word_12CA70, 10);
+      DataFileIO::Read(v3, (uint8_t*)&word_12CAA2, 10);
+      DataFileIO::Read(v3, (uint8_t*)word_12CA7A, 10);
+      DataFileIO::Read(v3, (uint8_t*)&word_12CAB6, 10);
+      DataFileIO::Read(v3, (uint8_t*)word_12CAC0, 10);
+      DataFileIO::Read(v3, (uint8_t*)&word_12CA98, 10);
+      DataFileIO::Read(v3, (uint8_t*)word_12CA84, 10);
       v0 = 1;
       DataFileIO::Close(v3);
     }
@@ -57457,7 +57457,7 @@ int sub_51D50()
 {
   int v0; // esi
   int v1; // esi
-  int v2; // ebx
+  FILE* v2; // ebx
   int result; // eax
   char v4[40]; // [esp+0h] [ebp-40h] BYREF
   int v5; // [esp+28h] [ebp-18h] BYREF
@@ -57469,16 +57469,16 @@ int sub_51D50()
     v0 = i;
     sprintf(v4, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, i);
     v1 = v0;
-    v2 = (int)DataFileIO::CreateOrOpenFile((char*)v4, 512);
-    if ( v2 == -1 )
+    v2 = DataFileIO::CreateOrOpenFile((char*)v4, 512);
+    if ( v2 == nullptr )
     {
       result = sprintf(off_96864[v1], asc_A9AE4);
     }
     else
     {
-      DataFileIO::Read(v2, (int)&v5, 4);
+      DataFileIO::Read(v2, (uint8_t*)&v5, 4);
       if ( v5 == 4 )
-        DataFileIO::Read(v2, (int)off_96864[v1], 20);
+        DataFileIO::Read(v2, (uint8_t*)off_96864[v1], 20);
       else
         sprintf(off_96864[v1], asc_A9AE4);
       result = DataFileIO::Close(v2);
@@ -57493,7 +57493,7 @@ int sub_51D50()
 int sub_51E30(char a1)
 {
   int v1; // esi
-  int v2; // ebx
+  FILE* v2; // ebx
   char v4[40]; // [esp+0h] [ebp-40h] BYREF
   int v5; // [esp+28h] [ebp-18h] BYREF
   int v6[5]; // [esp+2Ch] [ebp-14h] BYREF
@@ -57502,21 +57502,21 @@ int sub_51E30(char a1)
   v5 = 4 * ((unsigned __int8)byte_12CBC1 + (unsigned __int8)byte_12CBC0 + *(unsigned __int16 *)(dword_AE408_AE3F8() + 17));
   sprintf(v4, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, (unsigned __int8)(a1 - 1));
   v1 = 0;
-  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v4, 512);
-  if ( v2 != -1 )
+  v2 = DataFileIO::CreateOrOpenFile((char*)v4, 512);
+  if ( v2 != nullptr )
   {
-    DataFileIO::Read(v2, (int)v6, 4);
+    DataFileIO::Read(v2, (uint8_t*)v6, 4);
     if ( v6[0] == 4 )
     {
-      DataFileIO::Read(v2, (int)off_96864[(unsigned __int8)(a1 - 1)], 20);
-      DataFileIO::Read(v2, dword_AE408_AE3F8() + 29, 32);
-      DataFileIO::Read(v2, dword_AE408_AE3F8() + 61, 32);
-      DataFileIO::Read(v2, dword_AE400_AE3F0() + 8597, 12);
-      DataFileIO::Read(v2, (int)&v5, 4);
-      DataFileIO::Read(v2, dword_AE400_AE3F0() + 15318, 24);
-      DataFileIO::Read(v2, (int)&byte_12CBC0, 1);
-      DataFileIO::Read(v2, (int)&byte_12CBC1, 1);
-      DataFileIO::Read(v2, dword_AE400_AE3F0() + 8597, 12);
+      DataFileIO::Read(v2, (uint8_t*)off_96864[(unsigned __int8)(a1 - 1)], 20);
+      DataFileIO::Read(v2, (uint8_t*)dword_AE408_AE3F8() + 29, 32);
+      DataFileIO::Read(v2, (uint8_t*)dword_AE408_AE3F8() + 61, 32);
+      DataFileIO::Read(v2, (uint8_t*)dword_AE400_AE3F0() + 8597, 12);
+      DataFileIO::Read(v2, (uint8_t*)&v5, 4);
+      DataFileIO::Read(v2, (uint8_t*)dword_AE400_AE3F0() + 15318, 24);
+      DataFileIO::Read(v2, (uint8_t*)&byte_12CBC0, 1);
+      DataFileIO::Read(v2, (uint8_t*)&byte_12CBC1, 1);
+      DataFileIO::Read(v2, (uint8_t*)dword_AE400_AE3F0() + 8597, 12);
       byte_9687C = 0;
       v1 = 1;
       *(_WORD *)(dword_AE408_AE3F8() + 17) = v5 / v6[0] - (unsigned __int8)byte_12CBC0 - (unsigned __int8)byte_12CBC1;
@@ -57538,8 +57538,8 @@ int sub_51E30(char a1)
 int sub_51FD0(char a1)
 {
   int v1; // esi
-  int v2; // eax
-  int v3; // ebx
+  FILE* v2; // eax
+  FILE* v3; // ebx
   char v5[40]; // [esp+0h] [ebp-3Ch] BYREF
   int v6; // [esp+28h] [ebp-14h] BYREF
   int v7[4]; // [esp+2Ch] [ebp-10h] BYREF
@@ -57548,20 +57548,20 @@ int sub_51FD0(char a1)
   v1 = 0;
   v6 = 4 * (*(unsigned __int16 *)(dword_AE408_AE3F8() + 17) + (unsigned __int8)byte_12CBC0 + (unsigned __int8)byte_12CBC1);
   sprintf(v5, "%s%s\\save\\carpdd%02X.gam", aC, aCarpetCd_1, (unsigned __int8)(a1 - 1));
-  v2 = (int)DataFileIO::CreateOrOpenFile((char*)v5, 546);
+  v2 = DataFileIO::CreateOrOpenFile((char*)v5, 546);
   v3 = v2;
-  if ( v2 != -1 )
+  if ( v2 != nullptr )
   {
-    sub_633E0(v2, (int)v7, 4);
-    sub_633E0(v3, (int)off_96864[(unsigned __int8)(a1 - 1)], 20);
-    sub_633E0(v3, dword_AE408_AE3F8() + 29, 32);
-    sub_633E0(v3, dword_AE408_AE3F8() + 61, 32);
-    sub_633E0(v3, dword_AE400_AE3F0() + 8597, 12);
-    sub_633E0(v3, (int)&v6, 4);
-    sub_633E0(v3, dword_AE400_AE3F0() + 15318, 24);
-    sub_633E0(v3, (int)&byte_12CBC0, 1);
-    sub_633E0(v3, (int)&byte_12CBC1, 1);
-    sub_633E0(v3, dword_AE400_AE3F0() + 8597, 12);
+    sub_633E0((int)v2, (int)v7, 4);
+    sub_633E0((int)v3, (int)off_96864[(unsigned __int8)(a1 - 1)], 20);
+    sub_633E0((int)v3, dword_AE408_AE3F8() + 29, 32);
+    sub_633E0((int)v3, dword_AE408_AE3F8() + 61, 32);
+    sub_633E0((int)v3, dword_AE400_AE3F0() + 8597, 12);
+    sub_633E0((int)v3, (int)&v6, 4);
+    sub_633E0((int)v3, dword_AE400_AE3F0() + 15318, 24);
+    sub_633E0((int)v3, (int)&byte_12CBC0, 1);
+    sub_633E0((int)v3, (int)&byte_12CBC1, 1);
+    sub_633E0((int)v3, dword_AE400_AE3F0() + 8597, 12);
     v1 = 1;
     DataFileIO::Close(v3);
   }
@@ -62040,11 +62040,11 @@ char sub_58CF0()
   char v1[64]; // [esp+0h] [ebp-40h] BYREF
 
   sprintf(v1, "%s%s/%s/%s.dat", "C:", aCarpetCd_4, aData_1, aTmaps10_0);
-  dword_968EC = (int)DataFileIO::CreateOrOpenFile((char*)v1, 512);
-  if ( dword_968EC == -1 )
+  dword_968EC = DataFileIO::CreateOrOpenFile((char*)v1, 512);
+  if ( dword_968EC == nullptr )
   {
     sprintf(v1, "data/%s.dat", aTmaps10_0);
-    dword_968EC = (int)DataFileIO::CreateOrOpenFile((char*)v1, 512);
+    dword_968EC = DataFileIO::CreateOrOpenFile((char*)v1, 512);
   }
   return 1;
 }
@@ -62058,12 +62058,12 @@ int sub_58D70(unsigned __int16 a1, char *a2)
   int v3; // esi
   int result; // eax
 
-  if ( dword_968EC == -1 )
-    return dword_968EC;
+  if ( dword_968EC == nullptr )
+    return (int)dword_968EC;
   v2 = 10 * a1;
-  sub_62B30_63040(dword_968EC, *(_DWORD *)(v2 + dword_12D734 + 4), 0);
+  sub_62B30_63040((int)dword_968EC, *(_DWORD *)(v2 + dword_12D734 + 4), 0);
   v3 = *(_DWORD *)(10 * (a1 + 1) + dword_12D734 + 4) - *(_DWORD *)(dword_12D734 + v2 + 4);
-  DataFileIO::Read(dword_968EC, (int)a2, v3);
+  DataFileIO::Read(dword_968EC, (uint8_t*)a2, v3);
   result = sub_63070((int)a2, a2);
   if ( result >= 0 )
   {
@@ -62431,10 +62431,10 @@ int sub_59480()
 {
   int result; // eax
 
-  if ( dword_968EC != -1 )
+  if ( dword_968EC != nullptr )
   {
     result = DataFileIO::Close(dword_968EC);
-    dword_968EC = -1;
+    dword_968EC = nullptr;
   }
   return result;
 }
@@ -65331,7 +65331,7 @@ int sub_5D6B0(int a1, int a2, unsigned int a3)
   unsigned int i; // [esp+4h] [ebp-4h]
 
   if ( !dword_9AF08 )
-    return DataFileIO::Read(a1, a2, a3);
+    return DataFileIO::Read((FILE*)a1, (uint8_t*)a2, a3);
   for ( i = 0; i < a3 && dword_9AF14 + i < dword_9AF10; ++i )
   {
     v3 = (_BYTE *)dword_9AF0C++;
@@ -67201,7 +67201,7 @@ unsigned __int64 sub_610EC(int a1)
   unsigned int v4; // [esp+Ch] [ebp-10h]
   int v5; // [esp+10h] [ebp-Ch]
   int v6; // [esp+14h] [ebp-8h]
-  int v7; // [esp+18h] [ebp-4h]
+  FILE* v7; // [esp+18h] [ebp-4h]
 
   v5 = 0;
   v3 = 0;
@@ -67209,13 +67209,13 @@ unsigned __int64 sub_610EC(int a1)
   v6 = GetRNCFilesize_63910_63E20((Pathstruct*)a1);
   if ( v6 > 0 )
   {
-    v7 = (int)DataFileIO::CreateOrOpenFile((char*)a1, 514);
-    if ( v7 != -1 )
+    v7 = DataFileIO::CreateOrOpenFile((char*)a1, 514);
+    if ( v7 != nullptr )
     {
       v5 = (int)malloc_42540_42880(v6);
       if ( v5 )
       {
-        if ( DataFileIO::Read(v7, v5, v6) != v6 )
+        if ( DataFileIO::Read(v7, (uint8_t*)v5, v6) != v6 )
           v5 = 0;
       }
     }
@@ -69069,13 +69069,13 @@ char sub_62DC3_632D3(int a1)
 //----- (00063370) --------------------------------------------------------
 int sub_63370(int a1, int a2, int a3)
 {
-  int v5; // [esp+4h] [ebp-8h]
+  FILE* v5; // [esp+4h] [ebp-8h]
   int v6; // [esp+8h] [ebp-4h]
 
-  v5 = (int)DataFileIO::CreateOrOpenFile((char*)a1, 546);
-  if ( v5 == -1 )
+  v5 = DataFileIO::CreateOrOpenFile((char*)a1, 546);
+  if ( v5 == nullptr )
     return -1;
-  v6 = sub_633E0(v5, a2, a3);
+  v6 = sub_633E0((int)v5, a2, a3);
   DataFileIO::Close(v5);
   return v6;
 }
