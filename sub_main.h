@@ -10,8 +10,7 @@
 #define _WORD  uint16
 #define _DWORD uint32
 
-//extern __int16 word_A9990;
-extern int dword_A99B8;
+extern int dword_A99A0_A99B8;
 extern int dword_AE450_AE440;
 
 typedef struct {//2049
