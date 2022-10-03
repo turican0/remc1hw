@@ -12659,7 +12659,7 @@ __int16 mouseLeftButton2_12EFE4_12EFD4; // weak
 int dword_12EFF0_12EFE0; // weak
 uint8_t preReadBuffer_12EFF4[64000]; // weak
 uint8_t* readBuffer_12EFF4 = preReadBuffer_12EFF4; // weak
-int dword_12EFE8; // weak
+int dword_12EFF8_12EFE8; // weak
 int dword_12EFEC; // weak
 int dword_12F000_12EFF0; // weak
 int dword_12EFF4; // weak
@@ -24691,7 +24691,7 @@ LABEL_42:
     case 1:
       if ( byte_90094 || *(char *)(dword_AE400_AE3F0() + 8600) != (unsigned __int8)byte_90096 )
       {
-        memset((void*)readBuffer_12EFF4, 0, dword_12EFE8 * dword_12EFF0_12EFE0);
+        memset((void*)readBuffer_12EFF4, 0, dword_12EFF8_12EFE8 * dword_12EFF0_12EFE0);
         v20 = *(_BYTE *)(dword_AE400_AE3F0() + 8600);
         byte_90094 = 0;
         byte_90096 = v20;
@@ -24923,7 +24923,7 @@ LABEL_42:
 LABEL_132:
       if ( byte_90094 != 2 )
       {
-        memset((void*)readBuffer_12EFF4, 0, dword_12EFE8 * dword_12EFF0_12EFE0);
+        memset((void*)readBuffer_12EFF4, 0, dword_12EFF8_12EFE8 * dword_12EFF0_12EFE0);
         byte_90094 = 2;
       }
       sub_30A10(16);
@@ -25159,7 +25159,7 @@ LABEL_118:
 // B76F0: using guessed type char byte_B7700_B76F0;
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
 // 12EFE4: using guessed type int readBuffer_12EFF4;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12EFF0: using guessed type int dword_12F000_12EFF0;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -34838,7 +34838,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
       0,
       2 * dword_12EFF0_12EFE0,
       (unsigned __int16)(dword_12EFF0_12EFE0 / 2 - 8),
-      (unsigned __int16)(dword_12EFE8 / 2 - 40));
+      (unsigned __int16)(dword_12EFF8_12EFE8 / 2 - 40));
     v21 = dword_90B4C[v20];
     dword_9070C = 20;
     v22 = 5 * (_DWORD)off_9134C[v20];
@@ -34851,7 +34851,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
     sub_2A740(v78 + v23, v77 + v22, v78 + v23, a4 & 0x7FF, a5, a6, a7, a8);
     dword_902B0 = 0;
     LOBYTE(v24) = dword_12EFF0_12EFE0;
-    sub_799A5((int)readBuffer_12EFF4, 0, dword_12EFF0_12EFE0, (unsigned __int16)dword_12EFF0_12EFE0, (unsigned __int16)dword_12EFE8);
+    sub_799A5((int)readBuffer_12EFF4, 0, dword_12EFF0_12EFE0, (unsigned __int16)dword_12EFF0_12EFE0, (unsigned __int16)dword_12EFF8_12EFE8);
   }
   else if ( *(_BYTE *)(dword_AE400_AE3F0() + 8603) != 2 || *(_BYTE *)(dword_AE400_AE3F0() + 8606) )
   {
@@ -35110,7 +35110,7 @@ char sub_30DD0(int a1, int a2, int a3, __int16 a4, int a5, int a6, int a7, int a
 // 12C1D0: using guessed type __int16 word_12C1D0;
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
 // 12EFE4: using guessed type int readBuffer_12EFF4;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 void sub_315C0_31600()
@@ -58606,7 +58606,7 @@ void sub_521C4(_BYTE *a1, _BYTE *a2, _BYTE *a3, int a4, char a5)
     v6 = a2;
     if ( a2 )
     {
-      v8 = dword_12EFF0_12EFE0 * dword_12EFE8;
+      v8 = dword_12EFF0_12EFE0 * dword_12EFF8_12EFE8;
       v9 = 0;
       if ( a4 )
       {
@@ -58625,7 +58625,7 @@ void sub_521C4(_BYTE *a1, _BYTE *a2, _BYTE *a3, int a4, char a5)
   }
 }
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 
 //----- (0005220C) --------------------------------------------------------
 int sub_5220C(int a1, int a2, int a3, int a4, char a5, char a6)
@@ -65166,7 +65166,7 @@ void sub_5BA10()
 {
   __outbyte(0x302u, 2u);
   __outbyte(0x303u, 0x10u);
-  memset((void*)readBuffer_12EFF4, 0, dword_12EFE8 * dword_12EFF0_12EFE0);
+  memset((void*)readBuffer_12EFF4, 0, dword_12EFF8_12EFE8 * dword_12EFF0_12EFE0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     sub_5CDA0_5D2B0();
   else
@@ -65175,7 +65175,7 @@ void sub_5BA10()
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
 // 12EFE4: using guessed type int readBuffer_12EFF4;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0005BA70) --------------------------------------------------------
@@ -65183,7 +65183,7 @@ void sub_5BA70()
 {
   __outbyte(0x302u, 2u);
   __outbyte(0x303u, 1u);
-  memset((void*)readBuffer_12EFF4, 0, dword_12EFE8 * dword_12EFF0_12EFE0);
+  memset((void*)readBuffer_12EFF4, 0, dword_12EFF8_12EFE8 * dword_12EFF0_12EFE0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     sub_5CDA0_5D2B0();
   else
@@ -65192,7 +65192,7 @@ void sub_5BA70()
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
 // 12EFE4: using guessed type int readBuffer_12EFF4;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0005BAF0) --------------------------------------------------------
@@ -65229,8 +65229,8 @@ void sub_5B650_5BB60()
   unk_12EF74 = dword_12EFF0_12EFE0 - mouseXY_12EF80_12EF70;
   if ( (__int16)(dword_12EFF0_12EFE0 - mouseXY_12EF80_12EF70) > word_12EFB4 )
     unk_12EF74 = word_12EFB4;
-  word_12EF76 = dword_12EFE8 - HIWORD(mouseXY_12EF80_12EF70);
-  if ( (__int16)(dword_12EFE8 - HIWORD(mouseXY_12EF80_12EF70)) > word_12EFB6 )
+  word_12EF76 = dword_12EFF8_12EFE8 - HIWORD(mouseXY_12EF80_12EF70);
+  if ( (__int16)(dword_12EFF8_12EFE8 - HIWORD(mouseXY_12EF80_12EF70)) > word_12EFB6 )
     word_12EF76 = word_12EFB6;
   dword_12EF98 = dword_12EF78;
   dword_12EF94 = (int)&tempScreenBuffer_A0000 + (unsigned __int16)mouseByteIndex2_12EF8C_12EF7C;
@@ -65302,7 +65302,7 @@ void sub_5B650_5BB60()
 // 12EFC2: using guessed type __int16 word_12EFC2;
 // 12EFC4: using guessed type __int16 word_12EFC4;
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0005BE6C) --------------------------------------------------------
@@ -65325,8 +65325,8 @@ void sub_5B95C_5BE6C()
   if ( (__int16)(dword_12EFF0_12EFE0 - dword_12EF80) > word_12EFB4 )
     LOWORD(dword_12EF84) = word_12EFB4;
   unk_12EF74 = dword_12EF84;
-  HIWORD(dword_12EF84) = dword_12EFE8 - HIWORD(dword_12EF80);
-  if ( (__int16)(dword_12EFE8 - HIWORD(dword_12EF80)) > word_12EFB6 )
+  HIWORD(dword_12EF84) = dword_12EFF8_12EFE8 - HIWORD(dword_12EF80);
+  if ( (__int16)(dword_12EFF8_12EFE8 - HIWORD(dword_12EF80)) > word_12EFB6 )
     HIWORD(dword_12EF84) = word_12EFB6;
   word_12EF76 = HIWORD(dword_12EF84);
   dword_12EF98 = dword_12EF88;
@@ -65373,7 +65373,7 @@ void sub_5B95C_5BE6C()
 // 12EFC4: using guessed type __int16 word_12EFC4;
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
 // 12EFE4: using guessed type int readBuffer_12EFF4;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0005C070) --------------------------------------------------------
@@ -69539,7 +69539,7 @@ void sub_61B90_620A0(unsigned __int8 *a1)
     FixPerifery((char*)"initVga320");
 
     dword_12EFF0_12EFE0 = 320;
-    dword_12F008_12EFF8 = 200;
+    dword_12EFF8_12EFE8 = 200;
     sub_319A0_319E0((TColor*)a1);
     sub_5C468_5C978();
     sub_65EB0_663C0(0, 0, 320, 200);
@@ -69553,7 +69553,7 @@ void sub_61B90_620A0(unsigned __int8 *a1)
     word_12F01C = (unsigned __int8)v2[0];
   v3[0] = 19;
   dword_12EFF0_12EFE0 = 320;
-  dword_12EFE8 = 200;
+  dword_12EFF8_12EFE8 = 200;
   int386(16, (uint32)v3, (uint32)v2);
   sub_319A0_319E0((TColor*)a1);
   sub_5C468_5C978();
@@ -69562,7 +69562,7 @@ void sub_61B90_620A0(unsigned __int8 *a1)
 }
 // 63488: using guessed type _DWORD int386(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01C: using guessed type __int16 word_12F01C;
 
 //----- (00062140) --------------------------------------------------------
@@ -69576,7 +69576,7 @@ int sub_61C30_62140(unsigned __int8 *a1)
   if ( !word_12F01C )
     word_12F01C = (unsigned __int8)v2[0];
   dword_12EFF0_12EFE0 = 640;
-  dword_12EFE8 = 480;
+  dword_12EFF8_12EFE8 = 480;
   sub_61EC8(257);
   sub_319A0_319E0((TColor*)a1);
   sub_5C468_5C978();
@@ -69584,7 +69584,7 @@ int sub_61C30_62140(unsigned __int8 *a1)
 }
 // 63488: using guessed type _DWORD int386(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int dword_12EFF0_12EFE0;
-// 12EFE8: using guessed type int dword_12EFE8;
+// 12EFE8: using guessed type int dword_12EFF8_12EFE8;
 // 12F01C: using guessed type __int16 word_12F01C;
 // 62140: using guessed type int var_1C[7];
 // 62140: using guessed type char var_38[28];
