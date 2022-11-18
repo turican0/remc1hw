@@ -72,6 +72,12 @@
     <ClCompile Include="utilities\DataFileIO.cpp">
       <Filter>Zdrojové soubory\utilities</Filter>
     </ClCompile>
+    <ClCompile Include="engine\Basic.cpp">
+      <Filter>Zdrojové soubory\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities\Compare.cpp">
+      <Filter>Zdrojové soubory\utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defs.h">
@@ -108,6 +114,12 @@
       <Filter>Hlavičkové soubory\portability</Filter>
     </ClInclude>
     <ClInclude Include="utilities\DataFileIO.h">
+      <Filter>Hlavičkové soubory\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\Basic.h">
+      <Filter>Hlavičkové soubory\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\Compare.h">
       <Filter>Hlavičkové soubory\utilities</Filter>
     </ClInclude>
   </ItemGroup>

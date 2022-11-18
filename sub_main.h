@@ -1,11 +1,21 @@
 #pragma once
-
+#include "utilities/Compare.h"
 #include "portability/port_filesystem.h"
 #include "portability/port_sdl_vga_mouse.h"
 #include "utilities/DataFileIO.h"
 
 #include <stdio.h>
 #include <defs.h>
+
+#include <chrono>
+#include <thread>
+
+#include <thread>
+#include <chrono>
+#include <functional>
+#include <cstdio>
+#include <atomic>
+
 
 #define _BYTE  uint8
 #define _WORD  uint16
@@ -18,133 +28,28 @@ typedef struct {//lenght 3
 	uint8_t blue;
 }
 TColor;
+
+typedef struct {
+	TypeTab** beg;
+	TypeTab** end;
+	uint8_t** var_3;
+} Type_99974;
 #pragma pack (16)
 
 extern int dword_A99A0_A99B8;
 extern int dword_AE450_AE440;
 
 extern uint8_t* begSearch_AE3F4_26C3F4_26C3E4;
-extern uint8_t* begBuildTab_AE440_AE430_26C440_26C430;
-extern uint8_t* begFont0Tab_AE3B8_AE3A8_26C3B8_26C3A8;
+extern TypeTab* begBuildTab_AE440_AE430_26C440_26C430;
+extern TypeTab* begFont0Tab_AE3B8_AE3A8_26C3B8_26C3A8;
 extern uint8_t* begPalData_AE424_AE414_26C424_26C414;
 extern TColor* begPalMem_AE418_AE408_26C418_26C408;
-extern uint8_t* begPointersTab_AE450_AE440_26C450_26C440;
+extern TypeTab* begPointersTab_AE450_AE440_26C450_26C440;
 extern TColor* begPalDat_AE428_AE418_26C428_26C418;
 extern uint8_t* begTextDat_AE41C_AE40C_26C41C_26C40C;
 extern uint8_t* begBlkDat_AE3F0_26C3F0_26C3E0;
 extern uint8_t* begSky_AE3D8_AE3C8_26C3D8_26C3C8;
 extern uint8_t* begBscreen_AE3FC_AE3EC_26C3FC_26C3EC;
-extern uint8_t* begSprTab_AE42C_AE41C_26C42C_26C41C;
-
-typedef struct {//2049
-	uint16 var_u16_13325;
-	uint8 var_u8_13327;
-	uint32 var_u32_13347;
-	//2049 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 13347
-
-}
-TypeStrAE400_13347;
-
-typedef union {
-	uint16 a16[2];
-	uint32 a32;
-} un16_32;
-
-typedef struct {
-	uint8 var_u8_1;
-	uint16 var_u16_8;
-	uint16 var_u16_10;
-
-	char textBuffer_117[32];
-
-	un16_32 var_u32_576;
-
-	uint8 var_u8_8597;
-	uint8 var_u8_8598;
-	uint8 var_u8_8599;
-
-	uint8 var_u8_8600;
-	uint8 var_u8_8601;
-	uint8 var_u8_8602;
-
-	uint8 var_u8_8606;
-	uint8 var_u8_8608;
-
-	uint8 var_u8_8621;
-	uint8 var_u8_8622;
-	uint8 var_u8_8623;
-	uint8 var_u8_8624;
-	uint8 var_u8_8625;
-	uint8 var_u8_8626;
-	uint8 var_u8_8627;
-	uint8 var_u8_8628;
-	uint8 var_u8_8629;
-	uint8 var_u8_8630;
-	uint8 var_u8_8631;
-
-	TypeStrAE400_13347 str_13347[80];//fix
-
-} Type_str_AE400_AE3F0;
-
-extern Type_str_AE400_AE3F0* str_AE400_AE3F0;
-
-typedef struct {
-	uint8 var_u8_0;
-	uint8 var_u8_1;
-	uint8 var_u8_8;
-	uint16 var_u16_13;
-	uint16 var_u16_15;
-	uint16 var_u16_17;
-	uint8 var_u8_23;
-	uint32 var_u32_25;
-	uint8 var_u8_29;
-	char var_u8_117[32];//fix size
-	uint8 var_u8_151;
-	uint8_t* var_u32_168;
-	uint32 var_u32_172;
-} Type_str_AE408_AE3F8;
-
-typedef union {
-	uint8_t* p;
-	uint32_t align;
-} p64align;
-
-typedef struct {//lenght 66(changed to 70)
-	uint8_t ncb_command_0;
-	uint8_t ncb_retcode_1;
-	uint8_t ncb_lsn_2;
-	uint8_t ncb_num_3;
-	p64align ncb_buffer_4;
-	uint16_t ncb_bufferLength_8;
-	char ncb_callName_10[16];
-	char ncb_name_26[16];
-	uint8_t ncb_rto_42;
-	uint8_t ncb_sto_43;
-	uint8_t ncb_cmd_cplt_49;//lock for end command
-}
-myNCB;
-
-#pragma pack (1)
-typedef struct {//44 lenght
-	char path[28];
-	uint8_t** colorPalette_var28;//1C // Palette
-	uint8_t** var32_end_buffer;//20 // maybe buffer
-	uint32_t var36_size_buffer;//24 //maybe file size
-	uint32_t var40_alloc_type;//28
-} Pathstruct;
-#pragma pack (16)
-
-typedef union { uint8_t bytes[4]; int32 size; }
-Type_fileSize;
-
-extern Type_str_AE408_AE3F8* str_AE408_AE3F8;
-
-int dword_AE400_AE3F0();
-
-void dword_AE400_AE3F0(int input);
-
-int dword_AE408_AE3F8();
-
-void dword_AE408_AE3F8(int input);
+extern TypeTab* begSprTab_AE42C_AE41C_26C42C_26C41C;
 
 int sub_main(int argc, char* argv[]);
