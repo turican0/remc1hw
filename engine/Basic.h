@@ -146,10 +146,10 @@ typedef struct {//size 946
 
 typedef struct {//14
 	axis_3d axis;
-	uint16 var_6;
-	uint16 var_8;
-	uint16 var_10;
-	uint16 var_12;
+	uint16 yaw_6;
+	uint16 pitch_8;
+	uint16 roll_10;
+	uint16 fov_12;
 } Type_13895;
 
 typedef struct {//68
@@ -167,7 +167,7 @@ typedef struct {//2049
 	uint8 var_u8_13329_6;//6
 	uint16 var_u16_13330_7;//7
 	uint8 var_u8_13332_9;//9
-	uint16 var_u16_13333;//10
+	uint16 playIndex_13333;//10
 	uint8 stub0b[2];
 	uint16 var_u16_13337_14;//14
 	uint16 var_u16_13339_16;//16	
@@ -402,7 +402,8 @@ typedef struct {//size 232713
 	uint8 var_u8_8601;
 	uint8 var_u8_8602;
 	uint8 var_u8_8603;
-	uint8 stub8[2];
+	uint8 var_u8_8604;
+	uint8 var_u8_8605;
 	uint8 var_u8_8606;
 	uint8 stub9[1];
 	uint8 var_u8_8608;
