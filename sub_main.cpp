@@ -988,7 +988,7 @@ int sub_58270(int a1);
 void sub_58410(int a1);
 int sub_585B0(int a1);
 int sub_58750(int a1);
-int sub_58768_58C78(__int16 a1, __int16 a2, int a3, unsigned __int8 a4);
+void DrawLetter_58768_58C78(__int16 a1, __int16 a2, TypeTab* a3, unsigned __int8 a4);
 char sub_58CF0();
 int sub_58D70(unsigned __int16 a1, char *a2);
 char sub_58E20(unsigned __int16 a1);
@@ -1049,9 +1049,9 @@ int sub_5A570(int a1);
 int sub_5A580(int a1);
 int sub_5A5A0(int a1, int a2);
 int sub_5A630(int a1, int a2);
-int drawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4);
-__int16 getLetterX_5A3A0_5A8B0();
-__int16 getLetterY_5A3B0_5A8C0();
+void DrawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4);
+__int16 GetLetterX_5A3A0_5A8B0();
+__int16 GetLetterY_5A3B0_5A8C0();
 void sub_5A3C0_5A8D0(int fontIndex);
 // void sub_5A8F3(int a1, int a2, int a3, int a4, int a5, int a6, int a7);
 int sub_5A459_5A969();
@@ -25123,27 +25123,27 @@ void DrawGameFrame_20FB0()//1F1FB0_
                 {
                     if (str_AE400_AE3F0->var_u8_8600 == 40)
                     {
-                        drawText_5A180_5A690(dword_AE238_AE228[60], 132, 50, byte_AD167_AD157[1]);
-                        textDrawAxisY = getLetterY_5A3B0_5A8C0() + 50;
-                        drawText_5A180_5A690(dword_AE238_AE228[61], 132, textDrawAxisY, byte_AD167_AD157[1]);
+                        DrawText_5A180_5A690(dword_AE238_AE228[60], 132, 50, byte_AD167_AD157[1]);
+                        textDrawAxisY = GetLetterY_5A3B0_5A8C0() + 50;
+                        DrawText_5A180_5A690(dword_AE238_AE228[61], 132, textDrawAxisY, byte_AD167_AD157[1]);
                     }
                     else
                     {
                         v9 = 4080 * str_AE408_AE3F8->str_93.var_u8[2];
-                        drawText_5A180_5A690(
+                        DrawText_5A180_5A690(
                             dword_AE238_AE228[60],
                             132,
                             50,
                             byte_AD167_AD157[1 + 273 * ((int)(v9 - (__CFSHL__(HIDWORD(v9), 8) + (HIDWORD(v9) << 8))) >> 8)]);
-                        textDrawAxisY = getLetterY_5A3B0_5A8C0() + 50;
+                        textDrawAxisY = GetLetterY_5A3B0_5A8C0() + 50;
                         v10 = 4080 * str_AE408_AE3F8->str_93.var_u8[2];
-                        drawText_5A180_5A690(
+                        DrawText_5A180_5A690(
                             dword_AE238_AE228[61],
                             132,
                             textDrawAxisY,
                             byte_AD167_AD157[1 + 273 * ((int)(v10 - (__CFSHL__(HIDWORD(v10), 8) + (HIDWORD(v10) << 8))) >> 8)]);
                     }
-                    textDrawAxisY += getLetterY_5A3B0_5A8C0();
+                    textDrawAxisY += GetLetterY_5A3B0_5A8C0();
                 }
                 if ((str_AE408_AE3F8->var_u8_2 & 1) != 0)
                 {
@@ -25154,8 +25154,8 @@ void DrawGameFrame_20FB0()//1F1FB0_
                         * ((int)(4080 * str_AE408_AE3F8->str_93.var_u8[2]
                             - (__CFSHL__(str_AE408_AE3F8->str_93.var_u8[2] / 0x80809u, 8)
                                 + ((str_AE408_AE3F8->str_93.var_u8[2] / 0x80809u) << 8))) >> 8)];
-                    drawText_5A180_5A690((char*)"PAUSED!", 132, textDrawAxisY, textIndex);
-                    textDrawAxisY += getLetterY_5A3B0_5A8C0();
+                    DrawText_5A180_5A690((char*)"PAUSED!", 132, textDrawAxisY, textIndex);
+                    textDrawAxisY += GetLetterY_5A3B0_5A8C0();
                 }
                 int v13x = 0;
                 while (v13x < str_AE400_AE3F0->var_u16_10)
@@ -25167,21 +25167,21 @@ void DrawGameFrame_20FB0()//1F1FB0_
                         if (str_AE400_AE3F0->str_13323[str_AE400_AE3F0->var_u16_8].str_13351_28[v13x].var_u16_13415 > 0)
                         {
                             sprintf(textBuffer, "%s %s", str_AE400_AE3F0->str_13323[v13x].str_14357, textVar);
-                            drawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
+                            DrawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
                             goto LABEL_41;
                         }
                         break;
                     case 1:
                         sprintf(textBuffer, ">%s?", textVar);
-                        drawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
-                        textDrawAxisY += getLetterY_5A3B0_5A8C0();
+                        DrawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
+                        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
                         break;
                     case 2:
                         if (str_AE400_AE3F0->str_13323[str_AE400_AE3F0->var_u16_8].str_13351_28[v13x].var_u16_13415 > 0)
                         {
                             sprintf(textBuffer, "%s", textVar);
-                            drawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
-                            textDrawAxisY += getLetterY_5A3B0_5A8C0();
+                            DrawText_5A180_5A690(textBuffer, 132, textDrawAxisY, byte_AD167_AD157[3841]);
+                            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
                             goto LABEL_42;
                         }
                         break;
@@ -25196,9 +25196,9 @@ void DrawGameFrame_20FB0()//1F1FB0_
                                 * ((int)(4080 * str_AE408_AE3F8->str_93.var_u8[2]
                                     - (__CFSHL__(str_AE408_AE3F8->str_93.var_u8[2] / 0x80809u, 8)
                                         + ((str_AE408_AE3F8->str_93.var_u8[2] / 0x80809u) << 8))) >> 8)];
-                            drawText_5A180_5A690(textBuffer, 132, textDrawAxisY, textIndex);
+                            DrawText_5A180_5A690(textBuffer, 132, textDrawAxisY, textIndex);
                         LABEL_41:
-                            textDrawAxisY += getLetterY_5A3B0_5A8C0();
+                            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
                         LABEL_42:
                             str_AE400_AE3F0->str_13323[str_AE400_AE3F0->var_u16_8].str_13351_28[v13x].var_u16_13415--;
                         }
@@ -25231,175 +25231,175 @@ void DrawGameFrame_20FB0()//1F1FB0_
             str_AE400_AE3F0->str_13323[str_AE400_AE3F0->var_u16_8].str_13895_572[v4x + 1].roll_10,
             str_AE400_AE3F0->str_13323[str_AE400_AE3F0->var_u16_8].str_13895_572[v4x + 1].fov_12);
         sub_5A3C0_5A8D0(1);
-        textDrawAxisX = getLetterX_5A3A0_5A8B0();
-        intLetterY = -getLetterY_5A3B0_5A8C0() / 2;
+        textDrawAxisX = GetLetterX_5A3A0_5A8B0();
+        intLetterY = -GetLetterY_5A3B0_5A8C0() / 2;
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY = getLetterY_5A3B0_5A8C0() + intLetterY;
-            drawText_5A180_5A690((char*)"Cursor up       Move forwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY = GetLetterY_5A3B0_5A8C0() + intLetterY;
+            DrawText_5A180_5A690((char*)"Cursor up       Move forwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY = getLetterY_5A3B0_5A8C0() + intLetterY;
-            drawText_5A180_5A690((char*)"Cursor up       Move forwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY = GetLetterY_5A3B0_5A8C0() + intLetterY;
+            DrawText_5A180_5A690((char*)"Cursor up       Move forwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Cursor down     Move backwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Cursor down     Move backwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Cursor down     Move backwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Cursor down     Move backwards.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Cursor left     Move left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Cursor right    Move right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Cursor left     Move left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Cursor right    Move right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Left button     Use spell to the left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Left button     Use spell to the left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Left button     Use spell to the left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Right button    Use spell to the right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Right button    Use spell to the right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Left button     Use spell to the left.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"1 - 0           Select assigned spells.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Right button    Use spell to the right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"1 - 0           Select assigned spells.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Space           Rebirth.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Shift Q         Exit to dos.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F5              Reflections toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F5              Reflections toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"F6              Sky toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F7              Shadows toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F7              Shadows toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Right button    Use spell to the right.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F8              Icons toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"1 - 0           Select assigned spells.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F8              Icons toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"1 - 0           Select assigned spells.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Space           Rebirth.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Shift Q         Exit to dos.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F5              Reflections toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F5              Reflections toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"F6              Sky toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F7              Shadows toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F7              Shadows toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F9              Speed blur toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F8              Icons toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F9              Speed blur toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F8              Icons toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F10             Stereo modes toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F9              Speed blur toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"F10             Stereo modes toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Return          ", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Left and Right  Spell selection.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Left and Right  Spell selection.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0() * 2;
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"If you are experiencing slowness, try Pressing F5,F6,F7.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"If you are experiencing slowness, try Pressing F5,F6,F7.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0() * 2;
-        if ((typeResolution_12F02E_12F01E & 1) != 0)
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Magic Carpet comes to you from Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
-        }
-        else
-        {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Magic Carpet comes to you from Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F9              Speed blur toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"And will be released on the 15th November 1994.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F10             Stereo modes toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"And will be released on the 15th November 1994.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"F10             Stereo modes toggle.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Return          ", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Left and Right  Spell selection.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Left and Right  Spell selection.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0() * 2;
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"If you are experiencing slowness, try Pressing F5,F6,F7.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"If you are experiencing slowness, try Pressing F5,F6,F7.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0() * 2;
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Magic Carpet comes to you from Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Magic Carpet comes to you from Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         if ((typeResolution_12F02E_12F01E & 1) != 0)
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Copyright 1994 Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"And will be released on the 15th November 1994.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
         else
         {
-            textDrawAxisY += getLetterY_5A3B0_5A8C0();
-            drawText_5A180_5A690((char*)"Copyright 1994 Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"And will be released on the 15th November 1994.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         }
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        textDrawAxisY += getLetterY_5A3B0_5A8C0();
-        drawText_5A180_5A690((char*)"Good Luck!", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        if ((typeResolution_12F02E_12F01E & 1) != 0)
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Copyright 1994 Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        else
+        {
+            textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+            DrawText_5A180_5A690((char*)"Copyright 1994 Bullfrog Productions Ltd.", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
+        }
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        textDrawAxisY += GetLetterY_5A3B0_5A8C0();
+        DrawText_5A180_5A690((char*)"Good Luck!", textDrawAxisX, textDrawAxisY, byte_AE167_AE157);
         goto LABEL_139;
     case 2:
         if ((typeResolution_12F02E_12F01E & 1) != 0)
@@ -25492,7 +25492,7 @@ void DrawGameFrame_20FB0()//1F1FB0_
             && (str_AE408_AE3F8->var_u8_0 & 2) != 0)
         {
             sprintf(textBuffer, "MOVIE: %d", str_AE408_AE3F8->var_u16_13);
-            drawText_5A180_5A690(textBuffer, 0, 0, byte_AD167_AD157[3841]);
+            DrawText_5A180_5A690(textBuffer, 0, 0, byte_AD167_AD157[3841]);
         }
         if ((str_AE408_AE3F8->var_u8_0 & 4) != 0)
         {
@@ -25535,14 +25535,14 @@ void DrawGameFrame_20FB0()//1F1FB0_
                     removeItMaybe = 380;
                     int i;
                     for (i = 0; *(&off_9AB44[i])[str_AE408_AE3F8->var_u16_166] != 33; i++)
-                        removeItMaybe -= getLetterY_5A3B0_5A8C0();
+                        removeItMaybe -= GetLetterY_5A3B0_5A8C0();
                     int k = 0;
-                    for (int j = 8; i > 0; j += getLetterY_5A3B0_5A8C0())
+                    for (int j = 8; i > 0; j += GetLetterY_5A3B0_5A8C0())
                     {
                         if (k)
-                            drawText_5A180_5A690(((&off_9AB44[k])[str_AE408_AE3F8->var_u16_166]), 8, j, byte_AD167_AD157[1]);
+                            DrawText_5A180_5A690(((&off_9AB44[k])[str_AE408_AE3F8->var_u16_166]), 8, j, byte_AD167_AD157[1]);
                         else
-                            drawText_5A180_5A690((off_9AB44[str_AE408_AE3F8->var_u16_166]), 8, j, byte_AE167_AE157);
+                            DrawText_5A180_5A690((off_9AB44[str_AE408_AE3F8->var_u16_166]), 8, j, byte_AE167_AE157);
                         i--;
                         k++;
                     }
@@ -25727,9 +25727,9 @@ int sub_22880()
           *(unsigned __int8 *)(begSprTab_AE42C_AE41C_26C42C_26C41C + 514) - 8,
           *(unsigned __int8 *)(begSprTab_AE42C_AE41C_26C42C_26C41C + 515) - 8,
           v22);
-      drawText_5A180_5A690((char*)v18, (__int16)(v7 + 8), v5 + 6, v23);
+      DrawText_5A180_5A690((char*)v18, (__int16)(v7 + 8), v5 + 6, v23);
       sprintf(v13, "%d", *(_DWORD *)(v17 + 136));
-      drawText_5A180_5A690((char*)v13, (__int16)(v7 + 8), v5 + 20, v23);
+      DrawText_5A180_5A690((char*)v13, (__int16)(v7 + 8), v5 + 20, v23);
       v8 = 0;
       v9 = *(unsigned __int8 *)(begSprTab_AE42C_AE41C_26C42C_26C41C + 514) + v7;
       v10 = 0;
@@ -25784,7 +25784,7 @@ int sub_22880()
               *(unsigned __int8 *)(begSprTab_AE42C_AE41C_26C42C_26C41C + 521) - 8,
               v24);
           sprintf(v13, "%03d", *(__int16 *)(*(_DWORD *)(v17 + 160) + v10 + 30));
-          drawText_5A180_5A690((char*)v13, (__int16)(v9 + 8), v20, v25);
+          DrawText_5A180_5A690((char*)v13, (__int16)(v9 + 8), v20, v25);
         }
         HIWORD(v11) = HIWORD(begSprTab_AE42C_AE41C_26C42C_26C41C);
         v9 += *(unsigned __int8 *)(begSprTab_AE42C_AE41C_26C42C_26C41C + 520);
@@ -53792,13 +53792,13 @@ LABEL_97:
             if ( v52 >= 0 && v52 < a6 && v51 >= word_12C1E2[2 * v52] && v51 < word_12C1E0[2 * v52] )
             {
               if ( typeResolution_12F02E_12F01E == 1 )
-                drawText_5A180_5A690(
+                DrawText_5A180_5A690(
                   (char*)(v67 + dword_AE400_AE3F0() + 13323 + 1034),
                   (__int16)(2 * v51 + 2),
                   2 * v52,
                   byte_99B58[1+2 * *(__int16 *)(*(_DWORD *)(v48 + 160) + 48)]);
               else
-                drawText_5A180_5A690(
+                DrawText_5A180_5A690(
                   (char*)(v67 + dword_AE400_AE3F0() + 13323 + 1034),
                   (__int16)(v51 + 2),
                   v52,
@@ -63469,7 +63469,8 @@ LABEL_5:
 }
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 
-int sub_58768_58C78(__int16 a1, __int16 a2, int a3, unsigned __int8 a4)
+//SYNCHRONIZED WITH REMC1
+void DrawLetter_58768_58C78(__int16 a1, __int16 a2, TypeTab* a3, unsigned __int8 a4)//229768
 {
   __int16 v4; // dx
   uint8_t* sprite; // esi
@@ -63479,18 +63480,18 @@ int sub_58768_58C78(__int16 a1, __int16 a2, int a3, unsigned __int8 a4)
   v7 = 0;
   //fix
 
-  v4 = *(_WORD *)(a3 + 4);
-  sprite = *(uint8_t**)a3;
+  v4 = a3->dim.x;
+  sprite = a3->Tab_0;
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
   {
     sub_60D50_61260(v4, a2, a1, sprite, a4, 0);
-    return v7;
+    return;
   }
   else
   {
     if ( (typeResolution_12F02E_12F01E & 8) != 0 )
       sub_60D65_61275(v4, a2, a1, sprite, a4, 0);
-    return v7;
+    return;
   }
 }
 
@@ -64881,8 +64882,8 @@ int sub_5A630(int a1, int a2)
 }
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 
-//----- (0005A690) --------------------------------------------------------
-int drawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4)
+//SYNCHRONIZED WITH REMC1
+void DrawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4)//22B180_
 {
   char* v4; // esi
   int v5; // ebx
@@ -64900,7 +64901,7 @@ int drawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4)
   {
     result = a2;
     word_9ADFC = 0;
-    return result;
+    return;
   }
   while ( (__int16)v5 < 640 )
   {
@@ -64917,7 +64918,7 @@ int drawText_5A180_5A690(char* a1, int a2, __int16 a3, unsigned __int8 a4)
     else if ( (unsigned __int8)*v4 <= 0xAu )
     {
       v5 = a2;
-      a3 += getLetterY_5A3B0_5A8C0();
+      a3 += GetLetterY_5A3B0_5A8C0();
     }
     else
     {
@@ -64931,7 +64932,7 @@ LABEL_13:
           if ( *v4 )
           {
             v9 = 6 * ((unsigned __int8)*v4 + 1);
-            sub_58768_58C78(v5, a3, v9 + (int)dword_AE44C_AE43C, a4);
+            DrawLetter_58768_58C78(v5, a3, (TypeTab*)(v9 + (int)dword_AE44C_AE43C), a4);
             HIWORD(v10) = HIWORD(dword_AE44C_AE43C);
             LOWORD(v10) = *(unsigned __int8 *)(v9 + dword_AE44C_AE43C + 4);
 LABEL_16:
@@ -64940,7 +64941,7 @@ LABEL_16:
           }
         }
 LABEL_15:
-        LOWORD(v10) = getLetterX_5A3A0_5A8B0();
+        LOWORD(v10) = GetLetterX_5A3A0_5A8B0();
         goto LABEL_16;
       }
     }
@@ -64950,21 +64951,17 @@ LABEL_17:
   }
   result = v5;
   word_9ADFC = 0;
-  return result;
 }
-// 5A74A: variable 'v10' is possibly undefined
-// 9ADFC: using guessed type __int16 word_9ADFC;
-// AE43C: using guessed type int dword_AE44C_AE43C;
 
 //----- (0005A8B0) --------------------------------------------------------
-__int16 getLetterX_5A3A0_5A8B0()
+__int16 GetLetterX_5A3A0_5A8B0()
 {
   return *(unsigned __int8 *)(dword_AE44C_AE43C + 202);
 }
 // AE43C: using guessed type int dword_AE44C_AE43C;
 
 //----- (0005A8C0) --------------------------------------------------------
-__int16 getLetterY_5A3B0_5A8C0()
+__int16 GetLetterY_5A3B0_5A8C0()
 {
   return *(unsigned __int8 *)(dword_AE44C_AE43C + 203);
 }
@@ -65101,76 +65098,76 @@ int sub_5AA70()
   if ( (*(_BYTE *)(dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8 + 13328) & 8) != 0 )
   {
     sub_5A3C0_5A8D0(1);
-    drawText_5A180_5A690((char*)aProductName, 320, 0, byte_AD167_AD157[3841]);
-    v0 = getLetterY_5A3B0_5A8C0();
-    drawText_5A180_5A690((char*)"Magic Carpet", 320, v0, byte_AD167_AD157[16]);
-    v1 = getLetterY_5A3B0_5A8C0() + v0;
-    drawText_5A180_5A690((char*)aVersionNumber, 320, v1, byte_AD167_AD157[3841]);
-    v2 = getLetterY_5A3B0_5A8C0() + v1;
-    drawText_5A180_5A690((char*)aBetaV80, 320, v2, byte_AD167_AD157[16]);
-    v3 = getLetterY_5A3B0_5A8C0() + v2;
-    drawText_5A180_5A690((char*)aVersionDate, 320, v3, byte_AD167_AD157[3841]);
-    v4 = getLetterY_5A3B0_5A8C0() + v3;
+    DrawText_5A180_5A690((char*)aProductName, 320, 0, byte_AD167_AD157[3841]);
+    v0 = GetLetterY_5A3B0_5A8C0();
+    DrawText_5A180_5A690((char*)"Magic Carpet", 320, v0, byte_AD167_AD157[16]);
+    v1 = GetLetterY_5A3B0_5A8C0() + v0;
+    DrawText_5A180_5A690((char*)aVersionNumber, 320, v1, byte_AD167_AD157[3841]);
+    v2 = GetLetterY_5A3B0_5A8C0() + v1;
+    DrawText_5A180_5A690((char*)aBetaV80, 320, v2, byte_AD167_AD157[16]);
+    v3 = GetLetterY_5A3B0_5A8C0() + v2;
+    DrawText_5A180_5A690((char*)aVersionDate, 320, v3, byte_AD167_AD157[3841]);
+    v4 = GetLetterY_5A3B0_5A8C0() + v3;
     sprintf(v32, "%s %s", a161643, aJun051995);
-    drawText_5A180_5A690((char*)v32, 320, v4, byte_AD167_AD157[16]);
-    v5 = getLetterY_5A3B0_5A8C0() + v4;
-    drawText_5A180_5A690((char*)aProgrammer, 320, v5, byte_AD167_AD157[3841]);
-    v6 = getLetterY_5A3B0_5A8C0() + v5;
-    drawText_5A180_5A690((char*)aBullfrogSeanCo, 320, v6, byte_AD167_AD157[16]);
-    v7 = getLetterY_5A3B0_5A8C0() + v6;
-    drawText_5A180_5A690((char*)aSuppliedTo, 320, v7, byte_AD167_AD157[3841]);
-    v8 = getLetterY_5A3B0_5A8C0() + v7;
-    drawText_5A180_5A690((char*)aPublic, 320, v8, byte_AD167_AD157[16]);
-    v9 = getLetterY_5A3B0_5A8C0() + v8;
-    drawText_5A180_5A690((char*)aLevelNumber, 320, v9, byte_AD167_AD157[3841]);
-    v10 = getLetterY_5A3B0_5A8C0() + v9;
+    DrawText_5A180_5A690((char*)v32, 320, v4, byte_AD167_AD157[16]);
+    v5 = GetLetterY_5A3B0_5A8C0() + v4;
+    DrawText_5A180_5A690((char*)aProgrammer, 320, v5, byte_AD167_AD157[3841]);
+    v6 = GetLetterY_5A3B0_5A8C0() + v5;
+    DrawText_5A180_5A690((char*)aBullfrogSeanCo, 320, v6, byte_AD167_AD157[16]);
+    v7 = GetLetterY_5A3B0_5A8C0() + v6;
+    DrawText_5A180_5A690((char*)aSuppliedTo, 320, v7, byte_AD167_AD157[3841]);
+    v8 = GetLetterY_5A3B0_5A8C0() + v7;
+    DrawText_5A180_5A690((char*)aPublic, 320, v8, byte_AD167_AD157[16]);
+    v9 = GetLetterY_5A3B0_5A8C0() + v8;
+    DrawText_5A180_5A690((char*)aLevelNumber, 320, v9, byte_AD167_AD157[3841]);
+    v10 = GetLetterY_5A3B0_5A8C0() + v9;
     sprintf(v32, "%d", *(unsigned __int16 *)(dword_AE408_AE3F8() + 17));
-    drawText_5A180_5A690((char*)v32, 320, v10, byte_AD167_AD157[16]);
-    v11 = getLetterY_5A3B0_5A8C0() + v10;
+    DrawText_5A180_5A690((char*)v32, 320, v10, byte_AD167_AD157[16]);
+    v11 = GetLetterY_5A3B0_5A8C0() + v10;
     if ( (*(_BYTE *)dword_AE408_AE3F8() & 0x10) != 0 )
     {
-      drawText_5A180_5A690((char*)aTransferRate, 320, v11, byte_AD167_AD157[3841]);
-      v12 = getLetterY_5A3B0_5A8C0() + v11;
+      DrawText_5A180_5A690((char*)aTransferRate, 320, v11, byte_AD167_AD157[3841]);
+      v12 = GetLetterY_5A3B0_5A8C0() + v11;
       sprintf(v32, "%d", *(_DWORD *)(dword_AE408_AE3F8() + 157));
-      drawText_5A180_5A690((char*)v32, 320, v12, byte_AD167_AD157[16]);
-      v11 = getLetterY_5A3B0_5A8C0() + v12;
+      DrawText_5A180_5A690((char*)v32, 320, v12, byte_AD167_AD157[16]);
+      v11 = GetLetterY_5A3B0_5A8C0() + v12;
     }
-    drawText_5A180_5A690((char*)aGameturn, 320, v11, byte_AD167_AD157[3841]);
-    v13 = getLetterY_5A3B0_5A8C0() + v11;
+    DrawText_5A180_5A690((char*)aGameturn, 320, v11, byte_AD167_AD157[3841]);
+    v13 = GetLetterY_5A3B0_5A8C0() + v11;
     sprintf(v32, "%d", *(_DWORD *)(dword_AE408_AE3F8() + 153));
-    drawText_5A180_5A690((char*)v32, 320, v13, byte_AD167_AD157[16]);
-    v14 = getLetterY_5A3B0_5A8C0() + v13;
-    drawText_5A180_5A690((char*)aSoundNumber, 320, v14, byte_AD167_AD157[3841]);
-    v15 = getLetterY_5A3B0_5A8C0() + v14;
+    DrawText_5A180_5A690((char*)v32, 320, v13, byte_AD167_AD157[16]);
+    v14 = GetLetterY_5A3B0_5A8C0() + v13;
+    DrawText_5A180_5A690((char*)aSoundNumber, 320, v14, byte_AD167_AD157[3841]);
+    v15 = GetLetterY_5A3B0_5A8C0() + v14;
     sprintf(v32, "%d", (unsigned __int8)byte_939EC);
-    drawText_5A180_5A690((char*)v32, 320, v15, byte_AD167_AD157[16]);
-    v16 = getLetterY_5A3B0_5A8C0() + v15;
-    drawText_5A180_5A690((char*)aGameTurn, 320, v16, byte_AD167_AD157[3841]);
-    v17 = getLetterY_5A3B0_5A8C0() + v16;
+    DrawText_5A180_5A690((char*)v32, 320, v15, byte_AD167_AD157[16]);
+    v16 = GetLetterY_5A3B0_5A8C0() + v15;
+    DrawText_5A180_5A690((char*)aGameTurn, 320, v16, byte_AD167_AD157[3841]);
+    v17 = GetLetterY_5A3B0_5A8C0() + v16;
     sprintf(v32, "%d %d", *(_DWORD *)(dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8 + 13341), dword_AC5C4);
-    drawText_5A180_5A690((char*)v32, 320, v17, byte_AD167_AD157[16]);
-    v18 = getLetterY_5A3B0_5A8C0() + v17;
-    drawText_5A180_5A690((char*)aThing, 320, v18, byte_AD167_AD157[3841]);
-    v19 = getLetterY_5A3B0_5A8C0() + v18;
+    DrawText_5A180_5A690((char*)v32, 320, v17, byte_AD167_AD157[16]);
+    v18 = GetLetterY_5A3B0_5A8C0() + v17;
+    DrawText_5A180_5A690((char*)aThing, 320, v18, byte_AD167_AD157[3841]);
+    v19 = GetLetterY_5A3B0_5A8C0() + v18;
     v20 = sub_37AD0();
     sprintf(v32, "Thing %d, Active %d", 164, 1000 - v20);
-    drawText_5A180_5A690((char*)v32, 320, v19, byte_AD167_AD157[16]);
-    v21 = getLetterY_5A3B0_5A8C0() + v19;
+    DrawText_5A180_5A690((char*)v32, 320, v19, byte_AD167_AD157[16]);
+    v21 = GetLetterY_5A3B0_5A8C0() + v19;
     sprintf(v32, "Carpet %d", byte_38D09);
-    drawText_5A180_5A690((char*)v32, 320, v21, byte_AD167_AD157[16]);
-    v22 = getLetterY_5A3B0_5A8C0() + v21;
+    DrawText_5A180_5A690((char*)v32, 320, v21, byte_AD167_AD157[16]);
+    v22 = GetLetterY_5A3B0_5A8C0() + v21;
     sprintf(v32, "Tape %d", 36478);
-    drawText_5A180_5A690((char*)v32, 320, v22, byte_AD167_AD157[16]);
-    v23 = getLetterY_5A3B0_5A8C0() + v22;
+    DrawText_5A180_5A690((char*)v32, 320, v22, byte_AD167_AD157[16]);
+    v23 = GetLetterY_5A3B0_5A8C0() + v22;
     sprintf(v32, "Heap %d", *(_DWORD *)(dword_AE408_AE3F8() + 172));
-    drawText_5A180_5A690((char*)v32, 320, v23, byte_AD167_AD157[16]);
-    v24 = getLetterY_5A3B0_5A8C0() + v23;
+    DrawText_5A180_5A690((char*)v32, 320, v23, byte_AD167_AD157[16]);
+    v24 = GetLetterY_5A3B0_5A8C0() + v23;
     sub_63338_63848();
-    drawText_5A180_5A690((char*)aMemoryUsedFree, 320, v24, byte_AD167_AD157[3841]);
-    v25 = getLetterY_5A3B0_5A8C0() + v24;
+    DrawText_5A180_5A690((char*)aMemoryUsedFree, 320, v24, byte_AD167_AD157[3841]);
+    v25 = GetLetterY_5A3B0_5A8C0() + v24;
     sprintf(v32, "%d/%d", dword_131498, dword_131494);
-    drawText_5A180_5A690((char*)v32, 320, v25, byte_AD167_AD157[16]);
-    getLetterY_5A3B0_5A8C0();
+    DrawText_5A180_5A690((char*)v32, 320, v25, byte_AD167_AD157[16]);
+    GetLetterY_5A3B0_5A8C0();
     v26 = &dword_1302A0_130290;
     v27 = 0;
     for ( i = 0; v26; v26 = (int *)v26[2] )
@@ -65180,13 +65177,13 @@ int sub_5AA70()
         v29 = byte_AD167_AD157[1];
       else
         v29 = byte_AD167_AD157[3841];
-      drawText_5A180_5A690((char*)v32, v27, i, v29);
-      LOWORD(v30) = getLetterY_5A3B0_5A8C0();
+      DrawText_5A180_5A690((char*)v32, v27, i, v29);
+      LOWORD(v30) = GetLetterY_5A3B0_5A8C0();
       i += v30;
-      if ( (__int16)i > 400 - getLetterY_5A3B0_5A8C0() )
+      if ( (__int16)i > 400 - GetLetterY_5A3B0_5A8C0() )
       {
         i = 0;
-        v27 += 12 * getLetterX_5A3A0_5A8B0();
+        v27 += 12 * GetLetterX_5A3A0_5A8B0();
       }
     }
   }
