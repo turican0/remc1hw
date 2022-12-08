@@ -179,7 +179,7 @@ char sub_16990();
 int sub_169E0();
 void sub_16B00();
 // char sub_17C20(__int16 a1, __int16 a2, __int16 a3);
-int sub_188A0(int a1, char a2);
+void MakeControlCommand_188A0(int a1, char a2);
 // void sub_192D8(char a1, _BOOL1 a2, char a3, char a4, __int16 a5);
 int sub_192F3();
 void sub_193EE(__int16 a1);
@@ -18137,42 +18137,42 @@ void sub_16B00()
         {
           LOBYTE(v1) = dword_AE408_AE3F8();
           if ( *(char *)(dword_AE408_AE3F8() + 1) < 0 )
-            LOBYTE(v1) = sub_188A0(4, 8);
+            MakeControlCommand_188A0(4, 8);
           lastPressedKey_12EF70_12EF60 = 0;
         }
         else if ( lastPressedKey_12EF70_12EF60 == 59 )
         {
-          LOBYTE(v1) = sub_188A0(30, 1);
+          MakeControlCommand_188A0(30, 1);
           lastPressedKey_12EF70_12EF60 = 0;
         }
       }
     }
     else if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Cu )
     {
-      LOBYTE(v1) = sub_188A0(30, 2);
+      MakeControlCommand_188A0(30, 2);
       lastPressedKey_12EF70_12EF60 = 0;
     }
     else if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 < 0x3Fu )
     {
       if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Du )
-        LOBYTE(v1) = sub_188A0(30, 3);
+        MakeControlCommand_188A0(30, 3);
       else
-        LOBYTE(v1) = sub_188A0(30, 4);
+        MakeControlCommand_188A0(30, 4);
       lastPressedKey_12EF70_12EF60 = 0;
     }
     else if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Fu )
     {
-      LOBYTE(v1) = sub_188A0(30, 5);
+      MakeControlCommand_188A0(30, 5);
       lastPressedKey_12EF70_12EF60 = 0;
     }
     else if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x40u )
     {
-      LOBYTE(v1) = sub_188A0(30, 6);
+      MakeControlCommand_188A0(30, 6);
       lastPressedKey_12EF70_12EF60 = 0;
     }
     else if ( lastPressedKey_12EF70_12EF60 == 65 )
     {
-      LOBYTE(v1) = sub_188A0(30, 7);
+      MakeControlCommand_188A0(30, 7);
       lastPressedKey_12EF70_12EF60 = 0;
     }
   }
@@ -18205,8 +18205,8 @@ void sub_16B00()
       }
       if ( lastPressedKey_12EF70_12EF60 == 57 )
       {
-        sub_188A0(15, 0);
-        sub_188A0(27, 0);
+        MakeControlCommand_188A0(15, 0);
+        MakeControlCommand_188A0(27, 0);
         lastPressedKey_12EF70_12EF60 = 0;
       }
       LOBYTE(v1) = lastPressedKey_12EF70_12EF60 - 59;
@@ -18643,7 +18643,7 @@ LABEL_169:
       {
         if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x10u )
         {
-          sub_188A0(2, 0);
+          MakeControlCommand_188A0(2, 0);
           LOBYTE(v1) = 0;
           lastPressedKey_12EF70_12EF60 = 0;
         }
@@ -18651,7 +18651,7 @@ LABEL_169:
         {
           LOBYTE(v1) = dword_AE408_AE3F8();
           if ( *(char *)(dword_AE408_AE3F8() + 1) < 0 )
-            LOBYTE(v1) = sub_188A0(26, 0);
+            MakeControlCommand_188A0(26, 0);
           lastPressedKey_12EF70_12EF60 = 0;
         }
       }
@@ -18728,7 +18728,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
   if ( *(_BYTE *)(v3 + 13332) == 1 )
   {
     if ( pressedKeys_12EEF0_12EEE0[59] )
-      LOBYTE(v3) = sub_188A0(2, 0);
+      MakeControlCommand_188A0(2, 0);
     return v3;
   }
   LOBYTE(v3) = *(_BYTE *)(v3 + 14421);
@@ -18764,7 +18764,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
           case 9:
           case 10:
           case 11:
-            sub_188A0(25, lastPressedKey_12EF70_12EF60 - 2);
+            MakeControlCommand_188A0(25, lastPressedKey_12EF70_12EF60 - 2);
             lastPressedKey_12EF70_12EF60 = 0;
             break;
           default:
@@ -18782,14 +18782,14 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
             {
               if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x13u )
               {
-                sub_188A0(12, 0);
+                MakeControlCommand_188A0(12, 0);
                 lastPressedKey_12EF70_12EF60 = 0;
                 LOBYTE(v3) = sub_169E0();
                 return v3;
               }
               if ( lastPressedKey_12EF70_12EF60 == 31 )
               {
-                sub_188A0(10, 0);
+                MakeControlCommand_188A0(10, 0);
                 lastPressedKey_12EF70_12EF60 = 0;
               }
             }
@@ -18798,7 +18798,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
           {
             if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x21u )
             {
-              sub_188A0(4, 32);
+              MakeControlCommand_188A0(4, 32);
               lastPressedKey_12EF70_12EF60 = 0;
               LOBYTE(v3) = sub_169E0();
               return v3;
@@ -18815,14 +18815,14 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
             {
               if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x2Fu )
               {
-                sub_188A0(4, 8);
+                MakeControlCommand_188A0(4, 8);
                 lastPressedKey_12EF70_12EF60 = 0;
                 LOBYTE(v3) = sub_169E0();
                 return v3;
               }
               if ( lastPressedKey_12EF70_12EF60 == 50 )
               {
-                sub_188A0(4, 16);
+                MakeControlCommand_188A0(4, 16);
                 lastPressedKey_12EF70_12EF60 = 0;
               }
             }
@@ -18831,7 +18831,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
         }
         if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Bu )
         {
-          sub_188A0(30, 1);
+          MakeControlCommand_188A0(30, 1);
           lastPressedKey_12EF70_12EF60 = 0;
           LOBYTE(v3) = sub_169E0();
           return v3;
@@ -18840,36 +18840,36 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
         {
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Eu )
           {
-            sub_188A0(30, 4);
+            MakeControlCommand_188A0(30, 4);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
             return v3;
           }
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 < 0x40u )
           {
-            sub_188A0(30, 5);
+            MakeControlCommand_188A0(30, 5);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
             return v3;
           }
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x40u )
           {
-            sub_188A0(30, 6);
+            MakeControlCommand_188A0(30, 6);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
             return v3;
           }
           if ( lastPressedKey_12EF70_12EF60 == 65 )
           {
-            sub_188A0(30, 7);
+            MakeControlCommand_188A0(30, 7);
             lastPressedKey_12EF70_12EF60 = 0;
           }
           goto LABEL_54;
         }
         if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x3Cu )
-          sub_188A0(30, 2);
+          MakeControlCommand_188A0(30, 2);
         else
-          sub_188A0(30, 3);
+          MakeControlCommand_188A0(30, 3);
 LABEL_64:
         lastPressedKey_12EF70_12EF60 = 0;
         LOBYTE(v3) = sub_169E0();
@@ -18883,7 +18883,7 @@ LABEL_64:
           {
             if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x10u )
             {
-              sub_188A0(2, 0);
+              MakeControlCommand_188A0(2, 0);
               lastPressedKey_12EF70_12EF60 = 0;
               LOBYTE(v3) = sub_169E0();
               return v3;
@@ -18891,7 +18891,7 @@ LABEL_64:
             if ( lastPressedKey_12EF70_12EF60 == 18 )
             {
               if ( *(char *)(dword_AE408_AE3F8() + 1) < 0 )
-                sub_188A0(26, 0);
+                MakeControlCommand_188A0(26, 0);
               goto LABEL_64;
             }
           }
@@ -18906,7 +18906,7 @@ LABEL_64:
           }
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x26u )
           {
-            sub_188A0(6, 48);
+            MakeControlCommand_188A0(6, 48);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
             return v3;
@@ -18914,7 +18914,7 @@ LABEL_64:
           if ( lastPressedKey_12EF70_12EF60 == 46 )
           {
             if ( *(char *)(dword_AE408_AE3F8() + 1) < 0 )
-              sub_188A0(27, 0);
+              MakeControlCommand_188A0(27, 0);
             goto LABEL_64;
           }
         }
@@ -18945,11 +18945,11 @@ LABEL_54:
       switch ( lastPressedKey_12EF70_12EF60 )
       {
         case 23:
-          LOBYTE(v3) = sub_188A0(16, 0);
+          MakeControlCommand_188A0(16, 0);
           goto LABEL_177;
         case 1:
-          sub_188A0(27, 0);
-          LOBYTE(v3) = sub_188A0(29, 0);
+          MakeControlCommand_188A0(27, 0);
+          MakeControlCommand_188A0(29, 0);
           lastPressedKey_12EF70_12EF60 = 0;
           return v3;
         case 19:
@@ -18960,15 +18960,15 @@ LABEL_54:
       }
       if ( lastPressedKey_12EF70_12EF60 == 57 )
       {
-        sub_188A0(15, 0);
-        sub_188A0(27, 0);
-        sub_188A0(28, 0);
+        MakeControlCommand_188A0(15, 0);
+        MakeControlCommand_188A0(27, 0);
+        MakeControlCommand_188A0(28, 0);
         lastPressedKey_12EF70_12EF60 = 0;
       }
       if ( word_12EFCE && mouseRightButton_12EFDC_12EFCC )
       {
         if ( (*(_BYTE *)(dword_AE408_AE3F8() + 1) & 2) == 0 && *(int *)(v7 + 12) >= 0 )
-          sub_188A0(20, 2);
+          MakeControlCommand_188A0(20, 2);
         mouseRightButton_12EFDC_12EFCC = 0;
         word_12EFCE = 0;
       }
@@ -18976,24 +18976,24 @@ LABEL_54:
       {
         if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0xBu )
         {
-          sub_188A0(24, lastPressedKey_12EF70_12EF60 - 2);
+          MakeControlCommand_188A0(24, lastPressedKey_12EF70_12EF60 - 2);
           lastPressedKey_12EF70_12EF60 = 0;
         }
         else if ( lastPressedKey_12EF70_12EF60 == 28 )
         {
           if ( *(int *)(v7 + 12) >= 0 )
-            sub_188A0(20, 2);
+            MakeControlCommand_188A0(20, 2);
           lastPressedKey_12EF70_12EF60 = 0;
         }
       }
       if ( pressedKeys_12EEF0_12EEE0[72] )
-        sub_188A0(6, 1);
+        MakeControlCommand_188A0(6, 1);
       if ( pressedKeys_12EEF0_12EEE0[80] )
-        sub_188A0(6, 2);
+        MakeControlCommand_188A0(6, 2);
       if ( pressedKeys_12EEF0_12EEE0[75] )
-        sub_188A0(6, 4);
+        MakeControlCommand_188A0(6, 4);
       if ( pressedKeys_12EEF0_12EEE0[77] )
-        sub_188A0(6, 8);
+        MakeControlCommand_188A0(6, 8);
       v11 = *(_DWORD *)(v7 + 160);
       v12 = *(__int16 *)(v11 + 940);
       if ( v12 == -1 )
@@ -19013,7 +19013,7 @@ LABEL_119:
         {
           if ( mouseRightButton_12EFDC_12EFCC )
           {
-            sub_188A0(6, 32);
+            MakeControlCommand_188A0(6, 32);
             mouseRightButton_12EFDC_12EFCC = 0;
             LOBYTE(v3) = sub_169E0();
             return v3;
@@ -19023,7 +19023,7 @@ LABEL_119:
                || mouseRightButton2_12EFE2_12EFD2 && *(__int16 *)(v16 + 48) > 0
                || mouseRightButton2_12EFE2_12EFD2 && *(_BYTE *)(v16 + 62) && *(char *)(v16 + 61) > 0 )
         {
-          sub_188A0(6, 32);
+          MakeControlCommand_188A0(6, 32);
           mouseRightButton_12EFDC_12EFCC = 0;
         }
         goto LABEL_54;
@@ -19040,7 +19040,7 @@ LABEL_119:
       {
         goto LABEL_119;
       }
-      sub_188A0(6, 16);
+      MakeControlCommand_188A0(6, 16);
       word_12EFCE = 0;
       goto LABEL_119;
     case 1:
@@ -19050,7 +19050,7 @@ LABEL_119:
         lastPressedKey_12EF70_12EF60 = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
         word_12EFCE = 0;
-        LOBYTE(v3) = sub_188A0(20, 0);
+        MakeControlCommand_188A0(20, 0);
       }
       return v3;
     case 2:
@@ -19066,7 +19066,7 @@ LABEL_119:
       v3 = 164 * *(unsigned __int16 *)(dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8 + 13333);
       v17 = dword_AE400_AE3F0() + 29795 + v3;
       if ( *(int *)(v17 + 12) < 0 )
-        LOBYTE(v3) = sub_188A0(20, 0);
+        MakeControlCommand_188A0(20, 0);
       if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 >= 2u && (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0xBu )
       {
         v3 = *(char *)(dword_AE408_AE3F8() + 22);
@@ -19097,7 +19097,7 @@ LABEL_146:
         lastPressedKey_12EF70_12EF60 = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
         word_12EFCE = 0;
-        LOBYTE(v3) = sub_188A0(20, 0);
+        MakeControlCommand_188A0(20, 0);
 LABEL_164:
         lastPressedKey_12EF70_12EF60 = 0;
         return v3;
@@ -19157,7 +19157,7 @@ LABEL_164:
         LOBYTE(v3) = byte_9AD0C[(unsigned __int8)lastPressedKey_12EF70_12EF60];
         if ( lastPressedKey_12EF70_12EF60 == 28 )
         {
-          LOBYTE(v3) = sub_188A0(19, 0);
+          MakeControlCommand_188A0(19, 0);
         }
         else if ( (unsigned __int8)v3 >= 0x41u && (unsigned __int8)v3 <= 0x5Au
                || (unsigned __int8)v3 >= 0x61u && (unsigned __int8)v3 <= 0x7Au
@@ -19165,7 +19165,7 @@ LABEL_164:
                || (_BYTE)v3 == 8
                || (_BYTE)v3 == 32 )
         {
-          LOBYTE(v3) = sub_188A0(17, byte_9AD0C[(unsigned __int8)lastPressedKey_12EF70_12EF60]);
+          MakeControlCommand_188A0(17, byte_9AD0C[(unsigned __int8)lastPressedKey_12EF70_12EF60]);
         }
       }
 LABEL_177:
@@ -19195,7 +19195,7 @@ LABEL_177:
 // 12EFD4: using guessed type __int16 mouseLeftButton2_12EFE4_12EFD4;
 
 //----- (000188A0) --------------------------------------------------------
-int sub_188A0(int a1, char a2)
+void MakeControlCommand_188A0(int a1, char a2)
 {
   int v2; // edx
   int result; // eax
@@ -19222,7 +19222,7 @@ int sub_188A0(int a1, char a2)
     case 26:
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 4:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) )
@@ -19233,7 +19233,7 @@ int sub_188A0(int a1, char a2)
       result = *(__int16 *)(v2 + 8);
       *(_BYTE *)(v2 + 10 * result + 29716) |= a2;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 6:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19244,7 +19244,7 @@ int sub_188A0(int a1, char a2)
       result = *(__int16 *)(v2 + 8);
       *(_BYTE *)(v2 + 10 * result + 29720) |= a2;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 10:
       if ( *(char *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) != (_WORD)a1
         && *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) )
@@ -19253,7 +19253,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 11:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19262,7 +19262,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 12:
       if ( *(char *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) != (_WORD)a1
         && *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) )
@@ -19271,7 +19271,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 14:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19280,7 +19280,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 15:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19292,7 +19292,7 @@ int sub_188A0(int a1, char a2)
         goto LABEL_80;
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 16:
       if ( *(char *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) != (_WORD)a1
         && *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) )
@@ -19301,7 +19301,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 17:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) )
@@ -19311,7 +19311,7 @@ int sub_188A0(int a1, char a2)
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29716) = a2;
       *(_BYTE *)(v2 + 10 * *(__int16 *)(v2 + 8) + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 18:
       if ( *(char *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19320,7 +19320,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 19:
       if ( *(char *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) != (_WORD)a1
         && *(_BYTE *)(10 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0() + 29715) )
@@ -19329,7 +19329,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 20:
       v8 = dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8;
       if ( *(char *)(v8 + 29715) != (_WORD)a1 && *(_BYTE *)(v8 + 29715) )
@@ -19369,7 +19369,7 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 28:
       v6 = dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8;
       if ( *(char *)(v6 + 29715) != (_WORD)a1 && *(_BYTE *)(v6 + 29715)
@@ -19379,14 +19379,14 @@ int sub_188A0(int a1, char a2)
       }
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 29:
       v7 = dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8;
       if ( *(char *)(v7 + 29715) != (_WORD)a1 && *(_BYTE *)(v7 + 29715) )
         goto LABEL_80;
       *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29715) = a1;
       dword_AE400_AE3F0(v2);
-      return result;
+      return;
     case 30:
       if ( *(char *)(dword_AE408_AE3F8() + 1) < 0
         || (v14 = (_BYTE *)(dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8), v14[14357] == 99)
@@ -19412,7 +19412,6 @@ LABEL_79:
     default:
 LABEL_80:
       dword_AE400_AE3F0(v2);
-      return result;
   }
 }
 // AE3F0: using guessed type int dword_AE400_AE3F0();
