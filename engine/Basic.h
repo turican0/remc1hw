@@ -401,7 +401,7 @@ typedef struct {//size 232713
 	int8 var_u8_8600;
 	uint8 var_u8_8601;
 	uint8 var_u8_8602;
-	uint8 var_u8_8603;
+	uint8 mod3D_8603;
 	uint8 var_u8_8604;
 	uint8 var_u8_8605;
 	uint8 var_u8_8606;
