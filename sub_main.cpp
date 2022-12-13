@@ -88223,19 +88223,13 @@ void sub_79F2B(int a1)
 // AE3F4: using guessed type int blurBuffer_AE404_AE3F4;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 
-//----- (00079F80) --------------------------------------------------------
-int sub_79A70_79F80(
-        int result,
-        _BYTE *a2,
-        _BYTE *a3,
-        int a4,
-        int a5,
-        int a6)
+//SYNCHRONIZED WITH REMC1
+int sub_79A70_79F80(int result,_BYTE *a2,_BYTE *a3,int a4,int a5,int a6)
 {
   int *v6; // edi
   int v7; // eax
 
-  v6 = (int *)&tempScreenBuffer_A0000;
+  v6 = (int *)tempScreenBuffer_A0000;
   do
   {
     LOBYTE(a4) = a3[1];
