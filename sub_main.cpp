@@ -1173,7 +1173,7 @@ int sub_61D20(__int16 a1, __int16 a2, __int16 a3, __int16 a4, unsigned __int16 a
 int sub_61DF0(__int16 a1);
 int sub_619B8_61EC8(__int16 a1);
 void sub_61A1C_61F2C(__int16 a1);
-int sub_61FC0();
+int sub_61AB0_61FC0();
 void sub_61B90_620A0(unsigned __int8 *a1);
 int sub_61C30_62140(unsigned __int8 *a1);
 void FadeInOut_61CC0_621D0(TColor* palette, unsigned __int8 a2, char a3);
@@ -10917,7 +10917,7 @@ char aMemoryUsedFree[19] = "Memory (Used/Free)"; // weak
 //void *off_ABCE0_ABCDC = &unk_A7325; // weak
 char aVipport[8] = "VIPPORT"; // weak
 char aVfx1Cyberpuck[15] = "VFX1 CyberPuck"; // weak
-char aVesa[5] = "VESA"; // weak
+//char aVesa[5] = "VESA"; // weak
 char aHmidet386[11] = "hmidet.386"; // weak
 char aHmidrv386[11] = "hmidrv.386"; // weak
 char IsTable[256] =
@@ -35168,15 +35168,15 @@ LABEL_20:
 // AE3F4: using guessed type int blurBuffer_AE404_AE3F4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
-//----- (00030D70) --------------------------------------------------------
+//SYNCHRONIZED WITH REMC1
 int sub_30D30_30D70(__int16 a1)
 {
   _WORD *v1; // eax
   __int16 v3; // si
 
-  if ( (unsigned __int16)sub_61FC0() )
+  if ( (unsigned __int16)sub_61AB0_61FC0() )
     return 0;
-  v1 = (_WORD *)(16 * *(unsigned __int16 *)((int)dword_12F080_12F070 + 16) + *(unsigned __int16 *)((int)dword_12F080_12F070 + 14));
+  v1 = (_WORD *)(16 * *(unsigned __int16 *)((char*)dword_12F080_12F070 + 16) + *(unsigned __int16 *)((char*)dword_12F080_12F070 + 14));
   if ( *v1 == 0xFFFF )
     return 0;
   while ( a1 != *v1 )
@@ -35188,7 +35188,6 @@ int sub_30D30_30D70(__int16 a1)
   }
   return 1;
 }
-// 12F070: using guessed type int dword_12F080_12F070;
 
 //SYNCHRONIZED WITH REMC1
 void DrawWorld_30D90_30DD0(int posX, int posY, __int16 yaw, int posZ, int pitch, int roll, int fow)//201D90_
@@ -69923,13 +69922,15 @@ void sub_61A1C_61F2C(__int16 a1)
 // 9AFA4: using guessed type __int16 word_9AFA4;
 // 12F070: using guessed type int dword_12F080_12F070;
 
-//----- (00061FC0) --------------------------------------------------------
-int sub_61FC0()
+//SYNCHRONIZED WITH REMC1
+int sub_61AB0_61FC0()
 {
   int v1[13]; // [esp+0h] [ebp-7Ch] BYREF
   int v2[7]; // [esp+34h] [ebp-48h] BYREF
   char v3[28]; // [esp+50h] [ebp-2Ch] BYREF
   char v4[12]; // [esp+6Ch] [ebp-10h] BYREF
+
+  FixPerifery((char*)"SET PAL REG");
 
   memset(v1, 0, 50);
   HIWORD(v1[8]) = (unsigned int)dword_12F080_12F070 >> 4;
@@ -69945,13 +69946,8 @@ int sub_61FC0()
   v2[1] = 16;
   v2[5] = (int)v1;
   int386x(49, (uint32)v2, (uint32)v3, (uint32)v4);
-  return strncmp((char*)dword_12F080_12F070, aVesa, 4);
+  return strncmp((char*)dword_12F080_12F070, "VESA", 4);
 }
-// 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
-// 63BCC: using guessed type _DWORD segread(_DWORD);
-// 63BF6: using guessed type _DWORD int386x(_DWORD, _DWORD, _DWORD, _DWORD);
-// 6637F: using guessed type _DWORD strncmp(_DWORD, _DWORD, _DWORD);
-// 12F070: using guessed type int dword_12F080_12F070;
 
 //----- (000620A0) --------------------------------------------------------
 void sub_61B90_620A0(unsigned __int8 *a1)
