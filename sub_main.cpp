@@ -376,7 +376,7 @@ void sub_27030(int a1);
 __int16 sub_274D0(int a1);
 int sub_275C0(__int16 *a1);
 void sub_27690(_WORD *result, int a2);
-int sub_277D0(int a1, int a2);
+void sub_277D0(int a1, int a2);
 char sub_279D0(int a1);
 char sub_27D30(int a1);
 unsigned __int16 sub_28200(int a1);
@@ -744,7 +744,7 @@ int sub_41C70_41FB0(Type_AE400_29795* event, axis_3d* position);
 void sub_41CF0_42030(Type_AE400_29795* event, axis_3d* position);
 void sub_41DD0_42110(Type_AE400_29795* event);
 int sub_421C0(int a1);
-int sub_41E90_421D0(__int16 a1, int a2);
+void sub_41E90_421D0(Type_AE400_29795* event);
 void sub_41EC0_42200(axis_3d* a1, unsigned __int16 a2, __int16 a3, __int16 a4);
 _WORD *sub_41F50_42290(int a1, _WORD *a2);
 int sub_42340(int a1, int a2, int a3, int a4, int a5);
@@ -28396,8 +28396,8 @@ void sub_27690(_WORD *result, int a2)
   }
 }
 
-//----- (000277D0) --------------------------------------------------------
-int sub_277D0(int a1, int a2)
+//SYNCHRONIZED WITH REMC1
+void sub_277D0(int a1, int a2)
 {
   int v2; // eax
   unsigned __int16 v3; // si
@@ -28418,7 +28418,8 @@ int sub_277D0(int a1, int a2)
       LOWORD(v2) = *(_WORD *)(a2 + 144);
 LABEL_20:
       *(_WORD *)(a1 + 144) = v2;
-      return sub_41E90_421D0(v2, a2);
+      sub_41E90_421D0((Type_AE400_29795*)a2);
+      return;
     }
     if ( *(_WORD *)(a2 + 144) )
     {
@@ -28463,13 +28464,13 @@ LABEL_19:
     }
     v9 = *(_DWORD *)(a2 + 140);
     *(_DWORD *)(a1 + 140) += v9;
-    return sub_41E90_421D0(v9, a2);
+    sub_41E90_421D0((Type_AE400_29795*)a2);
+    return;
   }
   v2 = *(_DWORD *)(a2 + 140);
   *(_DWORD *)(a1 + 140) += v2;
-  return sub_41E90_421D0(v2, a2);
+  sub_41E90_421D0((Type_AE400_29795*)a2);
 }
-// AE3F0: using guessed type int dword_AE400_AE3F0();
 
 //----- (000279D0) --------------------------------------------------------
 char sub_279D0(int a1)
@@ -39890,7 +39891,7 @@ LABEL_19:
         goto LABEL_16;
 LABEL_20:
       if ( (i[17] & 4) != 0 )
-        sub_41E90_421D0(v2, (int)i);
+        sub_41E90_421D0((Type_AE400_29795*)i);
     }
   }
   while ( v0 );
@@ -48435,7 +48436,7 @@ char sub_41AC0()
     v3 = *(_BYTE *)(i + 64);
     dword_AE400_AE3F0(v0);
     if ( v3 && (*(_BYTE *)(i + 17) & 4) != 0 )
-      sub_41E90_421D0(v0 - 2813, i);
+      sub_41E90_421D0((Type_AE400_29795*)i);
     v0 = dword_AE400_AE3F0();
   }
   dword_AE400_AE3F0(v0);
@@ -48683,21 +48684,14 @@ int sub_421C0(int a1)
   return result;
 }
 
-//----- (000421D0) --------------------------------------------------------
-int sub_41E90_421D0(__int16 a1, int a2)
+//SYNCHRONIZED WITH REMC1
+void sub_41E90_421D0(Type_AE400_29795* a2)
 {
-  int result; // eax
-  int v3; // edx
-
-  sub_41DD0_42110((Type_AE400_29795*)a2);
-  result = dword_AE400_AE3F0();
-  *(_BYTE *)(a2 + 64) = 0;
-  v3 = *(_DWORD *)(result + 40) + 1;
-  *(_DWORD *)(result + 40) = v3;
-  *(_DWORD *)(result + 4 * v3 + 593) = a2;
-  return result;
+  sub_41DD0_42110(a2);
+  a2->var_u8_29859_64 = 0;
+  str_AE400_AE3F0->var_u32_40++;
+  str_AE400_AE3F0->var_u32_593[str_AE400_AE3F0->var_u32_40] = a2;
 }
-// AE3F0: using guessed type int dword_AE400_AE3F0();
 
 //----- (00042200) --------------------------------------------------------
 void sub_41EC0_42200(axis_3d* a1x, unsigned __int16 a2, __int16 a3, __int16 a4)
