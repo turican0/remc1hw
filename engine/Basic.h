@@ -38,6 +38,24 @@ typedef struct {
 	uint16_t var_u16_29879_84;//84
 }axis_4d;
 
+typedef struct {//size 10
+	uint32 var_0;
+	uint32 var_4;
+	uint16 var_8;
+} Tmaps_str;
+
+typedef struct {//size 14
+	uint16 var_0;
+	uint16 var_2;
+	uint16 var_4;
+	uint16 var_6;
+	uint16 var_8;
+	int8 var_10;
+	int8 var_11;
+	int8 var_12;
+	int8 var_13;
+} Type_99BA0;
+
 typedef struct {//size 8
 	uint8 stub_a[4];
 	int16 var_u16_4;
