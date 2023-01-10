@@ -465,7 +465,14 @@ typedef struct {// len 80
 Type_AE408_36382;
 
 typedef struct {//size 14
-	uint16 var_u16_0[2];
+	uint16 x;
+	uint16 y;
+	uint8 data[];
+}
+Type_sub168_2_2;
+
+typedef struct {//size 14
+	Type_sub168_2_2* var_u32_0;
 	uint32 var_u32_4;
 	uint16 var_u16_8[3];
 }
