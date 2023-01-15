@@ -70131,8 +70131,118 @@ int sub_62B30_63040(int a1, int a2, char a3)
 }
 // 6BEA2: using guessed type _DWORD lseek(_DWORD, _DWORD, char);
 
+//SYNCHRONIZED WITH REMC1
+//int sub_62B60_63070_new(uint8_t* input, uint8_t* output)
+int sub_62B60_63070(uint8_t* a1, uint8_t* a2)
+{
+    unsigned int i; // ecx
+    int* v3; // esi
+    int v4; // eax
+    int v5; // eax
+    _WORD* v6; // esi
+    unsigned int v7; // edx
+    char* v8; // ebx
+    _DWORD* v9; // esi
+    char* v10; // edi
+    _DWORD* v11; // esi
+    _WORD* v12; // edi
+    _BYTE* v13; // esi
+    _BYTE* v14; // edi
+    char* v15; // edi
+    int v16; // eax
+    __int16 v17; // bx
+    __int16 v18; // ax
+    __int16 v19; // dx
+    __int16 v20; // ax
+    unsigned __int16 v22; // [esp-1Ah] [ebp-1Eh]
+
+    if (*(_WORD*)a1 != 20050)
+        return 0;
+    v3 = (int*)(a1 + 4);
+    if (*(_WORD*)(a1 + 2) != 323)
+        return 0;
+    LOBYTE(v4) = sub_62CF4_63204(v3);
+    dword_9B140 = v4;
+    LOBYTE(v5) = sub_62CF4_63204(v3);
+    dword_9B144 = v5;
+    byte_9B150 = *(_BYTE*)(a1 + 9);
+    v6 = (_WORD*)(a1 + 10);
+    v7 = (uint32)(v5 + 18 + a1);
+    if (v7 > (unsigned int)a2)
+    {
+        v8 = (char*)&a2[dword_9B140 + *(unsigned __int8*)(a1 + 16)];
+        if ((unsigned int)v8 > v7)
+        {
+            v9 = (_DWORD*)(v7 - 4);
+            v10 = v8 - 4;
+            for (i = (unsigned int)dword_9B144 >> 2; i; --i)
+            {
+                *(_DWORD*)v10 = *v9--;
+                v10 -= 4;
+            }
+            v11 = v9 + 1;
+            v12 = (uint16*)(v10 + 4);
+            LOWORD(i) = dword_9B144 & 3;
+            if ((dword_9B144 & 3) != 0)
+            {
+                v13 = (uint8*)v11 - 1;
+                v14 = (uint8*)v12 - 1;
+                while (i)
+                {
+                    *v14-- = *v13--;
+                    --i;
+                }
+                v12 = (uint16*)(v14 + 1);
+            }
+            v6 = v12;
+        }
+    }
+    v15 = (char*)a2;
+    byte_9B151 = 0;
+    word_9B14C = *v6;
+    sub_62D40_63250(2u, (int)v6);
+    do
+    {
+        sub_62DC3_632D3((int)v6);
+        sub_62DC3_632D3((int)v6);
+        sub_62DC3_632D3((int)v6);
+        word_9B14A = sub_62D40_63250(0x10u, (int)v6);
+        while (1)
+        {
+            sub_62CFD_6320D(word_9AFC0, (int)v6);
+            if ((_WORD)i)
+            {
+                qmemcpy(v15, v6, i);
+                v6 = (_WORD*)((char*)v6 + i);
+                v15 += i;
+                i = (unsigned __int8)byte_9B151;
+                v17 = *v6;
+                v18 = __ROL2__(*v6, byte_9B151);
+                v19 = (1 << byte_9B151) - 1;
+                word_9B14C &= v19;
+                v20 = v18 & v19 | (v6[1] << byte_9B151);
+                word_9B14C |= v17 << byte_9B151;
+                word_9B14E = v20;
+            }
+            if (!--word_9B14A)
+                break;
+            sub_62CFD_6320D(word_9B040, (int)v6);
+            v22 = i;
+            sub_62CFD_6320D(word_9B0C0, (int)v6);
+            LOWORD(i) = i + 2;
+            v16 = v22;
+            LOWORD(v16) = v22 + 1;
+            qmemcpy(v15, &v15[-v16], i);
+            v15 += i;
+            i = 0;
+        }
+        --byte_9B150;
+    } while (byte_9B150);
+    return dword_9B140;
+}
+
 //----- (00063070) --------------------------------------------------------
-int sub_62B60_63070(uint8_t* input, uint8_t* output)
+int sub_62B60_63070_new(uint8_t* input, uint8_t* output)
 {
     char RNSSING[5] = "RNC\x1";
     Type_fileSize fileSize;
