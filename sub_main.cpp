@@ -403,7 +403,7 @@ unsigned __int16 sub_2FC50_sub_2FC90(int a1, int a2);
 void DrawSky_30730_30770(__int16 a1);
 void sub_309D0_30A10(int a1);
 void setViewPort_30A70_30AB0(int a1);
-void sub_30B70();
+void sub_30B30_30B70();
 int sub_30D30_30D70(__int16 a1);
 void DrawWorld_30D90_30DD0(int a2, int a3, __int16 a4, int a5, int a6, int a7, int a8);
 void sub_315C0_31600();
@@ -436,9 +436,9 @@ char sub_34200(unsigned __int16 a1, __int16 a2);
 // int TopProcedure_340B0_34470(int a1, __int16 a2, __int16 a3, unsigned __int16 a4, int a5);
 int sub_34460_34820();
 int sub_348B0();
-// void sub_348F0(__int16 a1, __int16 a2, __int16 a3);
+// void DrawAndEventsInGame_34530_348F0(__int16 a1, __int16 a2, __int16 a3);
 void sub_34610_349D0(__int16 a2, __int16 a3);
-char sub_34A50();
+char sub_34690_34A50();
 void sub_34B00_34EC0();
 void sub_34B40_34F00();
 void sub_34C60_35020();
@@ -679,7 +679,7 @@ int sub_3C850();
 int sub_3C880();
 char sub_3C8B0();
 void sub_3C800_sub_3CB40();
-int sub_3CD10();
+int sub_3C9D0_3CD10();
 char sub_3DFD0(int a1, char a2);
 char sub_3E050();
 int sub_3E090();
@@ -735,9 +735,9 @@ int sub_411FD_4153D(void *a2, unsigned __int16 a3, char a4);
 void sub_41230_41570();
 void sub_41490_417D0();
 void sub_41540_41880();
-unsigned __int16 sub_41900();
+unsigned __int16 sub_415C0_41900();
 unsigned int sub_419F0();
-char sub_41AC0();
+char sub_41780_41AC0();
 char sub_41E60(int a1, int a2);
 int sub_41C70_41FB0(Type_AE400_29795* event, axis_3d* position);
 // int sub_42000(__int16 a1, int a2, int a3);
@@ -951,7 +951,7 @@ int sub_54FC0(__int16 *a1, int a2, unsigned __int16 a3, unsigned __int16 a4);
 int sub_55100(__int16 *a1, int a2, unsigned __int16 a3, unsigned __int16 a4);
 int sub_55430();
 int sub_554B0(int a1);
-int sub_55630();
+int sub_55100_55630();
 void sub_55370_558A0(__int16 a1, __int16 a2, __int16 a3);
 bool sub_55DA0(int a1, int a2);
 void sub_55DC0(int a1, __int16 a2, __int16 a3);
@@ -1001,7 +1001,7 @@ void sub_58F00_59410();
 void sub_58F70_59480();
 void sub_58F90_594A0();
 bool sub_59050_59560(unsigned __int16 a1);
-char *sub_595E0();
+char *sub_590D0_595E0();
 int sub_59650();
 __int16 *sub_59670(unsigned __int16 a1, unsigned __int16 a2, signed __int16 a3);
 int sub_596F0(unsigned __int16 a1);
@@ -1056,7 +1056,7 @@ void sub_5A3C0_5A8D0(int fontIndex);
 // void sub_5A8F3(int a1, int a2, int a3, int a4, int a5, int a6, int a7);
 int sub_5A459_5A969();
 void sub_5A4EA_5A9FA();
-int sub_5AA70();
+int sub_5A560_5AA70();
 void DrawStartGameTexts_5ACA0_5B1B0();
 void DrawTextLine_5AD10_5B220(char* text);
 int sub_5AD30_5B240();
@@ -18703,7 +18703,7 @@ LABEL_180:
 }
 
 //----- (00017C20) --------------------------------------------------------
-char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
+void sub_17C20()
 {
   int v3; // eax
   int v4; // edx
@@ -18727,12 +18727,18 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
   int v22; // edx
   int v23; // edx
 
+  //fix
+  __int16 a1;
+  __int16 a2;
+  __int16 a3;
+  //fix
+
   v3 = dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8;
   if ( *(_BYTE *)(v3 + 13332) == 1 )
   {
     if ( pressedKeys_12EEF0_12EEE0[59] )
       MakeControlCommand_188A0(2, 0);
-    return v3;
+    return;
   }
   LOBYTE(v3) = *(_BYTE *)(v3 + 14421);
   switch ( (char)v3 )
@@ -18745,7 +18751,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
       {
         word_12EFCE = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
-        return v3;
+        return;
       }
       sub_16B00();
       sub_3FCA0_3FFE0(0, 256, 160, 640, 400, 16, 8);
@@ -18788,7 +18794,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
                 MakeControlCommand_188A0(12, 0);
                 lastPressedKey_12EF70_12EF60 = 0;
                 LOBYTE(v3) = sub_169E0();
-                return v3;
+                return;
               }
               if ( lastPressedKey_12EF70_12EF60 == 31 )
               {
@@ -18804,7 +18810,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
               MakeControlCommand_188A0(4, 32);
               lastPressedKey_12EF70_12EF60 = 0;
               LOBYTE(v3) = sub_169E0();
-              return v3;
+              return;
             }
             if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 < 0x2Fu )
             {
@@ -18821,7 +18827,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
                 MakeControlCommand_188A0(4, 8);
                 lastPressedKey_12EF70_12EF60 = 0;
                 LOBYTE(v3) = sub_169E0();
-                return v3;
+                return;
               }
               if ( lastPressedKey_12EF70_12EF60 == 50 )
               {
@@ -18837,7 +18843,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
           MakeControlCommand_188A0(30, 1);
           lastPressedKey_12EF70_12EF60 = 0;
           LOBYTE(v3) = sub_169E0();
-          return v3;
+          return;
         }
         if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 >= 0x3Eu )
         {
@@ -18846,21 +18852,21 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
             MakeControlCommand_188A0(30, 4);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
-            return v3;
+            return;
           }
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 < 0x40u )
           {
             MakeControlCommand_188A0(30, 5);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
-            return v3;
+            return;
           }
           if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 <= 0x40u )
           {
             MakeControlCommand_188A0(30, 6);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
-            return v3;
+            return;
           }
           if ( lastPressedKey_12EF70_12EF60 == 65 )
           {
@@ -18876,7 +18882,7 @@ char sub_17C20(__int16 a1, __int16 a2, __int16 a3)
 LABEL_64:
         lastPressedKey_12EF70_12EF60 = 0;
         LOBYTE(v3) = sub_169E0();
-        return v3;
+        return;
       }
       if ( pressedKeys_12EEF0_12EEE0[42] || pressedKeys_12EEF0_12EEE0[54] )
       {
@@ -18889,7 +18895,7 @@ LABEL_64:
               MakeControlCommand_188A0(2, 0);
               lastPressedKey_12EF70_12EF60 = 0;
               LOBYTE(v3) = sub_169E0();
-              return v3;
+              return;
             }
             if ( lastPressedKey_12EF70_12EF60 == 18 )
             {
@@ -18912,7 +18918,7 @@ LABEL_64:
             MakeControlCommand_188A0(6, 48);
             lastPressedKey_12EF70_12EF60 = 0;
             LOBYTE(v3) = sub_169E0();
-            return v3;
+            return;
           }
           if ( lastPressedKey_12EF70_12EF60 == 46 )
           {
@@ -18923,7 +18929,7 @@ LABEL_64:
         }
 LABEL_54:
         LOBYTE(v3) = sub_169E0();
-        return v3;
+        return;
       }
       if ( lastPressedKey_12EF70_12EF60 == 26 )
       {
@@ -18954,7 +18960,7 @@ LABEL_54:
           MakeControlCommand_188A0(27, 0);
           MakeControlCommand_188A0(29, 0);
           lastPressedKey_12EF70_12EF60 = 0;
-          return v3;
+          return;
         case 19:
           if ( *(_BYTE *)(dword_AE400_AE3F0() + 8631) )
             sub_34C80_35040();
@@ -19009,7 +19015,7 @@ LABEL_119:
         {
           mouseRightButton_12EFDC_12EFCC = 0;
           LOBYTE(v3) = sub_169E0();
-          return v3;
+          return;
         }
         v16 = 164 * *(_DWORD *)(v14 + 4 * v15 + 532) + dword_AE400_AE3F0() + 29795;
         if ( *(_BYTE *)(v16 + 60) == 1 )
@@ -19019,7 +19025,7 @@ LABEL_119:
             MakeControlCommand_188A0(6, 32);
             mouseRightButton_12EFDC_12EFCC = 0;
             LOBYTE(v3) = sub_169E0();
-            return v3;
+            return;
           }
         }
         else if ( mouseRightButton_12EFDC_12EFCC
@@ -19055,7 +19061,7 @@ LABEL_119:
         word_12EFCE = 0;
         MakeControlCommand_188A0(20, 0);
       }
-      return v3;
+      return;
     case 2:
       sub_3FCA0_3FFE0(
         1,
@@ -19103,7 +19109,7 @@ LABEL_146:
         MakeControlCommand_188A0(20, 0);
 LABEL_164:
         lastPressedKey_12EF70_12EF60 = 0;
-        return v3;
+        return;
       }
       if ( word_12EFCE )
       {
@@ -19122,7 +19128,7 @@ LABEL_164:
           {
             *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29716) = v3;
             lastPressedKey_12EF70_12EF60 = 0;
-            return v3;
+            return;
           }
           ++v3;
           v21 += 4;
@@ -19153,7 +19159,7 @@ LABEL_164:
         *(_BYTE *)(dword_AE400_AE3F0() + 10 * str_AE400_AE3F0->var_u16_8 + 29716) = v3;
         lastPressedKey_12EF70_12EF60 = 0;
       }
-      return v3;
+      return;
     case 3:
       if ( lastPressedKey_12EF70_12EF60 > 0 )
       {
@@ -19173,9 +19179,9 @@ LABEL_164:
       }
 LABEL_177:
       lastPressedKey_12EF70_12EF60 = 0;
-      return v3;
+      return;
     default:
-      return v3;
+      return;
   }
 }
 // 17CB9: variable 'v5' is possibly undefined
@@ -35013,7 +35019,7 @@ void setViewPort_30A70_30AB0(int viewPortSize)//201A70_
 }
 
 //----- (00030B70) --------------------------------------------------------
-void sub_30B70()
+void sub_30B30_30B70()
 {
   int v0; // eax
   int v1; // ebp
@@ -38327,50 +38333,77 @@ int sub_348B0()
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 // AE418: using guessed type int begPalDat_AE428_AE418_26C428_26C418;
 
-//----- (000348F0) --------------------------------------------------------
-void sub_348F0(__int16 a1, __int16 a2, __int16 a3)
+int counter_34530 = 0;
+
+void DrawAndEventsInGame_34530_348F0()//205530_
 {
+    //debug
+#ifdef debug1
+        //add_compare(0x205530, true);
+#endif debug1
+        //debug
   unsigned __int8 v3; // bl
   int j; // ebx
   int i; // ebx
 
   if ( !str_AE400_AE3F0->mod3D_8603 )
-    sub_34A50();
-  if ( (*(_BYTE *)(dword_AE408_AE3F8() + 2) & 1) == 0 )
-    sub_595E0();
-  if ( (*(_BYTE *)dword_AE408_AE3F8() & 4) == 0 )
-    sub_17C20(a1, a2, a3);
-  sub_3CD10();
-  if ( (*(_BYTE *)(dword_AE408_AE3F8() + 2) & 1) == 0 )
-    sub_41900();
-  v3 = *(_BYTE *)(dword_AE408_AE3F8() + 150);
+    sub_34690_34A50();
+  if ( (str_AE408_AE3F8->var_u8_2 & 1) == 0 )
+    sub_590D0_595E0();
+  if ( (str_AE408_AE3F8->var_u8_0 & 4) == 0 )
+    sub_17C20();
+  sub_3C9D0_3CD10();
+  if ( (str_AE408_AE3F8->var_u8_2 & 1) == 0 )
+    sub_415C0_41900();
+  v3 = str_AE408_AE3F8->gameSpeed_150;
   if ( v3 )
   {
     if ( v3 <= 1u )
     {
       for ( i = 0; i < 4; ++i )
-        sub_41AC0();
+        sub_41780_41AC0();
     }
     else if ( v3 == 2 )
     {
       for ( j = 0; j < 16; ++j )
-        sub_41AC0();
+        sub_41780_41AC0();
     }
   }
   else
   {
-    sub_41AC0();
+    sub_41780_41AC0();
   }
-  sub_55630();
+  //2055C1
+          //debug
+#ifdef debug1
+        //add_compare(0x2055C1, true);
+#endif debug1
+        //debug
+  sub_55100_55630();
+  //2055C6
+          //debug
+#ifdef debug1
+        //add_compare(0x2055C6, true);
+#endif debug1
+        //debug
   DrawGameFrame_20FB0();
-  *(_DWORD *)(dword_AE408_AE3F8() + 153) = dword_AC5D4_AC5C4 - *(_DWORD *)(dword_AE408_AE3F8() + 153);
-  sub_5AA70();
-  *(_DWORD *)(dword_AE408_AE3F8() + 153) = dword_AC5D4_AC5C4;
-  sub_30B70();
+  //2055DE
+        //debug
+#ifdef debug1
+  if (counter_34530 == 0x19)
+  {
+      counter_34530++;
+      counter_34530--;
+  }
+  add_compare(0x2055DE, true, true);
+  counter_34530++;
+#endif debug1
+  //debug
+  str_AE408_AE3F8->var_u32_153 = dword_AC5D4_AC5C4 - str_AE408_AE3F8->var_u32_153;
+  sub_5A560_5AA70();
+  str_AE408_AE3F8->var_u32_153 = dword_AC5D4_AC5C4;
+  sub_30B30_30B70();
 }
-// AC5C4: using guessed type int dword_AC5D4_AC5C4;
-// AE3F0: using guessed type int dword_AE400_AE3F0();
-// AE3F8: using guessed type int dword_AE408_AE3F8();
 
 //----- (000349D0) --------------------------------------------------------
 void sub_34610_349D0(__int16 a2, __int16 a3)
@@ -38390,14 +38423,14 @@ void sub_34610_349D0(__int16 a2, __int16 a3)
     result = 2049 * str_AE400_AE3F0->var_u16_8 + dword_AE400_AE3F0();
     if ( *(_BYTE *)(result + 13327) || (*(_BYTE *)(result + 13325) & 8) != 0 )
       break;
-    sub_348F0(a1, a2, a3);
+    DrawAndEventsInGame_34530_348F0();
   }
 }
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 // AE3F8: using guessed type int dword_AE408_AE3F8();
 
 //----- (00034A50) --------------------------------------------------------
-char sub_34A50()
+char sub_34690_34A50()
 {
   int v0; // ebx
   __int16 v1; // ax
@@ -44617,7 +44650,7 @@ void sub_3C800_sub_3CB40()
 // CC1AC: using guessed type int dword_CC1AC;
 
 //----- (0003CD10) --------------------------------------------------------
-int sub_3CD10()
+int sub_3C9D0_3CD10()
 {
   int v0; // ebx
   _BYTE *v1; // ebp
@@ -48268,7 +48301,7 @@ void sub_41540_41880()
 // AE3F8: using guessed type int dword_AE408_AE3F8();
 
 //----- (00041900) --------------------------------------------------------
-unsigned __int16 sub_41900()
+unsigned __int16 sub_415C0_41900()
 {
   unsigned __int16 result; // ax
   int v1; // edi
@@ -48357,7 +48390,7 @@ unsigned int sub_419F0()
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 
 //----- (00041AC0) --------------------------------------------------------
-char sub_41AC0()
+char sub_41780_41AC0()
 {
   int v0; // esi
   int v1; // eax
@@ -61395,7 +61428,7 @@ int sub_554B0(int a1)
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 
 //----- (00055630) --------------------------------------------------------
-int sub_55630()
+int sub_55100_55630()
 {
   int result; // eax
   __int16 i; // di
@@ -63902,7 +63935,7 @@ bool sub_59050_59560(unsigned __int16 a1)
 // 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //----- (000595E0) --------------------------------------------------------
-char *sub_595E0()
+char *sub_590D0_595E0()
 {
   unsigned __int16 i; // bx
   char *result; // eax
@@ -64987,7 +65020,7 @@ void sub_5A4EA_5A9FA()
 // 12EBF4: using guessed type __int16 word_12EBF4;
 
 //----- (0005AA70) --------------------------------------------------------
-int sub_5AA70()
+int sub_5A560_5AA70()
 {
   __int16 v0; // bx
   __int16 v1; // bx
