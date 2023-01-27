@@ -56,6 +56,65 @@ typedef struct {//size 14
 	int8 var_13;
 } Type_99BA0;
 
+typedef struct {//size 14
+	uint16 x;
+	uint16 y;
+	uint8 data[];
+}
+Type_sub168_2_2;
+
+typedef struct {//size 14
+	Type_sub168_2_2* var_u32_0;
+	uint32 var_u32_4;
+	uint16 var_u16_8[3];
+}
+Type_sub168_2;
+
+typedef struct {//size 4
+	Type_sub168_2* var_u32_0;
+}
+Type_sub168_3;
+
+typedef struct {//size 26
+	uint32 var_0;
+	int32 var_4x;
+	Type_sub168_2* var_8;
+	Type_sub168_3* var_12;
+	uint8* var_16;
+	uint16 var_20;
+	uint16 var_22;
+	uint16 var_24;
+}
+Type_sub168;
+
+typedef struct {
+	Type_sub168 sub_0;
+	Type_sub168_2 sub_26[529];
+	Type_sub168_3 sub_7432[529];
+	uint8 last[529];
+	uint8 stub[];
+}
+Type_168;
+
+typedef struct {//size 28
+	uint32 var_0;
+	Type_sub168_2* var_4; //size 6?
+	uint32 var_8;
+	uint16 var_12;
+	uint16 var_14;
+	uint16 var_16;
+	uint16 var_18;
+	uint16 var_20;
+	uint16 var_22;
+	uint16 var_24;
+	uint16 var_26;
+}Type_sub_AE3E0;
+
+typedef struct {//size 6
+	uint16_t var_0;//count
+	Type_sub_AE3E0* var_2;
+}Type_AE3E0;
+
 typedef struct {//size 8
 	uint8 stub_a[4];
 	int16 var_u16_4;
@@ -393,6 +452,41 @@ typedef struct {//len 38812
 }
 Type_AE400_193795;
 
+typedef struct {
+	uint8 reflections_8597;//0 is on
+	uint8 shadowsOn_8598;
+	uint8 skyOn_8599;
+	uint8 var_u8_8600;
+
+	uint8 mapOn_8601;
+	uint8 iconsOn_8602;
+	uint8 mod3D_8603;
+	uint8 blur_8604;
+
+	uint8 softenOn_8605;
+	uint8 var_u8_8606;
+	uint8 stub9[1];
+	uint8 var_u8_8608;
+
+	uint8 stub10[12];
+
+	uint8 var_u8_8621;
+	uint8 var_u8_8622;
+	uint8 var_u8_8623;//sky is on
+	uint8 var_u8_8624;
+
+	uint8 var_u8_8625;
+	uint8 var_u8_8626;
+	uint8 var_u8_8627;
+	uint8 var_u8_8628;
+
+	uint8 var_u8_8629;
+	uint8 var_u8_8630;
+	uint8 var_u8_8631;
+	uint8 var_u8_8632;
+}
+Type_settings;
+
 typedef struct {//size 232713
 	uint8 stub0[1];
 	uint8 var_u8_1;
@@ -413,31 +507,9 @@ typedef struct {//size 232713
 	Type_AE400_29795* var_u32_593[1000];
 	int32 var_u32_4593;
 	Type_AE400_29795* var_u32_4597[1000];
-	uint8 var_u8_8597;
-	uint8 var_u8_8598;
-	uint8 var_u8_8599;
-	int8 var_u8_8600;
-	uint8 var_u8_8601;
-	uint8 var_u8_8602;
-	uint8 mod3D_8603;
-	uint8 var_u8_8604;
-	uint8 var_u8_8605;
-	uint8 var_u8_8606;
-	uint8 stub9[1];
-	uint8 var_u8_8608;
-	uint8 stub10[12];
-	uint8 var_u8_8621;
-	uint8 var_u8_8622;
-	uint8 var_u8_8623;
-	uint8 var_u8_8624;
-	uint8 var_u8_8625;
-	uint8 var_u8_8626;
-	uint8 var_u8_8627;
-	uint8 var_u8_8628;
-	uint8 var_u8_8629;
-	uint8 var_u8_8630;
-	uint8 var_u8_8631;
-	uint8 stub11[545];
+	Type_settings set;
+
+	uint8 stub11[544];
 	Type_AE400_9177 str_9177[8];// len 48
 	uint8 stub12[2033];
 	TypeStrAE400_13323 str_11274;
@@ -464,44 +536,6 @@ typedef struct {// len 80
 }
 Type_AE408_36382;
 
-typedef struct {//size 14
-	uint16 x;
-	uint16 y;
-	uint8 data[];
-}
-Type_sub168_2_2;
-
-typedef struct {//size 14
-	Type_sub168_2_2* var_u32_0;
-	uint32 var_u32_4;
-	uint16 var_u16_8[3];
-}
-Type_sub168_2;
-
-typedef struct {//size 4
-	uint32 var_u16_0;
-}
-Type_sub168_3;
-
-typedef struct {
-	uint32 var_0;
-	uint32 var_4;
-	Type_sub168_2* var_8;
-	Type_sub168_2* var_12;
-	Type_sub168_3* var_16;
-	uint16 var_20;
-	uint16 var_22;
-	uint16 var_24;
-}
-Type_sub168;
-
-typedef struct {
-	Type_sub168 sub_0;
-	Type_sub168_2 sub_26[529];
-	Type_sub168_3 sub_7432[529];
-}
-Type_168;
-
 typedef struct {//size 36478
 	uint8 var_u8_0;
 	uint8 var_u8_1;
@@ -524,7 +558,7 @@ typedef struct {//size 36478
 	uint8 stubb[8];
 	char textBuffer_117[32];//fix size
 	uint8 stubc[1];
-	uint8 var_u8_150;
+	uint8 gameSpeed_150;
 	uint8 var_u8_151;
 	uint8 var_u8_152;
 	uint32 var_u32_153;
