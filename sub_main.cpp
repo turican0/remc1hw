@@ -78,7 +78,7 @@ char* FixPath(char* inPath)
 
 void sub_10000(); // weak
 void sub_10010(__int16 a1, __int16 a2);
-int sub_1002D(int a1, int a2);
+uint8_t* sub_1002D(uint8_t* a1, uint8_t* a2);
 __int16 sub_100B8();
 __int16 sub_10166();
 int sub_10190();
@@ -93,12 +93,12 @@ unsigned int sub_108C0();
 __int16 sub_10960();
 __int16 sub_10AB0();
 __int16 sub_10BD0();
-int sub_10CB0(unsigned __int16 a1);
-int sub_10D40(unsigned __int16 *a1, int *a2, __int16 a3);
-int sub_10EB0(Type_sub_AE3E0* a1);
-_DWORD *sub_10F10(_DWORD *a1);
+Type_AE3E0* sub_10CB0(unsigned __int16 a1);
+void sub_10D40(Type_AE3E0* a1, Type_sub168_2* a2, __int16 a3);
+void sub_10EB0(Type_sub_AE3E0* a1);
+void sub_10F10(Type_sub_AE3E0* a1);
 Type_sub_AE3E0* sub_10FD0(Type_AE3E0* a1, __int16 a2);
-void sub_11010(int *a1);
+void sub_11010(Type_AE3E0* a1);
 __int16 sub_11050();
 void sub_111B0(int a1, int a2);
 int sub_11410(int a1, int a2);
@@ -399,7 +399,7 @@ void PrepRot_29C30_29C70(__int16 roll);
 void sub_2C410_2C450(unsigned int a1);
 void sub_2DCB0_2DCF0(int a2);
 unsigned __int16 sub_2F170_2F1B0(int a1, int a2);
-unsigned __int16 sub_2FC50_sub_2FC90(int a1, int a2);
+void DrawSprite_2FC50_2FC90(Type_BegBscreen* a2);
 void DrawSky_30730_30770(__int16 a1);
 void sub_309D0_30A10(int a1);
 void setViewPort_30A70_30AB0(int a1);
@@ -465,12 +465,12 @@ int sub_367F0(int a1);
 char sub_36840(int a1, _WORD *a2);
 _WORD *sub_36980(int a1);
 int sub_369E0();
-int sub_36AC0(int a1, unsigned __int16 a2, int a3);
-int sub_36C10(int a1);
+Type_sub168* sub_36700_36AC0(int a1, unsigned __int16 a2, Type_168* a3);
+int sub_36850_36C10(Type_sub168* a1);
 // _DWORD ios::failure::cause(_DWORD); weak
-int sub_369E0_36DA0(int a1, unsigned int a2, __int16 a3);
-__int16 sub_36E50(int a1, int a2);
-void sub_36FD0(int *a1);
+Type_sub168_2* sub_369E0_36DA0(Type_sub168* a1, unsigned int a2, __int16 a3);
+void sub_36A90_36E50(Type_sub168* a1, Type_sub168_2* a2);
+void sub_36850_36C10_36FD0(Type_sub168* a1);
 // void sub_37025(int a1, int a2, int a3, int a4, int a5, int a6, int a7);
 int sub_37143(int a1, __int16 a2);
 int sub_36DC2_37182();
@@ -863,7 +863,7 @@ int sub_4C8C0();
 bool sub_4C980();
 bool sub_4C9B0();
 bool sub_4C9E0();
-int sub_4CA30();
+void sub_4C6F0_4CA30();
 void sub_4CB20();
 void sub_4CAC0_4CE00();
 void sub_4CEB0();
@@ -885,7 +885,7 @@ void sub_4E850(unsigned __int8 a1);
 int sub_4E8F0();
 void sub_4F1B0();
 void sub_4EFC0_4F300();
-void sub_4F460();
+void sub_4F120_4F460();
 int sub_4F520();
 void sub_4F3F0_4F730();
 int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int));
@@ -991,8 +991,8 @@ int sub_58750(int a1);
 void DrawLetter_58768_58C78(__int16 a1, __int16 a2, TypeTab* a3, unsigned __int8 a4);
 char sub_587E0_58CF0();
 int sub_58860_58D70(unsigned __int16 a1, uint8_t* a2);
-char sub_58E20(unsigned __int16 a1);
-char sub_58F10(unsigned __int16 a1);
+char sub_58910_58E20(unsigned __int16 a1);
+char sub_58A00_58F10(unsigned __int16 a1);
 int sub_58FE0(unsigned __int16 a1);
 void sub_58B30_59040(unsigned __int16 a1);
 int sub_59140(unsigned int a1);
@@ -1002,7 +1002,7 @@ void sub_58F70_59480();
 void sub_58F90_594A0();
 bool sub_59050_59560(unsigned __int16 a1);
 void sub_590D0_595E0();
-int sub_59650();
+void sub_59140_59650();
 __int16 *sub_59670(unsigned __int16 a1, unsigned __int16 a2, signed __int16 a3);
 int sub_596F0(unsigned __int16 a1);
 char sub_59740();
@@ -1014,7 +1014,7 @@ void sub_59500_59A10(uint8_t** a1);
 unsigned int sub_59050_59560_59A70(unsigned int **a1);
 int sub_59720_59C30();
 int sub_59C60(__int16 a1, __int16 a2);
-void sub_599B0_59EC0(__int16 a1);
+void Blit_599B0_59EC0(__int16 a1);
 int sub_59F90(int a1);
 int sub_59FC0(int a1);
 int sub_59FF0(int a1);
@@ -1102,7 +1102,7 @@ void sub_5D083(int a1, __int16 a2);
 void sub_5CC54_5D164();
 uint8_t sub_5CC70_5D180(TColor* colors, uint8_t colR, uint8_t colG, uint8_t colB);
 int sub_5CD70_5D280();
-void sub_5CDA0_5D2B0();
+void Blit_5CDA0_5D2B0();
 //int DataFileIO::CreateOrOpenFile(int a1, int a2);
 //int DataFileIO::Close(int a1);
 // _DWORD dos_getdrive(_DWORD); weak
@@ -1711,12 +1711,12 @@ int dword_80000; // weak
 int dword_80010; // weak
 int dword_80120; // weak
 char byte_90000[4] = { '\x01', '\x01', '\x01', '\0' }; // weak
-int dword_90004 = 0; // weak
-int dword_90008 = 0; // weak
+uint8_t* dword_90004 = nullptr; // weak
+uint8_t* dword_90008 = nullptr; // weak
 __int16 word_9000C = 0; // weak
 __int16 word_9000E = 0; // weak
 __int16 word_90010 = 0; // weak
-__int16 word_90012 = 0; // weak
+__int32 dword_90012 = 0; // weak
 __int16 word_90016 = 0; // weak
 int dword_9001C = 0; // weak
 __int16 word_90024 = 1; // weak
@@ -12894,7 +12894,7 @@ char* dword_AE238_AE228[80]; // weak
 TypeTab* begFont0Tab_AE3B8_AE3A8_26C3B8_26C3A8; // weak
 uint8_t* begSky_AE3D8_AE3C8_26C3D8_26C3C8; // weak
 Type_AE3E0* dword_AE3E0_AE3D0; // weak
-int dword_AE3EC_AE3DC; // weak
+Type_sub168* dword_AE3EC_AE3DC; // weak
 uint8_t* begBlkDat_AE3F0_26C3F0_26C3E0; // weak
 uint8_t* begSearch_AE3F4_26C3F4_26C3E4; // weak
 uint8_t* begBscreen_AE3FC_AE3EC_26C3FC_26C3EC; // weak
@@ -13132,17 +13132,17 @@ char byte_12CAE8_12CAD8; // weak
 //int test_12CB5C_2EAB5C_2EAB4C; // weak
 //int begLangSprDat_12CB60_2EAB60_2EAB50; // weak
 //int begTitle02Dat_12CB64_2EAB64_2EAB54; // weak
-int dword_12CB58; // weak
-int dword_12CB5C; // weak
-__int16 word_12CB60; // weak
+uint8_t* dword_12CB68_12CB58; // weak
+uint8_t* dword_12CB6C_12CB5C; // weak
+__int16 word_12CB70_12CB60; // weak
 //int begGlobeDat_12CB72_2EAB72_2EAB62; // weak
-int dword_12CB66; // weak
-int dword_12CB6A; // weak
-__int16 word_12CB6E; // weak
+uint8_t* dword_12CB76_12CB66; // weak
+uint8_t* dword_12CB7A_12CB6A; // weak
+__int16 word_12CB7E_12CB6E; // weak
 //int begTimerDat_12CB80_2EAB80_2EAB70; // weak
-int dword_12CB74; // weak
-int dword_12CB78; // weak
-__int16 word_12CB7C; // weak
+uint8_t* dword_12CB84_12CB74; // weak
+uint8_t* dword_12CB88_12CB78; // weak
+__int16 word_12CB8C_12CB7C; // weak
 //TColor* begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C; // weak
 //int begMmMaskDat_12CBA0_2EABA0_2EAB90; // weak
 //int begScreenBackup_12CBA4_2EABA4_2EAB94; // weak
@@ -13162,7 +13162,7 @@ char byte_12CBCA_12CBBA; // weak
 char byte_12CBBB; // weak
 char byte_12CBCC_12CBBC; // weak
 char byte_12CBCD_12CBBD; // weak
-char byte_12CBCE_12CBBE; // weak
+char mainMenuSelector_12CBCE_12CBBE; // weak
 uint8_t byte_12CBCF_12CBBF; // weak
 char byte_12CBD0_12CBC0; // weak
 char byte_12CBD1_12CBC1; // weak
@@ -13186,8 +13186,8 @@ __int16 word_12CD16[9999]; // weak
 __int16 word_12CD18[236]; // weak
 int dword_12CF00_12CEF0[529]; // weak
 //int dword_12D734; // weak
-int dword_12D748_12D738[529]; // weak
-int dword_12DF8C_12DF7C[529]; // weak
+Type_sub168_2* dword_12D748_12D738[529]; // weak
+Type_sub168_2* dword_12DF8C_12DF7C[529]; // weak
 char byte_12E7D0_12E7C0[529]; // weak
 char byte_12E9E1_12E9D1[543]; // weak
 int dword_12EBF0; // weak
@@ -13279,9 +13279,9 @@ Type_9AD90 dword_12EFCC_12EFBC; // weak
 __int16 word_12EFC0; // weak
 __int16 word_12EFD2_12EFC2; // weak
 __int16 word_12EFD4_12EFC4; // weak
-__int16 word_12EFCA; // weak
+__int16 word_12EFDA_12EFCA; // weak
 __int16 mouseRightButton_12EFDC_12EFCC; // weak
-__int16 word_12EFCE; // weak
+__int16 mouseLeftButton_12EFDE_12EFCE; // weak
 __int16 word_12EFE0_12EFD0; // weak
 __int16 mouseRightButton2_12EFE2_12EFD2; // weak
 __int16 mouseLeftButton2_12EFE4_12EFD4; // weak
@@ -13517,9 +13517,9 @@ void UpdateMouseEventData_5BE72_5C382(uint32_t mouse_states, int32_t mouse_posx,
                     word_12EFD8_12EFC8 = 1;
                 }
             }
-            if (!mouseLeftButton2_12EFE4_12EFD4 && !word_12EFCE)
+            if (!mouseLeftButton2_12EFE4_12EFD4 && !mouseLeftButton_12EFDE_12EFCE)
             {
-                word_12EFCE = 1;
+                mouseLeftButton_12EFDE_12EFCE = 1;
                 mouseX_9AD8C = mouse_posx;
                 mouseY_9AD8E = mouse_posy;
             }
@@ -13541,9 +13541,9 @@ void UpdateMouseEventData_5BE72_5C382(uint32_t mouse_states, int32_t mouse_posx,
             mouseRightButton2_12EFE2_12EFD2 = 0;
         if ((mouseButtonsStates_12EFB0_12EFA0 & 0x20) != 0)
         {
-            if (!word_12EFE0_12EFD0 && !word_12EFCA)
+            if (!word_12EFE0_12EFD0 && !word_12EFDA_12EFCA)
             {
-                word_12EFCA = 1;
+                word_12EFDA_12EFCA = 1;
                 mouseX_9AD8C = mouse_posx;
                 mouseY_9AD8E = mouse_posy;
             }
@@ -13610,65 +13610,57 @@ void sub_10010(__int16 a1, __int16 a2)
 // 9000E: using guessed type __int16 word_9000E;
 // 90010: using guessed type __int16 word_90010;
 
-//----- (0001002D) --------------------------------------------------------
-int sub_1002D(int a1, int a2)
+//SYNCHRONIZED WITH REMC1
+uint8_t* sub_1002D(uint8_t* a1, uint8_t* a2)//1E102D_
 {
-  dword_90008 = a1;
-  dword_90004 = a2;
-  while ( 1 )
-  {
-    qmemcpy(&word_90012, (const void *)dword_90008, 4u);
-    dword_90008 += 4;
-    qmemcpy(&word_9000C, (const void *)dword_90008, sizeof(word_9000C));
-    dword_90008 += 2;
-    if ( word_9000C != -20718 )
-      break;
-    sub_10166();
-  }
-  if ( word_9000C != -3590 )
-    return 0;
-  sub_100B8();
-  return dword_90008;
+    dword_90008 = a1;
+    dword_90004 = a2;//fix dword_90004
+    while (1)
+    {
+        qmemcpy(&dword_90012, (const void*)dword_90008, sizeof(dword_90012));
+        dword_90008 += 4;
+        qmemcpy(&word_9000C, (const void*)dword_90008, sizeof(word_9000C));
+        dword_90008 += 2;
+        if (word_9000C != -20718)
+            break;
+        sub_10166();
+    }
+    if (word_9000C != -3590)
+        return 0;
+    sub_100B8();
+    return dword_90008;
 }
-// 90004: using guessed type int dword_90004;
-// 90008: using guessed type int dword_90008;
-// 9000C: using guessed type __int16 word_9000C;
-// 90012: using guessed type __int16 word_90012;
 
-//----- (000100B8) --------------------------------------------------------
+//SYNCHRONIZED WITH REMC1
 __int16 sub_100B8()
 {
-  __int16 result; // ax
+    __int16 result; // ax
 
-  qmemcpy(&word_90016, (const void *)dword_90008, sizeof(word_90016));
-  dword_90008 += 2;
-  dword_90008 += 8;
-  while ( word_90016 )
-  {
-    --word_90016;
-    qmemcpy(&word_90012, (const void *)dword_90008, 4u);
-    dword_90008 += 4;
-    qmemcpy(&word_9000C, (const void *)dword_90008, sizeof(word_9000C));
+    qmemcpy(&word_90016, (const void*)dword_90008, sizeof(word_90016));
     dword_90008 += 2;
-    if ( word_9000C == 7 )
+    dword_90008 += 8;
+    while (word_90016)
     {
-      result = sub_101A1();
+        --word_90016;
+        qmemcpy(&dword_90012, (const void*)dword_90008, sizeof(dword_90012));
+        dword_90008 += 4;
+        qmemcpy(&word_9000C, (const void*)dword_90008, sizeof(word_9000C));
+        dword_90008 += 2;
+        if (word_9000C == 7)
+        {
+            result = sub_101A1();
+        }
+        else if (word_9000C == 15)
+        {
+            result = sub_10254();
+        }
+        else
+        {
+            result = sub_10190();
+        }
     }
-    else if ( word_9000C == 15 )
-    {
-      result = sub_10254();
-    }
-    else
-    {
-      result = sub_10190();
-    }
-  }
-  return result;
+    return result;
 }
-// 90008: using guessed type int dword_90008;
-// 9000C: using guessed type __int16 word_9000C;
-// 90012: using guessed type __int16 word_90012;
-// 90016: using guessed type __int16 word_90016;
 
 //----- (00010166) --------------------------------------------------------
 __int16 sub_10166()
@@ -13690,100 +13682,91 @@ int sub_10190()
 {
   int result; // eax
 
-  result = (unsigned __int16)word_90012 - 6;
+  result = (unsigned __int16)dword_90012 - 6;
   dword_90008 += result;
   return result;
 }
 // 90008: using guessed type int dword_90008;
 // 90012: using guessed type __int16 word_90012;
 
-//----- (000101A1) --------------------------------------------------------
+//SYNCHRONIZED WITH REMC1
 __int16 sub_101A1()
 {
-  _WORD *v0; // edi
-  __int16 *v1; // esi
-  __int16 result; // ax
-  _BYTE *v3; // edi
-  _BYTE *v4; // esi
-  char v5; // dl
-  _WORD *v6; // [esp-4h] [ebp-14h]
-  _WORD *v7; // [esp+0h] [ebp-10h]
-  __int16 i; // [esp+6h] [ebp-Ah]
-  __int16 v9; // [esp+8h] [ebp-8h]
-  int v10; // [esp+Ch] [ebp-4h]
+    _WORD* v0; // edi
+    __int16* v1; // esi
+    __int16 result; // ax
+    _BYTE* v3; // edi
+    _BYTE* v4; // esi
+    char v5; // dl
+    _WORD* v6; // [esp-4h] [ebp-14h]
+    _WORD* v7; // [esp+0h] [ebp-10h]
+    __int16 i; // [esp+6h] [ebp-Ah]
+    __int16 v9; // [esp+8h] [ebp-8h]
+    int v10; // [esp+Ch] [ebp-4h]
 
-  v10 = (unsigned __int16)word_9000E;
-  v0 = (_WORD *)dword_90004;
-  v1 = (__int16 *)(dword_90008 + 2);
-  v9 = *(_WORD *)dword_90008;
-  do
-  {
-    while ( 1 )
+    v10 = (unsigned __int16)word_9000E;
+    v0 = (_WORD*)dword_90004;
+    v1 = (__int16*)(dword_90008 + 2);
+    v9 = *(_WORD*)dword_90008;
+    do
     {
-      result = *v1++;
-      v7 = v0;
-      if ( result >= 0 )
-        goto LABEL_10;
-      if ( (result & 0x4000) == 0 )
-        break;
-      v0 = (_WORD *)((char *)v0 + v10 * -result);
-    }
-    v6 = v0;
-    v3 = (uint8*)((char *)v0 + v10 - 1);
-    if ( byte_967E4 == 1 )
-    {
-      if ( (_BYTE)result )
-        *v3 = result;
-    }
-    else
-    {
-      *v3 = result;
-    }
-    v0 = v6;
-LABEL_10:
-    for ( i = result; i; --i )
-    {
-      while ( 1 )
-      {
-        LOBYTE(result) = *(_BYTE *)v1;
-        v4 = (uint8*)((char *)v1 + 1);
-        result = (unsigned __int8)result;
-        v0 = (_WORD *)((char *)v0 + (unsigned __int8)result);
-        v5 = *v4;
-        v1 = (__int16 *)(v4 + 1);
-        if ( v5 > 0 )
-          break;
-        result = *v1++;
-        do
+        while (1)
         {
-          *v0++ = result;
-          ++v5;
+            result = *v1++;
+            v7 = v0;
+            if (result >= 0)
+                goto LABEL_10;
+            if ((result & 0x4000) == 0)
+                break;
+            v0 = (_WORD*)((char*)v0 + v10 * -result);
         }
-        while ( v5 );
-        if ( !--i )
-          goto LABEL_18;
-      }
-      do
-      {
-        *v0++ = *v1++;
-        --v5;
-      }
-      while ( v5 );
-    }
-LABEL_18:
-    v0 = (_WORD *)((char *)v7 + v10);
-    --v9;
-  }
-  while ( v9 );
-  dword_90008 = (int)v1;
-  return result;
+        v6 = v0;
+        v3 = (uint8*)((char*)v0 + v10 - 1);
+        if (byte_967E4 == 1)
+        {
+            if ((_BYTE)result)
+                *v3 = result;
+        }
+        else
+        {
+            *v3 = result;
+        }
+        v0 = v6;
+    LABEL_10:
+        for (i = result; i; --i)
+        {
+            while (1)
+            {
+                LOBYTE(result) = *(_BYTE*)v1;
+                v4 = (uint8*)((char*)v1 + 1);
+                result = (unsigned __int8)result;
+                v0 = (_WORD*)((char*)v0 + (unsigned __int8)result);
+                v5 = *v4;
+                v1 = (__int16*)(v4 + 1);
+                if (v5 > 0)
+                    break;
+                result = *v1++;
+                do
+                {
+                    *v0++ = result;
+                    ++v5;
+                } while (v5);
+                if (!--i)
+                    goto LABEL_18;
+            }
+            do
+            {
+                *v0++ = *v1++;
+                --v5;
+            } while (v5);
+        }
+    LABEL_18:
+        v0 = (_WORD*)((char*)v7 + v10);
+        --v9;
+    } while (v9);
+    dword_90008 = (uint8_t*)v1;
+    return result;
 }
-// 90004: using guessed type int dword_90004;
-// 90008: using guessed type int dword_90008;
-// 9000E: using guessed type __int16 word_9000E;
-// 90010: using guessed type __int16 word_90010;
-// 90012: using guessed type __int16 word_90012;
-// 967E4: using guessed type char byte_967E4;
 
 //----- (00010254) --------------------------------------------------------
 int sub_10254()
@@ -13797,14 +13780,14 @@ int sub_10254()
   char v6; // dh
   char v7; // dh
   int result; // eax
-  int v9; // [esp-8h] [ebp-Ch]
+  uint8_t* v9; // [esp-8h] [ebp-Ch]
   int v10; // [esp-4h] [ebp-8h]
   __int16 v11; // [esp+2h] [ebp-2h]
 
   v11 = word_9000E;
   v0 = (_BYTE *)dword_90004;
   v1 = (char *)dword_90008;
-  v10 = (unsigned __int16)word_90012 - 6;
+  v10 = (unsigned __int16)dword_90012 - 6;
   v9 = dword_90008;
   v2 = word_90010;
   do
@@ -13885,7 +13868,7 @@ void sub_10300()
   {
     word_AC5CC = 1;
   }
-  else if ( word_AC5CE && (lastPressedKey_12EF70_12EF60 || word_12EFCE || mouseRightButton_12EFDC_12EFCC) )
+  else if ( word_AC5CE && (lastPressedKey_12EF70_12EF60 || mouseLeftButton_12EFDE_12EFCE || mouseRightButton_12EFDC_12EFCC) )
   {
     word_AC5CC = 1;
   }
@@ -13898,7 +13881,7 @@ void sub_10300()
         word_AC5CC = 1;
         return;
       }
-      if ( word_AC5CE && (lastPressedKey_12EF70_12EF60 || word_12EFCE || word_12EFCE != mouseRightButton_12EFDC_12EFCC) )
+      if ( word_AC5CE && (lastPressedKey_12EF70_12EF60 || mouseLeftButton_12EFDE_12EFCE || mouseLeftButton_12EFDE_12EFCE != mouseRightButton_12EFDC_12EFCC) )
       {
         word_AC5CC = 1;
         return;
@@ -13914,7 +13897,7 @@ void sub_10300()
 // AC5CE: using guessed type __int16 word_AC5CE;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 
 //----- (000103C0) --------------------------------------------------------
 unsigned int sub_103C0(void *a1, unsigned int a2)
@@ -14121,12 +14104,12 @@ LABEL_23:
   if ( byte_90091 )
   {
     pdwScreenBuffer_12EFF4 += 6720;
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
     pdwScreenBuffer_12EFF4 -= 6720;
   }
   else
   {
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   }
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
@@ -14155,7 +14138,7 @@ int sub_107C0(__int16 a1, __int16 a2, int a3)
   dword_AC5B0 = DataFileIO::CreateOrOpenFile((char*)&unk_9ADC8, 512);
   DataFileIO::Read(dword_AC5B0, (uint8_t*)&unk_AC5B8, 12);
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   dword_90028 += 12;
   lastPressedKey_12EF70_12EF60 = 0;
   word_AC5CC = 0;
@@ -14182,7 +14165,7 @@ int sub_107C0(__int16 a1, __int16 a2, int a3)
 // AC5D0: using guessed type int dword_AC5E0_AC5D0[];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 
 //----- (000108C0) --------------------------------------------------------
@@ -14401,126 +14384,127 @@ __int16 sub_10BD0()
 // 10BD0: using guessed type char var_14[20];
 // 10BD0: using guessed type char var_18[4];
 
-//----- (00010CB0) --------------------------------------------------------
-int sub_10CB0(unsigned __int16 a1)
+//SYNCHRONIZED WITH REMC1
+Type_AE3E0* sub_10CB0(unsigned __int16 a1)
 {
-  unsigned __int16 v1; // bx
-  int v2; // edi
-  int v3; // esi
-  int v4; // eax
-  int v5; // eax
+    //unsigned __int16 v1; // bx
+    Type_AE3E0* v2; // edi
+    //Type_AE3E0* v3; // esi
+    //int v4; // eax
+    //int v5; // eax
 
-  v1 = a1;
-  sub_42530_42870(9);
-  v2 = (int)malloc_42540_42880(6);
-  v3 = v2;
-  if ( v2 && (v4 = (int)malloc_42540_42880(28 * a1), (*(_DWORD *)(v2 + 2) = v4) != 0) )
-  {
-    *(_WORD *)v2 = a1;
-    while ( --v1 != 0xFFFF )
+    //v1 = a1;
+    sub_42530_42870(9);
+    v2 = (Type_AE3E0*)malloc_42540_42880(sizeof(Type_AE3E0));
+    //v3 = v2;
+    if (v2 && ((v2->var_2 = (Type_sub_AE3E0*)malloc_42540_42880(sizeof(Type_sub_AE3E0) * a1)) != 0))
     {
-      v5 = 28 * v1;
-      *(_DWORD *)(*(_DWORD *)(v2 + 2) + v5 + 4) = 0;
-      *(_DWORD *)(*(_DWORD *)(v2 + 2) + v5) = 0;
+        v2->var_0 = a1;
+        for (int i = 0; i < a1; i++)
+            //while ( --v1 != 0xFFFF )
+        {
+            //v5 = 28 * v1;
+            v2->var_2[i].var_4 = nullptr;
+            v2->var_2[i].var_0 = 0;
+        }
     }
-  }
-  else if ( v2 )
-  {
-    free_426E0_42A20((void*)v2);
-    v3 = 0;
-  }
-  sub_42530_42870(10);
-  return v3;
+    else if (v2)
+    {
+        free_426E0_42A20(v2);
+        v2 = nullptr;
+    }
+    sub_42530_42870(10);
+    return v2;
 }
 
-//----- (00010D40) --------------------------------------------------------
-int sub_10D40(unsigned __int16 *a1, int *a2, __int16 a3)
+//SYNCHRONIZED WITH REMC1
+void sub_10D40(Type_AE3E0* a1x, Type_sub168_2* a2x, __int16 a3)//1E1D40_
 {
-  __int16 v3; // si
-  __int16 v4; // di
-  __int16 i; // ax
-  _DWORD *v6; // edx
-  int v7; // ecx
-  int v8; // eax
-  int v9; // edx
-  __int16 v11; // [esp+8h] [ebp-14h]
+    __int16 v3; // si
+    __int16 v4; // di
+    __int16 i; // ax
+    //Type_sub_AE3E0* v6; // edx
+    //int v7; // ecx
+    int v8; // eax
+    //int v9; // edx
+    //__int16 v11; // [esp+8h] [ebp-14h]
 
-  v3 = -1;
-  v4 = -1;
-  if ( !*a1 )
-    return 0;
-  for ( i = 0; i < (int)*a1; ++i )
-  {
-    v6 = (_DWORD *)(28 * i + *(_DWORD *)(a1 + 1));
-    if ( v6[1] )
+    //allert_error();//test it
+
+    v3 = -1;
+    v4 = -1;
+    if (!a1x->var_0)
+        return;
+    for (i = 0; i < a1x->var_0; i++)
     {
-      if ( !*v6 )
-        v4 = i;
+        //v6 = &a1x->var_2[i];
+        if (a1x->var_2[i].var_4)
+        {
+            if (!a1x->var_2[i].var_0)
+                v4 = i;
+        }
+        else
+        {
+            v3 = i;
+        }
     }
-    else
-    {
-      v3 = i;
-    }
-  }
-  if ( v3 <= 0 )
-    v3 = v4;
-  if ( v3 <= -1 )
-    return 0;
-  v7 = *a2;
-  v8 = *(unsigned __int16 *)(*a2 + 4) * *(unsigned __int16 *)(*a2 + 2);
-  v11 = *(_WORD *)(*a2 + v8 + 6);
-  v9 = 28 * v3;
-  *(_DWORD *)(v9 + *(_DWORD *)(a1 + 1) + 4) = (uint32)a2;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 12) = 6;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 14) = v8 + 6;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 16) = v11;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 18) = *(_WORD *)(v7 + 2);
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 20) = *(_WORD *)(v7 + 4);
-  *(_DWORD *)(*(_DWORD *)(a1 + 1) + v9 + 8) = v8 + 6;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 22) = 1;
-  *(_DWORD *)(v9 + *(_DWORD *)(a1 + 1)) = 1;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 24) = v3;
-  *(_WORD *)(v9 + *(_DWORD *)(a1 + 1) + 26) = a3;
-  return *(_DWORD *)(a1 + 1) + v9;
+    if (v3 <= 0)
+        v3 = v4;
+    if (v3 <= -1)
+        return;
+    //v7 = (int)a2x->var_u32_0;
+    v8 = a2x->var_u32_0->yy * a2x->var_u32_0->xx;
+    //v11 = *(uint16*)&a2x->var_u32_0->data[v8];
+    //v9 = 28 * v3;
+    a1x->var_2[v3].var_4 = a2x;
+    a1x->var_2[v3].var_12 = 6;
+    a1x->var_2[v3].var_14 = v8 + 6;
+    a1x->var_2[v3].var_16 = *(uint16*)&a2x->var_u32_0->datax[v8];
+    a1x->var_2[v3].var_18 = a2x->var_u32_0->xx;
+    a1x->var_2[v3].var_20 = a2x->var_u32_0->yy;
+    a1x->var_2[v3].var_8 = v8 + 6;
+    a1x->var_2[v3].var_22 = 1;
+    a1x->var_2[v3].var_0 = 1;
+    a1x->var_2[v3].var_24 = v3;
+    a1x->var_2[v3].var_26 = a3;
 }
 
-int sub_10EB0(Type_sub_AE3E0* a1x)
+//SYNCHRONIZED WITH REMC1
+void sub_10EB0(Type_sub_AE3E0* a1x)//1E1EB0_
 {
-  Type_sub168_2_2* v1; // esi
-  int v2; // edi
-  uint8_t* v3; // eax
-  __int16 v4; // cx
-  int result; // eax
+    Type_sub168_2_2* v1; // esi
+    int v2; // edi
+    uint8_t* v3; // eax
+    __int16 v4; // cx
+    int result; // eax
 
-  if (a1x->var_22 > a1x->var_16)
-  {
-      a1x->var_22 = 1;
-    *(_DWORD *)(a1 + 8) = *(unsigned __int16 *)(a1 + 14);
-  }
-  v1 = **(_DWORD **)(a1 + 4);
-  v2 = *(_DWORD *)(a1 + 8);
-  sub_10010(*(_WORD *)(a1 + 18), 0);
-  v1 += 6;
-  v3 = sub_1002D(v1 + v2, v1);
-  v4 = *(_WORD *)(a1 + 22);
-  result = v3 - v1;
-  *(_DWORD *)(a1 + 8) = result;
-  a1x->var_22 = v4 + 1;
-  return result;
+    //allert_error();//test it
+
+    if (a1x->var_22 > a1x->var_16)
+    {
+        a1x->var_22 = 1;
+        a1x->var_8 = a1x->var_14;
+    }
+    //v1 = (uint8_t*)**(_DWORD **)(a1 + 4);
+    v1 = a1x->var_4->var_u32_0;
+    v2 = a1x->var_8;
+    sub_10010(a1x->var_18, 0);
+    //v1 += 6;
+    v3 = sub_1002D(&v1->datax[v2], v1->datax);
+    v4 = a1x->var_22;
+    result = v3 - v1->datax;
+    a1x->var_8 = result;
+    a1x->var_22 = v4 + 1;
 }
 
-//----- (00010F10) --------------------------------------------------------
-_DWORD *sub_10F10(_DWORD *a1)
+//SYNCHRONIZED WITH REMC1
+void sub_10F10(Type_sub_AE3E0* a1x)
 {
-  _DWORD *result; // eax
-
-  result = a1;
-  if ( a1 )
-  {
-    *a1 = 0;
-    a1[1] = 0;
-  }
-  return result;
+    if (a1x)
+    {
+        a1x->var_0 = 0;
+        a1x->var_4 = nullptr;
+    }
 }
 
 //|SYNCHRONIZED WITH REMC1
@@ -14544,16 +14528,18 @@ Type_sub_AE3E0* sub_10FD0(Type_AE3E0* a1x, __int16 a2)
   return result;
 }
 
-//----- (00011010) --------------------------------------------------------
-void sub_11010(int *a1)
+//SYNCHRONIZED WITH REMC1
+void sub_11010(Type_AE3E0* a1x)
 {
-  if ( *a1 )
-  {
-    free_426E0_42A20((void*)*(_DWORD *)(*a1 + 2));
-    *(_DWORD *)(*a1 + 2) = 0;
-    free_426E0_42A20((void*)*a1);
-    *a1 = 0;
-  }
+    allert_error();//test it
+
+    if (a1x)
+    {
+        free_426E0_42A20(a1x->var_2);
+        a1x->var_2 = nullptr;
+        free_426E0_42A20((void*)a1x);
+        a1x = nullptr;
+    }
 }
 
 //----- (00011050) --------------------------------------------------------
@@ -18748,7 +18734,7 @@ void sub_17C20()
       LOBYTE(v3) = 5 * v4;
       if ( *(_BYTE *)(dword_AE400_AE3F0() + 10 * v4 + 29715) )
       {
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
         return;
       }
@@ -18973,12 +18959,12 @@ LABEL_54:
         MakeControlCommand_188A0(28, 0);
         lastPressedKey_12EF70_12EF60 = 0;
       }
-      if ( word_12EFCE && mouseRightButton_12EFDC_12EFCC )
+      if ( mouseLeftButton_12EFDE_12EFCE && mouseRightButton_12EFDC_12EFCC )
       {
         if ( (*(_BYTE *)(dword_AE408_AE3F8() + 1) & 2) == 0 && *(int *)(v7 + 12) >= 0 )
           MakeControlCommand_188A0(20, 2);
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
       }
       if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 >= 2u )
       {
@@ -19006,7 +18992,7 @@ LABEL_54:
       v12 = *(__int16 *)(v11 + 940);
       if ( v12 == -1 )
       {
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
 LABEL_119:
         v14 = *(_DWORD *)(v7 + 160);
         v15 = *(__int16 *)(v14 + 944);
@@ -19039,25 +19025,25 @@ LABEL_119:
       v13 = dword_AE400_AE3F0() + 29795 + 164 * *(_DWORD *)(v11 + 4 * v12 + 532);
       if ( *(_BYTE *)(v13 + 60) == 1 )
       {
-        if ( !word_12EFCE )
+        if ( !mouseLeftButton_12EFDE_12EFCE )
           goto LABEL_119;
       }
-      else if ( !word_12EFCE
+      else if ( !mouseLeftButton_12EFDE_12EFCE
              && (!mouseLeftButton2_12EFE4_12EFD4 || *(__int16 *)(v13 + 48) <= 0)
              && (!mouseLeftButton2_12EFE4_12EFD4 || !*(_BYTE *)(v13 + 62) || *(char *)(v13 + 61) <= 0) )
       {
         goto LABEL_119;
       }
       MakeControlCommand_188A0(6, 16);
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       goto LABEL_119;
     case 1:
       sub_16B00();
-      if ( word_12EFCE && mouseRightButton_12EFDC_12EFCC || lastPressedKey_12EF70_12EF60 == 28 )
+      if ( mouseLeftButton_12EFDE_12EFCE && mouseRightButton_12EFDC_12EFCC || lastPressedKey_12EF70_12EF60 == 28 )
       {
         lastPressedKey_12EF70_12EF60 = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         MakeControlCommand_188A0(20, 0);
       }
       return;
@@ -19100,20 +19086,20 @@ LABEL_119:
 LABEL_146:
         lastPressedKey_12EF70_12EF60 = 0;
       }
-      if ( word_12EFCE && mouseRightButton_12EFDC_12EFCC || lastPressedKey_12EF70_12EF60 == 28 )
+      if ( mouseLeftButton_12EFDE_12EFCE && mouseRightButton_12EFDC_12EFCC || lastPressedKey_12EF70_12EF60 == 28 )
       {
         lastPressedKey_12EF70_12EF60 = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         MakeControlCommand_188A0(20, 0);
 LABEL_164:
         lastPressedKey_12EF70_12EF60 = 0;
         return;
       }
-      if ( word_12EFCE )
+      if ( mouseLeftButton_12EFDE_12EFCE )
       {
         v3 = *(char *)(dword_AE408_AE3F8() + 22);
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         if ( v3 == -1 )
           goto LABEL_164;
         v20 = dword_AE400_AE3F0();
@@ -19140,7 +19126,7 @@ LABEL_164:
         if ( !mouseRightButton_12EFDC_12EFCC )
           goto LABEL_164;
         v3 = *(char *)(dword_AE408_AE3F8() + 22);
-        mouseRightButton_12EFDC_12EFCC = word_12EFCE;
+        mouseRightButton_12EFDC_12EFCC = mouseLeftButton_12EFDE_12EFCE;
         if ( v3 == -1 )
           goto LABEL_164;
         v22 = dword_AE400_AE3F0();
@@ -19198,7 +19184,7 @@ LABEL_177:
 // 12EF30: using guessed type char pressedKeys_12EEF0_12EEE0[80];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFD2: using guessed type __int16 mouseRightButton2_12EFE2_12EFD2;
 // 12EFD4: using guessed type __int16 mouseLeftButton2_12EFE4_12EFD4;
 
@@ -31223,7 +31209,7 @@ LABEL_49:
                 if ( !*(_WORD *)(v71 + 36) )
                   goto LABEL_85;
 LABEL_84:
-                sub_2FC50_sub_2FC90(v61, v71);
+                DrawSprite_2FC50_2FC90((Type_BegBscreen*)v71);
                 goto LABEL_85;
               }
               if ( *(_WORD *)(v71 + 36) )
@@ -31307,7 +31293,7 @@ LABEL_101:
               }
               if ( *(_WORD *)(v84 + 36) )
 LABEL_99:
-                sub_2FC50_sub_2FC90(v61, v84);
+                DrawSprite_2FC50_2FC90((Type_BegBscreen*)v84);
             }
             else if ( *(_WORD *)(v84 + 36) )
             {
@@ -34501,8 +34487,10 @@ LABEL_61:
 // 12D734: using guessed type int dword_12D734;
 // 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
-//----- (0002FC90) --------------------------------------------------------
-unsigned __int16 sub_2FC50_sub_2FC90(int a1, int a2)
+int counter_2FC50_2FC90 = 0;
+int counter_2FC50_2FC90_2 = 0;
+//SYNCHRONIZED WITH REMC1
+void DrawSprite_2FC50_2FC90(Type_BegBscreen* a2x)//200C50_
 {
   unsigned __int16 result; // ax
   int v3; // eax
@@ -34538,9 +34526,21 @@ unsigned __int16 sub_2FC50_sub_2FC90(int a1, int a2)
   unsigned __int8 v32; // al
   int v33; // [esp+4h] [ebp-14h]
 
-  result = *(_WORD *)(a2 + 36);
+  //fix
+  int a1 = 0;
+  v33 = 0;
+  //fix
+
+  //debug
+  counter_2FC50_2FC90++;
+  //debug
+
+  result = a2x->haveSprite_36;
   do
   {
+      //debug
+      counter_2FC50_2FC90_2++;
+      //debug
     if ( result < 0x3E8u )
     {
       v3 = 164 * result + dword_AE400_AE3F0() + 29795;
@@ -34569,6 +34569,7 @@ unsigned __int16 sub_2FC50_sub_2FC90(int a1, int a2)
           }
           //v10 = (unsigned __int16 *)((char *)&unk_99BA0 + 14 * *(__int16 *)(v33 + 86));
           v10x = &unk_99BA0x[*(__int16*)(v33 + 86)];
+          //v10x->var_0
           v11 = v7 * fowDist_B5D14_B5D04 / v8;
           v12 = v6 * fowDist_B5D14_B5D04 / v8 + dword_B5CFC_B5CEC;
           dword_B5CB8_B5CA8 = ((v11 * dword_B5CE8_B5CD8 - v12 * dword_B5CD4_B5CC4) >> 16) + dword_B5D08_B5CF8;
@@ -34815,41 +34816,7 @@ LABEL_69:
     result = *(_WORD *)(v33 + 20);
   }
   while ( result );
-  return result;
 }
-// 30758: variable 'v33' is possibly undefined
-// AE3F0: using guessed type int dword_AE400_AE3F0();
-// AE3F8: using guessed type int dword_AE408_AE3F8();
-// B5C94: using guessed type int dword_B5CA4_B5C94;
-// B5C98: using guessed type int dword_B5CA8_B5C98;
-// B5C9C: using guessed type int dword_B5CAC_B5C9C;
-// B5CA0: using guessed type int dword_B5CB0_B5CA0;
-// B5CA4: using guessed type int dword_B5CB4_B5CA4;
-// B5CA8: using guessed type int dword_B5CB8_B5CA8;
-// B5CAC: using guessed type int dword_B5CBC_B5CAC;
-// B5CB8: using guessed type int dword_B5CC8_B5CB8;
-// B5CBC: using guessed type int dword_B5CCC_B5CCC;
-// B5CC0: using guessed type int dword_B5CD0_B5CC0;
-// B5CC4: using guessed type int dword_B5CD4_B5CC4;
-// B5CCC: using guessed type int dword_B5CDC_B5CCC;
-// B5CD4: using guessed type int heightViewPort_B5CE4_B5CD4;
-// B5CD8: using guessed type int dword_B5CE8_B5CD8;
-// B5CDC: using guessed type int dword_B5CEC_B5CDC;
-// B5CE0: using guessed type int dword_B5CF0_B5CE0;
-// B5CE8: using guessed type int posZ_B5CF8_B5CE8;
-// B5CEC: using guessed type int dword_B5CFC_B5CEC;
-// B5CF0: using guessed type int dword_B5D00_B5CF0;
-// B5CF8: using guessed type int dword_B5D08_B5CF8;
-// B5CFC: using guessed type int dword_B5D0C_B5CFC;
-// B5D00: using guessed type int dword_B5D10_B5D00;
-// B5D04: using guessed type int fowDist_B5D14_B5D04;
-// B5D28: using guessed type __int16 word_B5D38_B5D28;
-// B5D2A: using guessed type __int16 posY_B5D3A_B5D2A;
-// B5D2C: using guessed type __int16 posX_B5D3C_B5D2C;
-// B5D2E: using guessed type char byte_B5D3E_B5D2E;
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D734: using guessed type int dword_12D734;
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //SYNCHRONIZED WITH REMC1
 void DrawSky_30730_30770(__int16 a1)//201730_
@@ -35115,7 +35082,7 @@ void sub_30B30_30B70()
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     {
 LABEL_20:
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
       return;
     }
   }
@@ -35134,7 +35101,7 @@ LABEL_20:
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
       goto LABEL_20;
   }
-  sub_599B0_59EC0(480);
+  Blit_599B0_59EC0(480);
 }
 // 90708: using guessed type char byte_90708;
 // 93ACC: using guessed type int beginFrame_93ACC;
@@ -38303,9 +38270,9 @@ int sub_34460_34820()
 
   sub_3EEA0_3F1E0(aDataSmatitleDa, pdwScreenBuffer_12EFF4);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sub_3EEA0_3F1E0(aDataSmatitlePa, (uint8_t*)begPalDat_AE428_AE418_26C428_26C418);
   FadeInOut_61CC0_621D0(begPalDat_AE428_AE418_26C428_26C418, 0x20u, 0);
   result = dword_AE400_AE3F0();
@@ -39895,195 +39862,215 @@ LABEL_20:
 // 96902: using guessed type int dword_96902;
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 
-//----- (00036AC0) --------------------------------------------------------
-int sub_36AC0(int a1, unsigned __int16 a2, int a3)
+//SYNCHRONIZED WITH REMC1
+Type_sub168* sub_36700_36AC0(int a1, unsigned __int16 a2, Type_168* a3x)//207700_
 {
-  unsigned __int16 v3; // bx
-  int v5; // edx
-  int v6; // esi
-  int v7; // edx
-  int v8; // edi
-  int v9; // eax
-  int v10; // eax
-  int v11; // eax
+    //unsigned __int16 v3; // bx
+    int v5; // edx
+    Type_sub168* v6; // esi
+    Type_sub168_3* v7; // edx
+    Type_sub168* v8; // edi
+    uint8* v9; // eax
+    Type_sub168_2* v10; // eax
+    Type_sub168_3* v11; // eax
 
-  v3 = a2;
-  if ( a3 )
-  {
-    v5 = a1 - (4 * a2 + 14 * a2 + 26);
-    if ( a1 == 4 * a2 + 14 * a2 + 26 )
+    if (a3x)
     {
-      return 0;
+        v5 = a1 - (sizeof(Type_sub168_3) * a2 + sizeof(Type_sub168_2) * a2 + sizeof(Type_sub168));
+        if (a1 == (sizeof(Type_sub168_3) * a2 + sizeof(Type_sub168_2) * a2 + sizeof(Type_sub168)))
+        {
+            return 0;
+        }
+        else
+        {
+            a3x->sub_0.var_20 = 0;
+            a3x->sub_0.var_24 = 2;
+            a3x->sub_0.var_0 = v5;
+            a3x->sub_0.var_4x = v5;
+            v6 = &a3x->sub_0;
+            a3x->sub_0.var_22 = a2;
+            //a3x[0]->var_8 = a3 + 26;
+            a3x->sub_0.var_8 = a3x->sub_26;
+            //v7 = 14 * a2 + a3 + 26;
+            v7 = a3x->sub_7432;
+            a3x->sub_0.var_12 = v7;
+            a3x->sub_0.var_16 = a3x->last;//4 * a2 + v7;
+        }
     }
     else
     {
-      *(_WORD *)(a3 + 20) = 0;
-      *(_WORD *)(a3 + 24) = 2;
-      *(_DWORD *)a3 = v5;
-      *(_DWORD *)(a3 + 4) = v5;
-      v6 = a3;
-      *(_WORD *)(a3 + 22) = a2;
-      *(_DWORD *)(a3 + 8) = a3 + 26;
-      v7 = 14 * a2 + a3 + 26;
-      *(_DWORD *)(a3 + 12) = v7;
-      *(_DWORD *)(a3 + 16) = 4 * a2 + v7;
-    }
-  }
-  else
-  {
-    v8 = (int)malloc_42540_42880(26);
-    v6 = v8;
-    if ( !v8
-      || (v9 = (int)malloc_42540_42880(a1), (*(_DWORD *)(v8 + 16) = v9) == 0)
-      || (v10 = (int)malloc_42540_42880(14 * a2), (*(_DWORD *)(v8 + 8) = v10) == 0)
-      || (v11 = (int)malloc_42540_42880(4 * a2), (*(_DWORD *)(v8 + 12) = v11) == 0) )
-    {
-      if ( v8 )
-      {
-        if ( *(_DWORD *)(v8 + 16) )
+        v8 = (Type_sub168*)malloc_42540_42880(sizeof(Type_sub168));
+        v6 = v8;
+        if (!v8
+            || (v9 = (uint8*)malloc_42540_42880(a1), (v8->var_16 = v9) == 0)
+            || (v10 = (Type_sub168_2*)malloc_42540_42880(sizeof(Type_sub168_2) * a2), (v8->var_8 = v10) == 0)
+            || (v11 = (Type_sub168_3*)malloc_42540_42880(sizeof(Type_sub168_3) * a2), (v8->var_12 = v11) == 0))
         {
-          if ( *(_DWORD *)(v8 + 8) )
-            free_426E0_42A20((void*)*(_DWORD *)(v8 + 8));
-          free_426E0_42A20((void*)*(_DWORD *)(v8 + 16));
+            if (v8)
+            {
+                if (v8->var_16)
+                {
+                    if (v8->var_8)
+                    {
+                        free_426E0_42A20((void*)v8->var_8);
+                        //fixed
+                        if (v8->var_12)
+                            free_426E0_42A20((void*)v8->var_12);
+                        //fixed
+                    }
+                    free_426E0_42A20((void*)v8->var_16);
+                }
+                free_426E0_42A20((void*)v8);
+            }
+            exit(1);
         }
-        free_426E0_42A20((void*)v8);
-      }
-      exit(1);
+        v8->var_20 = 0;
+        v8->var_24 = 1;
+        v8->var_22 = a2;
+        v8->var_0 = a1;
+        v8->var_4x = a1;
+        //v3 = a2;
+        //while ( --v3 != 0xFFFF )
+        for (int i = 0; i < a2; i++)
+            v8->var_8[i].var_u32_4 = 0;
     }
-    *(_WORD *)(v8 + 20) = 0;
-    *(_WORD *)(v8 + 24) = 1;
-    *(_WORD *)(v8 + 22) = a2;
-    *(_DWORD *)v8 = a1;
-    *(_DWORD *)(v8 + 4) = a1;
-    while ( --v3 != 0xFFFF )
-      *(_DWORD *)(*(_DWORD *)(v8 + 8) + 14 * v3 + 4) = 0;
-  }
-  return v6;
+    return v6;
 }
 
-//----- (00036C10) --------------------------------------------------------
-int sub_36C10(int a1)
+//SYNCHRONIZED WITH REMC1
+int sub_36850_36C10(Type_sub168* a1x)
 {
-  int result; // eax
-
-  for ( result = 0; (__int16)result < (int)*(unsigned __int16 *)(a1 + 22); ++result )
-  {
-    if ( !*(_DWORD *)(*(_DWORD *)(a1 + 8) + 14 * (__int16)result + 4) )
-      return result;
-  }
-  return -1;
-}
-
-//----- (00036DA0) --------------------------------------------------------
-int sub_369E0_36DA0(int a1, unsigned int a2, __int16 a3)
-{
-  __int16 v3; // si
-  __int16 v4; // ax
-  __int16 v5; // dx
-  int v6; // ecx
-  int v7; // eax
-
-  v3 = -1;
-  if ( a2 < *(_DWORD *)(a1 + 4) )
-  {
-    v4 = sub_36C10(a1);
-    v5 = v4;
-    v6 = v4;
-    v3 = v4;
-    if ( v4 > -1 )
+    for (int result = 0; result < a1x->var_22; result++)
     {
-      v7 = 14 * v4;
-      *(_WORD *)(*(_DWORD *)(a1 + 8) + v7 + 10) = v5;
-      *(_DWORD *)(*(_DWORD *)(a1 + 8) + v7 + 4) = a2;
-      *(_DWORD *)(*(_DWORD *)(a1 + 8) + v7) = *(_DWORD *)a1 + *(_DWORD *)(a1 + 16) - *(_DWORD *)(a1 + 4);
-      *(_WORD *)(*(_DWORD *)(a1 + 8) + v7 + 12) = a3;
-      *(_DWORD *)(a1 + 4) -= a2;
-      *(_WORD *)(*(_DWORD *)(a1 + 8) + v7 + 8) = *(_WORD *)(a1 + 20);
-      *(_DWORD *)(*(_DWORD *)(a1 + 12) + 4 * (unsigned __int16)(*(_WORD *)(a1 + 20))++) = *(_DWORD *)(a1 + 8) + 14 * v6;
+        if (!a1x->var_8[result].var_u32_4)
+            return result;
     }
-  }
-  if ( v3 <= -1 )
-    return 0;
-  else
-    return 14 * v3 + *(_DWORD *)(a1 + 8);
+    return -1;
 }
 
-//----- (00036E50) --------------------------------------------------------
-__int16 sub_36E50(int a1, int a2)
+int counter_sub_369E0_36DA0 = 0;
+//SYNCHRONIZED WITH REMC1
+Type_sub168_2* sub_369E0_36DA0(Type_sub168* a1x, unsigned int a2, __int16 a3)//2079E0_
 {
-  int v2; // ecx
-  int v3; // eax
-  int v4; // ebx
-  int v5; // esi
-  int v6; // ebx
-  char *v7; // ebp
-  unsigned __int16 v8; // di
-  __int16 v9; // cx
-  int v10; // esi
-  unsigned __int16 v11; // bx
-  int v12; // eax
-  const void *v13; // esi
-  int v15; // [esp+0h] [ebp-18h]
-  int v16; // [esp+4h] [ebp-14h]
+    __int16 v3; // si
+    __int16 v4; // ax
+    __int16 v5; // dx
+    int v6; // ecx
+    //int v7; // eax
 
-  LOWORD(v3) = *(_WORD *)(a2 + 10);
-  if ( (unsigned __int16)v3 < *(_WORD *)(a1 + 22) )
-  {
-    v3 = 14 * (unsigned __int16)v3;
-    v4 = v3 + *(_DWORD *)(a1 + 8);
-    if ( *(_DWORD *)(v4 + 4) )
+    //debug
+    if (counter_sub_369E0_36DA0 == 0x80)
     {
-      LOWORD(v2) = *(_WORD *)(v4 + 8);
-      v5 = *(_DWORD *)(v4 + 4) + *(_DWORD *)(a1 + 4);
-      v6 = *(_DWORD *)(a1 + 8);
-      *(_DWORD *)(a1 + 4) = v5;
-      *(_DWORD *)(v6 + v3 + 4) = 0;
-      v7 = *(char **)(*(_DWORD *)(a1 + 8) + v3);
-      v15 = v2;
-      v16 = v2 - 1;
-      while ( 1 )
-      {
-        v8 = *(_WORD *)(a1 + 20);
-        v9 = v16 + 1;
-        v10 = v15 + 1;
-        ++v16;
-        v15 = v10;
-        if ( (unsigned __int16)v10 >= v8 )
-          break;
-        v11 = v10;
-        *(_DWORD *)(*(_DWORD *)(a1 + 12) + 4 * (unsigned __int16)v10 - 4) = *(_DWORD *)(*(_DWORD *)(a1 + 12)
-                                                                                      + 4 * (unsigned __int16)v10);
-        v12 = *(_DWORD *)(*(_DWORD *)(a1 + 12) + 4 * (unsigned __int16)v10);
-        *(_WORD *)(v12 + 8) = v9;
-        v13 = *(const void **)v12;
-        **(_DWORD **)(*(_DWORD *)(a1 + 12) + 4 * v11) = (uint32)v7;
-        qmemcpy(v7, v13, *(_DWORD *)(*(_DWORD *)(*(_DWORD *)(a1 + 12) + 4 * v11) + 4));
-        v7 += *(_DWORD *)(*(_DWORD *)(*(_DWORD *)(a1 + 12) + 4 * v11) + 4);
-      }
-      LOWORD(v3) = v8 - 1;
-      *(_WORD *)(a1 + 20) = v8 - 1;
+        counter_sub_369E0_36DA0++;
+        counter_sub_369E0_36DA0--;
     }
-  }
-  return v3;
+    counter_sub_369E0_36DA0++;
+    //debug
+
+    v3 = -1;
+    if (a2 < a1x->var_4x)
+    {
+        v4 = sub_36850_36C10(a1x);
+        v5 = v4;
+        v6 = v4;
+        v3 = v4;
+        if (v4 > -1)
+        {
+            //v7 = 14 * v4;
+            a1x->var_8[v4].var_u16_8[1] = v5;
+            a1x->var_8[v4].var_u32_4 = a2;
+            a1x->var_8[v4].var_u32_0 = (Type_sub168_2_2*)&a1x->var_16[a1x->var_0 - a1x->var_4x];
+            a1x->var_8[v4].var_u16_8[2] = a3;
+            a1x->var_4x -= a2;
+            a1x->var_8[v4].var_u16_8[0] = a1x->var_20;
+            a1x->var_12[a1x->var_20].var_u32_0 = &a1x->var_8[v6];
+            a1x->var_20++;
+        }
+    }
+    if (v3 <= -1)
+        return nullptr;
+    else
+        return /*14 * v3 +*/ &a1x->var_8[v3];
 }
-// 36EB0: variable 'v2' is possibly undefined
 
-//----- (00036FD0) --------------------------------------------------------
-void sub_36FD0(int *a1)
+//SYNChRONIZED WITH REMC1
+void sub_36A90_36E50(Type_sub168* a1x, Type_sub168_2* a2x)//207A90_
 {
-  int v1; // edx
-  v1 = *a1;
-  if ( *a1 )
-  {
-    if ( *(_WORD *)(v1 + 24) == 1 )
+    //sub_36A90_36E50_old((int) a1x, (int) a2x);
+  //int v2; // ecx
+    uint16 v3x; // eax
+    //int v4; // ebx
+    //int v5; // esi
+    //int v6; // ebx
+    Type_sub168_2_2* v7x; // ebp
+    unsigned __int16 v8; // di
+    __int16 v9; // cx
+    int v10; // esi
+    unsigned __int16 v11; // bx
+    Type_sub168_2* v12x; // eax
+    const void* v13; // esi
+    int v15; // [esp+0h] [ebp-18h]
+    int v16; // [esp+4h] [ebp-14h]
+
+    v3x = a2x->var_u16_8[1];
+    if (v3x < a1x->var_22)
     {
-      free_426E0_42A20((void*)*(_DWORD *)(v1 + 16));
-      free_426E0_42A20((void*)*(_DWORD *)(*a1 + 8));
-      free_426E0_42A20((void*)*(_DWORD *)(*a1 + 12));
-      free_426E0_42A20((void*)*a1);
+        //int v3 = 14 * (unsigned __int16)v3x;
+        //v4 = a1x->sub_0.var_8[v3x];
+        //a1x->sub_0.var_8[v3x].var_u16_8
+        if (a1x->var_8[v3x].var_u32_4)
+        {
+            //LOWORD(v2) = a1x->var_8[v3x].var_u16_8[0];
+            //v5 = a1x->var_8[v3x].var_u32_4 + a1x->var_4x;
+            //v6 = a1x->sub_0.var_8;
+            a1x->var_4x += a1x->var_8[v3x].var_u32_4;
+            a1x->var_8[v3x].var_u32_4 = 0;
+            v7x = a1x->var_8[v3x].var_u32_0;
+            v15 = a1x->var_8[v3x].var_u16_8[0];
+            v16 = a1x->var_8[v3x].var_u16_8[0] - 1;
+            while (1)
+            {
+                v8 = a1x->var_20;
+                v9 = v16 + 1;
+                v10 = v15 + 1;
+                v16++;
+                v15 = v10;
+                if ((unsigned __int16)v10 >= v8)
+                    break;
+                v11 = v10;
+                a1x->var_12[v10 - 1].var_u32_0 = a1x->var_12[v10].var_u32_0;
+                v12x = a1x->var_12[v10].var_u32_0;
+                v12x->var_u16_8[0] = v9;
+                v13 = v12x->var_u32_0;
+                a1x->var_12[v11].var_u32_0->var_u32_0 = v7x;
+                qmemcpy(v7x, v13, a1x->var_12[v11].var_u32_0->var_u32_4);
+                v7x = (Type_sub168_2_2*)((uint8*)v7x + a1x->var_12[v11].var_u32_0->var_u32_4);
+            }
+            //LOWORD(v3) = v8 - 1;
+            a1x->var_20 = v8 - 1;
+        }
     }
-    *a1 = 0;
-  }
+    //return v3x;
+}
+
+//SYNChRONIZED WITH REMC1
+void sub_36850_36C10_36FD0(Type_sub168* a1)
+{
+    allert_error();//test it
+
+  //Type_168* v1; // edx
+  //v1 = *a1;
+    if (a1)
+    {
+        if (a1->var_24 == 1)
+        {
+            free_426E0_42A20(a1->var_16);
+            free_426E0_42A20(a1->var_8);
+            free_426E0_42A20(a1->var_12);
+            free_426E0_42A20(a1);
+        }
+        a1 = nullptr;
+    }
 }
 
 //----- (00037025) --------------------------------------------------------
@@ -40490,7 +40477,7 @@ int sub_37800(int a1, char a2)
     v6 = (char *)dword_38CA3 + dword_AE400_AE3F0();
     *((_DWORD *)v6 - 1) = 0;
     memset(v6, 0, 96);
-    sub_59650();
+    sub_59140_59650();
     for ( i = (unsigned __int16 *)(dword_AE400_AE3F0() + 194885); i < (unsigned __int16 *)&byte_385D3[dword_AE400_AE3F0()]; i += 9 )
     {
       sub_59670(*i, i[1], -1);
@@ -46714,9 +46701,9 @@ void sub_3FB30_3FE70(__int16 a1, __int16 a2, char* a3)
     }
     sub_3F753(v3);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
   }
   while ( (byte_B771A & 0x10) != 0 );
   sub_5CC54_5D164();
@@ -46737,9 +46724,9 @@ void sub_3FB30_3FE70(__int16 a1, __int16 a2, char* a3)
     }
     sub_3F753(v4);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
   }
   while ( (byte_B771A & 0x10) == 0 );
   sub_5CC54_5D164();
@@ -46795,7 +46782,7 @@ char sub_3FCA0_3FFE0(
       HIBYTE(a2) = byte_90B20;
       mouseRightButton_12EFDC_12EFCC = 0;
       mouseRightButton2_12EFE2_12EFD2 = 0;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       mouseLeftButton2_12EFE4_12EFD4 = 0;
       if ( !byte_90B20 )
       {
@@ -46853,7 +46840,7 @@ char sub_3FCA0_3FFE0(
       if ( (byte_B771A & 0x10) == 0 )
       {
         mouseLeftButton2_12EFE4_12EFD4 = 1;
-        word_12EFCE = 1;
+        mouseLeftButton_12EFDE_12EFCE = 1;
       }
       if ( (byte_B771A & 0x20) == 0 )
       {
@@ -46975,7 +46962,7 @@ char sub_3FCA0_3FFE0(
             {
               byte_90B21 = 0;
               LOBYTE(a1) = 0;
-              word_12EFCE = 0;
+              mouseLeftButton_12EFDE_12EFCE = 0;
               mouseLeftButton2_12EFE4_12EFD4 = 0;
             }
           }
@@ -46983,7 +46970,7 @@ char sub_3FCA0_3FFE0(
           {
             byte_90B21 = 1;
             mouseLeftButton2_12EFE4_12EFD4 = 1;
-            word_12EFCE = 1;
+            mouseLeftButton_12EFDE_12EFCE = 1;
           }
           if ( (byte_B771A & 0x20) != 0 || byte_90B22 )
           {
@@ -47066,7 +47053,7 @@ char sub_3FCA0_3FFE0(
               LOBYTE(a1) = 0;
               byte_90B21 = 0;
               mouseLeftButton2_12EFE4_12EFD4 = 0;
-              word_12EFCE = 0;
+              mouseLeftButton_12EFDE_12EFCE = 0;
             }
           }
           else
@@ -47074,7 +47061,7 @@ char sub_3FCA0_3FFE0(
             LOBYTE(a1) = 1;
             byte_90B21 = 1;
             mouseLeftButton2_12EFE4_12EFD4 = 1;
-            word_12EFCE = 1;
+            mouseLeftButton_12EFDE_12EFCE = 1;
           }
           if ( (byte_B771A & 0x20) != 0 || byte_90B22 )
           {
@@ -47124,7 +47111,7 @@ char sub_3FCA0_3FFE0(
 // 12EF30: using guessed type char pressedKeys_12EEF0_12EEE0[80];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFD2: using guessed type __int16 mouseRightButton2_12EFE2_12EFD2;
 // 12EFD4: using guessed type __int16 mouseLeftButton2_12EFE4_12EFD4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
@@ -49256,23 +49243,23 @@ int sub_42BA0(int a1)
 void sub_428B0_42BF0()
 {
   if ( lastPressedKey_12EF70_12EF60 == 1
-    || word_12EFCE && mouseX_9AD8C >= 568 && mouseX_9AD8C <= 606 && mouseY_9AD8E >= 96 && mouseY_9AD8E <= 134 )
+    || mouseLeftButton_12EFDE_12EFCE && mouseX_9AD8C >= 568 && mouseX_9AD8C <= 606 && mouseY_9AD8E >= 96 && mouseY_9AD8E <= 134 )
   {
     word_93988 = 1;
     lastPressedKey_12EF70_12EF60 = 0;
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
     FadeInOut_61CC0_621D0(0, 0x10u, 0);
   }
   else
   {
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
   }
 }
 // 93988: using guessed type __int16 word_93988;
 // 9AD8C: using guessed type __int16 mouseX_9AD8C;
 // 9AD8E: using guessed type __int16 mouseY_9AD8E;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 
 //----- (00042C70) --------------------------------------------------------
 int sub_42C70(_BYTE *a1, char *a2, unsigned __int8 a3)
@@ -54132,7 +54119,7 @@ void sub_4A980_4ACC0()
   byte_12CBD5_12CBC5 = byte_12CBD5_12CBC5 & 0x40 | 2;
   byte_12CBD2_12CBC2 = 6;
   byte_12CBD6_12CBC6 &= 0xF8u;
-  byte_12CBCE_12CBBE = 6;
+  mainMenuSelector_12CBCE_12CBBE = 6;
   byte_12CBD3_12CBC3 = 0;
   sprintf(str_AE408_AE3F8->textBuffer_117, "CARPET%d", 0);
   sprintf(tempPath, "%s%s\\intro.pld", "C:", "\\carpet.cd");
@@ -54165,7 +54152,7 @@ void sub_4A980_4ACC0()
 // 12CBBA: using guessed type char byte_12CBCA_12CBBA;
 // 12CBBC: using guessed type char byte_12CBCC_12CBBC;
 // 12CBBD: using guessed type char byte_12CBCD_12CBBD;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBBF: using guessed type char byte_12CBCF_12CBBF;
 // 12CBC0: using guessed type char byte_12CBD0_12CBC0;
 // 12CBC1: using guessed type char byte_12CBD1_12CBC1;
@@ -54196,9 +54183,9 @@ void sub_4AB20_4AE60()//_21BE60
   }
   sub_50770_50AB0();
   //fix !!!
-  byte_12CBCE_12CBBE = 6;
+  mainMenuSelector_12CBCE_12CBBE = 6;
   //fix !!!
-  switch ( byte_12CBCE_12CBBE )
+  switch ( mainMenuSelector_12CBCE_12CBBE )
   {
     case 0:
       sub_4D6F0();
@@ -54252,7 +54239,7 @@ void sub_4AB20_4AE60()//_21BE60
 // 12CAE0: using guessed type int test_12CAF0_2EAAF0_2EAAE0;
 // 12CAE4: using guessed type int begSptrsDat_12CB64_2EAB64_2EAAE4;
 // 12CBA0: using guessed type int dword_12CBB0_12CBA0;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0004AFB0) --------------------------------------------------------
@@ -54326,7 +54313,7 @@ void sub_4AC70_4AFB0()
   {
     WORD2(v2) = 0;
     LODWORD(v2) = dword_12CACC >> 1;
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
     if ( (int)v2 < 171 || (int)v2 > 264 || (v7 = MEMORY[0x12CACE] >> 1, v7 < 42) || v7 > 147 )
     {
       v8 = dword_12CACC >> 1;
@@ -54490,9 +54477,9 @@ LABEL_43:
   }
   sub_4B560_4B8A0();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( v14 )
   {
     sub_52130(word_4AC04[4 * (unsigned __int8)byte_12CBD3_12CBC3]);
@@ -54503,9 +54490,9 @@ LABEL_43:
       byte_12CBD5_12CBC5 |= 0x80u;
     }
     if ( (byte_12CBD5_12CBC5 & 2) != 0 && (byte_12CBD5_12CBC5 & 4) != 0 && (byte_12CAE4_12CAD4 & 0x40) == 0 || v3 )
-      byte_12CBCE_12CBBE = 2;
+      mainMenuSelector_12CBCE_12CBBE = 2;
     else
-      byte_12CBCE_12CBBE = 7;
+      mainMenuSelector_12CBCE_12CBBE = 7;
     byte_12CAE4_12CAD4 &= 0xBEu;
   }
 }
@@ -54549,11 +54536,11 @@ LABEL_43:
 // 12CAD4: using guessed type char byte_12CAE4_12CAD4;
 // 12CBB9: using guessed type char byte_12CBC9_12CBB9;
 // 12CBBB: using guessed type char byte_12CBBB;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC3: using guessed type char byte_12CBD3_12CBC3;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -54591,13 +54578,13 @@ int sub_4B7C0(int (*a1)(void), int a2)
     result = sub_4B770();
     if ( result )
       v2 = 1;
-    if ( word_12EFCE || mouseRightButton_12EFDC_12EFCC || word_12EFCA || lastPressedKey_12EF70_12EF60 )
+    if ( mouseLeftButton_12EFDE_12EFCE || mouseRightButton_12EFDC_12EFCC || word_12EFDA_12EFCA || lastPressedKey_12EF70_12EF60 )
     {
       lastPressedKey_12EF70_12EF60 = 0;
       result = 0;
-      word_12EFCA = 0;
+      word_12EFDA_12EFCA = 0;
       mouseRightButton_12EFDC_12EFCC = 0;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       v2 = 1;
     }
     if ( v3 < dword_AC5D4_AC5C4 )
@@ -54613,9 +54600,9 @@ int sub_4B7C0(int (*a1)(void), int a2)
 }
 // AC5C4: using guessed type int dword_AC5D4_AC5C4;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 
 //----- (0004B860) --------------------------------------------------------
 int sub_4B860()
@@ -54902,15 +54889,15 @@ void sub_4BB20_4BE60()
   str_96884.var8_4 &= ~2u;
   str_96884.var8_5 = 0;
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     CopyScreen_62FA8_634B8((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0xC8u);
   else
     CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   FadeInOut_61CC0_621D0(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x20u, 0);
   byte_12CBD5_12CBC5 |= 1u;
   byte_12CAE4_12CAD4 &= 0xBEu;
@@ -54926,7 +54913,7 @@ void sub_4BB20_4BE60()
 // 12CAF0: using guessed type int begGcSprDat_12CB00_2EAB00_2EAAF0;
 // 12CB18: using guessed type _DWORD begSFont0Tab_12CB28_2EAB28_2EAB18;
 // 12CB8C: using guessed type int begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
@@ -54945,9 +54932,9 @@ void sub_4BC90_4BFD0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sub_61610_61B20((Pathstruct*)(char*)"data\\screens\\sfont0.dat");
   byte_12CBD5_12CBC5 &= ~1u;
 }
@@ -54983,7 +54970,7 @@ void sub_4C0A0()
   v2 = 0;
   if ( (byte_12CBD5_12CBC5 & 1) == 0 )
     sub_4CB20();
-  sub_4CA30();
+  sub_4C6F0_4CA30();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     CopyScreen_62FA8_634B8((const void *)begScreenBackup2_12CBA8_2EABA8_2EAB98, (void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, 0xC8u);
   else
@@ -55063,7 +55050,7 @@ void sub_4C0A0()
         if ( word_4A470[3 * (unsigned __int8)byte_12CBC6_12CBB6] == 3 )
         {
           v0 = 1;
-          byte_12CBCE_12CBBE = 1;
+          mainMenuSelector_12CBCE_12CBBE = 1;
         }
         goto LABEL_70;
       }
@@ -55201,14 +55188,14 @@ LABEL_79:
   if ( (byte_90B23 & 0x23) != 0 )
   {
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)byte_12CBCE_12CBBE));
+      DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE));
     else
-      DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)byte_12CBCE_12CBBE));
+      DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE));
   }
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( sub_4C8C0() )
   {
     v14 = (int)pdwScreenBuffer_12EFF4;
@@ -55219,7 +55206,7 @@ LABEL_79:
       {
         if ( (unsigned __int8)byte_12CBD4_12CBC4 <= 1u )
         {
-          byte_12CBCE_12CBBE = 8;
+          mainMenuSelector_12CBCE_12CBBE = 8;
           byte_12CBD6_12CBC6 |= 2u;
           sub_20E60_20E60();
         }
@@ -55240,7 +55227,7 @@ LABEL_79:
       }
       else
       {
-        byte_12CBCE_12CBBE = 0;
+        mainMenuSelector_12CBCE_12CBBE = 0;
         byte_12CBD6_12CBC6 |= 1u;
         sub_20E60_20E60();
       }
@@ -55260,7 +55247,7 @@ LABEL_79:
   {
     sub_4CAC0_4CE00();
     if ( v2 )
-      byte_12CBCE_12CBBE = 2;
+      mainMenuSelector_12CBCE_12CBBE = 2;
   }
 }
 // 4A46C: using guessed type int dword_4A46C;
@@ -55284,7 +55271,7 @@ LABEL_79:
 // 12CBA8: using guessed type int dword_12CBA8;
 // 12CBB6: using guessed type char byte_12CBC6_12CBB6;
 // 12CBBD: using guessed type char byte_12CBCD_12CBBD;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC4: using guessed type char byte_12CBD4_12CBC4;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12CBC6: using guessed type char byte_12CBD6_12CBC6;
@@ -55397,60 +55384,51 @@ bool sub_4C9E0()
 // 12CBB6: using guessed type char byte_12CBC6_12CBB6;
 // 12CBBD: using guessed type char byte_12CBCD_12CBBD;
 
-//----- (0004CA30) --------------------------------------------------------
-int sub_4CA30()
+//SYNCHRONIZED WITH REMC1
+void sub_4C6F0_4CA30()//21D6F0_
 {
-  int result; // eax
-  __int16 v1; // dx
-  __int16 v2; // di
+    int result; // eax
+    __int16 v1; // dx
+    __int16 v2; // di
 
-  result = dword_12CBB0_12CBA0 & 1;
-  if ( result == 1 && byte_12CBCE_12CBBE == 2 )
-  {
-    result = sub_1002D(dword_12CB6A, (int)begScreenBackup2_12CBA8_2EABA8_2EAB98);
-    v1 = word_12CB6E + 1;
-    dword_12CB6A = result;
-    word_12CB6E = v1;
-    if ( v1 == 31 )
+    result = dword_12CBB0_12CBA0 & 1;
+    if (result == 1 && mainMenuSelector_12CBCE_12CBBE == 2)
     {
-      result = dword_12CB66;
-      word_12CB6E = 1;
-      dword_12CB6A = dword_12CB66;
+        //result = sub_1002D(dword_12CB7A_12CB6A, begScreenBackup2_12CBA8_2EABA8_2EAB98);
+        v1 = word_12CB7E_12CB6E + 1;
+        dword_12CB7A_12CB6A = sub_1002D(dword_12CB7A_12CB6A, begScreenBackup2_12CBA8_2EABA8_2EAB98);
+        word_12CB7E_12CB6E = v1;
+        if (v1 == 31)
+        {
+            //result = dword_12CB76_12CB66;
+            word_12CB7E_12CB6E = 1;
+            dword_12CB7A_12CB6A = dword_12CB76_12CB66;
+        }
+        else if (v1 == 1 && !dword_12CB76_12CB66)
+        {
+            //dword_12CB76_12CB66 = result;
+            dword_12CB76_12CB66 = dword_12CB7A_12CB6A; //fixed
+        }
+        if (!byte_9687C)
+        {
+            //result = sub_1002D(dword_12CB88_12CB78, begScreenBackup2_12CBA8_2EABA8_2EAB98);
+            v2 = word_12CB8C_12CB7C + 1;
+            dword_12CB88_12CB78 = sub_1002D(dword_12CB88_12CB78, begScreenBackup2_12CBA8_2EABA8_2EAB98);
+            word_12CB8C_12CB7C = v2;
+            if (v2 == 4)
+            {
+                //result = dword_12CB84_12CB74;
+                word_12CB8C_12CB7C = 1;
+                dword_12CB88_12CB78 = dword_12CB84_12CB74;
+            }
+            else if (v2 == 1 && !dword_12CB84_12CB74)
+            {
+                //dword_12CB84_12CB74 = result;
+                dword_12CB84_12CB74 = dword_12CB88_12CB78;//fixed
+            }
+        }
     }
-    else if ( v1 == 1 && !dword_12CB66 )
-    {
-      dword_12CB66 = result;
-    }
-    if ( !byte_9687C )
-    {
-      result = sub_1002D(dword_12CB78, (int)begScreenBackup2_12CBA8_2EABA8_2EAB98);
-      v2 = word_12CB7C + 1;
-      dword_12CB78 = result;
-      word_12CB7C = v2;
-      if ( v2 == 4 )
-      {
-        result = dword_12CB74;
-        word_12CB7C = 1;
-        dword_12CB78 = dword_12CB74;
-      }
-      else if ( v2 == 1 && !dword_12CB74 )
-      {
-        dword_12CB74 = result;
-      }
-    }
-  }
-  return result;
 }
-// 9687C: using guessed type char byte_9687C;
-// 12CB66: using guessed type int dword_12CB66;
-// 12CB6A: using guessed type int dword_12CB6A;
-// 12CB6E: using guessed type __int16 word_12CB6E;
-// 12CB74: using guessed type int dword_12CB74;
-// 12CB78: using guessed type int dword_12CB78;
-// 12CB7C: using guessed type __int16 word_12CB7C;
-// 12CB98: using guessed type int begScreenBackup2_12CBA8_2EABA8_2EAB98;
-// 12CBA0: using guessed type int dword_12CBB0_12CBA0;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
 
 //----- (0004CB20) --------------------------------------------------------
 void sub_4CB20()
@@ -55493,20 +55471,20 @@ void sub_4CB20()
   else
     CopyScreen_62FC4_634D4(v1, v2, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   FadeInOut_61CC0_621D0(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x20u, 0);
-  dword_12CB66 = 0;
-  dword_12CB74 = 0;
-  word_12CB7C = 0;
+  dword_12CB76_12CB66 = 0;
+  dword_12CB84_12CB74 = 0;
+  word_12CB8C_12CB7C = 0;
   byte_12CBD5_12CBC5 |= 1u;
   byte_12CBC6_12CBB6 = 0;
-  dword_12CB6A = (int)begGlobeDat_12CB72_2EAB72_2EAB62;
-  word_12CB6E = 0;
-  dword_12CB78 = (int)begTimerDat_12CB80_2EAB80_2EAB70;
+  dword_12CB7A_12CB6A = begGlobeDat_12CB72_2EAB72_2EAB62;
+  word_12CB7E_12CB6E = 0;
+  dword_12CB88_12CB78 = begTimerDat_12CB80_2EAB80_2EAB70;
   byte_967E4 = 1;
   byte_12CAE4_12CAD4 &= 0xBEu;
   dword_12CBA4 = dword_AC5D4_AC5C4;
@@ -55536,19 +55514,19 @@ void sub_4CB20()
 // 12CAFC: using guessed type int begMmSprDat_12CB0C_2EAB0C_2EAAFC;
 // 12CB24: using guessed type _DWORD begSFont1Tab_12CB34_2EAB34_2EAB24;
 // 12CB62: using guessed type int begGlobeDat_12CB72_2EAB72_2EAB62;
-// 12CB66: using guessed type int dword_12CB66;
-// 12CB6A: using guessed type int dword_12CB6A;
-// 12CB6E: using guessed type __int16 word_12CB6E;
+// 12CB66: using guessed type int dword_12CB76_12CB66;
+// 12CB6A: using guessed type int dword_12CB7A_12CB6A;
+// 12CB6E: using guessed type __int16 word_12CB7E_12CB6E;
 // 12CB70: using guessed type int begTimerDat_12CB80_2EAB80_2EAB70;
-// 12CB74: using guessed type int dword_12CB74;
-// 12CB78: using guessed type int dword_12CB78;
-// 12CB7C: using guessed type __int16 word_12CB7C;
+// 12CB74: using guessed type int dword_12CB84_12CB74;
+// 12CB78: using guessed type int dword_12CB88_12CB78;
+// 12CB7C: using guessed type __int16 word_12CB8C_12CB7C;
 // 12CB8C: using guessed type int begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C;
 // 12CB98: using guessed type int begScreenBackup2_12CBA8_2EABA8_2EAB98;
 // 12CBA4: using guessed type int dword_12CBA4;
 // 12CBA8: using guessed type int dword_12CBA8;
 // 12CBB6: using guessed type char byte_12CBC6_12CBB6;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12CBC6: using guessed type char byte_12CBD6_12CBC6;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
@@ -55557,7 +55535,7 @@ void sub_4CB20()
 //----- (0004CE00) --------------------------------------------------------
 void sub_4CAC0_4CE00()
 {
-  if ( byte_12CBCE_12CBBE != 5 )
+  if ( mainMenuSelector_12CBCE_12CBBE != 5 )
   {
     FadeInOut_61CC0_621D0(0, 0x10u, 0);
     if ( !byte_90B23 )
@@ -55567,9 +55545,9 @@ void sub_4CAC0_4CE00()
     else
       sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
   }
   sub_61610_61B20((Pathstruct*)(char*)"data\\screens\\mmspr.dat");
   byte_967E4 = 0;
@@ -55578,7 +55556,7 @@ void sub_4CAC0_4CE00()
 // 4CE47: variable 'v0' is possibly undefined
 // 90B23: using guessed type char byte_90B23;
 // 967E4: using guessed type char byte_967E4;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
@@ -55654,9 +55632,9 @@ int sub_4CCA0_4CFE0(int a1)
   if ( !byte_90B23 )
     sub_5C05C_5C56C(0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sprintf(&unk_9ADC8, aIntroScrollDat);
   dword_AC5B4 = (int (*)(_DWORD))sub_507B0;
   word_90026 = 0;
@@ -55668,7 +55646,7 @@ int sub_4CCA0_4CFE0(int a1)
   HIBYTE(v3) = 0;
   dword_AC5B4 = 0;
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   sub_51720();
   sub_516A0(80, 73, 159, 48);
   v4 = strcmp((char*)dword_96860[(unsigned __int16)word_4A470[3 * (unsigned __int8)byte_12CBC6_12CBB6]], asc_A9AE4);
@@ -55684,7 +55662,7 @@ int sub_4CCA0_4CFE0(int a1)
       v1 = 1;
       HIBYTE(v3) = 0;
       a1 = 1;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       pressedKeys_12EEF0_12EEE0[28] = 0;
       pressedKeys_12EEF0_12EEE0[1] = 0;
       byte_12CAE4_12CAD4 &= ~1u;
@@ -55693,7 +55671,7 @@ int sub_4CCA0_4CFE0(int a1)
     {
       v1 = 1;
       a1 = 0;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       HIBYTE(v3) = byte_12CAE4_12CAD4 & 0xFE;
       pressedKeys_12EEF0_12EEE0[28] = 0;
       byte_12CAE4_12CAD4 &= ~1u;
@@ -55732,7 +55710,7 @@ int sub_4CCA0_4CFE0(int a1)
           pressedKeys_12EEF0_12EEE0[1] = 0;
         }
       }
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       HIBYTE(v3) = byte_12CAE4_12CAD4 & 0xFE;
       pressedKeys_12EEF0_12EEE0[28] = 0;
       pressedKeys_12EEF0_12EEE0[1] = 0;
@@ -55742,14 +55720,14 @@ int sub_4CCA0_4CFE0(int a1)
     if ( (byte_90B23 & 0x23) != 0 )
     {
       if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-        DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)byte_12CBCE_12CBBE));
+        DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE));
       else
-        DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)byte_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
+        DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
     }
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
     ++v2;
   }
   sub_51740();
@@ -55762,11 +55740,11 @@ int sub_4CCA0_4CFE0(int a1)
   else
     CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
   pressedKeys_12EEF0_12EEE0[28] = 0;
   byte_12CAE4_12CAD4 &= 0xBEu;
@@ -55789,12 +55767,12 @@ int sub_4CCA0_4CFE0(int a1)
 // 12CADC: using guessed type int begSptrsTab_12CAEC_2EAAEC_2EAADC;
 // 12CB94: using guessed type int begScreenBackup_12CBA4_2EABA4_2EAB94;
 // 12CBB6: using guessed type char byte_12CBC6_12CBB6;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EEFC: using guessed type char pressedKeys_12EEF0_12EEE0[28];
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -55806,9 +55784,9 @@ bool sub_4D430()
   pressedKeys_12EEF0_12EEE0[28] = 0;
   mouseRightButton_12EFDC_12EFCC = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
-  word_12EFCA = 0;
+  word_12EFDA_12EFCA = 0;
   byte_12CBD5_12CBC5 |= 0x40u;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   result = sub_51080(
              30,
              12,
@@ -55830,9 +55808,9 @@ bool sub_4D430()
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EEFC: using guessed type char pressedKeys_12EEF0_12EEE0[28];
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 
 //----- (0004D4D0) --------------------------------------------------------
 int sub_4D4D0()
@@ -55922,12 +55900,12 @@ void sub_4D6F0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sprintf(&unk_9ADC8, aIntroIntroDat);
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
   lastPressedKey_12EF70_12EF60 = 0;
   if ( (byte_12CBD5_12CBC5 & 2) != 0 )
@@ -55950,18 +55928,18 @@ void sub_4D6F0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   byte_12CBD5_12CBC5 |= 6u;
   if ( (byte_12CBD6_12CBC6 & 1) != 0 )
   {
-    byte_12CBCE_12CBBE = 2;
+    mainMenuSelector_12CBCE_12CBBE = 2;
     byte_12CBD6_12CBC6 &= ~1u;
   }
   else
   {
-    byte_12CBCE_12CBBE = 8;
+    mainMenuSelector_12CBCE_12CBBE = 8;
   }
   byte_12CBD5_12CBC5 &= ~1u;
 }
@@ -55971,13 +55949,13 @@ void sub_4D6F0()
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
 // 90026: using guessed type __int16 word_90026;
 // 90B23: using guessed type char byte_90B23;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12CBC6: using guessed type char byte_12CBD6_12CBC6;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -55995,12 +55973,12 @@ void sub_4D8A0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sprintf(&unk_9ADC8, aIntroOutroDat);
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
   lastPressedKey_12EF70_12EF60 = 0;
   word_90026 = 0;
@@ -56025,7 +56003,7 @@ void sub_4D8A0()
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -56186,13 +56164,13 @@ void sub_4D9C0()
         sub_518A0((uint8*)&str_9688C, (__int16)((90 - v10) / 2), 1, v32);
         sub_51740();
         if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-          sub_5CDA0_5D2B0();
+          Blit_5CDA0_5D2B0();
         else
-          sub_599B0_59EC0(480);
+          Blit_599B0_59EC0(480);
         *(_WORD *)(dword_AE400_AE3F0() + 10) = (unsigned __int8)byte_12CBD1_12CBC1;
         byte_12CBD5_12CBC5 &= ~0x10u;
         if ( !byte_90B23 )
-          sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+          sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
         v11 = sub_43430_43770((char *)(dword_AE408_AE3F8() + 117), (unsigned __int8)byte_12CBD1_12CBC1);
         v12 = dword_AE400_AE3F0();
         *(_WORD *)(dword_AE400_AE3F0() + 8) = v11;
@@ -56226,14 +56204,14 @@ void sub_4D9C0()
   if ( (byte_90B23 & 0x23) != 0 )
   {
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)byte_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
+      DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
     else
-      DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)byte_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
+      DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
   }
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( v34 )
   {
     sub_4E5B0();
@@ -56245,7 +56223,7 @@ void sub_4D9C0()
       v30 = dword_AE408_AE3F8();
       qmemcpy((void *)(dword_AE400_AE3F0() + 13323), (const void *)(dword_AE400_AE3F0() + 9225), 0x800u);
       *(_BYTE *)(v28 + 2048) = *(_BYTE *)(v29 + 2048);
-      byte_12CBCE_12CBBE = 2;
+      mainMenuSelector_12CBCE_12CBBE = 2;
       v31 = *(_BYTE *)v30 & 0xEF;
       *(_WORD *)(v30 + 17) = *(_WORD *)(v30 + 19);
       *(_BYTE *)v30 = v31;
@@ -56273,7 +56251,7 @@ void sub_4D9C0()
 // 12CBB0: using guessed type __int16 word_12CBC0_12CBB0;
 // 12CBB2: using guessed type __int16 word_12CBC2_12CBB2;
 // 12CBB4: using guessed type __int16 word_12CBB4;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC0: using guessed type char byte_12CBD0_12CBC0;
 // 12CBC1: using guessed type char byte_12CBD1_12CBC1;
 // 12CBC2: using guessed type char byte_12CBD2_12CBC2;
@@ -56315,9 +56293,9 @@ char sub_4E000()
   else if ( !byte_90B23 )
   {
     //v0 = (int)begSptrsTab_12CAEC_2EAAEC_2EAADC;
-    //v1 = 6 * (unsigned __int8)byte_12CBCE_12CBBE;
+    //v1 = 6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE;
     //goto LABEL_9;
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   }
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
     CopyScreen_62FA8_634B8((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0xC8u);
@@ -56430,7 +56408,7 @@ LABEL_34:
 // 12CBA0: using guessed type int dword_12CBB0_12CBA0;
 // 12CBAE: using guessed type __int16 word_12CBBE_12CBAE;
 // 12CBB2: using guessed type __int16 word_12CBC2_12CBB2;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC2: using guessed type char byte_12CBD2_12CBC2;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
@@ -56458,11 +56436,11 @@ char sub_4E420()
   else
     CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   FadeInOut_61CC0_621D0(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x20u, 0);
   byte_12CBD5_12CBC5 |= 1u;
   result = sub_5CC70_5D180(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x1Au, 0x12u, 0xDu);
@@ -56480,7 +56458,7 @@ char sub_4E420()
 // 12CB08: using guessed type int begPMultSprDat_12CB18_2EAB18_2EAB08;
 // 12CB24: using guessed type _DWORD begSFont1Tab_12CB34_2EAB34_2EAB24;
 // 12CB8C: using guessed type int begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
@@ -56496,17 +56474,17 @@ void sub_4E5B0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sub_61610_61B20((Pathstruct*)(char*)"data\\screens\\pmultspr.dat");
   byte_12CBD5_12CBC5 &= ~1u;
-  if ( byte_12CBCE_12CBBE == 2 )
+  if ( mainMenuSelector_12CBCE_12CBBE == 2 )
     sub_5D290_5D7A0(4);
 }
 // 4E5EA: variable 'v0' is possibly undefined
 // 90B23: using guessed type char byte_90B23;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
@@ -56535,9 +56513,9 @@ void sub_4E660()
   sub_518A0((uint8*)&str_9688C, (__int16)(v1 / 2), 1, v2);
   sub_51740();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 9688C: using guessed type int dword_9688C;
 // AE3F8: using guessed type int dword_AE408_AE3F8();
@@ -56560,9 +56538,9 @@ void sub_4E3D0_4E710(unsigned __int8 a1)
   sub_518A0((uint8*)&str_9688C, (__int16)(v1 / 2), 1, v2);
   sub_51740();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 9688C: using guessed type int dword_9688C;
 // AE3F8: using guessed type int dword_AE408_AE3F8();
@@ -56585,9 +56563,9 @@ void sub_4E470_4E7B0(unsigned __int8 a1)
   sub_518A0((uint8*)&str_9688C, (__int16)(v1 / 2), 1, v2);
   sub_51740();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 9688C: using guessed type int dword_9688C;
 // AE3F8: using guessed type int dword_AE408_AE3F8();
@@ -56610,9 +56588,9 @@ void sub_4E850(unsigned __int8 a1)
   sub_518A0((uint8*)&str_9688C, (__int16)(v1 / 2), 1, v2);
   sub_51740();
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 9688C: using guessed type int dword_9688C;
 // AE3F8: using guessed type int dword_AE408_AE3F8();
@@ -56674,9 +56652,9 @@ int sub_4E8F0()
     else
       sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
     v4 = dword_AE400_AE3F0() + 2049 * str_AE400_AE3F0->var_u16_8;
     if ( *(_WORD *)(v4 + 13325) & 2 | 4 )
     {
@@ -56687,9 +56665,9 @@ int sub_4E8F0()
           sprintf(&unk_9ADC8, aIntroLevelw2Da);
         else
           sprintf(&unk_9ADC8, aIntroLevelw1Da);
-        word_12EFCA = 0;
+        word_12EFDA_12EFCA = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         lastPressedKey_12EF70_12EF60 = 0;
         word_90026 = 0;
         sub_107C0(1, 1, (int)dword_4A918);
@@ -56697,9 +56675,9 @@ int sub_4E8F0()
       else if ( (v5 & 4) != 0 )
       {
         sprintf(&unk_9ADC8, aIntroLeveloseD);
-        word_12EFCA = 0;
+        word_12EFDA_12EFCA = 0;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         lastPressedKey_12EF70_12EF60 = 0;
         word_90026 = 0;
         sub_107C0(1, 1, (int)dword_4A500);
@@ -56712,18 +56690,18 @@ int sub_4E8F0()
       else
         sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
       if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-        sub_5CDA0_5D2B0();
+        Blit_5CDA0_5D2B0();
       else
-        sub_599B0_59EC0(480);
+        Blit_599B0_59EC0(480);
     }
     sub_5D070_5D580(0xDu);
     sub_5CEF0_5D400(0);
     sub_5D290_5D7A0(1);
-    word_12EFCA = 0;
+    word_12EFDA_12EFCA = 0;
     mouseRightButton_12EFDC_12EFCC = 0;
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
     lastPressedKey_12EF70_12EF60 = 0;
-    byte_12CBCE_12CBBE = 2;
+    mainMenuSelector_12CBCE_12CBBE = 2;
     sub_40440_40780((Pathstruct*)"data\\screens\\sfont2.dat");
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
       sub_65D70_66280(begSFont2Tab_12CB40_2EAB40_2EAB30, test_12CB44_2EAB44_2EAB34, begSFont2Dat_12CB48_2EAB48_2EAB38);
@@ -56738,9 +56716,9 @@ int sub_4E8F0()
     else
       CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
     FadeInOut_61CC0_621D0(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x20u, 0);
     pressedKeys_12EEF0_12EEE0[1] = 0;
     byte_12CAE4_12CAD4 &= ~1u;
@@ -56755,12 +56733,12 @@ int sub_4E8F0()
     v20 = dword_AC5D4_AC5C4 + 1320;
     do
     {
-      if ( lastPressedKey_12EF70_12EF60 || word_12EFCE || dword_AC5D4_AC5C4 > v20 )
+      if ( lastPressedKey_12EF70_12EF60 || mouseLeftButton_12EFDE_12EFCE || dword_AC5D4_AC5C4 > v20 )
       {
         byte_12CAE4_12CAD4 &= 0xB6u;
         lastPressedKey_12EF70_12EF60 = 0;
         v0 = 1;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         pressedKeys_12EEF0_12EEE0[57] = 0;
         pressedKeys_12EEF0_12EEE0[28] = 0;
         pressedKeys_12EEF0_12EEE0[1] = 0;
@@ -56849,9 +56827,9 @@ int sub_4E8F0()
         sub_518A0((uint8*)&dword_96894, (__int16)(600 - v13), 280, v15);
       }
       if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-        sub_5CDA0_5D2B0();
+        Blit_5CDA0_5D2B0();
       else
-        sub_599B0_59EC0(480);
+        Blit_599B0_59EC0(480);
     }
     while ( !v0 );
     FadeInOut_61CC0_621D0(0, 0x10u, 0);
@@ -56860,9 +56838,9 @@ int sub_4E8F0()
   }
   result = dword_AE408_AE3F8();
   if ( *(_WORD *)(dword_AE408_AE3F8() + 17) == 25 )
-    byte_12CBCE_12CBBE = 10;
+    mainMenuSelector_12CBCE_12CBBE = 10;
   else
-    byte_12CBCE_12CBBE = 2;
+    mainMenuSelector_12CBCE_12CBBE = 2;
   return result;
 }
 // 4E969: variable 'v3' is possibly undefined
@@ -56890,14 +56868,14 @@ int sub_4E8F0()
 // 12CB34: using guessed type int test_12CB44_2EAB44_2EAB34;
 // 12CB38: using guessed type int begSFont2Dat_12CB48_2EAB48_2EAB38;
 // 12CB8C: using guessed type int begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EEFC: using guessed type char pressedKeys_12EEF0_12EEE0[28];
 // 12EF19: using guessed type char pressedKeys_12EEF0_12EEE0[57];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -56919,13 +56897,13 @@ void sub_4F1B0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sprintf(&unk_9ADC8, aIntroLogoDat);
-  word_12EFCA = 0;
+  word_12EFDA_12EFCA = 0;
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   lastPressedKey_12EF70_12EF60 = 0;
   word_90026 = 0;
   sub_107C0(1, 1, (int)dword_4A960);
@@ -56938,10 +56916,10 @@ void sub_4F1B0()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
-  byte_12CBCE_12CBBE = 0;
+    Blit_599B0_59EC0(480);
+  mainMenuSelector_12CBCE_12CBBE = 0;
 }
 // 4F1EC: variable 'v0' is possibly undefined
 // 4F2B1: variable 'v1' is possibly undefined
@@ -56949,11 +56927,11 @@ void sub_4F1B0()
 // 611BC: using guessed type _DWORD sprintf(_DWORD, _DWORD, ...);
 // 90026: using guessed type __int16 word_90026;
 // 90B23: using guessed type char byte_90B23;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -56978,13 +56956,13 @@ void sub_4EFC0_4F300()
     else
       sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
     sprintf(&unk_9ADC8, aIntroIntelDat);
-    word_12EFCA = 0;
+    word_12EFDA_12EFCA = 0;
     mouseRightButton_12EFDC_12EFCC = 0;
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
     lastPressedKey_12EF70_12EF60 = 0;
     word_90026 = 0;
     sub_107C0(1, 1, (int)dword_4A524);
@@ -56997,11 +56975,11 @@ void sub_4EFC0_4F300()
     else
       sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
   }
-  byte_12CBCE_12CBBE = 9;
+  mainMenuSelector_12CBCE_12CBBE = 9;
 }
 // 4F350: variable 'v1' is possibly undefined
 // 4F415: variable 'v2' is possibly undefined
@@ -57010,55 +56988,45 @@ void sub_4EFC0_4F300()
 // 90026: using guessed type __int16 word_90026;
 // 90B23: using guessed type char byte_90B23;
 // AE3F8: using guessed type int dword_AE408_AE3F8();
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
-//----- (0004F460) --------------------------------------------------------
-void sub_4F460()
+//SYNCHRONIZED WITH REMC1
+void sub_4F120_4F460()
 {
-  int v0; // ebx
-  int v1; // eax
-  __int16 v2; // dx
+    int v0; // ebx
+    uint8_t* v1; // eax
+    __int16 v2; // dx
 
-  v0 = dword_AC5D4_AC5C4;
-  v1 = sub_1002D(dword_12CB5C, (int)pdwScreenBuffer_12EFF4);
-  v2 = word_12CB60 + 1;
-  dword_12CB5C = v1;
-  word_12CB60 = v2;
-  if ( v2 == 5 )
-  {
-    word_12CB60 = 1;
-    dword_12CB5C = dword_12CB58;
-  }
-  else if ( v2 == 1 && !dword_12CB58 )
-  {
-    dword_12CB58 = v1;
-  }
-  if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
-  else
-    sub_599B0_59EC0(480);
-  if ( !word_12EFCE && !mouseRightButton_12EFDC_12EFCC && !word_12EFCA && !lastPressedKey_12EF70_12EF60 )
-  {
-    while ( v0 + 16 >= (unsigned int)dword_AC5D4_AC5C4 )
-      ;
-  }
+    v0 = dword_AC5D4_AC5C4;
+    v1 = sub_1002D(dword_12CB6C_12CB5C, begWscreen_2ECFF4_2ECFE4);
+    v2 = word_12CB70_12CB60 + 1;
+    dword_12CB6C_12CB5C = v1;
+    word_12CB70_12CB60 = v2;
+    if (v2 == 5)
+    {
+        word_12CB70_12CB60 = 1;
+        dword_12CB6C_12CB5C = dword_12CB68_12CB58;
+    }
+    else if (v2 == 1 && !dword_12CB68_12CB58)
+    {
+        dword_12CB68_12CB58 = v1;
+    }
+    if ((typeResolution_12F02E_12F01E & 1) != 0)
+        Blit_5CDA0_5D2B0();
+    else
+        Blit_599B0_59EC0(480);
+    if (!mouseLeftButton_12EFDE_12EFCE && !mouseRightButton_12EFDC_12EFCC && !word_12EFDA_12EFCA && !lastPressedKey_12EF70_12EF60)
+    {
+        while (v0 + 16 >= (unsigned int)dword_AC5D4_AC5C4)
+            ;
+    }
 }
-// AC5C4: using guessed type int dword_AC5D4_AC5C4;
-// 12CB58: using guessed type int dword_12CB58;
-// 12CB5C: using guessed type int dword_12CB5C;
-// 12CB60: using guessed type __int16 word_12CB60;
-// 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
-// 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
-// 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
-// 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (0004F520) --------------------------------------------------------
 int sub_4F520()
@@ -57079,20 +57047,20 @@ int sub_4F520()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   if ( *(_BYTE *)(dword_AE400_AE3F0() + 8608) == 32 )
   {
     sub_40440_40780((Pathstruct*)"intro\\title-04.dat");
-    dword_12CB5C = (int)begTitle02Dat_12CB64_2EAB64_2EAB54;
-    dword_12CB58 = 0;
-    word_12CB60 = 0;
+    dword_12CB6C_12CB5C = begTitle02Dat_12CB64_2EAB64_2EAB54;
+    dword_12CB68_12CB58 = 0;
+    word_12CB70_12CB60 = 0;
   }
   sprintf(&unk_9ADC8, aIntroTitle03Da);
-  word_12EFCA = 0;
+  word_12EFDA_12EFCA = 0;
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   lastPressedKey_12EF70_12EF60 = 0;
   if ( (byte_12CBD6_12CBC6 & 2) != 0 )
     word_90026 = 1;
@@ -57101,7 +57069,7 @@ int sub_4F520()
   if ( *(_BYTE *)(dword_AE400_AE3F0() + 8608) == 32 )
   {
     if ( !word_AC5CC )
-      sub_4B7C0((int (*)(void))sub_4F460, 6);
+      sub_4B7C0((int (*)(void))sub_4F120_4F460, 6);
   }
   else if ( !word_AC5CC )
   {
@@ -57116,13 +57084,13 @@ int sub_4F520()
   else
     sub_411FD_4153D((void *)pdwScreenBuffer_12EFF4, 0x1E0u, 0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   result = dword_AE400_AE3F0();
   if ( *(_BYTE *)(dword_AE400_AE3F0() + 8608) == 32 )
     sub_61610_61B20((Pathstruct*)(char*)"intro\\title-04.dat");
-  byte_12CBCE_12CBBE = 2;
+  mainMenuSelector_12CBCE_12CBBE = 2;
   byte_12CBD6_12CBC6 &= ~2u;
   return result;
 }
@@ -57135,16 +57103,16 @@ int sub_4F520()
 // AC5CC: using guessed type __int16 word_AC5CC;
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 // 12CB54: using guessed type int begTitle02Dat_12CB64_2EAB64_2EAB54;
-// 12CB58: using guessed type int dword_12CB58;
-// 12CB5C: using guessed type int dword_12CB5C;
-// 12CB60: using guessed type __int16 word_12CB60;
+// 12CB58: using guessed type int dword_12CB68_12CB58;
+// 12CB5C: using guessed type int dword_12CB6C_12CB5C;
+// 12CB60: using guessed type __int16 word_12CB70_12CB60;
 // 12CBA0: using guessed type int dword_12CBB0_12CBA0;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC6: using guessed type char byte_12CBD6_12CBC6;
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
-// 12EFCA: using guessed type __int16 word_12EFCA;
+// 12EFCA: using guessed type __int16 word_12EFDA_12EFCA;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -57187,11 +57155,11 @@ void sub_4F3F0_4F730()//2203F0_
 			CopyScreen_62FC4_634D4((const void*)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void*)pdwScreenBuffer_12EFF4, 0x1E0u);
 		}
 		if ((typeResolution_12F02E_12F01E & 1) != 0)
-			sub_5CDA0_5D2B0();
+			Blit_5CDA0_5D2B0();
 		else
-			sub_599B0_59EC0(480);
+			Blit_599B0_59EC0(480);
 		if (!byte_90B23)
-			sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+			sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
 		FadeInOut_61CC0_621D0(begPalette_12CB9C_12CB8C_2EAB9C_2EAB8C, 0x20u, 0);
 		byte_12CAE4_12CAD4 &= ~1u;
 		pressedKeys_12EEF0_12EEE0[1] = 0;
@@ -57255,9 +57223,9 @@ void sub_4F3F0_4F730()//2203F0_
 					2 * asc_4A8F4_4AC34[2 * str_AE408_AE3F8->var_u8_151 + 2],
 					(TypeTab*)(&begLangSprTab_12CB58_2EAB58_2EAB48[6 * (str_AE408_AE3F8->var_u8_151 + 1)]));
 			if ((typeResolution_12F02E_12F01E & 1) != 0)
-				sub_5CDA0_5D2B0();
+				Blit_5CDA0_5D2B0();
 			else
-				sub_599B0_59EC0(480);
+				Blit_599B0_59EC0(480);
 			dword_12CBB0_12CBA0++;
 		} while (!endCycle);
 		FadeInOut_61CC0_621D0(0, 0x10u, 0);
@@ -57291,7 +57259,7 @@ void sub_4F3F0_4F730()//2203F0_
 	}
 	sub_61610_61B20(&pathStrArray_21AB80_21AEC0[PSdatascreenslangsprdat]);
 	sub_44700_44A40((char*)begTextDat_AE41C_AE40C_26C41C_26C40C, dword_AE238_AE228, 80);
-	byte_12CBCE_12CBBE = 1;
+	mainMenuSelector_12CBCE_12CBBE = 1;
 	byte_12CBD5_12CBC5 &= ~1u;
 }
 
@@ -57322,9 +57290,9 @@ int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int))
   if ( !byte_90B23 )
     sub_5C05C_5C56C(0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sprintf(&unk_9ADC8, aIntroScrollDat);
   dword_AC5B4 = (int (*)(_DWORD))sub_507B0;
   word_90026 = 0;
@@ -57336,7 +57304,7 @@ int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int))
   HIBYTE(v4) = 0;
   dword_AC5B4 = 0;
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   sub_51720();
   sub_516A0(80, 73, 159, 48);
   do
@@ -57381,20 +57349,20 @@ int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int))
         }
       }
       HIBYTE(v4) = 0;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
       byte_12CAE4_12CAD4 &= ~1u;
     }
     if ( (byte_90B23 & 0x23) != 0 )
     {
       if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-        DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)byte_12CBCE_12CBBE));
+        DrawBitmap_60CE0_611F0(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(begSptrsTab_12CAEC_2EAAEC_2EAADC + 6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE));
       else
-        DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)byte_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
+        DrawBitmap_60D18_61228(mouse_9AD90.x, mouse_9AD90.y, (TypeTab*)(6 * (unsigned __int8)mainMenuSelector_12CBCE_12CBBE + begSptrsTab_12CAEC_2EAAEC_2EAADC));
     }
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
     ++v3;
   }
   while ( !v2 );
@@ -57408,11 +57376,11 @@ int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int))
   else
     CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
   byte_12CAE4_12CAD4 &= 0xBEu;
   pressedKeys_12EEF0_12EEE0[28] = 0;
@@ -57432,11 +57400,11 @@ int sub_4F8D0_sub_4FC10(int a1, void (*a2)(int))
 // 12CADC: using guessed type int begSptrsTab_12CAEC_2EAAEC_2EAADC;
 // 12CAF4: using guessed type int begMmSprTab_12CB04_2EAB04_2EAAF4;
 // 12CB94: using guessed type int begScreenBackup_12CBA4_2EABA4_2EAB94;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12EEE1: using guessed type char pressedKeys_12EEF0_12EEE0[1];
 // 12EEFC: using guessed type char pressedKeys_12EEF0_12EEE0[28];
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
@@ -57505,14 +57473,14 @@ void sub_50270(int a1)
   {
     byte_9687C = 0;
     byte_12CBD5_12CBC5 |= 8u;
-    byte_12CBCE_12CBBE = 5;
+    mainMenuSelector_12CBCE_12CBBE = 5;
     bool_96880 = true;
   }
   else if ( sub_4F8D0_sub_4FC10(a1, (void (*)(int))sub_50320) )
   {
     v1 = dword_AE400_AE3F0();
     *(_WORD *)(dword_AE408_AE3F8() + 17) = 0;
-    byte_12CBCE_12CBBE = 5;
+    mainMenuSelector_12CBCE_12CBBE = 5;
     memset((void*)(2049 * *(__int16 *)(v1 + 8) + v1 + 13323 + 1995), 0, 24);
     bool_96880 = true;
     byte_12CBD5_12CBC5 |= 8u;
@@ -57523,7 +57491,7 @@ void sub_50270(int a1)
 // 96880: using guessed type int bool_96880;
 // AE3F0: using guessed type int dword_AE400_AE3F0();
 // AE3F8: using guessed type int dword_AE408_AE3F8();
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 
 //----- (00050320) --------------------------------------------------------
@@ -57557,9 +57525,9 @@ void sub_50370()
   if ( !byte_90B23 )
     sub_5C05C_5C56C(0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   word_90026 = 0;
   sub_107C0(0, 0, (int)dword_4A4BC);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
@@ -57567,7 +57535,7 @@ void sub_50370()
   else
     CopyScreen_62FC4_634D4((const void *)pdwScreenBuffer_12EFF4, (void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, 0x1E0u);
   if ( !byte_90B23 )
-    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[byte_12CBCE_12CBBE]);
+    sub_5C05C_5C56C(&begSptrsTab_12CAEC_2EAAEC_2EAADC[mainMenuSelector_12CBCE_12CBBE]);
   dword_AC5B4 = 0;
   sub_51720();
   sub_516A0(70, 73, 179, 48);
@@ -57583,7 +57551,7 @@ void sub_50370()
     CopyScreen_62FA8_634B8((const void *)begScreenBackup_12CBA4_2EABA4_2EAB94, (void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, 0xC8u);
   else
     CopyScreen_62FC4_634D4((const void *)begScreenBackup_12CBA4_2EABA4_2EAB94, (void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, 0x1E0u);
-  byte_12CBCE_12CBBE = 2;
+  mainMenuSelector_12CBCE_12CBBE = 2;
   v0 = (int)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC;
   begBscreen_AE3FC_AE3EC_26C3FC_26C3EC = pdwScreenBuffer_12EFF4;
   pdwScreenBuffer_12EFF4 = (uint8_t*)v0;
@@ -57601,9 +57569,9 @@ void sub_50370()
   else
     CopyScreen_62FC4_634D4((const void *)begBscreen_AE3FC_AE3EC_26C3FC_26C3EC, (void *)pdwScreenBuffer_12EFF4, 0x1E0u);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
   sub_51740();
 }
 // 4A4BC: using guessed type int dword_4A4BC[6];
@@ -57617,7 +57585,7 @@ void sub_50370()
 // 12CAD4: using guessed type char byte_12CAE4_12CAD4;
 // 12CADC: using guessed type int begSptrsTab_12CAEC_2EAAEC_2EAADC;
 // 12CB94: using guessed type int begScreenBackup_12CBA4_2EABA4_2EAB94;
-// 12CBBE: using guessed type char byte_12CBCE_12CBBE;
+// 12CBBE: using guessed type char mainMenuSelector_12CBCE_12CBBE;
 // 12CBC5: using guessed type char byte_12CBD5_12CBC5;
 // 12EEFC: using guessed type char pressedKeys_12EEF0_12EEE0[28];
 // 12EFE4: using guessed type int pdwScreenBuffer_12EFF4;
@@ -57923,7 +57891,7 @@ void sub_50770_50AB0()
           byte_12CAE6_12CAD6 |= 0x40;
         byte_12CAE6_12CAD6 &= ~0x80u;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         return;
       }
       byte_12CAE6_12CAD6 &= 0xBF;
@@ -57933,14 +57901,14 @@ void sub_50770_50AB0()
         byte_12CAE6_12CAD6 &= 0xDF;
       byte_12CAE6_12CAD6 |= 0x80u;
       mouseRightButton_12EFDC_12EFCC = 0;
-      word_12EFCE = 0;
+      mouseLeftButton_12EFDE_12EFCE = 0;
     }
     else
     {
       if ( byte_12CBCF_12CBBF != 2 )
       {
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
         return;
       }
       if ( (byte_90B23 & 0x23) != 0 )
@@ -57993,7 +57961,7 @@ void sub_50770_50AB0()
           byte_12CAE4_12CAD4 |= 8;
         byte_12CAE4_12CAD4 |= 0x20u;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
       }
       else
       {
@@ -58008,7 +57976,7 @@ void sub_50770_50AB0()
         }
         byte_12CAE4_12CAD4 &= ~0x20u;
         mouseRightButton_12EFDC_12EFCC = 0;
-        word_12EFCE = 0;
+        mouseLeftButton_12EFDE_12EFCE = 0;
       }
     }
   }
@@ -58017,7 +57985,7 @@ void sub_50770_50AB0()
     byte_12CAE7_12CAD7 &= 0x24u;
     byte_12CAE8_12CAD8 &= 0xF9u;
     mouseRightButton_12EFDC_12EFCC = 0;
-    word_12EFCE = 0;
+    mouseLeftButton_12EFDE_12EFCE = 0;
   }
 }
 
@@ -58075,14 +58043,14 @@ bool sub_51080(
   v37 = 0;
   v38 = 0;
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   sub_516E0((uint32*)v33);
   if ( a4 )
     v37 = sub_51760((_DWORD *)a10, a4);
   v37 += a1;
   do
   {
-    if ( word_12EFCE )
+    if ( mouseLeftButton_12EFDE_12EFCE )
       v38 = 1;
     if ( (unsigned __int8)lastPressedKey_12EF70_12EF60 < 0x36u )
     {
@@ -58266,13 +58234,13 @@ LABEL_73:
     }
     sub_5220C(v25, v30, v31, 2, 255, 0);
     if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-      sub_5CDA0_5D2B0();
+      Blit_5CDA0_5D2B0();
     else
-      sub_599B0_59EC0(480);
+      Blit_599B0_59EC0(480);
   }
   while ( !(_WORD)v38 );
   mouseRightButton_12EFDC_12EFCC = 0;
-  word_12EFCE = 0;
+  mouseLeftButton_12EFDE_12EFCE = 0;
   lastPressedKey_12EF70_12EF60 = 0;
   pressedKeys_12EEF0_12EEE0[1] = 0;
   pressedKeys_12EEF0_12EEE0[28] = 0;
@@ -58285,7 +58253,7 @@ LABEL_73:
 // 12EF16: using guessed type char pressedKeys_12EEF0_12EEE0[54];
 // 12EF60: using guessed type char lastPressedKey_12EF70_12EF60;
 // 12EFCC: using guessed type __int16 mouseRightButton_12EFDC_12EFCC;
-// 12EFCE: using guessed type __int16 word_12EFCE;
+// 12EFCE: using guessed type __int16 mouseLeftButton_12EFDE_12EFCE;
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 // 51080: using guessed type char var_A0[100];
 
@@ -63503,97 +63471,83 @@ int sub_58860_58D70(unsigned __int16 a1, uint8_t* a2)//229860_
   return result;
 }
 
-//----- (00058E20) --------------------------------------------------------
-char sub_58E20(unsigned __int16 a1)
+//SYNCHRONIZED WITH REMC1
+char sub_58910_58E20(unsigned __int16 a1)
 {
-  unsigned __int16 v1; // ax
-  __int16 v2; // di
-  unsigned __int16 v3; // bx
-  _BYTE **v4; // ecx
-  _DWORD *v5; // eax
+    unsigned __int16 v1; // ax
+    __int16 v2; // di
+    unsigned __int16 v3; // bx
+    _BYTE** v4; // ecx
+    Type_sub_AE3E0* v5; // eax
 
-  v1 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  if ( byte_12E7D0_12E7C0[v1] )
-    return 0;
-  v2 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  if ( !dword_12DF8C_12DF7C[v1] )
-    return 0;
-  v3 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  if ( v1 < 0x211u )
-  {
-    do
+    v1 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    if (byte_12E7D0_12E7C0[v1])
+        return 0;
+    v2 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    if (!dword_12DF8C_12DF7C[v1])
+        return 0;
+    v3 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    if (v1 < 529)
     {
-      if ( v2 != begTmapsTab_12D744_12D734_2EB744_2EB734x[v3].var_8)
-        break;
-      v4 = (_BYTE **)dword_12DF8C_12DF7C[v3];
-      if ( v4 )
-      {
-        if ( (**v4 & 1) != 0 )
+        do
         {
-          v5 = (_DWORD*)sub_10FD0(dword_AE3E0_AE3D0, v3);
-          sub_10F10(v5);
-        }
-        sub_36E50(dword_AE3EC_AE3DC, dword_12D748_12D738[v3]);
-        dword_12DF8C_12DF7C[v3] = 0;
-        dword_12D748_12D738[v3] = 0;
-        dword_12CF00_12CEF0[v3] = 0;
-      }
-      ++v3;
+            if (v2 != begTmapsTab_12D744_12D734_2EB744_2EB734x[v3].var_8)
+                break;
+            v4 = (_BYTE**)dword_12DF8C_12DF7C[v3];
+            if (v4)
+            {
+                if ((**v4 & 1) != 0)
+                {
+                    v5 = sub_10FD0(dword_AE3E0_AE3D0, v3);
+                    sub_10F10(v5);
+                }
+                sub_36A90_36E50(dword_AE3EC_AE3DC, dword_12D748_12D738[v3]);
+                dword_12DF8C_12DF7C[v3] = 0;
+                dword_12D748_12D738[v3] = 0;
+                dword_12CF00_12CEF0[v3] = 0;
+            }
+            ++v3;
+        } while (v3 < 529);
     }
-    while ( v3 < 0x211u );
-  }
-  return 1;
+    return 1;
 }
-// AE3D0: using guessed type int dword_AE3E0_AE3D0;
-// AE3DC: using guessed type int dword_AE3EC_AE3DC;
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D734: using guessed type int dword_12D734;
-// 12D738: using guessed type int dword_12D748_12D738[529];
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
-//----- (00058F10) --------------------------------------------------------
-char sub_58F10(unsigned __int16 a1)
+//SYNCHRONIZED WITH REMC1
+char sub_58A00_58F10(unsigned __int16 a1)
 {
-  unsigned __int16 v1; // di
-  unsigned __int16 v2; // bx
-  _BYTE **v3; // ecx
-  _DWORD *v4; // eax
+    unsigned __int16 v1; // di
+    unsigned __int16 v2; // bx
+    _BYTE** v3; // ecx
+    Type_sub_AE3E0* v4; // eax
 
-  v1 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  if ( !dword_12DF8C_12DF7C[v1] )
-    return 0;
-  v2 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  if ( v1 < 0x211u )
-  {
-    do
+    v1 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    if (!dword_12DF8C_12DF7C[v1])
+        return 0;
+    v2 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    if (v1 < 0x211u)
     {
-      if ( v1 != begTmapsTab_12D744_12D734_2EB744_2EB734x[v2].var_8)
-        break;
-      v3 = (_BYTE **)dword_12DF8C_12DF7C[v2];
-      if ( v3 )
-      {
-        if ( (**v3 & 1) != 0 )
+        do
         {
-          v4 = (Type_sub_AE3E0*)sub_10FD0(dword_AE3E0_AE3D0, v2);
-          sub_10F10(v4);
-        }
-        sub_36E50(dword_AE3EC_AE3DC, dword_12D748_12D738[v2]);
-        dword_12DF8C_12DF7C[v2] = 0;
-        dword_12D748_12D738[v2] = 0;
-        dword_12CF00_12CEF0[v2] = 0;
-      }
-      ++v2;
+            if (v1 != begTmapsTab_12D744_12D734_2EB744_2EB734x[v2].var_8)
+                break;
+            v3 = (_BYTE**)dword_12DF8C_12DF7C[v2];
+            if (v3)
+            {
+                if ((**v3 & 1) != 0)
+                {
+                    v4 = sub_10FD0(dword_AE3E0_AE3D0, v2);
+                    sub_10F10(v4);
+                }
+                sub_36A90_36E50(dword_AE3EC_AE3DC, dword_12D748_12D738[v2]);
+                dword_12DF8C_12DF7C[v2] = 0;
+                dword_12D748_12D738[v2] = 0;
+                dword_12CF00_12CEF0[v2] = 0;
+            }
+            ++v2;
+        } while (v2 < 0x211u);
     }
-    while ( v2 < 0x211u );
-  }
-  return 1;
+    return 1;
 }
-// AE3D0: using guessed type int dword_AE3E0_AE3D0;
-// AE3DC: using guessed type int dword_AE3EC_AE3DC;
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D734: using guessed type int dword_12D734;
-// 12D738: using guessed type int dword_12D748_12D738[529];
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //----- (00058FE0) --------------------------------------------------------
 int sub_58FE0(unsigned __int16 a1)
@@ -63619,54 +63573,68 @@ int sub_58FE0(unsigned __int16 a1)
 // 12D734: using guessed type int dword_12D734;
 
 int counter_sub_58B30_59040 = 0;
+int counter_sub_58B30_59040_2 = 0;
 
 //SYNCHRONIZED WITH REMC1
 void sub_58B30_59040(unsigned __int16 a1)//229B30_
 {
-  //int v1; // eax
-  int v2; // ebp
-  Type_sub168_2* v3x; // esi
-  unsigned __int16 i; // [esp+0h] [ebp-18h]
-  __int16 v6; // [esp+4h] [ebp-14h]
+    //int v1; // eax
+    int v2; // ebp
+    Type_sub168_2* v3x; // esi
+    unsigned __int16 i; // [esp+0h] [ebp-18h]
+    __int16 v6; // [esp+4h] [ebp-14h]
 
-  //allert_error();//test it
+    //allert_error();//test it
 
-  //debug
-  if (counter_sub_58B30_59040 == 0x2d)
-  {
-      counter_sub_58B30_59040++;
-      counter_sub_58B30_59040--;
-  }
-  counter_sub_58B30_59040++;
-  //debug
-
-  //LOWORD(v1) = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  v2 = str_AE408_AE3F8->var_u32_4.dword;
-  v6 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
-  for ( i = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8; i < 529; i++ )
-  {
-    //v1 = (int)begTmapsTab_12D744_2EB744_2EB734 + 10 * i;
-    if ( v6 != begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_8)
-      break;
-    if ( !dword_12DF8C_12DF7C[i] )
+    //debug
+    if (counter_sub_58B30_59040 == 0xfb)
     {
-      //v1 = sub_369E0_36DA0(dword_AE3EC_AE3DC, (unsigned __int16)(4 * ((unsigned int)(begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_0 + 13) >> 2)), i);
-      v3x = (Type_sub168_2*)sub_369E0_36DA0(dword_AE3EC_AE3DC, (unsigned __int16)(4 * ((unsigned int)(begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_0 + 13) >> 2)), i);
-      if ( v3x )
-      {
-        //v1 = sub_58860_58D70(i, *(uint8_t**)v3);
-        if (sub_58860_58D70(i, (uint8_t*)v3x->var_u32_0) != -1 )
-        {
-          dword_12D748_12D738[i] = (int)v3x;
-          dword_12DF8C_12DF7C[i] = (int)v3x;
-          dword_12CF00_12CEF0[i] = v2;
-          //v1 = *v3;
-          if ( (v3x->var_u32_0->x & 1) != 0 )
-            sub_10D40((unsigned short*)dword_AE3E0_AE3D0, (int*)v3x, i);
-        }
-      }
+        counter_sub_58B30_59040++;
+        counter_sub_58B30_59040--;
     }
-  }
+    counter_sub_58B30_59040++;
+    //debug
+
+    //LOWORD(v1) = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    v2 = str_AE408_AE3F8->var_u32_4.dword;
+    v6 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
+    for (i = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8; i < 529; i++)
+    {
+        //debug
+        if (i == 0xfd)
+        {
+            counter_sub_58B30_59040_2++;
+            counter_sub_58B30_59040_2--;
+        }
+        if (counter_sub_58B30_59040_2 == 0xb5)
+        {
+            counter_sub_58B30_59040_2++;
+            counter_sub_58B30_59040_2--;
+        }
+        counter_sub_58B30_59040_2++;
+        //debug
+      //v1 = (int)begTmapsTab_12D744_2EB744_2EB734 + 10 * i;
+        if (v6 != begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_8)
+            break;
+        if (!dword_12DF8C_12DF7C[i])
+        {
+            //v1 = sub_369E0_36DA0(dword_AE3EC_AE3DC, (unsigned __int16)(4 * ((unsigned int)(begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_0 + 13) >> 2)), i);
+            v3x = sub_369E0_36DA0(dword_AE3EC_AE3DC, (unsigned __int16)(4 * ((unsigned int)(begTmapsTab_12D744_12D734_2EB744_2EB734x[i].var_0 + 13) >> 2)), i);
+            if (v3x)
+            {
+                //v1 = sub_58860_58D70(i, *(uint8_t**)v3);
+                if (sub_58860_58D70(i, (uint8_t*)v3x->var_u32_0) != -1)
+                {
+                    dword_12D748_12D738[i] = v3x;
+                    dword_12DF8C_12DF7C[i] = v3x;
+                    dword_12CF00_12CEF0[i] = v2;
+                    //v1 = *v3;
+                    if ((v3x->var_u32_0->var_0 & 1) != 0)
+                        sub_10D40(dword_AE3E0_AE3D0, v3x, i);
+                }
+            }
+        }
+    }
 }
 
 //----- (00059140) --------------------------------------------------------
@@ -63794,10 +63762,10 @@ int sub_59140(unsigned int a1)
     //dword_12D734 = v1;
     if ( v25 )
     {
-      if ( !sub_58F10(*((_WORD *)&v19 + 2 * (unsigned __int16)v24)) )
+      if ( !sub_58A00_58F10(*((_WORD *)&v19 + 2 * (unsigned __int16)v24)) )
         goto LABEL_38;
     }
-    else if ( !sub_58E20(*((_WORD *)&v19 + 2 * (unsigned __int16)v24)) )
+    else if ( !sub_58910_58E20(*((_WORD *)&v19 + 2 * (unsigned __int16)v24)) )
     {
       goto LABEL_38;
     }
@@ -63813,47 +63781,32 @@ LABEL_38:
 // 12D734: using guessed type int dword_12D734;
 // 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
-//----- (00059380) --------------------------------------------------------
+//SYNCHRONIZED WITH REMC1
 void sub_58E70_59380()
 {
-  dword_AE3EC_AE3DC = sub_36AC0(*(_DWORD *)(dword_AE408_AE3F8() + 172), 0x211u, *(_DWORD *)(dword_AE408_AE3F8() + 168));
-  if ( dword_AE3EC_AE3DC )
-    dword_AE3E0_AE3D0 = sub_10CB0(0x211u);
-  sub_587E0_58CF0();
-  memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
-  memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
-  memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
-  sub_59320_59830();
-  sub_59370_59880();
+    dword_AE3EC_AE3DC = sub_36700_36AC0(str_AE408_AE3F8->var_u32_172, 529, str_AE408_AE3F8->var_u32_168);
+    if (dword_AE3EC_AE3DC)
+        dword_AE3E0_AE3D0 = sub_10CB0(529);
+    sub_587E0_58CF0();
+    memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
+    memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
+    memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
+    sub_59320_59830();
+    sub_59370_59880();
 }
-// 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
-// AE3D0: using guessed type int dword_AE3E0_AE3D0;
-// AE3DC: using guessed type int dword_AE3EC_AE3DC;
-// AE3F8: using guessed type int dword_AE408_AE3F8();
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D738: using guessed type int dword_12D748_12D738[529];
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
-//----- (00059410) --------------------------------------------------------
-void sub_58F00_59410()
+//SYNCHRONIZED WITH REMC1
+void sub_58F00_59410()//229F00
 {
-  sub_36FD0(&dword_AE3EC_AE3DC);
-  sub_11010((int*)&dword_AE3E0_AE3D0);
-  sub_59650();
-  memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
-  memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
-  memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
-  byte_968E8 = 0;
-  sub_58F70_59480();//fix
+    sub_36850_36C10_36FD0(dword_AE3EC_AE3DC);
+    sub_11010(dword_AE3E0_AE3D0);
+    sub_59140_59650();
+    memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
+    memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
+    memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
+    byte_968E8 = 0;
+    sub_58F70_59480();//fix
 }
-// 59480: using guessed type int sub_58F70_59480(_DWORD, _DWORD);
-// 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
-// 968E8: using guessed type char byte_968E8;
-// AE3D0: using guessed type int dword_AE3E0_AE3D0;
-// AE3DC: using guessed type int dword_AE3EC_AE3DC;
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D738: using guessed type int dword_12D748_12D738[529];
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //----- (00059480) --------------------------------------------------------
 void sub_58F70_59480()
@@ -63935,43 +63888,46 @@ bool sub_59050_59560(unsigned __int16 a1)
 // AE3F8: using guessed type int dword_AE408_AE3F8();
 // 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
-void sub_590D0_595E0()
+//SYNCHRONIZED WITH REMC1
+void sub_590D0_595E0()//22A0D0_
 {
-  unsigned __int16 i; // bx
-  char *result; // eax
-  char **v2; // ecx
-  char v3; // cl
-  Type_sub_AE3E0* v4; // eax
+    //unsigned __int16 i; // bx
+    //char *result; // eax
+    //Type_sub168_2* v2x; // ecx
+    //char v3; // cl
+    //Type_sub_AE3E0* v4; // eax
 
-  //fix
-  result = 0;
-  //fix
+    //fix
+    //result = 0;
+    //fix
 
-  for ( i = 0; i < 0x211u; ++i )
-  {
-    result = (char *)(4 * i);
-    v2 = *(char ***)((char *)dword_12DF8C_12DF7C + (_DWORD)result);
-    if ( v2 )
+    //allert_error();//test it
+
+    for (int i = 0; i < 529; i++)
     {
-      result = *v2;
-      v3 = **v2;
-      if ( (v3 & 8) != 0 )
-      {
-        *result = v3 & 0xF7;
-        if ( (v3 & 1) != 0 )
+        //result = (char *)(4 * i);
+        //v2x = dword_12DF8C_12DF7C[i];
+        if (dword_12DF8C_12DF7C[i])
         {
-          v4 = sub_10FD0(dword_AE3E0_AE3D0, i);
-          result = (char *)sub_10EB0(v4);
+            //result = *v2;
+            //v3 = dword_12DF8C_12DF7C[i]->var_u32_0->x;
+            if ((dword_12DF8C_12DF7C[i]->var_u32_0->var_0 & 8) != 0)
+            {
+                //*result = v3 & 0xF7;
+                if ((dword_12DF8C_12DF7C[i]->var_u32_0->var_0 & 1) != 0)
+                {
+                    //v4 = sub_10FD0(dword_AE3E0_AE3D0, i);
+                    sub_10EB0(sub_10FD0(dword_AE3E0_AE3D0, i));
+                }
+            }
         }
-      }
     }
-  }
 }
 
 //----- (00059650) --------------------------------------------------------
-int sub_59650()
+void sub_59140_59650()
 {
-  return (int)memset(&byte_12E9E1_12E9D1, 0, 529);
+    memset(byte_12E9E1_12E9D1, 0, 529);
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 12E9D1: using guessed type char byte_12E9E1_12E9D1;
@@ -64055,7 +64011,7 @@ char sub_59740()
   {
     result = v0;
     if ( !byte_12E9E1_12E9D1[v0] )
-      result = sub_58E20(v0);
+      result = sub_58910_58E20(v0);
     ++v0;
   }
   while ( v0 < 0x211u );
@@ -64168,7 +64124,7 @@ char sub_59420_59930()
   {
     result = i;
     if ( !*(_BYTE *)(dword_AE400_AE3F0() + i + 44) )
-      result = sub_58E20(i);
+      result = sub_58910_58E20(i);
   }
   v4 = 2;
   do
@@ -64349,7 +64305,7 @@ LABEL_12:
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (00059EC0) --------------------------------------------------------
-void sub_599B0_59EC0(__int16 a1)
+void Blit_599B0_59EC0(__int16 a1)
 {
   char *v1; // esi
   char *v2; // esi
@@ -65617,9 +65573,9 @@ void sub_5B500_5BA10()
   __outbyte(0x303u, 0x10u);
   memset((void*)pdwScreenBuffer_12EFF4, 0, scrHeight_12EFF8_12EFE8 * scrWidth_12EFF0_12EFE0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int scrWidth_12EFF0_12EFE0;
@@ -65634,9 +65590,9 @@ void sub_5BA70()
   __outbyte(0x303u, 1u);
   memset((void*)pdwScreenBuffer_12EFF4, 0, scrHeight_12EFF8_12EFE8 * scrWidth_12EFF0_12EFE0);
   if ( (typeResolution_12F02E_12F01E & 1) != 0 )
-    sub_5CDA0_5D2B0();
+    Blit_5CDA0_5D2B0();
   else
-    sub_599B0_59EC0(480);
+    Blit_599B0_59EC0(480);
 }
 // 5D140: using guessed type _DWORD memset(_DWORD, _DWORD, _DWORD);
 // 12EFE0: using guessed type int scrWidth_12EFF0_12EFE0;
@@ -66591,7 +66547,7 @@ int sub_5CD70_5D280()
 // 5D280: using guessed type char var_38[28];
 
 //----- (0005D2B0) --------------------------------------------------------
-void sub_5CDA0_5D2B0()
+void Blit_5CDA0_5D2B0()
 {
     FixPerifery((char*)"blit320");
   if ( !byte_9AD96 )

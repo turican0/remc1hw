@@ -56,10 +56,11 @@ typedef struct {//size 14
 	int8 var_13;
 } Type_99BA0;
 
-typedef struct {//size 14
-	uint16 x;
-	uint16 y;
-	uint8 data[];
+typedef struct {//size ?
+	uint16 var_0;
+	uint16 xx;
+	uint16 yy;
+	uint8 datax[];
 }
 Type_sub168_2_2;
 
@@ -657,6 +658,24 @@ typedef struct _Type_dword_96884 {
 	uint8_t var8_6;
 	uint8_t var8_7;
 } Type_dword_96884;
+
+typedef struct {//size 44
+	int32 x_0;
+	int32 var_4;
+	int32 var_8;
+	int32 y_12;
+	int32 pnt1_16;
+	int32 pnt2_20;
+	int32 pnt3_24;
+	int32 pnt4_28;
+	int32 pnt5_32;
+	uint16 haveSprite_36;
+	uaxis_2d triangleDir_38;
+	uint8 stubc[1];
+	uint8 haveTexture_41;
+	uint8 var_42;
+	uint8 var_43;
+} Type_BegBscreen;
 #pragma pack (16)
 
 extern uint8_t* pdwScreenBuffer_12EFF4;
