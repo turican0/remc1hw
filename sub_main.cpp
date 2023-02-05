@@ -995,16 +995,16 @@ char sub_587E0_58CF0();
 int sub_58860_58D70(unsigned __int16 a1, uint8_t* a2);
 char sub_58910_58E20(unsigned __int16 a1);
 char sub_58A00_58F10(unsigned __int16 a1);
-int sub_58FE0(unsigned __int16 a1);
+int sub_58AD0_58FE0(unsigned __int16 a1);
 void sub_58B30_59040(unsigned __int16 a1);
-int sub_59140(unsigned int a1);
+int sub_58C30_59140(unsigned int a1);
 void sub_58E70_59380();
 void sub_58F00_59410();
 void sub_58F70_59480();
 void sub_58F90_594A0();
 bool sub_59050_59560(unsigned __int16 a1);
 void sub_590D0_595E0();
-void sub_59140_59650();
+void sub_58C30_59140_59650();
 __int16 *sub_59670(unsigned __int16 a1, unsigned __int16 a2, signed __int16 a3);
 int sub_596F0(unsigned __int16 a1);
 char sub_59740();
@@ -1013,7 +1013,7 @@ void sub_59370_59880();
 int sub_593B0_598C0();
 char sub_59420_59930();
 void sub_59500_59A10(uint8_t** a1);
-unsigned int sub_59050_59560_59A70(unsigned int **a1);
+unsigned int sub_59560_59A70(unsigned int **a1);
 int sub_59720_59C30();
 int sub_59C60(__int16 a1, __int16 a2);
 void Blit_599B0_59EC0(__int16 a1);
@@ -1518,7 +1518,7 @@ void sub_7152B();
 void sub_71A34();
 int sub_72063();
 void sub_720D9(int a1, const void *a2, void *a3);
-int sub_724C0_729D0(__int16 a1, __int16 a2);
+int sub_724C0_729D0(uint16_t a1, uint16_t a2);
 void sub_72AD8(__int16 a1, unsigned __int16 a2, __int16 a3);
 __int16 sub_72652_72B62(__int16 a1, int a2, int a3, __int16 a4);
 __int16 sub_726E7_72BF7(__int16 a1, int a2, int a3, __int16 a4);
@@ -13417,6 +13417,7 @@ _UNKNOWN unk_131BCC; // weak
 _UNKNOWN unk_131BD0; // weak
 
 //---------------- fixproc
+int sub_369D0_36D90(Type_sub168* a1);
 int nullsub_3(_DWORD a) { return 0; }; // weak
 int nullsub_19(_DWORD a) { return 0; }; // weak
 //_DWORD dos_getdiskfree(_DWORD a, uint32 b) { return 0; };// weak
@@ -38644,7 +38645,7 @@ int sub_34C80_35040()
   free_426E0_42A20((void*)blurBuffer_AE404_AE3F4);
   blurBuffer_AE404_AE3F4 = 0;
   sub_3F370_3F6B0();
-  sub_59050_59560_59A70((unsigned int **)&off_99974);
+  sub_59560_59A70((unsigned int **)&off_99974);
   if ( typeResolution_12F02E_12F01E == 1 )
   {
     sub_61610_61B20((Pathstruct*)(char*)aWscreen);
@@ -40500,7 +40501,7 @@ int sub_37800(int a1, char a2)
     v6 = (char *)dword_38CA3 + dword_AE400_AE3F0();
     *((_DWORD *)v6 - 1) = 0;
     memset(v6, 0, 96);
-    sub_59140_59650();
+    sub_58C30_59140_59650();
     for ( i = (unsigned __int16 *)(dword_AE400_AE3F0() + 194885); i < (unsigned __int16 *)&byte_385D3[dword_AE400_AE3F0()]; i += 9 )
     {
       sub_59670(*i, i[1], -1);
@@ -48279,7 +48280,7 @@ void sub_41490_417D0()
         {
           if ( v1 >= 0x96000 )
             break;
-          v1 += sub_59140(0x96000 - v1 + 1024);
+          v1 += sub_58C30_59140(0x96000 - v1 + 1024);
         }
       }
       //fix v0 = (void *)ios::failure::cause(dword_AE3EC_AE3DC);
@@ -63572,28 +63573,23 @@ char sub_58A00_58F10(unsigned __int16 a1)
     return 1;
 }
 
-//----- (00058FE0) --------------------------------------------------------
-int sub_58FE0(unsigned __int16 a1)
+//SYNCHRONIZED WITH REMC1
+int sub_58AD0_58FE0(unsigned __int16 a1)
 {
   unsigned __int16 v1; // ax
   int v2; // ebx
   unsigned __int16 i; // si
-  //int v4; // edx
 
   v1 = begTmapsTab_12D744_12D734_2EB744_2EB734x[a1].var_8;
   v2 = 0;
   for ( i = v1; v1 < 0x211u; v1++ )
   {
-      //begTmapsTab_12D744_12D734_2EB744_2EB734x[v1].var_8
-    //v4 = dword_12D734 + 10 * v1;
     if ( i != begTmapsTab_12D744_12D734_2EB744_2EB734x[v1].var_8)
       break;
-    
     v2 += begTmapsTab_12D744_12D734_2EB744_2EB734x[v1].var_0;
   }
   return v2;
 }
-// 12D734: using guessed type int dword_12D734;
 
 int counter_sub_58B30_59040 = 0;
 int counter_sub_58B30_59040_2 = 0;
@@ -63661,7 +63657,7 @@ void sub_58B30_59040(unsigned __int16 a1)//229B30_
 }
 
 //----- (00059140) --------------------------------------------------------
-int sub_59140(unsigned int a1)
+int sub_58C30_59140(unsigned int a1)
 {
   //int v1; // esi
   int v2; // eax
@@ -63792,7 +63788,7 @@ int sub_59140(unsigned int a1)
     {
       goto LABEL_38;
     }
-    v11 += sub_58FE0(*(_WORD *)((char *)&v19 + v12));
+    v11 += sub_58AD0_58FE0(*(_WORD *)((char *)&v19 + v12));
 LABEL_38:
     //v1 = dword_12D734;
     ++v24;
@@ -63823,7 +63819,7 @@ void sub_58F00_59410()//229F00
 {
     sub_36850_36C10_36FD0(dword_AE3EC_AE3DC);
     sub_11010(dword_AE3E0_AE3D0);
-    sub_59140_59650();
+    sub_58C30_59140_59650();
     memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
     memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
     memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
@@ -63877,8 +63873,8 @@ void sub_58F90_594A0()//_22A4A0
 }
 // 12EFE4: using guessed type int begWscreen_2ECFF4_2ECFE4;
 
-//----- (00059560) --------------------------------------------------------
-bool sub_59050_59560(unsigned __int16 a1)
+//SYNCHRONIZED WITH REMC1
+bool sub_59050_59560(unsigned __int16 a1)//22A050_
 {
   int v1; // eax
   int v2; // esi
@@ -63889,16 +63885,14 @@ bool sub_59050_59560(unsigned __int16 a1)
   i = 0;
   //fix
 
-  v1 = sub_58FE0(a1);
+  v1 = sub_58AD0_58FE0(a1);
   v2 = 0;
-  //fix
-  /*
-  for ( i = v1 - ios::failure::cause(dword_AE3EC_AE3DC) + 20; i > 0; i -= sub_59140(i) )
+  for ( i = v1 - sub_369D0_36D90(dword_AE3EC_AE3DC) + 20; i > 0; i -= sub_58C30_59140(i) )
   {
     v4 = v2++;
     if ( v4 >= 4u )
       break;
-  }*/
+  }
   if ( i <= 0 )
   {
     sub_58B30_59040(a1);
@@ -63906,10 +63900,6 @@ bool sub_59050_59560(unsigned __int16 a1)
   }
   return dword_12DF8C_12DF7C[a1] != 0;
 }
-// 36D90: using guessed type _DWORD ios::failure::cause(_DWORD);
-// AE3DC: using guessed type int dword_AE3EC_AE3DC;
-// AE3F8: using guessed type int dword_AE408_AE3F8();
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //SYNCHRONIZED WITH REMC1
 void sub_590D0_595E0()//22A0D0_
@@ -63948,7 +63938,7 @@ void sub_590D0_595E0()//22A0D0_
 }
 
 //----- (00059650) --------------------------------------------------------
-void sub_59140_59650()
+void sub_58C30_59140_59650()
 {
     memset(byte_12E9E1_12E9D1, 0, 529);
 }
@@ -64015,6 +64005,15 @@ int sub_596F0(unsigned __int16 a1)
 }
 // 12D734: using guessed type int dword_12D734;
 
+//ios::failure::cause
+//SYNCHRONIZED WITH REMC1
+int sub_369D0_36D90(Type_sub168* a1x)
+{
+    //allert_error();//test it
+
+    return a1x->var_4x;
+}
+
 //----- (00059740) --------------------------------------------------------
 char sub_59740()
 {
@@ -64049,7 +64048,7 @@ char sub_59740()
         break;
       if ( v4 == byte_12E9E1_12E9D1[i] && !dword_12DF8C_12DF7C[i] )
       {
-        v2 = sub_58FE0(i);
+        v2 = sub_58AD0_58FE0(i);
         //fix
         /*
         if ( v2 >= ios::failure::cause(dword_AE3EC_AE3DC) )
@@ -64160,7 +64159,7 @@ char sub_59420_59930()
         break;
       if ( v4 == *(_BYTE *)(j + dword_AE400_AE3F0() + 44) && !dword_12DF8C_12DF7C[j] )
       {
-        v2 = sub_58FE0(j);
+        v2 = sub_58AD0_58FE0(j);
         //fix
         /*
         if ( v2 >= ios::failure::cause(dword_AE3EC_AE3DC) )
@@ -64208,7 +64207,7 @@ void sub_59500_59A10(uint8_t** a1)
 // 12F01E: using guessed type __int16 typeResolution_12F02E_12F01E;
 
 //----- (00059A70) --------------------------------------------------------
-unsigned int sub_59050_59560_59A70(unsigned int **a1)
+unsigned int sub_59560_59A70(unsigned int **a1)
 {
   unsigned int **v1; // ebx
   unsigned int result; // eax
@@ -77621,69 +77620,66 @@ void sub_720D9(int a1, const void *a2, void *a3)
 }
 // A0CC6: using guessed type char byte_A0CC6;
 
-//----- (000729D0) --------------------------------------------------------
-int sub_724C0_729D0(__int16 a1, __int16 a2)
+//SYNCHRONIZED WITH REMC1
+int sub_724C0_729D0(uint16_t inX, uint16_t inY)
 {
-  int v2; // ebx
-  int v3; // edx
-  int v4; // eax
-  int v5; // esi
-  int v6; // esi
-  int v8; // esi
-  int v9; // eax
-  int v10; // esi
-  int v11; // esi
-  int v12; // edi
+    uint8_t point1;
+    uint8_t point2;
+    int finalComp;
+    int result;
 
-  //fix
-  v2 = 0;
-  //fix
+    uaxis_2d tempAxis;
+    uaxis_2d tempInX;
+    uaxis_2d tempInY;
+    tempInX.word = inX;
+    tempInY.word = inY;
+    tempAxis._axis_2d.x = tempInX._axis_2d.y;
+    tempAxis._axis_2d.y = tempInY._axis_2d.y;
 
-  v2 = HIBYTE(a1);
-  BYTE1(v2) = HIBYTE(a2);
-  v3 = (unsigned __int8)a2;
-  if ( ((HIBYTE(a1) + HIBYTE(a2)) & 1) != 0 )
-  {
-    if ( __CFADD__((_BYTE)a2, (_BYTE)a1) )
+    if ((tempInX._axis_2d.y + tempInY._axis_2d.y) & 1)
     {
-      BYTE1(v2) = HIBYTE(a2) + 1;
-      v4 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-      LOBYTE(v2) = v2 + 1;
-      v8 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-      LOBYTE(v3) = ~(_BYTE)a2;
-      BYTE1(v2) = HIBYTE(a2);
-      v6 = v3 * ((unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2] - v8) + (unsigned __int8)a1 * (v8 - v4);
+        //if ( __CFADD__((_BYTE)inY, (_BYTE)inX) )
+        if (tempInY._axis_2d.x > (tempInY._axis_2d.x + tempInX._axis_2d.x) % 256)
+        {
+            tempAxis._axis_2d.y++;
+            point1 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.x++;
+            point2 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempInY._axis_2d.x = 255 - tempInY._axis_2d.x;
+            tempAxis._axis_2d.y--;
+            finalComp = tempInY._axis_2d.x * (mapHeightmap_DC1E0_DC1D0[tempAxis.word] - point2) + tempInX._axis_2d.x * (point2 - point1);
+        }
+        else
+        {
+            point1 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.x++;
+            point2 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.x--;
+            tempAxis._axis_2d.y++;
+            finalComp = tempInY._axis_2d.x * (mapHeightmap_DC1E0_DC1D0[tempAxis.word] - point1) + tempInX._axis_2d.x * (point2 - point1);
+        }
+        return (finalComp >> 3) + 32 * point1;
     }
     else
     {
-      v4 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-      LOBYTE(v2) = v2 + 1;
-      v5 = (unsigned __int8)a1 * ((unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2] - v4);
-      LOBYTE(v2) = v2 - 1;
-      BYTE1(v2) = HIBYTE(a2) + 1;
-      v6 = (unsigned __int8)a2 * ((unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2] - v4) + v5;
+        if (tempInX._axis_2d.x <= tempInY._axis_2d.x)
+        {
+            point1 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.y++;
+            point2 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.x++;
+            finalComp = tempInY._axis_2d.x * (point2 - point1) + tempInX._axis_2d.x * (mapHeightmap_DC1E0_DC1D0[tempAxis.word] - point2);
+        }
+        else
+        {
+            point1 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.x++;
+            point2 = mapHeightmap_DC1E0_DC1D0[tempAxis.word];
+            tempAxis._axis_2d.y++;
+            finalComp = tempInY._axis_2d.x * (mapHeightmap_DC1E0_DC1D0[tempAxis.word] - point2) + tempInX._axis_2d.x * (point2 - point1);
+        }
+        return (finalComp >> 3) + 32 * point1;
     }
-    return (v6 >> 3) + 32 * v4;
-  }
-  else
-  {
-    v9 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-    if ( (unsigned __int8)a1 <= (unsigned __int8)a2 )
-    {
-      BYTE1(v2) = HIBYTE(a2) + 1;
-      v12 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-      LOBYTE(v2) = v2 + 1;
-      v11 = (unsigned __int8)a2 * (v12 - v9) + (unsigned __int8)a1 * ((unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2] - v12);
-    }
-    else
-    {
-      LOBYTE(v2) = v2 + 1;
-      v10 = (unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2];
-      BYTE1(v2) = HIBYTE(a2) + 1;
-      v11 = (unsigned __int8)a2 * ((unsigned __int8)mapHeightmap_DC1E0_DC1D0[v2] - v10) + (unsigned __int8)a1 * (v10 - v9);
-    }
-    return (v11 >> 3) + 32 * v9;
-  }
 }
 
 //----- (00072AD8) --------------------------------------------------------
