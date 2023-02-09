@@ -995,7 +995,7 @@ char sub_587E0_58CF0();
 int sub_58860_58D70(unsigned __int16 a1, uint8_t* a2);
 char sub_58910_58E20(unsigned __int16 a1);
 char sub_58A00_58F10(unsigned __int16 a1);
-int sub_58AD0_58FE0(unsigned __int16 a1);
+int GetSumaSpriteSizes_58AD0_58FE0(unsigned __int16 a1);
 void sub_58B30_59040(unsigned __int16 a1);
 int sub_58C30_59140(unsigned int a1);
 void sub_58E70_59380();
@@ -1004,7 +1004,7 @@ void sub_58F70_59480();
 void sub_58F90_594A0();
 bool sub_59050_59560(unsigned __int16 a1);
 void sub_590D0_595E0();
-void sub_58C30_59140_59650();
+void sub_59140_59650();
 __int16 *sub_59670(unsigned __int16 a1, unsigned __int16 a2, signed __int16 a3);
 int sub_596F0(unsigned __int16 a1);
 char sub_59740();
@@ -13187,7 +13187,7 @@ __int16 word_12CD14[9999]; // weak
 __int16 word_12CD16[9999]; // weak
 __int16 word_12CD18[236]; // weak
 int dword_12CF00_12CEF0[529]; // weak
-//int dword_12D734; // weak
+//int begTmapsTab_12D744_12D734_2EB744_2EB734x; // weak
 Type_sub168_2* dword_12D748_12D738[529]; // weak
 Type_sub168_2* dword_12DF8C_12DF7C[529]; // weak
 char byte_12E7D0_12E7C0[529]; // weak
@@ -40501,7 +40501,7 @@ int sub_37800(int a1, char a2)
     v6 = (char *)dword_38CA3 + dword_AE400_AE3F0();
     *((_DWORD *)v6 - 1) = 0;
     memset(v6, 0, 96);
-    sub_58C30_59140_59650();
+    sub_59140_59650();
     for ( i = (unsigned __int16 *)(dword_AE400_AE3F0() + 194885); i < (unsigned __int16 *)&byte_385D3[dword_AE400_AE3F0()]; i += 9 )
     {
       sub_59670(*i, i[1], -1);
@@ -63574,7 +63574,7 @@ char sub_58A00_58F10(unsigned __int16 a1)
 }
 
 //SYNCHRONIZED WITH REMC1
-int sub_58AD0_58FE0(unsigned __int16 a1)
+int GetSumaSpriteSizes_58AD0_58FE0(unsigned __int16 a1)
 {
   unsigned __int16 v1; // ax
   int v2; // ebx
@@ -63656,7 +63656,7 @@ void sub_58B30_59040(unsigned __int16 a1)//229B30_
     }
 }
 
-//----- (00059140) --------------------------------------------------------
+//SYNCHRONIZED WITH REMC1
 int sub_58C30_59140(unsigned int a1)
 {
   //int v1; // esi
@@ -63692,7 +63692,7 @@ int sub_58C30_59140(unsigned int a1)
   v18 = 0;
   //fix
 
-  //v1 = dword_12D734;
+  //v1 = (int)begTmapsTab_12D744_12D734_2EB744_2EB734x;
   v25 = 1;
   v2 = 0;
   do
@@ -63775,10 +63775,10 @@ int sub_58C30_59140(unsigned int a1)
     if ( v11 >= a1 || (v12 = 4 * (unsigned __int16)v24, *(int *)((char *)&v19 + v12) <= -1) )
     {
       result = v11;
-      //dword_12D734 = v1;
+      //begTmapsTab_12D744_12D734_2EB744_2EB734x = (uint8_t*)begTmapsTab_12D744_12D734_2EB744_2EB734x;
       return result;
     }
-    //dword_12D734 = v1;
+    //begTmapsTab_12D744_12D734_2EB744_2EB734x = (uint8_t*)begTmapsTab_12D744_12D734_2EB744_2EB734x;
     if ( v25 )
     {
       if ( !sub_58A00_58F10(*((_WORD *)&v19 + 2 * (unsigned __int16)v24)) )
@@ -63788,17 +63788,14 @@ int sub_58C30_59140(unsigned int a1)
     {
       goto LABEL_38;
     }
-    v11 += sub_58AD0_58FE0(*(_WORD *)((char *)&v19 + v12));
+    v11 += GetSumaSpriteSizes_58AD0_58FE0(*(_WORD *)((char *)&v19 + v12));
 LABEL_38:
-    //v1 = dword_12D734;
+    //v1 = (int)begTmapsTab_12D744_12D734_2EB744_2EB734x;
     ++v24;
   }
   while ( (unsigned __int16)v24 < 5u );
   return v11;
 }
-// 12CEF0: using guessed type int dword_12CF00_12CEF0[529];
-// 12D734: using guessed type int dword_12D734;
-// 12DF7C: using guessed type int dword_12DF8C_12DF7C[529];
 
 //SYNCHRONIZED WITH REMC1
 void sub_58E70_59380()
@@ -63819,7 +63816,7 @@ void sub_58F00_59410()//229F00
 {
     sub_36850_36C10_36FD0(dword_AE3EC_AE3DC);
     sub_11010(dword_AE3E0_AE3D0);
-    sub_58C30_59140_59650();
+    sub_59140_59650();
     memset(dword_12DF8C_12DF7C, 0, sizeof(dword_12DF8C_12DF7C));
     memset(dword_12D748_12D738, 0, sizeof(dword_12D748_12D738));
     memset(dword_12CF00_12CEF0, 0, sizeof(dword_12CF00_12CEF0));
@@ -63885,7 +63882,7 @@ bool sub_59050_59560(unsigned __int16 a1)//22A050_
   i = 0;
   //fix
 
-  v1 = sub_58AD0_58FE0(a1);
+  v1 = GetSumaSpriteSizes_58AD0_58FE0(a1);
   v2 = 0;
   for ( i = v1 - sub_369D0_36D90(dword_AE3EC_AE3DC) + 20; i > 0; i -= sub_58C30_59140(i) )
   {
@@ -63938,7 +63935,7 @@ void sub_590D0_595E0()//22A0D0_
 }
 
 //----- (00059650) --------------------------------------------------------
-void sub_58C30_59140_59650()
+void sub_59140_59650()
 {
     memset(byte_12E9E1_12E9D1, 0, 529);
 }
@@ -63998,12 +63995,12 @@ int sub_596F0(unsigned __int16 a1)
 
   v1 = (unsigned __int16 *)((char *)&unk_99BA0 + 14 * a1);
   v2 = *((_BYTE *)v1 + 11);
-  result = *(unsigned __int16 *)(dword_12D734 + 10 * *v1 + 8);
+  result = *(unsigned __int16 *)(begTmapsTab_12D744_12D734_2EB744_2EB734x + 10 * *v1 + 8);
   byte_12E9E1_12E9D1[result] = v2;
   return result;*/
     return 0;
 }
-// 12D734: using guessed type int dword_12D734;
+// 12D734: using guessed type int begTmapsTab_12D744_12D734_2EB744_2EB734x;
 
 //ios::failure::cause
 //SYNCHRONIZED WITH REMC1
@@ -64048,7 +64045,7 @@ char sub_59740()
         break;
       if ( v4 == byte_12E9E1_12E9D1[i] && !dword_12DF8C_12DF7C[i] )
       {
-        v2 = sub_58AD0_58FE0(i);
+        v2 = GetSumaSpriteSizes_58AD0_58FE0(i);
         //fix
         /*
         if ( v2 >= ios::failure::cause(dword_AE3EC_AE3DC) )
@@ -64159,7 +64156,7 @@ char sub_59420_59930()
         break;
       if ( v4 == *(_BYTE *)(j + dword_AE400_AE3F0() + 44) && !dword_12DF8C_12DF7C[j] )
       {
-        v2 = sub_58AD0_58FE0(j);
+        v2 = GetSumaSpriteSizes_58AD0_58FE0(j);
         //fix
         /*
         if ( v2 >= ios::failure::cause(dword_AE3EC_AE3DC) )
