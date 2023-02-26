@@ -337,8 +337,8 @@ typedef struct _Type_AE400_29795 {// len 164
 	_Type_AE400_29795* next;
 	uint32 rand_29799_4;//4
 	uint32 maxLife_29803_8;//8
-	int32 var_u32_29807_12;//12 //act live?
-	Type_29811 var_29811_16;//16
+	int32 actLife_29807_12;//12 //act live?
+	Type_29811 var_29811_16;//16 // change to dword
 	//uint8 var_u8_29812;//17
 	uint16 var_u16_29815_20;//20
 	uint16 var_u16_29817_22;//22
@@ -347,7 +347,8 @@ typedef struct _Type_AE400_29795 {// len 164
 	uint16 var_u16_29823_28;//28
 	uint16 var_u16_29825_30;//30
 	uint16 var_u16_29827_32;//32
-	uint8_t stub2a[4];
+	uint16 var_u16_29829_34;//34
+	uint8_t stub2a[2];
 	uint16 var_u16_29833_38;//38
 	uint16 var_u16_29835_40;//40
 	uint16 var_u16_29837_42;//42
@@ -394,7 +395,7 @@ typedef struct _Type_AE400_29795 {// len 164
 	uint8_t stub3ay[2];
 	uint16 var_u16_29927_132;//132
 	uint8_t stub3[2];
-	uint32 var_u32_29931;//136
+	uint32 var_u32_29931_136;//136
 	uint32 var_u32_29935_140;//140
 	uint16 var_u16_29939_144;//144
 	uint16 var_u16_29941_146;//146
