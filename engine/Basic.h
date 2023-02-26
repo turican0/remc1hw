@@ -353,10 +353,12 @@ typedef struct _Type_AE400_29795 {// len 164
 	uint16 var_u16_29835_40;//40
 	uint16 var_u16_29837_42;//42
 	uint16 var_u16_29839_44;//44
-	uint16 var_u16_29841_46;//46
+	int16 var_u16_29841_46;//46
 	uint16 var_48;//29843
-	uint16 var_50;
-	uint8_t stub2e[6];
+	uint16 var_50;//50
+	uint16 var_u16_29847_52;//52
+	uint16 var_u16_29849_54;//54
+	uint8_t stub2eb[2];//56
 	int8_t var_u8_29853_58;//58
 	uint8_t stub2ax[2];
 	uint8_t var_u8_29856_61;//61
