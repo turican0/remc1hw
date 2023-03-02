@@ -457,6 +457,14 @@ typedef struct {//len 38812
 Type_AE400_193795;
 
 typedef struct {
+	uint8 stub0[1];
+	uint8 var_u8_1;
+	uint8 var_u8_2;
+	uint8 stub0b[1];
+}
+Type_str_AE400_AE3F0_0;
+
+typedef struct {
 	uint8 reflections_8597;//0 is on
 	uint8 shadowsOn_8598;
 	uint8 skyOn_8599;
@@ -492,10 +500,7 @@ typedef struct {
 Type_settings;
 
 typedef struct {//size 232713
-	uint8 stub0[1];
-	uint8 var_u8_1;
-	uint8 var_u8_2;
-	uint8 stub0b[1];
+	Type_str_AE400_AE3F0_0 var_0;
 	uint32 rand_4;
 	uint16 var_u16_8;
 	uint16 var_u16_10;
