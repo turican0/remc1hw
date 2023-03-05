@@ -692,6 +692,23 @@ typedef struct {//size 44
 	uint8 var_42;
 	uint8 var_43;
 } Type_BegBscreen;
+
+typedef struct {//size 6
+	uint8* pointer_0;
+	uint16 pos_4;
+}
+Type_AD008_ACFF8;
+
+typedef struct {//size 6*4
+	int32 stub_0;
+	int32 stub_1;
+	int32 stub_2;
+	int32 stub_3;
+	Type_AD008_ACFF8* stub_4;
+	uint8* stub_5;
+}
+Type_AC5F0;
+
 #pragma pack (16)
 
 extern uint8_t* begWscreen_2ECFF4_2ECFE4;
